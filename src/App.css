@@ -1,0 +1,182 @@
+body {
+  background: rgb(14, 13, 13) !important;
+  color: white;
+}
+
+.kitu {
+  position: relative;
+  z-index: 1;
+}
+
+/* background: rgb(14, 13, 13)!important; */
+
+.kwanza {
+  height: 45rem;
+}
+
+.bata {
+  position: relative;
+  top: 12rem;
+}
+
+.name {
+  font-size: 5rem;
+  color: rgb(0, 99, 180);
+}
+.salut {
+  font-size: 4rem;
+  color: rgb(28, 231, 129);
+}
+
+.kadi {
+  /* position: absolute; */
+  left: 70rem;
+  top: 5rem;
+}
+
+.nav {
+  background: darkgrey !important;
+}
+
+.scndrow {
+  position: relative;
+  left: 25rem;
+}
+
+/* .card {
+    width: 25%;
+} */
+.card:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0.5rem 1rem rgba(47, 236, 179, 0.329) !important;
+}
+
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(47, 236, 179, 0.329) !important;
+}
+.t-shadow {
+  box-shadow: 0 0.5rem 1rem rgba(231, 65, 43, 0.329) !important;
+}
+.wolan {
+  max-height: 50rem;
+}
+.wolani {
+  max-height: 20rem;
+}
+
+.sasa {
+  max-height: 30rem;
+  height: 30rem;
+  max-width: 40rem;
+}
+.manze {
+  max-height: 30rem;
+}
+.picha {
+ max-width: 55rem;
+ max-height: 25rem;
+}
+
+.card-title {
+  text-align: center;
+}
+.card-img-top {
+  position: relative;
+  left: 5rem;
+}
+.market {
+  font-size: 1.4rem;
+}
+
+.card-text {
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(28, 231, 129);
+}
+
+.sth {
+  color: rgb(45, 236, 39);
+}
+
+@media (max-width: 600px) {
+
+  .card-text {
+    text-align: center;
+    font-size: 1rem;
+    color: rgb(28, 231, 129);
+  }
+  .card-title {
+    font-size: 0.8rem;
+  }
+  .alaa {
+    order: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 8rem;
+  }
+  .alaa .btn {
+    width: 10rem;
+  }
+  .alaa .text-center {
+    font-size: 1.5rem;
+    padding-right: 3rem;
+  }
+  .mavitu {
+    order: 1;
+  }
+  .nkt {
+    order: 2;
+  }
+  .mawe {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .wolan {
+    max-height: 30rem;
+    padding-bottom: 2rem;
+  }
+  .wolani {
+    max-height: 20rem;
+    width: 20rem;
+    padding-bottom: 2rem;
+  }
+  .manze {
+    width: 20rem;
+    max-height: 30rem;
+    margin-top: 5rem;
+  }
+  .container {
+    position: relative;
+    width: 100%;
+  }
+  .kuja {
+    display: flex;
+    flex-wrap: wrap;
+    height: 5rem;
+    width: 20rem;
+    margin-bottom: 1rem;
+  }
+  .kuja .btn {
+    width: 8rem;
+  }
+  .fujo {
+    width: 23rem;
+  }
+  .mti {
+    width: 17rem;
+  }
+  .inn {
+    width: 17rem;
+  }
+  .kiti {
+    width: 20rem;
+    margin-bottom: 5rem;
+  }
+  .pbut {
+    margin-bottom: 3rem;
+  }
+  .ttl {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,778 @@
+TRANSACTION TYPE,PAID IN,PAID OUT
+SEND MONEY:,0.00,"149,401.00"
+RECEIVED MONEY:,"64,557.24",0.00
+AGENT DEPOSIT:,0.00,0.00
+AGENT WITHDRAWAL:,0.00,"8,966.00"
+LIPA NA M-PESA (PAYBILL):,0.00,"190,098.00"
+LIPA NA M-PESA (BUY GOODS):,0.00,"55,620.00"
+OTHERS:,"348,830.00","12,849.30"
+TOTAL:,"414,814.61","416,934.30"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QLB4VTWY1M,2022-12-11 00:21:06,"Merchant Payment to 7564262 -KENNETH ODHIAMBO",Completed,,-300.00,100.93
+QLA0ULX3WG,2022-12-10 16:22:44,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QLA0ULX3WG,2022-12-10 16:22:44,OverDraft of Credit Party,Completed,256.00,,6.00
+QLA0ULX3WG,2022-12-10 16:22:44,"Customer Transfer Fuliza MPesato - 2547******366 RICHARDNYAMBURA",Completed,,-250.00,-250.00
+QLA2UBTUV6,2022-12-10 14:42:37,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QLA2UBTUV6,2022-12-10 14:42:37,OverDraft of Credit Party,Completed,88.42,,6.00
+QLA2UBTUV6,2022-12-10 14:42:37,"Customer Transfer Fuliza MPesato - 07******683 Faith Mbalia",Completed,,-150.00,-82.42
+QLA5U2BXGX,2022-12-10 13:08:12,"Customer Transfer to -07******683 Faith Mbalia",Completed,,-50.00,67.58
+QL91RKGWIX,2022-12-09 15:16:54,"Customer Transfer to -2547******781 JOSEPHGACHIINGU",Completed,,-100.00,624.58
+QL86Q49DAY,2022-12-08 22:51:01,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-350.00,"1,030.58"
+QL82PAMWSU,2022-12-08 18:28:16,"Merchant Payment to 7836910 -KENNETH  ODHIAMBO  2 ..",Completed,,-40.00,"1,380.58"
+QL80P9P3DA,2022-12-08 18:21:22,"Merchant Payment to 7907724 -JOHN MBURU CHEGE",Completed,,-20.00,"1,420.58"
+QL75M7IX8R,2022-12-07 17:47:51,"Merchant Payment to 7031759 -WA MALIMALI GEN SHOP",Completed,,-180.00,"1,590.58"
+QL78M1GNF6,2022-12-07 16:57:38,"Pay Bill Online to 244441 -SAFARICOM POSTPAID BUNDLESAcc. EasyTalk",Completed,,-500.00,"1,770.58"
+QL75LO9XCV,2022-12-07 14:52:43,M-Shwari Deposit,Completed,,"-6,000.00","2,270.58"
+QL71LO5GF5,2022-12-07 14:51:34,"Customer Transfer of FundsCharge",Completed,,-75.00,"8,270.58"
+QL71LO5GF5,2022-12-07 14:51:34,"Customer Transfer to -07******395 Anna Mutinda",Completed,,"-6,530.00","8,345.58"
+QL74LNXUGQ,2022-12-07 14:49:33,"Pay Bill Online to 400200 - Co-operative Bank Money TransferAcc. 01108212586000",Completed,,"-65,000.00","14,875.58"
+QL73LNW39P,2022-12-07 14:49:04,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-124.42,"79,875.58"
+QL73LNWA1B,2022-12-07 14:49:03,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-vS12DK.",Completed,"80,000.00",,"80,000.00"
+QL78L03EHS,2022-12-07 10:57:36,OverDraft of Credit Party,Completed,60.00,,0.00
+QL78L03EHS,2022-12-07 10:57:36,"Customer Transfer Fuliza MPesato - 07******416 jairus okwiri",Completed,,-60.00,-60.00
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QL63IHIP5Z,2022-12-06 13:40:05,"Funds received from -2547******754 Bernard Gesongo",Completed,150.00,,150.00
+QL63I1ZAKJ,2022-12-06 11:12:19,OverDraft of Credit Party,Completed,90.00,,0.00
+QL59GKP7ER,2022-12-05 19:25:56,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,-120.00,86.03
+QL54GBTINW,2022-12-05 18:32:16,Airtime Purchase,Completed,,-20.00,206.03
+QL57GB9THZ,2022-12-05 18:28:43,"Customer Transfer to -2547******051 JOSHUA MOROA",Completed,,-500.00,232.03
+QL53FSHO27,2022-12-05 16:10:34,"Customer Transfer of FundsCharge",Completed,,-6.00,732.03
+QL46DNB5TK,2022-12-04 20:48:45,"Merchant Payment to 607229 -BAYLEYS BAR ANDRESTAURANT......................",Completed,,-400.00,"1,308.03"
+QL47DI5UIX,2022-12-04 20:08:32,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QL47DI5UIX,2022-12-04 20:08:32,OverDraft of Credit Party,Completed,206.00,,6.00
+QL47C8YXKF,2022-12-04 14:07:34,OverDraft of Credit Party,Completed,25.00,,0.00
+QL47C8YXKF,2022-12-04 14:07:34,"Customer Transfer Fuliza MPesato - 07******416 jairus okwiri",Completed,,-25.00,-25.00
+QL40C5CQMI,2022-12-04 13:35:39,OverDraft of Credit Party,Completed,58.07,,0.00
+QL40C5CQMI,2022-12-04 13:35:39,"Merchant Payment Fuliza M-Pesato 795596 - Msafiri butchery  V",Completed,,-100.00,-58.07
+QL38ANGIRE,2022-12-03 21:54:44,"Customer Transfer to -2547******957 GEORGENJOROGE",Completed,,-100.00,41.93
+QL31AIJ6W1,2022-12-03 21:08:42,"Pay Bill to 522522 - KCB PaybillAC Acc. 5770718",Completed,,-350.00,141.93
+QL35AIEYZT,2022-12-03 21:07:32,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-208.07,491.93
+QL36AIEGZ8,2022-12-03 21:07:31,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AADBF2915522.",Completed,700.00,,700.00
+QL31AI9LMV,2022-12-03 21:06:20,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-175.00,0.00
+QL37AI9JFB,2022-12-03 21:06:20,"Funds received from -2547******754 Bernard Gesongo",Completed,175.00,,175.00
+QL39A7D76V,2022-12-03 19:48:36,OverDraft of Credit Party,Completed,70.00,,0.00
+QL39A7D76V,2022-12-03 19:48:36,"Customer Transfer Fuliza MPesato - 07******329 LUCAS NGOSEK",Completed,,-70.00,-70.00
+QL339QHX17,2022-12-03 17:59:07,"Merchant Payment Fuliza M-Pesato 624891 - Oaks & Corks",Completed,,-350.00,-309.27
+QL369IXZHO,2022-12-03 17:01:41,"Customer Transfer to -2547******009 PRAXEDESMUSAMIA",Completed,,-40.00,40.73
+QL399IAD6X,2022-12-03 16:56:17,"Customer Transfer of FundsCharge",Completed,,-6.00,80.73
+QL399IAD6X,2022-12-03 16:56:17,"Customer Transfer to -2547******009 PRAXEDESMUSAMIA",Completed,,-150.00,86.73
+QL3898VTGK,2022-12-03 15:35:24,"Customer Transfer of FundsCharge",Completed,,-6.00,236.73
+QL3898VTGK,2022-12-03 15:35:24,"Customer Transfer to -2547******754 Bernard Gesongo",Completed,,-300.00,242.73
+QL3697JBK0,2022-12-03 15:23:26,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-157.27,542.73
+QL3297J0G6,2022-12-03 15:23:25,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AADBE2424022.",Completed,700.00,,700.00
+QL3297EQ6A,2022-12-03 15:22:24,OverDraft of Credit Party,Completed,60.00,,0.00
+QL3297EQ6A,2022-12-03 15:22:24,"Customer Transfer Fuliza MPesato - 2547******780 Anne Njeri",Completed,,-60.00,-60.00
+QL2470V5IS,2022-12-02 20:22:48,OverDraft of Credit Party,Completed,95.71,,0.00
+QL2470V5IS,2022-12-02 20:22:48,"Merchant Payment Fuliza M-Pesato 984686 - SWEET WATERSLIQUOR STORE  5",Completed,,-260.00,-95.71
+QL296Z2N17,2022-12-02 20:10:26,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-40.00,164.29
+QL276XKSM3,2022-12-02 19:59:34,"Merchant Payment to 795596 -Msafiri butchery  V",Completed,,-150.00,204.29
+QL286XCAPW,2022-12-02 19:57:57,"Customer Transfer to -2547******247 KENNEDYOMWENGA",Completed,,-40.00,354.29
+QL1845CYRG,2022-12-01 23:01:03,"Customer Transfer to -07******256 Lawrence Maina",Completed,,-10.00,394.29
+QL16456YAW,2022-12-01 22:58:23,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-520.00,404.29
+QL1241MG7C,2022-12-01 22:05:38,"Merchant Payment to 7721524 -MAGUNANDU SHOP",Completed,,-40.00,924.29
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QL153HUB4Z,2022-12-01 19:23:53,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-60.00,964.29
+QL152XZ3FR,2022-12-01 17:05:53,"Customer Transfer of FundsCharge",Completed,,-12.00,"1,024.29"
+QL152XZ3FR,2022-12-01 17:05:53,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,"-1,000.00","1,036.29"
+QL152KJ89R,2022-12-01 14:57:48,"Merchant Payment to 608465 -MKULIMA GROCERY0",Completed,,-50.00,"2,036.29"
+QL122KC3UK,2022-12-01 14:55:46,"Merchant Payment to 305561 -EVERLINE ANYANGO ODONGO",Completed,,-440.00,"2,086.29"
+QL192JSK55,2022-12-01 14:50:21,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-SD9zZV.",Completed,"2,000.00",,"2,526.29"
+QL191J341V,2022-12-01 08:32:16,"Customer Transfer of FundsCharge",Completed,,-6.00,526.29
+QL191J341V,2022-12-01 08:32:16,"Customer Transfer to -2547******121 MILDRED MIYATTI",Completed,,-200.00,532.29
+QKU4ZNZDR6,2022-11-30 20:10:43,"Customer Transfer of FundsCharge",Completed,,-6.00,732.29
+QKU4ZNZDR6,2022-11-30 20:10:43,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,-150.00,738.29
+QKU8YOA1DG,2022-11-30 15:07:47,"Customer Transfer of FundsCharge",Completed,,-22.00,888.29
+QKU8YOA1DG,2022-11-30 15:07:47,"Customer Transfer to -2547******121 MILDRED MIYATTI",Completed,,"-1,500.00",910.29
+QKU6YO60FW,2022-11-30 15:06:34,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-89.71,"2,410.29"
+QKU9YO67VR,2022-11-30 15:06:33,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-hpIBDF.",Completed,"2,500.00",,"2,500.00"
+QKU9XY06O7,2022-11-30 09:53:37,Withdrawal Charge,Completed,,-28.00,0.00
+QKU9XY06O7,2022-11-30 09:53:37,OverDraft of Credit Party,Completed,88.82,,28.00
+QKU9XY06O7,2022-11-30 09:53:37,"Customer Withdrawal at AgentTill with Fuliza to 487226 -KIJANI AFRICA LtdKidabizzEnterprise",Completed,,-650.00,-60.82
+QKT5X16TLP,2022-11-29 19:31:20,"Funds received from -2547******754 Bernard Gesongo",Completed,200.00,,589.18
+QKT6WYEVAK,2022-11-29 19:11:05,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-420.00,389.18
+QKT8WQ3A52,2022-11-29 18:06:25,"Customer Payment to SmallBusiness to - 07******600 PrimMaina",Completed,,-20.00,809.18
+QKT4W8HL10,2022-11-29 14:59:27,"Customer Transfer of FundsCharge",Completed,,-6.00,829.18
+QKT4W8HL10,2022-11-29 14:59:27,"Customer Transfer to -2547******366 RICHARDNYAMBURA",Completed,,-250.00,835.18
+QKT6VSQI80,2022-11-29 11:48:03,"Pay Bill Online to 625625 -National Bank of Kenya -NBKAcc. 01553242100500",Completed,,"-2,000.00","1,085.18"
+QKT4VRY3EK,2022-11-29 11:37:44,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AADAB98D8722.",Completed,"2,000.00",,"2,000.00"
+QKT9VRP3CL,2022-11-29 11:34:30,"Merchant Payment Fuliza M-PesaOnline to 7031759 - WAMALIMALI GEN SHOP",Completed,,-180.00,-180.00
+QKS0UWVVB0,2022-11-28 20:44:29,OverDraft of Credit Party,Completed,95.00,,0.00
+QKS6UUW4EG,2022-11-28 20:23:35,OverDraft of Credit Party,Completed,30.00,,0.00
+QKS6UUW4EG,2022-11-28 20:23:35,"Customer Transfer Fuliza MPesato - 01******791 Adams Kinyua",Completed,,-30.00,-30.00
+QKS0UJXC06,2022-11-28 18:56:11,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QKS0UJXC06,2022-11-28 18:56:11,"Customer Transfer Fuliza MPesato - 2547******498 ESTHERMUTINDA",Completed,,-275.00,-99.71
+QKS3U502CT,2022-11-28 16:41:29,"Pay Bill to 220220 - PesaPal Acc.0750594250",Completed,,-100.00,177.29
+QKR9S6UUCD,2022-11-27 18:40:10,"Customer Transfer of FundsCharge",Completed,,-6.00,277.29
+QKR9S6UUCD,2022-11-27 18:40:10,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-250.00,283.29
+QKQ1QN8HN9,2022-11-26 23:13:19,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-700.00,533.29
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QKQ1PIXB77,2022-11-26 16:06:29,"Merchant Payment Online to287763 - MATUMATTSUPERMARKET MATUU MWINGISTAGE",Completed,,-350.00,"1,363.29"
+QKQ2PCU3LQ,2022-11-26 14:55:42,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,713.29"
+QKQ2PCU3LQ,2022-11-26 14:55:42,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-200.00,"1,719.29"
+QKQ0PCSHC6,2022-11-26 14:55:04,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AADA337D2922.",Completed,"2,000.00",,"2,000.00"
+QKQ1PCSBE1,2022-11-26 14:55:04,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-80.71,"1,919.29"
+QKQ8OXTET4,2022-11-26 11:58:29,OverDraft of Credit Party,Completed,60.00,,0.00
+QKQ8OXTET4,2022-11-26 11:58:29,"Merchant Payment Fuliza M-Pesato 7541239 - Joss Juice Parlour",Completed,,-60.00,-60.00
+QKQ7OTUB0N,2022-11-26 11:09:21,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QKQ7OTUB0N,2022-11-26 11:09:21,OverDraft of Credit Party,Completed,19.91,,6.00
+QKQ7OTUB0N,2022-11-26 11:09:21,"Customer Transfer Fuliza MPesato - 07******023 charles wamuyu",Completed,,-200.00,-13.91
+QKP8NC95T0,2022-11-25 17:45:17,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-110.00,186.09
+QKP9MDZADL,2022-11-25 11:25:38,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-90.00,296.09
+QKO3LFGGOV,2022-11-24 20:10:14,"Merchant Payment to 7721524 -MAGUNANDU SHOP",Completed,,-130.00,386.09
+QKO4LF5IKU,2022-11-24 20:07:19,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-360.00,516.09
+QKO8L5L5CE,2022-11-24 18:48:15,"Merchant Customer Paymentfrom 6077874 - FIONA WAMBUI.",Completed,400.00,,876.09
+QKO7L5EMO1,2022-11-24 18:47:00,"Merchant Payment Online to607229 - BAYLEYS BAR ANDRESTAURANT......................",Completed,,-400.00,476.09
+QKO3KQHP73,2022-11-24 16:20:52,Pay Bill Charge,Completed,,-2.00,876.09
+QKO3KQHP73,2022-11-24 16:20:52,"Pay Bill to 220220 - PesaPal Acc.0750594250",Completed,,-100.00,878.09
+QKO2KI9KFK,2022-11-24 14:43:34,"Merchant Payment Online to7296035 -  PRAWN  INTERACTIVE",Completed,,-449.00,978.09
+QKN6J30N7E,2022-11-23 19:55:52,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,427.09"
+QKN6J30N7E,2022-11-23 19:55:52,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-300.00,"1,433.09"
+QKN7IYQAZT,2022-11-23 19:22:17,"Customer Transfer to -07******023 charles wamuyu",Completed,,-80.00,"1,733.09"
+QKN4IMZ55O,2022-11-23 17:52:14,"Customer Transfer to -07******429 Tonny Njue",Completed,,-100.00,"1,813.09"
+QKN4IGSIQ8,2022-11-23 16:52:15,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-86.91,"1,913.09"
+QKN4IGS5Y8,2022-11-23 16:52:14,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD98DEC8522.",Completed,"2,000.00",,"2,000.00"
+QKN4ICWGV0,2022-11-23 16:08:56,OverDraft of Credit Party,Completed,86.04,,0.00
+QKN4ICWGV0,2022-11-23 16:08:56,"Merchant Payment Fuliza M-Pesato 305561 - EVERLINE ANYANGOODONGO",Completed,,-220.00,-86.04
+QKN7IBHJCZ,2022-11-23 15:52:17,"Merchant Payment to 7912456 -ARCADIA THE EXECUTIVEBARBER SHOP",Completed,,-300.00,133.96
+QKM7H30BTR,2022-11-22 22:56:22,"Customer Transfer of FundsCharge",Completed,,-22.00,433.96
+QKM7H30BTR,2022-11-22 22:56:22,"Customer Transfer to -2547******051 JOSHUA MOROA",Completed,,"-1,200.00",455.96
+QKM2H2ZETU,2022-11-22 22:55:37,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD972ED3C22.",Completed,"1,000.00",,"1,655.96"
+QKM4GQ9G5M,2022-11-22 19:56:05,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-60.00,655.96
+QKM9FYK5FF,2022-11-22 15:41:00,"Customer Transfer of FundsCharge",Completed,,-6.00,715.96
+QKM9FYK5FF,2022-11-22 15:41:00,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,-300.00,721.96
+QKM5FXS2TN,2022-11-22 15:31:45,"Merchant Payment to 7912456 -ARCADIA THE EXECUTIVEBARBER SHOP",Completed,,-200.00,"1,021.96"
+QKM4FOLLKI,2022-11-22 13:37:12,"Customer Transfer to -07******023 charles wamuyu",Completed,,-100.00,"1,221.96"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QKM3FDVCRP,2022-11-22 11:21:55,"Pay Bill Online to 4071409 -Dealsdaddy All Trades          Acc.Martin Nzomo",Completed,,-500.00,"1,344.96"
+QKM8FDR49K,2022-11-22 11:20:29,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,844.96"
+QKM8FDR49K,2022-11-22 11:20:29,"Customer Transfer to -07******683 Faith Mbalia",Completed,,-200.00,"1,850.96"
+QKM0F8U764,2022-11-22 10:15:26,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD953473D22.",Completed,"2,000.00",,"2,050.96"
+QKL4E6QBBG,2022-11-21 18:57:49,"Customer Transfer to -07******683 Faith Mbalia",Completed,,-100.00,50.96
+QKL6CURDEA,2022-11-21 09:53:39,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-100.00,150.96
+QKK1C31F3H,2022-11-20 19:50:35,Withdrawal Charge,Completed,,-10.00,250.96
+QKK1C31F3H,2022-11-20 19:50:35,"Customer Withdrawal At AgentTill 487226 -  KIJANI AFRICALtdKidabizz Enterprise",Completed,,-100.00,260.96
+QKK1C0CDDB,2022-11-20 19:26:13,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-55.00,360.96
+QKJ49U705I,2022-11-19 19:14:56,"Customer Transfer of FundsCharge",Completed,,-12.00,415.96
+QKJ49U705I,2022-11-19 19:14:56,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-700.00,427.96
+QKJ39U2FP7,2022-11-19 19:13:58,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD87907AA22.",Completed,"1,000.00",,"1,127.96"
+QKJ99RBHN7,2022-11-19 18:53:47,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-120.00,127.96
+QKJ99R0MID,2022-11-19 18:51:34,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-100.00,247.96
+QKJ19PS6LR,2022-11-19 18:42:07,"Merchant Customer Paymentfrom 6077874 - FIONA WAMBUI.",Completed,110.00,,347.96
+QKI47F7ZF0,2022-11-18 18:55:45,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-358.00,237.96
+QKI67EKJLU,2022-11-18 18:51:08,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-70.00,595.96
+QKI5784CIL,2022-11-18 17:57:41,"Customer Transfer of FundsCharge",Completed,,-6.00,665.96
+QKI5784CIL,2022-11-18 17:57:41,"Customer Transfer to -2547******960 HELLEN KINYUA",Completed,,-200.00,671.96
+QKI86CTNSU,2022-11-18 11:51:02,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-128.04,871.96
+QKI86CTS94,2022-11-18 11:51:01,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD812EF9E22.",Completed,"1,000.00",,"1,000.00"
+QKI26CPYIC,2022-11-18 11:49:30,OverDraft of Credit Party,Completed,126.77,,0.00
+QKI26CPYIC,2022-11-18 11:49:30,"Merchant Payment Fuliza M-Pesato 607231 - BAYLEYS BAR ANDRESTAURANT............",Completed,,-300.00,-126.77
+QKH54P7VE9,2022-11-17 16:35:35,"Customer Transfer to -2547******432 KELVIN MASAI",Completed,,-100.00,173.23
+QKG63GB74A,2022-11-16 23:20:43,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-140.00,273.23
+QKG13DNEZX,2022-11-16 21:58:59,"Merchant Payment to 7721524 -MAGUNANDU SHOP",Completed,,-20.00,413.23
+QKG92ND00V,2022-11-16 17:46:43,"Merchant Payment to 608465 -MKULIMA GROCERY0",Completed,,-310.00,433.23
+QKG52N87AP,2022-11-16 17:45:29,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-256.77,743.23
+QKG82N850U,2022-11-16 17:45:28,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD7B14C8E22.",Completed,"1,000.00",,"1,000.00"
+QKG626H9A2,2022-11-16 14:30:14,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QKG626H9A2,2022-11-16 14:30:14,OverDraft of Credit Party,Completed,254.22,,6.00
+QKG626H9A2,2022-11-16 14:30:14,"Customer Transfer Fuliza MPesato - 07******256 Lawrence Maina",Completed,,-500.00,-248.22
+QKG31XEQD1,2022-11-16 12:35:05,"Funds received from -2547******364 FIONA NDEGWA",Completed,100.00,,251.78
+QKG51TVLNF,2022-11-16 11:47:40,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-60.00,151.78
+QKG91TTTZV,2022-11-16 11:46:47,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-80.00,211.78
+QKG21STGUS,2022-11-16 11:33:10,"Funds received from -2547******364 FIONA NDEGWA",Completed,200.00,,291.78
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QKG81R0WTE,2022-11-16 11:08:51,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,-600.00,103.78
+QKG31R0735,2022-11-16 11:08:28,"Customer Transfer of FundsCharge",Completed,,-22.00,703.78
+QKG31R0735,2022-11-16 11:08:28,"Customer Transfer to -2547******551 ROBERT MUCHIRI",Completed,,"-1,500.00",725.78
+QKF8ZU1NWC,2022-11-15 19:56:27,"Customer Transfer of FundsCharge",Completed,,-6.00,"2,225.78"
+QKF8ZU1NWC,2022-11-15 19:56:27,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-450.00,"2,231.78"
+QKF3ZTY5W3,2022-11-15 19:55:32,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-318.22,"2,681.78"
+QKF8ZTY5VY,2022-11-15 19:55:32,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD77B07F122.",Completed,"3,000.00",,"3,000.00"
+QKF3Z48NA3,2022-11-15 16:04:40,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QKF3Z48NA3,2022-11-15 16:04:40,OverDraft of Credit Party,Completed,156.00,,6.00
+QKF3Z48NA3,2022-11-15 16:04:40,"Customer Transfer Fuliza MPesato - 07******407 Newton Kakethe",Completed,,-150.00,-150.00
+QKE5XDQ90J,2022-11-14 19:04:47,OverDraft of Credit Party,Completed,90.00,,0.00
+QKE5XDQ90J,2022-11-14 19:04:47,"Merchant Payment Fuliza M-Pesato 7541239 - Joss Juice Parlour",Completed,,-90.00,-90.00
+QKE3XAS7N7,2022-11-14 18:42:15,OverDraft of Credit Party,Completed,69.06,,0.00
+QKE3XAS7N7,2022-11-14 18:42:15,"Customer Transfer Fuliza MPesato - 07******407 Newton Kakethe",Completed,,-100.00,-69.06
+QKD3VLFHDL,2022-11-13 22:21:41,"Customer Transfer of FundsCharge",Completed,,-12.00,30.94
+QKD3VLFHDL,2022-11-13 22:21:41,"Customer Transfer to -2547******915 DENNIS MUTINDA",Completed,,"-1,000.00",42.94
+QKD3V4ZFJT,2022-11-13 19:06:40,"Merchant Payment to 608465 -MKULIMA GROCERY0",Completed,,-150.00,"1,042.94"
+QKD2UW22AG,2022-11-13 17:46:16,"Merchant Payment to 305561 -EVERLINE ANYANGO ODONGO",Completed,,-350.00,"1,192.94"
+QKB4Q8JLXW,2022-11-11 17:52:44,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,542.94"
+QKB4Q8JLXW,2022-11-11 17:52:44,"Customer Transfer to -07******024 ROBERT MUTIA",Completed,,-280.00,"1,548.94"
+QKB5PFNK11,2022-11-11 12:22:29,Airtime Purchase,Completed,,-20.00,"1,828.94"
+QKA8OMVETS,2022-11-10 22:34:32,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-350.00,"1,848.94"
+QKA2OLCD8Y,2022-11-10 22:01:20,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD6A8656622.",Completed,"2,000.00",,"2,198.94"
+QKA4MZQMKO,2022-11-10 11:50:22,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-60.00,198.94
+QK99M8LJOZ,2022-11-09 22:02:15,"Merchant Payment to 7031759 -WA MALIMALI GEN SHOP",Completed,,-95.00,258.94
+QK96LDHIQG,2022-11-09 17:22:55,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-40.00,353.94
+QK92KPVIW6,2022-11-09 12:43:59,"Customer Transfer to -2547******822 JACKLINEMUTINDA",Completed,,-100.00,393.94
+QK95KKODTT,2022-11-09 11:38:18,"Customer Transfer of FundsCharge",Completed,,-55.00,493.94
+QK95KKODTT,2022-11-09 11:38:18,"Customer Transfer to -2547******121 MILDRED MIYATTI",Completed,,"-5,000.00",548.94
+QK97KKMGLD,2022-11-09 11:37:27,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-B54dU5.",Completed,"5,000.00",,"5,548.94"
+QK89IXO4HX,2022-11-08 17:07:56,"Customer Transfer of FundsCharge",Completed,,-6.00,548.94
+QK89IXO4HX,2022-11-08 17:07:56,"Customer Transfer to -07******023 charles wamuyu",Completed,,-200.00,554.94
+QK87IRNXFB,2022-11-08 16:00:13,"Customer Transfer of FundsCharge",Completed,,-22.00,754.94
+QK87IRNXFB,2022-11-08 16:00:13,"Customer Transfer to -2547******551 ROBERT MUCHIRI",Completed,,"-1,500.00",776.94
+QK89IGQT9B,2022-11-08 13:43:54,"Customer Transfer of FundsCharge",Completed,,-32.00,"2,276.94"
+QK89IGQT9B,2022-11-08 13:43:54,"Customer Transfer to -2547******711 MACREY OTIENO",Completed,,"-2,028.00","2,308.94"
+QK87IGNQ63,2022-11-08 13:42:53,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD641E7D022.",Completed,"4,000.00",,"4,336.94"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QK83I9QSG1,2022-11-08 12:17:20,"Customer Transfer to -2547******822 JACKLINEMUTINDA",Completed,,-800.00,348.94
+QK79HHQLF3,2022-11-07 22:24:16,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-100.00,"1,148.94"
+QK70H0C966,2022-11-07 19:15:17,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-90.00,"1,248.94"
+QK71GZNWUP,2022-11-07 19:10:29,"Customer Payment to SmallBusiness to - 07******600 PrimMaina",Completed,,-20.00,"1,338.94"
+QK73GIXVNH,2022-11-07 16:45:41,"Customer Transfer of FundsCharge",Completed,,-32.00,"1,358.94"
+QK73GIXVNH,2022-11-07 16:45:41,"Customer Transfer to -2547******494 STEPHEN NYOIKE",Completed,,"-2,000.00","1,390.94"
+QK78G8RFAM,2022-11-07 14:44:34,Withdrawal Charge,Completed,,-27.00,"3,390.94"
+QK78G8RFAM,2022-11-07 14:44:34,"Customer Withdrawal At AgentTill 487226 -  KIJANI AFRICALtdKidabizz Enterprise",Completed,,-150.00,"3,417.94"
+QK75G8MX7T,2022-11-07 14:43:01,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD618D00F22.",Completed,"4,000.00",,"4,000.00"
+QK79G8MXZ5,2022-11-07 14:43:01,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-432.06,"3,567.94"
+QK75FVM6ER,2022-11-07 12:05:15,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QK75FVM6ER,2022-11-07 12:05:15,OverDraft of Credit Party,Completed,356.00,,6.00
+QK75FVM6ER,2022-11-07 12:05:15,"Customer Transfer Fuliza MPesato - 2547******364 FIONANDEGWA",Completed,,-350.00,-350.00
+QK68F2SSHS,2022-11-06 21:52:13,OverDraft of Credit Party,Completed,71.78,,0.00
+QK68F2SSHS,2022-11-06 21:52:13,"Merchant Payment Fuliza M-Pesato 305561 - EVERLINE ANYANGOODONGO",Completed,,-350.00,-71.78
+QK64ETCTL4,2022-11-06 19:57:02,"Customer Transfer of FundsCharge",Completed,,-6.00,278.22
+QK64ETCTL4,2022-11-06 19:57:02,"Customer Transfer to -07******023 charles wamuyu",Completed,,-150.00,284.22
+QK63E981GF,2022-11-06 16:52:19,"Customer Transfer of FundsCharge",Completed,,-55.00,434.22
+QK63E981GF,2022-11-06 16:52:19,"Customer Transfer to -07******365 boniface kithunga",Completed,,"-4,300.00",489.22
+QK60E958IQ,2022-11-06 16:51:29,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-210.78,"4,789.22"
+QK68E95RB2,2022-11-06 16:51:28,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD5F620C522.",Completed,"5,000.00",,"5,000.00"
+QK62E8LM1G,2022-11-06 16:44:49,Pay Bill Charge,Completed,,-2.00,0.00
+QK62E8LM1G,2022-11-06 16:44:49,OverDraft of Credit Party,Completed,102.00,,2.00
+QK62E8LM1G,2022-11-06 16:44:49,"Pay Bill Online Fuliza M-Pesa to220220 - PesaPal Acc.0733442877",Completed,,-100.00,-100.00
+QK53CNSDMF,2022-11-05 20:45:07,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QK53CNSDMF,2022-11-05 20:45:07,OverDraft of Credit Party,Completed,106.69,,6.00
+QK53CNSDMF,2022-11-05 20:45:07,"Customer Transfer Fuliza MPesato - 2547******611 Kuria Chege",Completed,,-330.00,-100.69
+QK50CMY14M,2022-11-05 20:36:47,"Customer Transfer of FundsCharge",Completed,,-6.00,229.31
+QK50CMY14M,2022-11-05 20:36:47,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-200.00,235.31
+QK54CKXYJG,2022-11-05 20:18:35,"Customer Transfer to -07******970 vincent munene",Completed,,-100.00,435.31
+QK59CKOBLL,2022-11-05 20:16:21,"Customer Transfer of FundsCharge",Completed,,-6.00,535.31
+QK59CKOBLL,2022-11-05 20:16:21,"Customer Transfer to -2547******263 KELVIN NGONGE",Completed,,-200.00,541.31
+QK49A3GUXR,2022-11-04 20:23:48,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-235.00,741.31
+QK478ZH2OL,2022-11-04 14:14:08,"Customer Transfer of FundsCharge",Completed,,-6.00,976.31
+QK478ZH2OL,2022-11-04 14:14:08,"Customer Transfer to -2547******239 BONFACE IKONZE",Completed,,-500.00,982.31
+QK488MXYBU,2022-11-04 11:43:17,"Customer Transfer to -07******023 charles wamuyu",Completed,,-90.00,"1,482.31"
+QK408HMA80,2022-11-04 10:36:20,Pay Bill Charge,Completed,,-34.00,"1,572.31"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QK498GKFCX,2022-11-04 10:22:46,"Pay Bill Online to 244441 -SAFARICOM POSTPAID BUNDLESAcc. EasyTalk",Completed,,-500.00,"3,616.31"
+QK317WK5XJ,2022-11-03 22:28:46,"Merchant Payment to 7031759 -WA MALIMALI GEN SHOP",Completed,,-95.00,"4,116.31"
+QK377MKUP3,2022-11-03 20:16:47,"Customer Transfer of FundsCharge",Completed,,-12.00,"4,211.31"
+QK377MKUP3,2022-11-03 20:16:47,"Customer Transfer to -07******081 john muluka",Completed,,"-1,000.00","4,223.31"
+QK377MI253,2022-11-03 20:16:15,"Pay Bill Online to 400200 - Co-operative Bank Money TransferAcc. 01108212586000",Completed,,"-60,000.00","5,223.31"
+QK347MGM8E,2022-11-03 20:15:48,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-4ydtjJ.",Completed,"65,000.00",,"65,223.31"
+QK397GE97L,2022-11-03 19:26:47,"Merchant Payment to 7168410 -RAPALA BEEF HOUSE",Completed,,-40.00,223.31
+QK347FMI1G,2022-11-03 19:21:15,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-60.00,263.31
+QK347BA4SO,2022-11-03 18:50:41,"Customer Transfer of FundsCharge",Completed,,-6.00,323.31
+QK347BA4SO,2022-11-03 18:50:41,"Customer Transfer to -07******416 jairus okwiri",Completed,,-150.00,329.31
+QK3967U1IH,2022-11-03 11:45:11,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-60.00,479.31
+QK3167PDM3,2022-11-03 11:43:36,"Merchant Payment to 7031759 -WA MALIMALI GEN SHOP",Completed,,-180.00,539.31
+QK285B8X4W,2022-11-02 21:21:12,"Customer Transfer of FundsCharge",Completed,,-6.00,719.31
+QK285B8X4W,2022-11-02 21:21:12,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-380.00,725.31
+QK2259V82C,2022-11-02 21:03:33,"Customer Transfer to -07******683 Faith Mbalia",Completed,,-100.00,"1,105.31"
+QK2755E3B9,2022-11-02 20:17:09,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-210.00,"1,205.31"
+QK274Y9W4T,2022-11-02 19:18:38,"Merchant Payment to 919140 -Studio Eighty CommunicationsLimited",Completed,,-70.00,"1,415.31"
+QK204WYSHK,2022-11-02 19:08:57,"Customer Transfer to -07******023 charles wamuyu",Completed,,-60.00,"1,485.31"
+QK204UQNMA,2022-11-02 18:53:10,"Merchant Payment Online to607231 - BAYLEYS BAR ANDRESTAURANT............",Completed,,-750.00,"1,545.31"
+QK274PX7TJ,2022-11-02 18:16:26,"Customer Transfer of FundsCharge",Completed,,-22.00,"2,295.31"
+QK274PX7TJ,2022-11-02 18:16:26,"Customer Transfer to -2547******551 ROBERT MUCHIRI",Completed,,"-1,500.00","2,317.31"
+QK214PNPAT,2022-11-02 18:14:14,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-JQce4P.",Completed,"3,000.00",,"3,817.31"
+QK214JAQUR,2022-11-02 17:15:57,"Customer Transfer of FundsCharge",Completed,,-6.00,817.31
+QK214JAQUR,2022-11-02 17:15:57,"Customer Transfer to -2547******643 MARY NZOMO",Completed,,-200.00,823.31
+QK273W8QIZ,2022-11-02 12:38:32,Pay Bill Charge,Completed,,-2.00,"1,023.31"
+QK273W8QIZ,2022-11-02 12:38:32,"Pay Bill Online to 220220 -PesaPal Acc. 0750594250",Completed,,-50.00,"1,025.31"
+QK152PUOZJ,2022-11-01 19:51:44,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,075.31"
+QK152PUOZJ,2022-11-01 19:51:44,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-350.00,"1,081.31"
+QK102617M2,2022-11-01 17:15:48,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,431.31"
+QK102617M2,2022-11-01 17:15:48,"Customer Transfer to -07******023 charles wamuyu",Completed,,-200.00,"1,437.31"
+QK141QMJZ6,2022-11-01 14:18:37,"Merchant Payment to 7541239 -Joss Juice Parlour",Completed,,-200.00,"1,637.31"
+QK1310E1DJ,2022-11-01 08:36:20,"Customer Transfer of FundsCharge",Completed,,-75.00,"1,837.31"
+QK1310E1DJ,2022-11-01 08:36:20,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,"-5,200.00","1,912.31"
+QK1710D0H1,2022-11-01 08:35:54,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-nHxNNj.",Completed,"6,500.00",,"7,112.31"
+QJV5ZGCSI1,2022-10-31 20:34:43,"Merchant Payment to 795597 -Face to face butchery  V",Completed,,-70.00,612.31
+QJV6ZFV5N2,2022-10-31 20:29:56,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-20.00,682.31
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QJV4YYS03K,2022-10-31 18:17:04,"Customer Transfer of FundsCharge",Completed,,-6.00,702.31
+QJV4YYS03K,2022-10-31 18:17:04,"Customer Transfer to -2547******822 JACKLINEMUTINDA",Completed,,-200.00,708.31
+QJV9YWJ5V3,2022-10-31 17:57:15,"Merchant Payment to 608465 -MKULIMA GROCERY0",Completed,,-100.00,908.31
+QJV9YN6Y61,2022-10-31 16:20:16,"Merchant Payment to 7912456 -ARCADIA THE EXECUTIVEBARBER SHOP",Completed,,-200.00,"1,008.31"
+QJU3WLSDLD,2022-10-30 17:37:18,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,208.31"
+QJU3WLSDLD,2022-10-30 17:37:18,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-250.00,"1,214.31"
+QJT1USTFEP,2022-10-29 19:36:44,"Merchant Payment Online to195669 - Rhesa Cereals andGeneral Shop ..",Completed,,-165.00,"1,464.31"
+QJT6UITY8C,2022-10-29 18:19:48,"Merchant Payment to 7213197 -QUICK MART Kiserian",Completed,,-240.00,"1,629.31"
+QJT6U96TX4,2022-10-29 16:45:08,"Customer Transfer to -2547******059 kelvin Masai",Completed,,-100.00,"1,869.31"
+QJS6SLJ936,2022-10-28 20:41:06,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,969.31"
+QJS6SLJ936,2022-10-28 20:41:06,"Customer Transfer to -07******023 charles wamuyu",Completed,,-200.00,"1,975.31"
+QJS5SLHYA5,2022-10-28 20:40:48,"Customer Transfer of FundsCharge",Completed,,-6.00,"2,175.31"
+QJS5SLHYA5,2022-10-28 20:40:48,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-200.00,"2,181.31"
+QJS8SJYUYS,2022-10-28 20:25:48,"Merchant Payment to 7721524 -MAGUNANDU SHOP",Completed,,-60.00,"2,381.31"
+QJS6SJ009K,2022-10-28 20:16:58,"Business Payment from 501901 -KCB 1 via API. Originalconversation ID is 9JS2F1JQDS.",Completed,300.00,,"2,441.31"
+QJS3SCWAKL,2022-10-28 19:26:57,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-220.00,"2,141.31"
+QJS8S9MIHY,2022-10-28 19:03:24,"Merchant Payment to 195669 -Rhesa Cereals and General Shop..",Completed,,-215.00,"2,361.31"
+QJS4S8IEGU,2022-10-28 18:55:38,"Merchant Payment to 7168410 -RAPALA BEEF HOUSE",Completed,,-60.00,"2,576.31"
+QJS4S5DK3U,2022-10-28 18:32:18,"Customer Transfer of FundsCharge",Completed,,-12.00,"2,636.31"
+QJS4S5DK3U,2022-10-28 18:32:18,"Customer Transfer to -2547******029 Lawrence maina",Completed,,-650.00,"2,648.31"
+QJS2RRVK8O,2022-10-28 16:19:18,"Merchant Payment to 7213197 -QUICK MART Kiserian",Completed,,"-1,425.00","3,298.31"
+QJS2ROP6DC,2022-10-28 15:40:52,Withdrawal Charge,Completed,,-10.00,"4,723.31"
+QJS2ROP6DC,2022-10-28 15:40:52,"Customer Withdrawal At AgentTill 487233 - Kijani Africa LimitedHomeland Twin House RimpaAgg",Completed,,-100.00,"4,733.31"
+QJS4RMX53Y,2022-10-28 15:18:54,"Customer Transfer of FundsCharge",Completed,,-12.00,"4,833.31"
+QJS4RMX53Y,2022-10-28 15:18:54,"Customer Transfer to -07******915 Brenda Makena",Completed,,"-1,000.00","4,845.31"
+QJS3RMOLOZ,2022-10-28 15:15:50,"Customer Transfer of FundsCharge",Completed,,-6.00,"5,845.31"
+QJS3RMOLOZ,2022-10-28 15:15:50,"Customer Transfer to -07******692 FIDELIS WAMBUA",Completed,,-470.00,"5,851.31"
+QJS3RH9EX3,2022-10-28 14:08:02,"Customer Transfer of FundsCharge",Completed,,-55.00,"6,321.31"
+QJS3RH9EX3,2022-10-28 14:08:02,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,"-4,000.00","6,376.31"
+QJS6RH7F64,2022-10-28 14:07:20,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-pxBMg1.",Completed,"4,000.00",,"10,376.31"
+QJS6R8KUPQ,2022-10-28 12:20:05,"Customer Transfer of FundsCharge",Completed,,-6.00,"6,376.31"
+QJS6R8KUPQ,2022-10-28 12:20:05,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-500.00,"6,382.31"
+QJS1R59ACD,2022-10-28 11:36:12,"Merchant Payment to 7541239 -Joss Juice Parlour",Completed,,-60.00,"6,882.31"
+QJS6R2LTQQ,2022-10-28 11:01:17,"Merchant Payment Online to7390331 - LIFETIME MILLERS 2",Completed,,-110.00,"6,942.31"
+QJR1Q8342X,2022-10-27 20:25:54,"Merchant Payment to 5281543 -MERCY KARIMI KIRITI",Completed,,-100.00,"7,052.31"
+QJR4Q39YBG,2022-10-27 19:42:49,"Merchant Payment to 795596 -Msafiri butchery  V",Completed,,-400.00,"7,152.31"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QJR3PYDQQJ,2022-10-27 19:07:08,"Customer Transfer of FundsCharge",Completed,,-6.00,"7,572.31"
+QJR3PYDQQJ,2022-10-27 19:07:08,"Customer Transfer to -07******023 charles wamuyu",Completed,,-300.00,"7,578.31"
+QJR0PVGI3C,2022-10-27 18:46:20,"Customer Transfer of FundsCharge",Completed,,-12.00,"7,878.31"
+QJR0PVGI3C,2022-10-27 18:46:20,"Customer Transfer to -2547******581 FELIX BASIYE",Completed,,-610.00,"7,890.31"
+QJR9PN50TR,2022-10-27 17:33:59,"Merchant Payment to 305561 -EVERLINE ANYANGO ODONGO",Completed,,-220.00,"8,500.31"
+QJR2PJLV8I,2022-10-27 16:56:55,"Merchant Payment Online to607231 - BAYLEYS BAR ANDRESTAURANT............",Completed,,-500.00,"8,720.31"
+QJR7PHDT5D,2022-10-27 16:31:16,"Customer Transfer of FundsCharge",Completed,,-6.00,"9,220.31"
+QJR7PHDT5D,2022-10-27 16:31:16,"Customer Transfer to -07******023 charles wamuyu",Completed,,-200.00,"9,226.31"
+QJR2PH6Z72,2022-10-27 16:29:04,"Customer Transfer of FundsCharge",Completed,,-12.00,"9,426.31"
+QJR2PH6Z72,2022-10-27 16:29:04,"Customer Transfer to -07******023 charles wamuyu",Completed,,-700.00,"9,438.31"
+QJR0OY3216,2022-10-27 12:24:17,"Pay Bill Online to 329329 - C2BStandard Chartered Bank Acc.0100428720700",Completed,,"-12,000.00","10,138.31"
+QJR4OO7PTU,2022-10-27 10:10:54,"Customer Transfer of FundsCharge",Completed,,-12.00,"22,138.31"
+QJR4OO7PTU,2022-10-27 10:10:54,"Customer Transfer to -2547******711 MACREY OTIENO",Completed,,"-1,000.00","22,150.31"
+QJR7OMZX5D,2022-10-27 09:54:18,"Funds received from -2547******680 MARY NJOROGE",Completed,"22,000.00",,"23,150.31"
+QJR6OJM0Y2,2022-10-27 09:04:51,Pay Bill Charge,Completed,,-2.00,"1,150.31"
+QJR6OJM0Y2,2022-10-27 09:04:51,"Pay Bill to 220220 - PesaPal Acc.0750594250",Completed,,-100.00,"1,152.31"
+QJR5OBIZQL,2022-10-27 06:28:46,"Customer Transfer of FundsCharge",Completed,,-32.00,"1,252.31"
+QJR5OBIZQL,2022-10-27 06:28:46,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,"-1,700.00","1,284.31"
+QJR8OBI4YC,2022-10-27 06:28:04,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-ZWAKfy.",Completed,"2,000.00",,"2,984.31"
+QJQ3NPX0YX,2022-10-26 19:20:53,"Merchant Payment to 795596 -Msafiri butchery  V",Completed,,-560.00,984.31
+QJQ9NPWLS5,2022-10-26 19:20:52,"Funds received from -07******023 charles wamuyu",Completed,100.00,,"1,544.31"
+QJQ8NPBZYK,2022-10-26 19:16:42,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-140.00,"1,444.31"
+QJQ1NIWEG3,2022-10-26 18:29:18,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,584.31"
+QJQ1NIWEG3,2022-10-26 18:29:18,"Customer Transfer to -07******416 jairus okwiri",Completed,,-270.00,"1,590.31"
+QJQ0NCOPZ6,2022-10-26 17:31:54,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,860.31"
+QJQ0NCOPZ6,2022-10-26 17:31:54,"Customer Transfer to -2547******909 DANIEL ODODA",Completed,,-200.00,"1,866.31"
+QJQ5NCL9KF,2022-10-26 17:31:06,"Customer Transfer of FundsCharge",Completed,,-87.00,"2,066.31"
+QJQ5NCL9KF,2022-10-26 17:31:06,"Customer Transfer to -07******070 KENNEDYMUTHENGI",Completed,,"-10,000.00","2,153.31"
+QJQ9NCF5WH,2022-10-26 17:29:15,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-rQ5bWZ.",Completed,"12,000.00",,"12,153.31"
+QJQ6ML9JVO,2022-10-26 11:45:32,"Customer Transfer of FundsCharge",Completed,,-6.00,153.31
+QJQ6ML9JVO,2022-10-26 11:45:32,"Customer Transfer to -2547******788 BENSONNJUGUNA",Completed,,-200.00,159.31
+QJQ2MINSS8,2022-10-26 11:09:34,"Customer Transfer to -07******731 Patrick Njuguna",Completed,,-80.00,359.31
+QJP9LVR113,2022-10-25 21:54:08,"Customer Transfer to -07******023 charles wamuyu",Completed,,-95.00,439.31
+QJP9L6DHL1,2022-10-25 17:59:03,"Customer Transfer to -2547******335 FRANCIS APHASY",Completed,,-100.00,534.31
+QJP4KO5QJ0,2022-10-25 14:14:23,"Pay Bill Online to 625625 -National Bank of Kenya -NBKAcc. 01553242100500",Completed,,"-2,000.00",634.31
+QJP3KDVKAT,2022-10-25 11:58:16,"Customer Transfer of FundsCharge",Completed,,-6.00,"2,634.31"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QJP3KDVKAT,2022-10-25 11:58:16,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,-200.00,"2,640.31"
+QJP2KA2GXG,2022-10-25 11:06:01,"Customer Transfer of FundsCharge",Completed,,-6.00,"2,840.31"
+QJP2KA2GXG,2022-10-25 11:06:01,"Customer Transfer to -07******023 charles wamuyu",Completed,,-170.00,"2,846.31"
+QJP3K98Z1P,2022-10-25 10:55:05,"Customer Transfer to -07******023 charles wamuyu",Completed,,-60.00,"3,016.31"
+QJO8JL48TM,2022-10-24 21:18:08,"Customer Transfer of FundsCharge",Completed,,-32.00,"3,076.31"
+QJO8JL48TM,2022-10-24 21:18:08,"Customer Transfer to -2547******239 BONFACE IKONZE",Completed,,"-2,000.00","3,108.31"
+QJO0JKSR2Y,2022-10-24 21:13:43,"Business Payment from 501901 -KCB 1 via API. Originalconversation ID is 9JO5EXDHCL.",Completed,"5,000.00",,"5,108.31"
+QJO3J7CS9X,2022-10-24 19:09:31,"Customer Transfer of FundsCharge",Completed,,-6.00,108.31
+QJO3J7CS9X,2022-10-24 19:09:31,"Customer Transfer to -07******915 Brenda Makena",Completed,,-500.00,114.31
+QJO9J7884N,2022-10-24 19:08:37,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD36F71D022.",Completed,700.00,,700.00
+QJO6J78K2K,2022-10-24 19:08:37,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-85.69,614.31
+QJO0IY3Q5O,2022-10-24 17:52:40,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QJO0IY3Q5O,2022-10-24 17:52:40,OverDraft of Credit Party,Completed,84.84,,6.00
+QJO0IY3Q5O,2022-10-24 17:52:40,"Customer Transfer Fuliza MPesato - 2547******788 John Nzomo",Completed,,-500.00,-78.84
+QJO9IY0LT7,2022-10-24 17:51:52,Pay Bill Charge,Completed,,-2.00,421.16
+QJO9IY0LT7,2022-10-24 17:51:52,"Pay Bill to 220220 - PesaPal Acc.0733442877",Completed,,-50.00,423.16
+QJO8IW2RU4,2022-10-24 17:32:00,Withdrawal Charge,Completed,,-27.00,473.16
+QJO8IW2RU4,2022-10-24 17:32:00,"Customer Withdrawal At AgentTill 487226 -  KIJANI AFRICALtdKidabizz Enterprise",Completed,,-400.00,500.16
+QJO0ITV0ES,2022-10-24 17:07:43,"Funds received from -2547******498 ESTHER MUTINDA",Completed,300.00,,900.16
+QJO5IRC5BR,2022-10-24 16:38:04,"Customer Transfer of FundsCharge",Completed,,-55.00,600.16
+QJO5IRC5BR,2022-10-24 16:38:04,"Customer Transfer to -2547******915 DENNIS MUTINDA",Completed,,"-5,000.00",655.16
+QJO0IR8DS6,2022-10-24 16:36:38,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-nfK0Gh.",Completed,"5,000.00",,"5,655.16"
+QJO0IED244,2022-10-24 13:46:29,"Merchant Payment to 7441596 -NYAMORI SARAH AWUOR",Completed,,-120.00,655.16
+QJO8I18SXU,2022-10-24 10:52:11,"Customer Transfer of FundsCharge",Completed,,-6.00,775.16
+QJO8I18SXU,2022-10-24 10:52:11,"Customer Transfer to -07******023 charles wamuyu",Completed,,-120.00,781.16
+QJO4HV8PI0,2022-10-24 09:27:59,"Merchant Payment to 195669 -Rhesa Cereals and General Shop..",Completed,,-20.00,901.16
+QJN7H4RLCL,2022-10-23 19:39:03,"Customer Transfer of FundsCharge",Completed,,-6.00,921.16
+QJN7H4RLCL,2022-10-23 19:39:03,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,-200.00,927.16
+QJN4GUGKF2,2022-10-23 18:07:42,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,127.16"
+QJN4GUGKF2,2022-10-23 18:07:42,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-200.00,"1,133.16"
+QJM9F5AR9D,2022-10-22 20:08:11,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,333.16"
+QJM9F5AR9D,2022-10-22 20:08:11,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-140.00,"1,339.16"
+QJM1E8ZD83,2022-10-22 14:52:34,Pay Bill Charge,Completed,,-23.00,"1,479.16"
+QJM1E8ZD83,2022-10-22 14:52:34,"Pay Bill Online to 4071409 -Dealsdaddy All Trades          Acc.Martin Nzomo",Completed,,-500.00,"1,502.16"
+QJM8E610CK,2022-10-22 14:16:53,"Merchant Payment to 7031759 -WA MALIMALI GEN SHOP",Completed,,-260.00,"2,002.16"
+QJL0CVJZOY,2022-10-21 20:17:00,"Merchant Payment to 7168410 -RAPALA BEEF HOUSE",Completed,,-40.00,"2,262.16"
+QJL7CUTNHL,2022-10-21 20:10:13,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-120.00,"2,302.16"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QJL5CMVL7R,2022-10-21 19:06:23,"Customer Transfer to -07******023 charles wamuyu",Completed,,-250.00,"2,428.16"
+QJL1CKL521,2022-10-21 18:49:32,Withdrawal Charge,Completed,,-10.00,"2,678.16"
+QJL1CKL521,2022-10-21 18:49:32,"Customer Withdrawal At AgentTill 487226 -  KIJANI AFRICALtdKidabizz Enterprise",Completed,,-50.00,"2,688.16"
+QJL6CEUQ9A,2022-10-21 18:01:25,"Customer Transfer of FundsCharge",Completed,,-6.00,"2,738.16"
+QJL6CEUQ9A,2022-10-21 18:01:25,"Customer Transfer to -2547******498 JEREMIAHNGARARI",Completed,,-200.00,"2,744.16"
+QJL7C8RBG3,2022-10-21 16:59:42,"Customer Transfer of FundsCharge",Completed,,-6.00,"2,944.16"
+QJL7C8RBG3,2022-10-21 16:59:42,"Customer Transfer to -2547******754 Bernard Gesongo",Completed,,-350.00,"2,950.16"
+QJL4BZ7LP0,2022-10-21 15:02:52,"Customer Transfer of FundsCharge",Completed,,-6.00,"3,300.16"
+QJL4BZ7LP0,2022-10-21 15:02:52,"Customer Transfer to -2547******810 GEORGEWACHIRA",Completed,,-200.00,"3,306.16"
+QJL9BZ6M2N,2022-10-21 15:02:28,"Merchant Payment to 7265115 -MOKO HOME AND LIVINGDELIVERIES",Completed,,"-10,339.00","3,506.16"
+QJL0BI7JZK,2022-10-21 11:19:55,"Customer Transfer of FundsCharge",Completed,,-6.00,"13,845.16"
+QJL0BI7JZK,2022-10-21 11:19:55,"Customer Transfer to -07******023 charles wamuyu",Completed,,-110.00,"13,851.16"
+QJL8BI558G,2022-10-21 11:18:56,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-6NDaoy.",Completed,"3,000.00",,"13,961.16"
+QJK2AQHXTW,2022-10-20 20:49:53,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-110.00,"10,961.16"
+QJK4AHPYF8,2022-10-20 19:25:14,"Customer Transfer of FundsCharge",Completed,,-6.00,"11,071.16"
+QJK4AHPYF8,2022-10-20 19:25:14,"Customer Transfer to -07******023 charles wamuyu",Completed,,-200.00,"11,077.16"
+QJK1A8Q1ID,2022-10-20 18:11:12,"Customer Transfer of FundsCharge",Completed,,-22.00,"11,277.16"
+QJK1A8Q1ID,2022-10-20 18:11:12,"Customer Transfer to -2547******551 ROBERT MUCHIRI",Completed,,"-1,200.00","11,299.16"
+QJK49YYO6W,2022-10-20 16:24:02,"Merchant Payment to 305561 -EVERLINE ANYANGO ODONGO",Completed,,-350.00,"12,499.16"
+QJK89FB1Z2,2022-10-20 12:07:11,"Business Payment from 501901 -KCB 1 via API. Originalconversation ID is 9JK0ETI6GW.",Completed,"10,000.00",,"12,849.16"
+QJK29B71UO,2022-10-20 11:09:44,"Customer Transfer to -07******023 charles wamuyu",Completed,,-80.00,"2,849.16"
+QJJ68DWL8O,2022-10-19 19:50:42,"Customer Transfer of FundsCharge",Completed,,-6.00,"2,929.16"
+QJJ68DWL8O,2022-10-19 19:50:42,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-200.00,"2,935.16"
+QJJ88D8VCG,2022-10-19 19:45:16,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-300.00,"3,135.16"
+QJJ383JXCX,2022-10-19 18:32:11,"Funds received from -2547******849 EUNICE MAINA",Completed,"1,500.00",,"3,435.16"
+QJJ97YC05L,2022-10-19 17:46:28,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,935.16"
+QJJ97YC05L,2022-10-19 17:46:28,"Customer Transfer to -07******395 Anna Mutinda",Completed,,-250.00,"1,941.16"
+QJJ27YA98Y,2022-10-19 17:46:06,Pay Bill Charge,Completed,,-2.00,"2,191.16"
+QJJ27YA98Y,2022-10-19 17:46:06,"Pay Bill Online to 220220 -PesaPal Acc. 0733442877",Completed,,-50.00,"2,193.16"
+QJJ97Y4Z8V,2022-10-19 17:44:40,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-Ow4bTk.",Completed,"2,000.00",,"2,243.16"
+QJJ47VFOHU,2022-10-19 17:17:53,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-210.00,243.16
+QJJ77VA6ZN,2022-10-19 17:16:20,"Merchant Payment to 608465 -MKULIMA GROCERY0",Completed,,-50.00,453.16
+QJI05Z8FD4,2022-10-18 18:59:35,"Merchant Payment to 795596 -Msafiri butchery  V",Completed,,-300.00,503.16
+QJI04XWO34,2022-10-18 11:35:11,Withdrawal Charge,Completed,,-10.00,803.16
+QJI04XWO34,2022-10-18 11:35:11,"Customer Withdrawal At AgentTill 487226 -  KIJANI AFRICALtdKidabizz Enterprise",Completed,,-100.00,813.16
+QJI24XQXDS,2022-10-18 11:32:59,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-60.00,913.16
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QJH53SW8GN,2022-10-17 19:01:06,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-120.00,"1,033.16"
+QJH13S6J3H,2022-10-17 18:55:50,"Customer Payment to SmallBusiness to - 07******600 PrimMaina",Completed,,-40.00,"1,153.16"
+QJH13H4EIP,2022-10-17 17:15:49,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD26A6D7422.",Completed,"1,000.00",,"1,193.16"
+QJH73H1AGF,2022-10-17 17:14:50,"Customer Transfer of FundsCharge",Completed,,-6.00,193.16
+QJH73H1AGF,2022-10-17 17:14:50,"Customer Transfer to -2547******098 MOHAMEDHUSSEIN",Completed,,-270.00,199.16
+QJH53G0TKH,2022-10-17 17:03:47,"Pay Bill Online to 247247 -Equity Paybill Account Acc.0768840488",Completed,,"-3,500.00",469.16
+QJH53DJ5Y1,2022-10-17 16:34:55,"Customer Transfer of FundsCharge",Completed,,-12.00,"3,969.16"
+QJH53DJ5Y1,2022-10-17 16:34:55,"Customer Transfer to -2547******245 JOSEPH M'MBUI",Completed,,-600.00,"3,981.16"
+QJH73D9MPZ,2022-10-17 16:31:30,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-3qUFqp.",Completed,"4,000.00",,"4,581.16"
+QJH2388ZCQ,2022-10-17 15:27:06,"Customer Transfer of FundsCharge",Completed,,-6.00,581.16
+QJH2388ZCQ,2022-10-17 15:27:06,"Customer Transfer to -2547******312 LINET MANDERE",Completed,,-440.00,587.16
+QJH32RW0W5,2022-10-17 11:53:37,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-472.84,"1,027.16"
+QJH02RVSN4,2022-10-17 11:53:37,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD25A7EDD22.",Completed,"1,500.00",,"1,500.00"
+QJH82RAL2Q,2022-10-17 11:45:30,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QJH82RAL2Q,2022-10-17 11:45:30,OverDraft of Credit Party,Completed,206.00,,6.00
+QJH82RAL2Q,2022-10-17 11:45:30,"Customer Transfer Fuliza MPesato - 07******023 charles wamuyu",Completed,,-200.00,-200.00
+QJG3ZS96UP,2022-10-16 13:09:38,OverDraft of Credit Party,Completed,120.00,,0.00
+QJG3ZS96UP,2022-10-16 13:09:38,"Merchant Payment Fuliza M-Pesato 7541239 - Joss Juice Parlour",Completed,,-120.00,-120.00
+QJF7Y8LGLR,2022-10-15 17:55:28,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QJF7Y8LGLR,2022-10-15 17:55:28,OverDraft of Credit Party,Completed,142.15,,6.00
+QJF7Y8LGLR,2022-10-15 17:55:28,"Customer Transfer Fuliza MPesato - 2547******435 MORRISMURITHI",Completed,,-150.00,-136.15
+QJF3Y5SNG7,2022-10-15 17:28:19,"Pay Bill to 522522 - KCB PaybillAC Acc. 5597742",Completed,,"-1,200.00",13.85
+QJF9Y38C2Z,2022-10-15 17:01:43,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,213.85"
+QJF9Y38C2Z,2022-10-15 17:01:43,"Customer Transfer to -01******561 James Mukara",Completed,,-150.00,"1,219.85"
+QJF4XNNO74,2022-10-15 14:03:06,"Pay Bill Online to 247247 -Equity Paybill Account Acc.0704543198",Completed,,-200.00,"1,369.85"
+QJF5X20IPR,2022-10-15 09:28:47,Pay Bill Charge,Completed,,-2.00,"1,569.85"
+QJF5X20IPR,2022-10-15 09:28:47,"Pay Bill Online to 220220 -PesaPal Acc. 0750594250",Completed,,-50.00,"1,571.85"
+QJF4WR5N5C,2022-10-15 03:43:28,"Customer Transfer to -07******078 joel omumia",Completed,,-100.00,"1,621.85"
+QJF9WQPG19,2022-10-15 02:13:35,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,721.85"
+QJF9WQPG19,2022-10-15 02:13:35,"Customer Payment to SmallBusiness to - 2541******332Samuel Shioya",Completed,,-150.00,"1,727.85"
+QJF2WQH9WG,2022-10-15 01:37:17,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-emP0kr.",Completed,"2,000.00",,"2,000.00"
+QJF9WQHDL5,2022-10-15 01:37:17,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-122.15,"1,877.85"
+QJF4WQA9YS,2022-10-15 01:10:10,OverDraft of Credit Party,Completed,120.94,,0.00
+QJF4WQA9YS,2022-10-15 01:10:10,"Merchant Payment Fuliza M-PesaOnline to 7406432 - SIGNATUREROOTS",Completed,,-250.00,-120.94
+QJE6WN9JN0,2022-10-14 22:34:22,"Merchant Payment Online to7406432 - SIGNATURE ROOTS",Completed,,"-1,000.00",129.06
+QJE3WMLO59,2022-10-14 22:18:47,"Customer Transfer of FundsCharge",Completed,,-51.00,"1,129.06"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QJE3WMLO59,2022-10-14 22:18:47,"Customer Transfer to -07******673 HabakkukAmasimani",Completed,,"-2,850.00","1,180.06"
+QJE0VOS35O,2022-10-14 16:45:09,Pay Bill Charge,Completed,,-34.00,"4,030.06"
+QJE0VOS35O,2022-10-14 16:45:09,"Pay Bill Online to 796431 - EASYCOACH RAILWAYS-NRB(HQ) 3Acc. 705841",Completed,,"-1,500.00","4,064.06"
+QJE9VNRA67,2022-10-14 16:33:38,"Merchant Payment to 206204 -G4S KAKAMEGA COUNTER",Completed,,"-1,550.00","5,564.06"
+QJE2VM11MK,2022-10-14 16:13:41,"Customer Transfer to -2547******348 Collins Muchesia",Completed,,-100.00,"7,114.06"
+QJE9VBE94P,2022-10-14 14:00:47,Withdrawal Charge,Completed,,-28.00,"7,214.06"
+QJE9VBE94P,2022-10-14 14:00:47,"Customer Withdrawal At AgentTill 229873 - JOBNET COMMWhiteline enterprises kathaana",Completed,,"-1,500.00","7,242.06"
+QJE7VAZFAB,2022-10-14 13:55:44,"Customer Transfer to -07******332 RUSSEL MAPESA",Completed,,-50.00,"8,742.06"
+QJE2V915YW,2022-10-14 13:31:51,"Funds received from -2547******680 MARY NJOROGE",Completed,"4,900.00",,"8,792.06"
+QJE9V64HU1,2022-10-14 12:55:22,"Pay Bill Online to 247247 -Equity Paybill Account Acc.0704543198",Completed,,-250.00,"3,892.06"
+QJE2UQ2UA4,2022-10-14 09:20:19,"Customer Transfer to -2547******211 NICHOLASKATANA",Completed,,-100.00,"4,142.06"
+QJE6UEFS18,2022-10-14 01:01:39,Pay Bill Charge,Completed,,-2.00,"4,242.06"
+QJE6UEFS18,2022-10-14 01:01:39,"Pay Bill to 220220 - PesaPal Acc.0750594250",Completed,,-100.00,"4,244.06"
+QJD6UCV710,2022-10-13 23:09:20,"Customer Transfer to -2547******710 VIONNA JACKSON",Completed,,-80.00,"4,344.06"
+QJD5TUFS6R,2022-10-13 19:18:57,"Merchant Payment Online to7142392 - AIRPORT BAR ANDRESTAURANT",Completed,,"-1,180.00","4,424.06"
+QJD2TCL94C,2022-10-13 16:41:28,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-DXhnlq.",Completed,"5,000.00",,"5,604.06"
+QJD7T9VL4D,2022-10-13 16:09:19,"Customer Payment to SmallBusiness to - 07******002ALFRED AKAL",Completed,,-80.00,604.06
+QJD3T0SDHV,2022-10-13 14:12:39,"Merchant Payment Online to7253702 - HARRIET ANYANJE",Completed,,-35.00,684.06
+QJD2SIP8X0,2022-10-13 10:23:30,"Customer Transfer to -2547******326 EUNICEASHIKHANGA",Completed,,-65.00,769.06
+QJD4SIJSVA,2022-10-13 10:21:46,"Customer Transfer to -2547******326 EUNICEASHIKHANGA",Completed,,-30.00,834.06
+QJD2S340VQ,2022-10-13 03:19:26,"Customer Transfer to -07******461 Leon Odiwuor",Completed,,-100.00,864.06
+QJD9S23I7L,2022-10-13 00:08:14,"Pay Bill Online to 888880 - KPLCPREPAID Acc. 54402367137",Completed,,-100.00,964.06
+QJC5RTFX01,2022-10-12 20:49:47,Pay Bill Charge,Completed,,-2.00,"1,064.06"
+QJC5RTFX01,2022-10-12 20:49:47,"Pay Bill to 220220 - PesaPal Acc.0750594250",Completed,,-100.00,"1,066.06"
+QJC1RRW6FT,2022-10-12 20:33:26,"Customer Transfer to -2547******903 JOHN MULUKA",Completed,,-50.00,"1,166.06"
+QJC2RK6838,2022-10-12 19:27:49,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,216.06"
+QJC2RK6838,2022-10-12 19:27:49,"Customer Transfer to -07******461 Leon Odiwuor",Completed,,-300.00,"1,222.06"
+QJC1QXGLO1,2022-10-12 15:56:17,Pay Bill Charge,Completed,,-56.00,"1,522.06"
+QJC1QXGLO1,2022-10-12 15:56:17,"Pay Bill Online to 888888 - KPLCAcc. 21303243",Completed,,"-3,176.00","1,578.06"
+QJC3QXDNXF,2022-10-12 15:55:14,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-WWlRbZ.",Completed,"5,000.00",,"5,000.00"
+QJC1QXE1F7,2022-10-12 15:55:14,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-245.94,"4,754.06"
+QJC7QX3H5N,2022-10-12 15:51:33,OverDraft of Credit Party,Completed,100.00,,0.00
+QJC7QX3H5N,2022-10-12 15:51:33,"Customer Transfer Fuliza MPesato - 01******561 James Mukara",Completed,,-100.00,-100.00
+QJC8QSWL10,2022-10-12 14:56:44,OverDraft of Credit Party,Completed,143.50,,0.00
+QJC8QSWL10,2022-10-12 14:56:44,"Merchant Payment Fuliza M-PesaOnline to 7031447 -CHANDARANA SUPERMARKETKAKAMEGA BRANCH",Completed,,"-1,174.00",-143.50
+QJC7QQKS93,2022-10-12 14:26:15,"Pay Bill Online to 522522 - KCBPaybill AC Acc. 5597742",Completed,,-650.00,"1,030.50"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QJC5Q12P15,2022-10-12 08:46:34,"Customer Transfer to -07******036 ENOCK ONYANGO",Completed,,-30.00,"1,680.50"
+QJB6PM1YD6,2022-10-11 21:26:31,"Merchant Payment Online to755327 - TINGO ENTERPRISES",Completed,,-90.00,"1,710.50"
+QJB3PLL22R,2022-10-11 21:20:27,"Customer Transfer to -2547******211 NICHOLASKATANA",Completed,,-100.00,"1,800.50"
+QJB4PDKEPM,2022-10-11 19:57:33,"Customer Payment to SmallBusiness to - 07******000Florence Omundi",Completed,,-60.00,"1,900.50"
+QJB7P1EFY3,2022-10-11 18:26:38,"Pay Bill Online to 4093275 -Direct Pay Limited 1 Acc.ATL3139456",Completed,,-99.00,"1,960.50"
+QJB6OWB99Q,2022-10-11 17:40:57,"Customer Transfer to -2547******289 David Maina",Completed,,-100.00,"2,059.50"
+QJB2OPUCOW,2022-10-11 16:32:28,"Merchant Payment to 885716 -BUDDYZ WINES AND SPIRITSKAKAMEGA",Completed,,"-1,100.00","2,159.50"
+QJB3ON6WG7,2022-10-11 16:00:23,"Pay Bill Online to 522522 - KCBPaybill AC Acc. 1211569667",Completed,,-590.00,"3,259.50"
+QJB4OKS6HE,2022-10-11 15:30:06,Pay Bill Charge,Completed,,-2.00,"3,849.50"
+QJB4OKS6HE,2022-10-11 15:30:06,"Pay Bill to 220220 - PesaPal Acc.0750594250",Completed,,-100.00,"3,851.50"
+QJB0O7I8HG,2022-10-11 12:45:26,Withdrawal Charge,Completed,,-28.00,"3,951.50"
+QJB0O7I8HG,2022-10-11 12:45:26,"Customer Withdrawal At AgentTill 407827 - Sakina enterprisesKakamega town-Sudi RoadKAKAMEGA",Completed,,"-2,000.00","3,979.50"
+QJB5O7BQZH,2022-10-11 12:43:17,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-BhrYR5.",Completed,"5,000.00",,"5,979.50"
+QJA4MGOMPA,2022-10-10 16:37:59,"Merchant Payment to 7715925 -SHAKIR HARDWARE LIMITED",Completed,,-350.00,979.50
+QJA6M0CF52,2022-10-10 13:14:53,"Customer Transfer of FundsCharge",Completed,,-12.00,"1,329.50"
+QJA6M0CF52,2022-10-10 13:14:53,"Customer Transfer to -2547******363 ernest ndimbei",Completed,,-550.00,"1,341.50"
+QJA1LTACDL,2022-10-10 11:44:41,"Customer Transfer of FundsCharge",Completed,,-12.00,"1,891.50"
+QJA1LTACDL,2022-10-10 11:44:41,"Customer Transfer to -2547******239 BONFACE IKONZE",Completed,,"-1,000.00","1,903.50"
+QJA3LSQMN3,2022-10-10 11:37:34,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-BfYpsh.",Completed,"2,000.00",,"2,903.50"
+QJA2LRMMBO,2022-10-10 11:23:12,Pay Bill Charge,Completed,,-34.00,903.50
+QJA2LRMMBO,2022-10-10 11:23:12,"Pay Bill Online to 181893 - ENAINVESTMENT LIMITED Acc.NZEPF4H4Z8",Completed,,"-1,400.00",937.50
+QJA3LRMC3D,2022-10-10 11:23:01,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-RnGuBl.",Completed,"2,000.00",,"2,337.50"
+QJ98KYE6IQ,2022-10-09 20:39:35,"Customer Transfer to -07******023 charles wamuyu",Completed,,-100.00,337.50
+QJ97KH6L4T,2022-10-09 17:51:54,"Merchant Payment to 984686 -SWEET WATERS LIQUOR STORE5",Completed,,"-1,000.00",437.50
+QJ94KGUQ4I,2022-10-09 17:48:34,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD13A2C8722.",Completed,"1,500.00",,"1,500.00"
+QJ91KGV5V3,2022-10-09 17:48:34,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-62.50,"1,437.50"
+QJ87IK2V3D,2022-10-08 19:10:39,"Customer Transfer of FundsCharge",Completed,,-12.00,0.00
+QJ87IK2V3D,2022-10-08 19:10:39,OverDraft of Credit Party,Completed,61.88,,12.00
+QJ87IK2V3D,2022-10-08 19:10:39,"Customer Transfer Fuliza MPesato - 2547******239 BONFACEIKONZE",Completed,,"-1,000.00",-49.88
+QJ89I2THRV,2022-10-08 16:31:30,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-30.00,950.12
+QJ82I2IY1Y,2022-10-08 16:28:24,"Customer Transfer to -2547******059 kelvin Masai",Completed,,-100.00,980.12
+QJ85HKYAYF,2022-10-08 13:07:51,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-419.88,"1,080.12"
+QJ83HKYJ49,2022-10-08 13:07:51,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD10C63A922.",Completed,"1,500.00",,"1,500.00"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QJ84HKVUUQ,2022-10-08 13:07:03,"Customer Transfer of FundsCharge",Completed,,-22.00,0.00
+QJ84HKVUUQ,2022-10-08 13:07:03,OverDraft of Credit Party,Completed,415.72,,22.00
+QJ84HKVUUQ,2022-10-08 13:07:03,"Customer Transfer Fuliza MPesato - 2547******498 ESTHERMUTINDA",Completed,,"-1,400.00",-393.72
+QJ83HKUP65,2022-10-08 13:06:41,"Customer Transfer of FundsCharge",Completed,,-51.00,"1,006.28"
+QJ83HKUP65,2022-10-08 13:06:41,"Customer Transfer to -07******240 IAN KURIA",Completed,,"-3,200.00","1,057.28"
+QJ82HKQILK,2022-10-08 13:05:12,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AAD10C3FC022.",Completed,"2,000.00",,"4,257.28"
+QJ85HISMAP,2022-10-08 12:42:02,"Funds received from -2547******754 Bernard Gesongo",Completed,"1,630.00",,"2,257.28"
+QJ81HDSVK7,2022-10-08 11:40:41,"Merchant Payment to 795596 -Msafiri butchery  V",Completed,,-110.00,627.28
+QJ81H9J2S1,2022-10-08 10:46:44,"Pay Bill Online to 244441 -SAFARICOM POSTPAID BUNDLESAcc. EasyTalk",Completed,,-500.00,737.28
+QJ79FXLEER,2022-10-07 18:10:41,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,237.28"
+QJ79FXLEER,2022-10-07 18:10:41,"Customer Transfer to -2547******544 BEATRICEKIRIRAH",Completed,,-260.00,"1,243.28"
+QJ71FVV25H,2022-10-07 17:55:51,Airtime Purchase,Completed,,-20.00,"1,503.28"
+QJ70FLWQ9C,2022-10-07 16:16:28,"Merchant Payment to 7420963 -SITUMA ALLAN",Completed,,-200.00,"1,523.28"
+QJ76F2HNDG,2022-10-07 12:25:39,"Customer Transfer to -2547******239 BONFACE IKONZE",Completed,,-50.00,"1,723.28"
+QJ79ETGHFX,2022-10-07 10:31:34,Pay Bill Charge,Completed,,-2.00,"1,773.28"
+QJ79ETGHFX,2022-10-07 10:31:34,"Pay Bill Online to 220220 -PesaPal Acc. 0750594250",Completed,,-50.00,"1,775.28"
+QJ72ERF45C,2022-10-07 10:05:11,"Pay Bill Online to 4093275 -Direct Pay Limited 1 Acc.ATL2461769",Completed,,-20.00,"1,825.28"
+QJ76EOWZV0,2022-10-07 09:31:56,Withdrawal Charge,Completed,,-27.00,"1,845.28"
+QJ76EOWZV0,2022-10-07 09:31:56,"Customer Withdrawal At AgentTill 372602 - Bryce  VenturesRimpa Shopping Centre",Completed,,-500.00,"1,872.28"
+QJ64DY3R2A,2022-10-06 20:10:12,"Pay Bill Online to 400200 - Co-operative Bank Money TransferAcc. 01108212586000",Completed,,"-20,000.00","2,372.28"
+QJ67DY2HAL,2022-10-06 20:09:50,"Customer Transfer of FundsCharge",Completed,,-6.00,"22,372.28"
+QJ67DY2HAL,2022-10-06 20:09:50,"Customer Transfer to -07******023 charles wamuyu",Completed,,-200.00,"22,378.28"
+QJ69DSVBR9,2022-10-06 19:27:39,"Customer Transfer of FundsCharge",Completed,,-22.00,"22,578.28"
+QJ69DSVBR9,2022-10-06 19:27:39,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,"-1,100.00","22,600.28"
+QJ63D8LKSX,2022-10-06 16:30:00,"Customer Transfer of FundsCharge",Completed,,-75.00,"23,700.28"
+QJ63D8LKSX,2022-10-06 16:30:00,"Customer Transfer to -2547******239 BONFACE IKONZE",Completed,,"-6,000.00","23,775.28"
+QJ67D6RIP3,2022-10-06 16:08:33,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-224.72,"29,775.28"
+QJ68D6R89U,2022-10-06 16:08:32,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-7eAjMS.",Completed,"30,000.00",,"30,000.00"
+QJ66CX0UAG,2022-10-06 14:08:18,OverDraft of Credit Party,Completed,20.00,,0.00
+QJ66CX0UAG,2022-10-06 14:08:18,Airtime Purchase with Fuliza,Completed,,-20.00,-20.00
+QJ63CAH4XH,2022-10-06 09:19:25,"Customer Transfer of FundsCharge",Completed,,-55.00,0.00
+QJ63CAH4XH,2022-10-06 09:19:25,OverDraft of Credit Party,Completed,202.49,,55.00
+QJ63CAH4XH,2022-10-06 09:19:25,"Customer Transfer Fuliza MPesato - 2547******498 ESTHERMUTINDA",Completed,,"-5,000.00",-147.49
+QJ50BOX6EW,2022-10-05 20:47:32,"Merchant Payment to 795596 -Msafiri butchery  V",Completed,,-70.00,"4,852.51"
+QJ52BOIDQ0,2022-10-05 20:43:11,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-55.00,"4,922.51"
+QJ57BNTPVX,2022-10-05 20:36:20,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-150.00,"4,977.51"
+QJ59B1TVMP,2022-10-05 17:38:59,"Customer Transfer of FundsCharge",Completed,,-22.00,"5,127.51"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QJ57AUSZTP,2022-10-05 16:26:51,"Customer Transfer of FundsCharge",Completed,,-6.00,"6,349.51"
+QJ57AUSZTP,2022-10-05 16:26:51,"Customer Transfer to -07******023 charles wamuyu",Completed,,-200.00,"6,355.51"
+QJ58APGSZO,2022-10-05 15:23:18,"Pay Bill Online to 400200 - Co-operative Bank Money TransferAcc. 01108212586000",Completed,,"-5,000.00","6,555.51"
+QJ53AB6TF7,2022-10-05 12:29:34,"Customer Transfer of FundsCharge",Completed,,-6.00,"11,555.51"
+QJ53AB6TF7,2022-10-05 12:29:34,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,-200.00,"11,561.51"
+QJ50A4389Q,2022-10-05 10:58:14,"Customer Transfer of FundsCharge",Completed,,-6.00,"11,761.51"
+QJ50A4389Q,2022-10-05 10:58:14,"Customer Transfer to -07******683 Faith Mbalia",Completed,,-300.00,"11,767.51"
+QJ51A3X8RP,2022-10-05 10:55:58,"Pay Bill Online to 4093275 -Direct Pay Limited 1 Acc.ATL2197423",Completed,,-15.00,"12,067.51"
+QJ51A2G2QP,2022-10-05 10:36:27,"Customer Transfer to -01******847 agnes okulo",Completed,,-50.00,"12,082.51"
+QJ559Z6NFR,2022-10-05 09:53:28,"Funds received from -2547******680 MARY NJOROGE",Completed,"11,000.00",,"12,132.51"
+QJ429EF0DG,2022-10-04 21:22:35,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-120.00,"1,132.51"
+QJ4289EI6W,2022-10-04 14:45:04,Withdrawal Charge,Completed,,-28.00,"1,252.51"
+QJ4289EI6W,2022-10-04 14:45:04,"Customer Withdrawal At AgentTill 487226 -  KIJANI AFRICALtdKidabizz Enterprise",Completed,,-700.00,"1,280.51"
+QJ326QL1TE,2022-10-03 19:30:09,"Customer Transfer to -07******118 ERIC FRANCIS",Completed,,-20.00,"1,980.51"
+QJ385XCQI4,2022-10-03 14:38:08,"Merchant Payment to 7441596 -NYAMORI SARAH AWUOR",Completed,,-210.00,"2,000.51"
+QJ234E6O87,2022-10-02 19:18:16,"Customer Transfer of FundsCharge",Completed,,-6.00,"2,210.51"
+QJ234E6O87,2022-10-02 19:18:16,"Customer Transfer to -2547******363 ernest ndimbei",Completed,,-300.00,"2,216.51"
+QJ203EA2A6,2022-10-02 12:35:32,"Customer Transfer to -07******575 Hussein Salim",Completed,,-100.00,"2,516.51"
+QJ242R4TTI,2022-10-02 02:34:41,"Merchant Payment Online to607231 - BAYLEYS BAR ANDRESTAURANT............",Completed,,-700.00,"2,616.51"
+QJ252QWZ1T,2022-10-02 02:05:14,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-jfIELc.",Completed,"2,000.00",,"3,316.51"
+QJ282QRKVM,2022-10-02 01:45:29,"Merchant Payment Online to607231 - BAYLEYS BAR ANDRESTAURANT............",Completed,,-300.00,"1,316.51"
+QJ252QQQEL,2022-10-02 01:43:38,"Merchant Payment Online to607231 - BAYLEYS BAR ANDRESTAURANT............",Completed,,-500.00,"1,616.51"
+QJ242Q1870,2022-10-02 00:34:10,"Merchant Payment to 607231 -BAYLEYS BAR ANDRESTAURANT............",Completed,,-500.00,"2,116.51"
+QJ161Y2Q2G,2022-10-01 18:16:01,"Merchant Payment Online to305561 - EVERLINE ANYANGOODONGO",Completed,,-350.00,"2,616.51"
+QJ10ZT2TVY,2022-10-01 10:43:13,"Customer Transfer of FundsCharge",Completed,,-12.00,"2,966.51"
+QJ10ZT2TVY,2022-10-01 10:43:13,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-600.00,"2,978.51"
+QJ11ZNNY4R,2022-10-01 09:33:38,"Funds received from -2547******680 MARY NJOROGE",Completed,"2,770.00",,"3,578.51"
+QIU2YKASW8,2022-09-30 18:37:37,"Merchant Payment to 7168410 -RAPALA BEEF HOUSE",Completed,,-80.00,808.51
+QIU5YGQUH7,2022-09-30 18:08:48,"Merchant Payment to 7905173 -MOREY       WINES AND SPIRIT",Completed,,-350.00,888.51
+QIU1Y3X5JR,2022-09-30 16:02:13,"Pay Bill Online to 826915 -Safaricom Offers Acc. Tunukiwa",Completed,,-150.00,"1,238.51"
+QIU5XS3DTT,2022-09-30 13:40:53,"Pay Bill Online to 400200 - Co-operative Bank Money TransferAcc. 01108212586000",Completed,,"-1,000.00","1,388.51"
+QIU5XP606Z,2022-09-30 13:05:30,"Customer Transfer of FundsCharge",Completed,,-12.00,"2,388.51"
+QIU5XP606Z,2022-09-30 13:05:30,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,"-1,000.00","2,400.51"
+QIU9XP1LOP,2022-09-30 13:04:11,"Pay Bill Online to 4093441 -SAFARICOM DATA BUNDLES Acc.SAFARICOM DATA BUNDLES",Completed,,-10.00,"3,400.51"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QIU0XOREP2,2022-09-30 13:00:27,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AACF5B7AA522.",Completed,"1,000.00",,"1,910.51"
+QIU0XJAVBG,2022-09-30 11:51:16,"Merchant Payment to 7541239 -Joss Juice Parlour",Completed,,-60.00,910.51
+QIT2WLP2RA,2022-09-29 20:30:05,"Customer Transfer of FundsCharge",Completed,,-32.00,970.51
+QIT2WLP2RA,2022-09-29 20:30:05,"Customer Transfer to -07******240 IAN KURIA",Completed,,"-1,700.00","1,002.51"
+QIT7VV000P,2022-09-29 16:24:02,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-q9OQL9.",Completed,"2,000.00",,"2,702.51"
+QIT7VSGG29,2022-09-29 15:51:30,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-250.00,702.51
+QIT6V8D5XQ,2022-09-29 11:25:56,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-60.00,952.51
+QIR1S6LYNJ,2022-09-27 20:43:23,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-240.00,"1,012.51"
+QIR5RNNJCV,2022-09-27 18:00:02,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,-70.00,"1,252.51"
+QIR8QR6WAC,2022-09-27 11:19:16,"Customer Transfer to -07******023 charles wamuyu",Completed,,-50.00,"1,322.51"
+QIR9QAI3D9,2022-09-27 07:07:18,"Customer Transfer to -07******429 Tonny Njue",Completed,,-50.00,"1,372.51"
+QIQ0PQ1LUW,2022-09-26 19:32:25,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-70.00,"1,422.51"
+QIQ2PHWT9K,2022-09-26 18:29:09,"Customer Transfer of FundsCharge",Completed,,-22.00,"1,492.51"
+QIQ2PHWT9K,2022-09-26 18:29:09,"Customer Transfer to -2547******551 ROBERT MUCHIRI",Completed,,"-1,200.00","1,514.51"
+QIQ2PHSMIM,2022-09-26 18:28:04,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-bB3CYZ.",Completed,"2,000.00",,"2,714.51"
+QIQ0P5F0KK,2022-09-26 16:25:14,"Customer Transfer of FundsCharge",Completed,,-6.00,714.51
+QIQ0P5F0KK,2022-09-26 16:25:14,"Customer Transfer to -2547******316 Brian Michira",Completed,,-250.00,720.51
+QIQ5P1TQZJ,2022-09-26 15:41:29,"Merchant Payment to 7715925 -SHAKIR HARDWARE LIMITED",Completed,,"-1,560.00",970.51
+QIQ5P1SR1D,2022-09-26 15:40:59,M-Shwari Withdraw,Completed,"2,000.00",,"2,530.51"
+QIQ6OBZ1X2,2022-09-26 10:13:46,"Customer Transfer to -01******847 agnes okulo",Completed,,-60.00,530.51
+QIQ0OB1XL0,2022-09-26 10:01:08,"Merchant Payment to 601269 -SIDAI GENERAL SHOP",Completed,,-130.00,590.51
+QIP0NGJ6VU,2022-09-25 19:16:11,"Customer Transfer of FundsCharge",Completed,,-6.00,720.51
+QIP0NGJ6VU,2022-09-25 19:16:11,"Customer Transfer to -07******023 charles wamuyu",Completed,,-250.00,726.51
+QIP0NEEWMK,2022-09-25 18:57:38,"Funds received from -2547******498 ESTHER MUTINDA",Completed,150.00,,976.51
+QIP1MQVWO1,2022-09-25 14:15:19,"Funds received from -2547******498 ESTHER MUTINDA",Completed,350.00,,826.51
+QIP5MOWM41,2022-09-25 13:48:03,"Customer Transfer of FundsCharge",Completed,,-22.00,476.51
+QIP5MOWM41,2022-09-25 13:48:03,"Customer Transfer to -2547******928 KENNETHMWANGI",Completed,,"-1,200.00",498.51
+QIP6MOS8MM,2022-09-25 13:46:18,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-U8qk6V.",Completed,"1,500.00",,"1,698.51"
+QIP3MJXJB9,2022-09-25 12:34:05,"Customer Transfer to -07******023 charles wamuyu",Completed,,-80.00,198.51
+QIP8MFC2ZM,2022-09-25 11:18:52,"Customer Transfer of FundsCharge",Completed,,-6.00,278.51
+QIP8MFC2ZM,2022-09-25 11:18:52,"Customer Transfer to -07******023 charles wamuyu",Completed,,-150.00,284.51
+QIP9MD828L,2022-09-25 10:43:31,Airtime Purchase,Completed,,-10.00,434.51
+QIP8MBIULQ,2022-09-25 10:14:52,"Customer Transfer of FundsCharge",Completed,,-6.00,444.51
+QIP8MBIULQ,2022-09-25 10:14:52,"Customer Transfer to -07******395 Anna Mutinda",Completed,,-300.00,450.51
+QIO8L8YDZW,2022-09-24 18:26:47,M-Shwari Deposit,Completed,,"-2,000.00",750.51
+QIO6L7GROQ,2022-09-24 18:12:38,Withdrawal Charge,Completed,,-28.00,"2,750.51"
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QIO1L5IZ2F,2022-09-24 17:53:41,"Merchant Payment to 316598 -BITCHASER ENTERPRISES4",Completed,,"-1,300.00","4,178.51"
+QIO6L3H6RW,2022-09-24 17:32:07,"Funds received from -2547******364 FIONA NDEGWA",Completed,"1,900.00",,"5,478.51"
+QIO9L3ETMZ,2022-09-24 17:31:18,"Merchant Payment to 596685 -AFTER FORTY HOTEL 3",Completed,,"-4,400.00","3,578.51"
+QIO0KQZWWK,2022-09-24 15:03:41,Pay Bill Charge,Completed,,-2.00,"7,978.51"
+QIO0KQZWWK,2022-09-24 15:03:41,"Pay Bill to 220220 - PesaPal Acc.0750594250",Completed,,-50.00,"7,980.51"
+QIO7KO9S15,2022-09-24 14:29:13,"Customer Transfer of FundsCharge",Completed,,-22.00,"8,030.51"
+QIO7KO9S15,2022-09-24 14:29:13,"Customer Transfer to -2547******100 DAVID PETER",Completed,,"-1,170.00","8,052.51"
+QIO1KKP68H,2022-09-24 13:44:13,"Customer Transfer to -2547******822 JACKLINEMUTINDA",Completed,,-70.00,"9,222.51"
+QIO7JYI8QH,2022-09-24 08:44:14,"Merchant Payment to 608465 -MKULIMA GROCERY0",Completed,,-35.00,"9,292.51"
+QIN4JNTMD8,2022-09-23 22:59:41,"Merchant Payment to 7822434 -ERIC FRANCIS",Completed,,-150.00,"9,327.51"
+QIN4JNIT64,2022-09-23 22:49:54,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-195.00,"9,477.51"
+QIN5IZSBPX,2022-09-23 18:25:21,"Customer Transfer to -01******847 agnes okulo",Completed,,-100.00,"9,672.51"
+QIN3ISPS3V,2022-09-23 17:17:06,"Merchant Payment to 7213197 -QUICK MART Kiserian",Completed,,-220.00,"9,772.51"
+QIN8IS7J2Y,2022-09-23 17:11:51,"Merchant Payment to 7213197 -QUICK MART Kiserian",Completed,,"-1,785.00","9,992.51"
+QIN0IIM25U,2022-09-23 15:18:05,"Funds received from -2547******680 MARY NJOROGE",Completed,"11,100.00",,"11,777.51"
+QIN1HX371F,2022-09-23 10:40:07,"Customer Transfer to -07******023 charles wamuyu",Completed,,-50.00,677.51
+QIN2HTZGYG,2022-09-23 09:56:56,"Pay Bill Online to 826915 -Safaricom Offers Acc. Tunukiwa",Completed,,-150.00,727.51
+QIN4HTU562,2022-09-23 09:54:39,"Customer Transfer of FundsCharge",Completed,,-12.00,877.51
+QIN4HTU562,2022-09-23 09:54:39,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,"-1,000.00",889.51
+QIN3HTI3GZ,2022-09-23 09:49:47,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-wSg8eW.",Completed,"2,000.00",,"2,000.00"
+QIN2HTI3HI,2022-09-23 09:49:47,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-110.49,"1,889.51"
+QIM3H9TIDR,2022-09-22 21:02:23,OverDraft of Credit Party,Completed,70.00,,0.00
+QIM3H9TIDR,2022-09-22 21:02:23,"Merchant Payment Fuliza M-Pesato 795596 - Msafiri butchery  V",Completed,,-70.00,-70.00
+QIM9GLMDQV,2022-09-22 17:12:08,OverDraft of Credit Party,Completed,39.39,,0.00
+QIM9GLMDQV,2022-09-22 17:12:08,"Customer Transfer Fuliza MPesato - 07******023 charles wamuyu",Completed,,-50.00,-39.39
+QIM6GELZ7I,2022-09-22 15:46:28,"Customer Transfer to -2547******364 FIONA NDEGWA",Completed,,-50.00,10.61
+QIM1GAA0HN,2022-09-22 14:48:28,"Customer Transfer of FundsCharge",Completed,,-6.00,60.61
+QIM1GAA0HN,2022-09-22 14:48:28,"Customer Transfer to -07******023 charles wamuyu",Completed,,-200.00,66.61
+QIL0F5EPEC,2022-09-21 21:16:28,"Merchant Payment to 795596 -Msafiri butchery  V",Completed,,-110.00,266.61
+QIL4EB9A6O,2022-09-21 16:15:23,Withdrawal Charge,Completed,,-28.00,376.61
+QIL4EB9A6O,2022-09-21 16:15:23,"Customer Withdrawal At AgentTill 487226 -  KIJANI AFRICALtdKidabizz Enterprise",Completed,,-700.00,404.61
+QIL0DHWAEE,2022-09-21 09:45:30,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,104.61"
+QIL0DHWAEE,2022-09-21 09:45:30,"Customer Transfer to -07******023 charles wamuyu",Completed,,-150.00,"1,110.61"
+QIK7CUIBDX,2022-09-20 20:14:23,"Merchant Payment to 7168410 -RAPALA BEEF HOUSE",Completed,,-60.00,"1,260.61"
+QIK4CKS5OK,2022-09-20 18:52:24,"Customer Transfer of FundsCharge",Completed,,-22.00,"1,320.61"
+QIK4CKS5OK,2022-09-20 18:52:24,"Customer Transfer to -2547******551 ROBERT MUCHIRI",Completed,,"-1,200.00","1,342.61"
+QIK5CG5KKH,2022-09-20 18:10:36,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-ttWX8X.",Completed,"2,000.00",,"2,542.61"
+QIK4CF61UU,2022-09-20 18:00:44,"Customer Transfer of FundsCharge",Completed,,-6.00,542.61
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QIK1CA2IFJ,2022-09-20 17:05:39,"Customer Transfer of FundsCharge",Completed,,-6.00,748.61
+QIK1CA2IFJ,2022-09-20 17:05:39,"Customer Transfer to -01******847 agnes okulo",Completed,,-130.00,754.61
+QIK1C279UV,2022-09-20 15:24:36,"Funds received from -07******256 Lawrence Maina",Completed,600.00,,884.61
+QII78VTPBD,2022-09-18 22:53:48,"Customer Transfer of FundsCharge",Completed,,-6.00,284.61
+QII78VTPBD,2022-09-18 22:53:48,"Customer Transfer to -07******683 Faith Mbalia",Completed,,-400.00,290.61
+QII389NO1N,2022-09-18 18:10:10,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-700.00,690.61
+QII089D1WW,2022-09-18 18:07:06,"Funds received from -2547******754 Bernard Gesongo",Completed,350.00,,"1,390.61"
+QII072P8YY,2022-09-18 07:24:02,"Merchant Payment Online to305561 - EVERLINE ANYANGOODONGO",Completed,,-50.00,"1,040.61"
+QIH86O0DV4,2022-09-17 20:25:55,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,090.61"
+QIH86O0DV4,2022-09-17 20:25:55,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-180.00,"1,096.61"
+QIH863M0M0,2022-09-17 17:20:11,"Funds received from -2547******849 EUNICE MAINA",Completed,"1,000.00",,"1,276.61"
+QIH65EQ2MW,2022-09-17 12:17:36,"Customer Transfer to -2547******032 SIMON GATIMU",Completed,,-70.00,276.61
+QIH45BJU0E,2022-09-17 11:36:27,Withdrawal Charge,Completed,,-27.00,346.61
+QIH45BJU0E,2022-09-17 11:36:27,"Customer Withdrawal At AgentTill 372602 - Bryce  VenturesRimpa Shopping Centre",Completed,,-300.00,373.61
+QIG84OLWJI,2022-09-16 22:28:56,"Merchant Payment to 7721524 -MAGUNANDU SHOP",Completed,,-50.00,673.61
+QIG14OI0H3,2022-09-16 22:26:30,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-350.00,723.61
+QIG64O66D8,2022-09-16 22:18:34,"Funds received from -07******256 Lawrence Maina",Completed,200.00,,"1,073.61"
+QIG14O55RL,2022-09-16 22:17:44,"Funds received from -2547******157 NATHANMWAMBURI",Completed,50.00,,873.61
+QIG84LD154,2022-09-16 21:29:44,"Customer Transfer of FundsCharge",Completed,,-6.00,823.61
+QIG84LD154,2022-09-16 21:29:44,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-300.00,829.61
+QIG84701W4,2022-09-16 19:09:33,"Merchant Payment to 7297949 -Eric Francis Muguna",Completed,,-110.00,"1,129.61"
+QIG2467QK4,2022-09-16 19:03:28,"Merchant Payment to 7168410 -RAPALA BEEF HOUSE",Completed,,-40.00,"1,239.61"
+QIG6440QI4,2022-09-16 18:46:20,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-5ikhYv.",Completed,"1,200.00",,"1,279.61"
+QIG843UXSU,2022-09-16 18:45:08,"Customer Transfer of FundsCharge",Completed,,-6.00,79.61
+QIG843UXSU,2022-09-16 18:45:08,"Customer Transfer to -2547******157 NATHANMWAMBURI",Completed,,-300.00,85.61
+QIG53L5F4R,2022-09-16 15:27:11,"Customer Transfer of FundsCharge",Completed,,-6.00,385.61
+QIG53L5F4R,2022-09-16 15:27:11,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-300.00,391.61
+QIG83CWDP8,2022-09-16 13:43:14,"Customer Transfer to -2547******822 JACKLINEMUTINDA",Completed,,-100.00,691.61
+QIG52VM0RX,2022-09-16 09:53:56,"Merchant Payment Online to7611579 - HOSPITAL CANTEEN",Completed,,-340.00,791.61
+QIG92VKB1T,2022-09-16 09:53:15,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AACCDF0E1122.",Completed,"1,500.00",,"1,500.00"
+QIG92VK9KR,2022-09-16 09:53:15,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-368.39,"1,131.61"
+QIF82DOA7M,2022-09-15 21:38:51,"Customer Transfer of FundsCharge",Completed,,-6.00,0.00
+QIF82DOA7M,2022-09-15 21:38:51,OverDraft of Credit Party,Completed,356.00,,6.00
+QIF82DOA7M,2022-09-15 21:38:51,"Customer Transfer Fuliza MPesato - 07******692 FIDELISWAMBUA",Completed,,-350.00,-350.00
+QIF2258GG0,2022-09-15 19:59:48,OverDraft of Credit Party,Completed,8.74,,0.00
+QIF2258GG0,2022-09-15 19:59:48,"Merchant Payment Fuliza M-Pesato 7851873 - TEREGO WINES",Completed,,-370.00,-8.74
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QIF31CSZKH,2022-09-15 15:20:53,"Customer Transfer of FundsCharge",Completed,,-51.00,461.26
+QIF31CSZKH,2022-09-15 15:20:53,"Customer Transfer to -2547******355 LAWRENCEMWANGI",Completed,,"-3,000.00",512.26
+QIF8172USK,2022-09-15 14:04:54,"Pay Bill Online to 400200 - Co-operative Bank Money TransferAcc. 01108212586000",Completed,,"-4,000.00","3,512.26"
+QIF9135YL5,2022-09-15 13:14:29,"Customer Transfer of FundsCharge",Completed,,-51.00,"7,512.26"
+QIF9135YL5,2022-09-15 13:14:29,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,"-3,000.00","7,563.26"
+QIF1ZZL3S9,2022-09-15 12:26:29,"Customer Transfer of FundsCharge",Completed,,-12.00,"10,563.26"
+QIF1ZZL3S9,2022-09-15 12:26:29,"Customer Transfer to -2547******498 ESTHER MUTINDA",Completed,,-600.00,"10,575.26"
+QIF9ZWV6TL,2022-09-15 11:49:14,"Customer Transfer to -07******023 charles wamuyu",Completed,,-90.00,"11,175.26"
+QIF3ZVEAO9,2022-09-15 11:28:29,"Customer Transfer of FundsCharge",Completed,,-6.00,"11,265.26"
+QIF3ZVEAO9,2022-09-15 11:28:29,"Customer Transfer to -07******710 SIMON KARANJA",Completed,,-500.00,"11,271.26"
+QIF7ZUQ7B3,2022-09-15 11:19:24,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-AZngfd.",Completed,"12,000.00",,"12,000.00"
+QIF3ZUQQV5,2022-09-15 11:19:24,"OD Loan Repayment to 232323 -M-PESA Overdraw",Completed,,-228.74,"11,771.26"
+QIF1ZUADH1,2022-09-15 11:13:06,"Customer Transfer of FundsCharge",Completed,,-32.00,0.00
+QIF1ZUADH1,2022-09-15 11:13:06,OverDraft of Credit Party,Completed,226.47,,32.00
+QIF1ZUADH1,2022-09-15 11:13:06,"Customer Transfer Fuliza MPesato - 07******884 ChristopherWafula",Completed,,"-2,100.00",-194.47
+QIF8ZFP076,2022-09-15 07:20:00,"Funds received from -2547******005 GEORGE MUITA",Completed,150.00,,"1,905.53"
+QIE2Z381YQ,2022-09-14 20:43:48,"Customer Transfer of FundsCharge",Completed,,-6.00,"1,755.53"
+QIE2Z381YQ,2022-09-14 20:43:48,"Customer Transfer to -07******023 charles wamuyu",Completed,,-200.00,"1,761.53"
+QIE9Z1W529,2022-09-14 20:28:54,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AACCA3521A22.",Completed,500.00,,"1,961.53"
+QIE4YIHX98,2022-09-14 17:34:42,Airtime Purchase,Completed,,-150.00,"1,461.53"
+QIE3YIFMO5,2022-09-14 17:33:56,"Merchant Payment to 7397554 -JAJEMELO LTD",Completed,,"-1,150.00","1,611.53"
+QIE0YICCLS,2022-09-14 17:32:55,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AACC9B447A22.",Completed,"2,000.00",,"2,761.53"
+QIE7YHK367,2022-09-14 17:24:04,"Customer Transfer of FundsCharge",Completed,,-87.00,761.53
+QIE7YHK367,2022-09-14 17:24:04,"Customer Transfer to -2547******239 BONFACE IKONZE",Completed,,"-10,000.00",848.53
+QIE0YHHIPO,2022-09-14 17:23:16,"Business Payment from 329299 -STANDARD CHARTERED BANKvia API. Original conversation IDis 254720930607-KE-IBNK-EcQaVA.",Completed,"10,200.00",,"10,848.53"
+QIE0XR7OYK,2022-09-14 11:32:18,"Customer Transfer to -2547******822 JACKLINEMUTINDA",Completed,,-100.00,648.53
+QIE4XN23DU,2022-09-14 10:33:06,"Customer Transfer of FundsCharge",Completed,,-6.00,748.53
+QIE4XN23DU,2022-09-14 10:33:06,"Customer Transfer to -2547******541 ANNE MUNENE",Completed,,-105.00,754.53
+QIE6XMUA2E,2022-09-14 10:30:04,"Funds received from -07******023 charles wamuyu",Completed,90.00,,859.53
+QIE1XL0GR9,2022-09-14 10:03:13,"Customer Transfer to -07******023 charles wamuyu",Completed,,-90.00,769.53
+QID5X3RRRX,2022-09-13 21:39:00,"Business Payment from 501901 -KCB 1 via API. Originalconversation ID is 9ID7DTNR2X.",Completed,500.00,,859.53
+QID8WQ2KW6,2022-09-13 19:03:59,"Customer Transfer to -07******731 Patrick Njuguna",Completed,,-60.00,359.53
+QIC0V8GUQE,2022-09-12 22:52:48,"Merchant Payment to 7905173 -MOREY       WINES AND SPIRIT",Completed,,-120.00,419.53
+QIC5V7MNGV,2022-09-12 22:25:52,"Merchant Payment to 7851873 -TEREGO WINES",Completed,,-180.00,539.53
+Receipt No.,Completion Time,Details,Transaction Status,Paid In,Withdrawn,Balance
+QIC0V72SZM,2022-09-12 22:11:57,"Customer Transfer to -2547******915 DENNIS MUTINDA",Completed,,"-2,100.00",751.53
+QIC4V724TG,2022-09-12 22:11:22,"Business Payment from 149444 -CO-OP BANK via API. Originalconversation ID isOMNIRIB_AACC5DEAD322.",Completed,"2,500.00",,"2,851.53"
+QIC1TMLEDH,2022-09-12 11:03:40,"Customer Transfer of FundsCharge",Completed,,-6.00,361.53
+QIC1TMLEDH,2022-09-12 11:03:40,"Customer Transfer to -07******023 charles wamuyu",Completed,,-130.00,367.53
+QIC6TL2UEK,2022-09-12 10:42:14,"Customer Transfer of FundsCharge",Completed,,-6.00,497.53
