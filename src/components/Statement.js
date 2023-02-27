@@ -47,6 +47,8 @@ const Statement = (props) => {
   const [miakambili, setmiakambili] = useState([]);
   const [screenWidth, setScreenWidth] = useState(false);
   const [airtimebought, SetAirtimebought] = useState(0);
+  const [onemonth, setonemonth] = useState(true);
+
 
   useEffect(() => {
     setSttdata(props.data);
@@ -327,7 +329,17 @@ const Statement = (props) => {
       }
       const diffTime = Math.abs(date[1] - date[0]);
       const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
-      date[2] = diffMonths;
+     if (diffMonths < 1) {
+      date[2] = '<1'
+      setonemonth(false)
+
+     } else if (diffMonths<=2) {
+      setonemonth(false)
+     }
+     else {
+       date[2] = diffMonths;
+     }
+     
       if (diffMonths >= 22 && diffMonths < 25) {
         // set state true when this is true
         settwoyearline(true);
@@ -1285,7 +1297,7 @@ const Statement = (props) => {
               />
             </div>
           </div>
-          <div className="manze mt-4">
+  {onemonth &&   <div className="manze mt-4">
             <h4 className="text-center text-info">Balance Outlook</h4>
             {brokenstt && (
               <h6 className="text-center">
@@ -1323,7 +1335,7 @@ const Statement = (props) => {
                 />
               </>
             )}
-          </div>
+          </div>}
         </div>
 
         <div className="mavitu container col-5 col-md-4">
