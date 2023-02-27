@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import Statement from "./Statement";
 import axios from "axios";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -44,7 +44,7 @@ const Upload = () => {
 
       formData.append("file", uploadfile);
 
-      fetch("http://localhost:8000/api", {
+      fetch("http://192.168.3.79:8000/api", {
         method: "POST",
         body: formData,
       })
@@ -75,7 +75,7 @@ const Upload = () => {
   };
 
   const btnClick = () => {
-    fetch("http://localhost:8000/data", {
+    fetch("http://192.168.3.79:8000/data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const Upload = () => {
     Setprivacy(false);
     axios
       .post(
-        "http://localhost:8000/csv",
+        "http://192.168.3.79:8000/csv",
         { fileselected, filepath, pdfpwd },
         {
           headers: {
@@ -125,6 +125,16 @@ const Upload = () => {
         console.log(err);
       });
   };
+
+  const handleRefresh = () => {
+    Setdataloaded(false)
+    Setdatanotloaded(true)
+    Setcsvcon(false)
+    document.getElementsByClassName('.pdfpass').value = ""
+    SetPdfpwd("")
+    Setprivacy(true)
+  }
+
   setTimeout(() => {
     if (filetype) {
       document.querySelector(".woi").style.pointerEvents = "none";
@@ -191,7 +201,7 @@ const Upload = () => {
                 <input
                   type="text"
                   id="floatingInput"
-                  class="form-control bg-dark text-light border-success"
+                  class="pdfpass form-control bg-dark text-light border-success"
                   value={pdfpwd}
                   onChange={(e) => SetPdfpwd(e.target.value)}
                   aria-describedby="passwordHelpInline"
@@ -216,8 +226,8 @@ const Upload = () => {
                 </button>
                 <button className="btn btn-submit btn-bg btn-outline-info m-3">
                   <Link class='nav-link' to='/howto'>
-                  
-                  How to use the app
+
+                    How to use the app
                   </Link>
                 </button>
               </div>
@@ -267,8 +277,10 @@ const Upload = () => {
         </div>
       )}
       {dataloaded && (
+
         <div>
-          <Statement data={data} pdata={pdata} />
+         
+          <Statement data={data} pdata={pdata} refresh={handleRefresh} />
         </div>
       )}
     </div>

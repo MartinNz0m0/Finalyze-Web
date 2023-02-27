@@ -11,6 +11,7 @@ import summary from '../images/summary.png'
 import till from '../images/till.png'
 import uploading from '../images/uploading.png'
 import viewchart from '../images/viewchart.png'
+import {Link} from "react-router-dom";
 
 
 const Howto = () => {
@@ -18,12 +19,20 @@ const Howto = () => {
     <div>
 
       <div className="d-flex flex-column align-items-center">
-        <h3 className="text-center p-5 bg-success w-100">How to use Mpesa Insights🚀</h3>
-        <div class="card mb-3 bg-dark" style={{ maxWidth: 1000 }}>
+        <div className="banner bg-success d-flex  w-100 p-5 mb-4">
+        <button className="btn btn-submit btn-sm btn-bg btn-outline-warning">
+        <Link class='nav-link' to='/'>
+
+        ⏪ Back to Home
+</Link>
+        </button>
+        <h3 className="text-center flex-grow-1 me-5">How to use Mpesa Insights🚀</h3>
+        </div>
+        <div class="howcard card mb-5 border border-success border-opacity-25 rounded bg-dark">
           <div class="row g-0">
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Requesting an M-PESA Statement</h5>
+                <h5 class="card-title text-success">Requesting an M-PESA Statement</h5>
                 <ul className="ms-5 m-5">
                   <li>Dial *334# on your Safaricom line.</li>
                   <li>Select "My M-PESA Account" from the menu options and press "Reply" or "Send."</li>
@@ -35,17 +44,17 @@ const Howto = () => {
                 </ul>
               </div>
             </div>
-            <div class="col-md-4 mt-5">
+            <div class="col-md-4 d-flex align-items-center">
               <img src={home} class="img-fluid rounded-start" alt="..." />
             </div>
           </div>
         </div>
         <div>
-          <div class="card mb-3 bg-dark" style={{ maxWidth: 1000 }}>
+          <div class="howcard card mb-5 border border-success border-opacity-25 rounded bg-dark">
             <div class="row g-0">
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Uploading a Statement</h5>
+                  <h5 class="card-title text-success">Uploading a Statement</h5>
                   <ul className="ms-5 m-5">
                     <li>Open the MPESA Insights app.</li>
                     <li>Click on the "Choose File" button and select your MPESA statement in PDF format.</li>
@@ -54,16 +63,16 @@ const Howto = () => {
                     <li>Once the app has finished processing your statement, you should see a message indicating that the file has been uploaded successfully.</li></ul>
                 </div>
               </div>
-              <div class="col-md-4 mt-5">
+              <div class="col-md-4 d-flex align-items-center">
                 <img src={uploading} class="img-fluid rounded-start" alt="..." />
               </div>
             </div>
           </div>
-          <div class="card mb-3 bg-dark" style={{ maxWidth: 1000 }}>
+          <div class="howcard card mb-5 border border-success border-opacity-25 rounded bg-dark">
             <div class="row g-0">
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Start Data Processing</h5>
+                  <h5 class="card-title text-success">Start Data Processing</h5>
                   <ul className="ms-5 m-5">
                     <li>Enter the password for your statement in the "Code sent to your phone" input field.</li>
                     <li>Click on the "Start Data Processing" button to start the conversion process.</li>
@@ -72,17 +81,17 @@ const Howto = () => {
                   </ul>
                 </div>
               </div>
-              <div class="col-md-4 mt-5">
+              <div class="col-md-4 d-flex align-items-center">
                 <img src={processing} class="img-fluid rounded-start" alt="..." />
               </div>
             </div>
           </div>
 
-          <div class="card mb-3 bg-dark" style={{ maxWidth: 1000 }}>
+          <div class="howcard card mb-5 border border-success border-opacity-25 rounded bg-dark">
             <div class="row g-0">
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Viewing Charts</h5>
+                  <h5 class="card-title text-success">Viewing Charts</h5>
                   <ul className="ms-5 m-5">
                     <li>Click on the "SHOW ME THE MONEY💸" button to view the charts generated from your MPESA statement.</li>
                     <li>Wait for the app to process your statement and generate the charts.</li>
@@ -90,7 +99,7 @@ const Howto = () => {
                   </ul>
                 </div>
               </div>
-              <div class="col-md-4 mt-5">
+              <div class="col-md-4 d-flex align-items-center">
                 <img src={viewchart} class="img-fluid rounded-start" alt="..." />
               </div>
             </div>
@@ -157,8 +166,8 @@ const Howto = () => {
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card h-25 bg-dark">
+          <div class="last2 col">
+            <div class="card bg-dark">
               <img src={summary} class="img-fluid rounded-start" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Transaction Summary (Doughnut chart)</h5>
@@ -166,8 +175,9 @@ const Howto = () => {
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card h-25 bg-dark">
+          <div class="last2 col">
+          <div class="card bg-dark">
+
               <img src={fuliza} class="img-fluid rounded-start" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Transactions done without Fuliza vs Fuliza Transactions (Doughnut chart)</h5>

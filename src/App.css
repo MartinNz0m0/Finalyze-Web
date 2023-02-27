@@ -21,8 +21,9 @@ body {
 
 .name {
   font-size: 5rem;
-  color: rgb(0, 99, 180);
+  color: rgba(172, 38, 38, 0.603);
 }
+
 .salut {
   font-size: 4rem;
   color: rgb(28, 231, 129);
@@ -55,36 +56,46 @@ body {
 .shadow {
   box-shadow: 0 0.5rem 1rem rgba(47, 236, 179, 0.329) !important;
 }
+
 .t-shadow {
   box-shadow: 0 0.5rem 1rem rgba(231, 65, 43, 0.329) !important;
 }
+
 .wolan {
   max-height: 50rem;
 }
+
 .wolani {
   max-height: 20rem;
 }
 
 .sasa {
+  display: flex;
+  flex-direction: row;
   max-height: 30rem;
   height: 30rem;
   max-width: 40rem;
+  margin-bottom: 3rem;
 }
+
 .manze {
   max-height: 30rem;
 }
+
 .picha {
- max-width: 55rem;
- max-height: 25rem;
+  max-width: 55rem;
+  max-height: 25rem;
 }
 
 .card-title {
   text-align: center;
 }
+
 .card-img-top {
   position: relative;
   left: 5rem;
 }
+
 .market {
   font-size: 1.4rem;
 }
@@ -99,6 +110,26 @@ body {
   color: rgb(45, 236, 39);
 }
 
+.last2 img {
+  height: 28rem;
+  width: 100%;
+  object-fit: contain;
+}
+
+.last2 .huh {
+  height: 28rem;
+  background-color: black;
+}
+
+.donut {
+  max-height: 40rem;
+}
+
+.howcard {
+  max-width: 60rem;
+}
+
+
 @media (max-width: 600px) {
 
   .card-text {
@@ -106,50 +137,70 @@ body {
     font-size: 1rem;
     color: rgb(28, 231, 129);
   }
+
   .card-title {
     font-size: 0.8rem;
   }
+
   .alaa {
     order: 0;
     display: flex;
     flex-direction: row-reverse;
     height: 8rem;
   }
+
   .alaa .btn {
     width: 10rem;
   }
+
   .alaa .text-center {
     font-size: 1.5rem;
     padding-right: 3rem;
   }
+
   .mavitu {
     order: 1;
   }
+
   .nkt {
     order: 2;
   }
+
   .mawe {
     display: flex;
     flex-wrap: wrap;
   }
+
   .wolan {
     max-height: 30rem;
     padding-bottom: 2rem;
   }
+
   .wolani {
     max-height: 20rem;
     width: 20rem;
     padding-bottom: 2rem;
   }
+
   .manze {
     width: 20rem;
     max-height: 30rem;
     margin-top: 5rem;
   }
+
+  .sasa {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 20rem;
+    margin-bottom: 20rem;
+  }
+
   .container {
     position: relative;
     width: 100%;
   }
+
   .kuja {
     display: flex;
     flex-wrap: wrap;
@@ -157,26 +208,63 @@ body {
     width: 20rem;
     margin-bottom: 1rem;
   }
+
   .kuja .btn {
     width: 8rem;
   }
+
   .fujo {
-    width: 23rem;
+    width: 21rem;
   }
+
   .mti {
     width: 17rem;
   }
+
   .inn {
     width: 17rem;
   }
+
   .kiti {
     width: 20rem;
     margin-bottom: 5rem;
   }
+
   .pbut {
     margin-bottom: 3rem;
   }
+
   .ttl {
     font-size: 1.2rem;
+  }
+
+  .howcard {
+    max-width: 20rem;
+    pointer-events: none;
+  }
+  .howcard div ul{
+   margin-left: 0rem!important;
+  }
+  .howcard div h5 {
+    font-size: 1.2rem!important;
+  }
+  .banner {
+    display: flex;
+   padding: 4rem !important;
+  }
+  .banner h3 {
+    flex-grow: 1;
+    font-size: 1.2rem;
+    position: absolute;
+  top: 3rem;
+  left: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  } 
+  .banner .btn {
+    font-size: 0.7rem;
+  position: absolute;
+  top: 1rem;
+  left: 0;
   }
 }

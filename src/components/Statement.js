@@ -4,7 +4,9 @@ import tstatement from "./tstatement.csv";
 import { Bar, Pie, Doughnut, Line } from "react-chartjs-2";
 import { defaults } from "chart.js";
 import { Chart as ChartJS } from "chart.js/auto";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Upload from "./Upload";
+
 
 // formater from stackoverflow
 const formatter = new Intl.NumberFormat("en-US", {
@@ -12,11 +14,11 @@ const formatter = new Intl.NumberFormat("en-US", {
   currency: "KES",
 });
 
-const rtnclick = () => {
-  window.location.reload();
-};
 
-const Statement = ({ data, pdata }) => {
+const Statement = (props) => {
+  const rtnclick = () => {
+    props.refresh()
+  };
   const [sttdata, setSttdata] = useState([]);
   const [piedata, setPiedata] = useState([]);
   const [getdetsarr, setGetdetsarr] = useState([]);
@@ -47,8 +49,8 @@ const Statement = ({ data, pdata }) => {
   const [airtimebought, SetAirtimebought] = useState(0);
 
   useEffect(() => {
-    setSttdata(data);
-    setPiedata(pdata);
+    setSttdata(props.data);
+    setPiedata(props.pdata);
     // csv cleanup remove first 9 rows
     // d3.text(tstatement).then(function (data) {
     //   data = d3.csvParse(data.split("\n").slice(9).join("\n"));
@@ -361,7 +363,6 @@ const Statement = ({ data, pdata }) => {
             //   paidinnam.push(pbillnam);
             // }
             var truev = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
-            console.log(getnam, truev)
           if (truev === "" || truev === "Paid In") {
             truev = 0;
           }
@@ -374,8 +375,6 @@ const Statement = ({ data, pdata }) => {
         } 
       }
       threearr.push(forbiz)
-      console.log(threearr
-        )
     }
   });
 
@@ -537,90 +536,11 @@ const Statement = ({ data, pdata }) => {
             forpaid.push({ name: thisnam, amount: parseInt(trueval) });
           }
         }
-        // if (o.Details.startsWith("Business")) {
-        //   let getnam = o.Details.replace(/\r/g, " ")
-        //     .split(" ")
-        //     .slice(5)
-        //     .slice(0, 2)
-        //     .join(" ");
-        //     let pbillnam = getnam.toUpperCase();
-        //     // if (!paidinnam.includes(pbillnam)) {
-        //     //   paidinnam.push(pbillnam);
-        //     // }
-        //     var trueval = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
-        //     console.log(getnam, trueval)
-        //   if (trueval === "" || trueval === "Paid In") {
-        //     trueval = 0;
-        //   }
-        //   let existing = forbiz.find((a) => a.name === pbillnam);
-        //   console.log(existing, pbillnam)
-        //   if (existing) {
-        //     existing.amount += parseInt(trueval);
-        //   } else {
-        //     forbiz.push({ name: pbillnam, amount: parseInt(trueval) });
-        //   }
-        // } 
       }
 
       twoarr.push(forpaid);
 
-      // delete these after you are done with paid in dets
-      // threearr.push(forbiz)
-      // for paid in
-      paidarr.forEach((o, i) => {
-        let y = o.length;
 
-        // if (o.Details.includes("Funds received")) {
-        //   const forpaid = paidarr.reduce((jah, lia, i) => {
-        //     let lastTwoWords = lia.Details.replace(/\r/g, " ")
-        //       .split(" ")
-        //       .slice(-2)
-        //       .join(" ");
-        //     // let chknum = lia.Details.replace(/\r/g, " ")
-        //     //   .split(" ")
-        //     //   .slice(-3, -2)
-        //     //   .join(" ");
-        //     var thisnam = lastTwoWords.toUpperCase();
-        //     let trueval = lia['Paid In'].replace(/,/g, "").replace(/-/g, "");
-        //     if (trueval === "" || trueval === "Paid In") {
-        //       trueval = 0;
-        //     }
-        //     let existing = jah.find((a) => a.name === thisnam);
-
-        //     if (existing) {
-        //       existing.amount += parseInt(trueval);
-        //     } else {
-        //       jah.push({ name: thisnam, amount: parseInt(trueval) });
-        //     }
-        //     // console.log(jah, lia)
-
-        //       return jah;
-
-        //   },[]);
-        //   twoarr.push(forpaid)
-        //   console.log(forpaid)
-        // }
-        // if (o.Details.includes("Business Payment")) {
-        //   let getnam = o.Details.replace(/\r/g, " ")
-        //     .split(" ")
-        //     .slice(5)
-        //     .slice(0, 2)
-        //     .join(" ");
-        //     let pbillnam = getnam.toUpperCase();
-        //     if (!paidinnam.includes(pbillnam)) {
-        //       paidinnam.push(pbillnam);
-        //     }
-        //     var trueval = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
-        //     console.log(getnam, trueval)
-        //   if (trueval === "" || trueval === "Paid In") {
-        //     trueval = 0;
-        //   }
-        //   sum = sum + parseInt(trueval);
-        //   if (i === p - 1) {
-        //     paidinamnt.push(sum);
-        //   }
-        // }
-      });
     });
 
     // this shit isn't working - its working now mf
@@ -670,10 +590,8 @@ const Statement = ({ data, pdata }) => {
         anotherarr3.splice(i, 4);
       } else {
         anotherarr3.push(o);
-        console.log(anotherarr3, 'running')
       }
     });
-console.log(anotherarr3)
     setpaidinname(anotherarr2);
     setbizpaidinnam(anotherarr3);
     // set bar graph data for send money and sort array
@@ -812,11 +730,13 @@ console.log(anotherarr3)
                   }
                 }
               }
-              if (Math.abs(date[0] - finaldate) > date[3]) {
+              if (Math.abs(date[0] - finaldate) > date[3]) 
+              {
                 if (t === datesplit[1]) {
                   let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
                   ar2.push(parseInt(bal));
                   nump++;
+                  console.log(a)
                   if (a.Details === "OverDraft of Credit Party") {
                     var trueva4 = a["Paid In"]
                       .replace(/,/g, "")
@@ -825,6 +745,7 @@ console.log(anotherarr3)
                       trueva4 = 0;
                     }
                     fularr2.push(parseInt(trueva4));
+                    console.log(fularr2)
                   }
                 }
               }
@@ -863,6 +784,7 @@ console.log(anotherarr3)
           let num = 0;
           const quik = sttdata.map((a, b) => {
             let f = a["Completion Time"];
+            console.log(a)
             if (f !== "Completion Time") {
               let finaldate = new Date(f);
               let datesplit = a["Completion Time"].split("-");
@@ -896,7 +818,7 @@ console.log(anotherarr3)
             }
           });
         });
-      } else {
+      } else{
         let monthsfinal = months.reverse();
         let func = monthsfinal.map((s, l) => {
           let ar = [];
@@ -1053,39 +975,65 @@ console.log(anotherarr3)
     datasets: [
       {
         data: fulizaperc.map((o) => o),
-        backgroundColor: ["rgb(7, 109, 101)", "rgb(177, 214, 42)"],
+        backgroundColor: ["rgb(7, 109, 101)", "rgba(172, 38, 38, 0.603)"],
         pointBackgroundColor: "aqua",
         borderWidth: 1,
-        borderColor: ["rgb(7, 109, 101)", "rgb(177, 214, 42)"],
+        borderColor: ["rgb(7, 109, 101)", "rgba(172, 38, 38, 0.603)"],
       },
     ],
   };
+
+  // backup colors
+  // backgroundColor: [
+  //   "rgb(0, 99, 180)",
+  //   "rgb(177, 214, 42)",
+  //   "rgb(3, 113, 156)",
+  //   "rgb(246, 23, 23)",
+  //   "rgb(202, 42, 214)",
+  //   "rgb(3, 156, 36)",
+  //   "rgb(230, 134, 17)",
+  //   "rgb(236, 134, 0)",
+  // ],
   const pie3dataset = {
     labels: paidinname.map((o) => o.name),
     datasets: [
       {
         data: paidinname.map((o) => o.amount),
         backgroundColor: [
-          "rgb(0, 99, 180)",
-          "rgb(177, 214, 42)",
-          "rgb(3, 113, 156)",
-          "rgb(246, 23, 23)",
-          "rgb(202, 42, 214)",
-          "rgb(3, 156, 36)",
-          "rgb(230, 134, 17)",
-          "rgb(236, 134, 0)",
+          "rgb(236, 113, 149)",
+          "rgb(142, 218, 191)",
+          "rgb(252, 166, 2)",
+          "rgb(229, 130, 212)",
+          "rgb(16, 168, 133)",
+          "rgb(245, 245, 245)",
+          "rgb(50, 197, 250)",
+          "rgb(243, 114, 44)",
+          "rgb(155, 89, 182)",
+          "rgb(38, 194, 129)",
+          "rgb(227, 119, 194)",
+          "rgb(35, 154, 197)",
+          "rgb(244, 208, 63)",
+          "rgb(210, 82, 127)"
+          
         ],
         pointBackgroundColor: "aqua",
         borderWidth: 1,
         borderColor: [
-          "rgb(0, 99, 180)",
-          "rgb(177, 214, 42)",
-          "rgb(3, 113, 156)",
-          "rgb(246, 23, 23)",
-          "rgb(202, 42, 214)",
-          "rgb(3, 156, 36)",
-          "rgb(230, 134, 17)",
-          "rgb(236, 134, 0)",
+          "rgb(236, 113, 149)",
+          "rgb(142, 218, 191)",
+          "rgb(252, 166, 2)",
+          "rgb(229, 130, 212)",
+          "rgb(16, 168, 133)",
+          "rgb(245, 245, 245)",
+          "rgb(50, 197, 250)",
+          "rgb(243, 114, 44)",
+          "rgb(155, 89, 182)",
+          "rgb(38, 194, 129)",
+          "rgb(227, 119, 194)",
+          "rgb(35, 154, 197)",
+          "rgb(244, 208, 63)",
+          "rgb(210, 82, 127)"
+          
         ],
       },
     ],
@@ -1099,20 +1047,42 @@ console.log(anotherarr3)
     datasets: [
       {
         data: bizpaidinnam.map((o) => o.amount),
-        backgroundColor: [ "rgb(7, 109, 101)",
-          "rgb(177, 214, 42)",
-          "rgb(202, 42, 214)",
-          "rgb(1, 238, 20)",
-          "rgb(230, 134, 17)",
-          "rgb(246, 23, 23)"],
+        backgroundColor: [ 
+          "rgb(236, 113, 149)",
+          "rgb(142, 218, 191)",
+          "rgb(252, 166, 2)",
+          "rgb(229, 130, 212)",
+          "rgb(16, 168, 133)",
+          "rgb(245, 245, 245)",
+          "rgb(50, 197, 250)",
+          "rgb(243, 114, 44)",
+          "rgb(155, 89, 182)",
+          "rgb(38, 194, 129)",
+          "rgb(227, 119, 194)",
+          "rgb(35, 154, 197)",
+          "rgb(244, 208, 63)",
+          "rgb(210, 82, 127)"
+          
+        ],
         pointBackgroundColor: "aqua",
         borderWidth: 1,
-        borderColor: [ "rgb(7, 109, 101)",
-          "rgb(177, 214, 42)",
-          "rgb(202, 42, 214)",
-          "rgb(1, 238, 20)",
-          "rgb(230, 134, 17)",
-          "rgb(246, 23, 23)"],
+        borderColor: [ 
+          "rgb(236, 113, 149)",
+          "rgb(142, 218, 191)",
+          "rgb(252, 166, 2)",
+          "rgb(229, 130, 212)",
+          "rgb(16, 168, 133)",
+          "rgb(245, 245, 245)",
+          "rgb(50, 197, 250)",
+          "rgb(243, 114, 44)",
+          "rgb(155, 89, 182)",
+          "rgb(38, 194, 129)",
+          "rgb(227, 119, 194)",
+          "rgb(35, 154, 197)",
+          "rgb(244, 208, 63)",
+          "rgb(210, 82, 127)"
+          
+        ],
       },
     ],
   };
@@ -1299,7 +1269,7 @@ console.log(anotherarr3)
               />
             </div>
               <h4 className="text-center text-info">Who has sent you money</h4>
-            <div className="sasa mb-4 d-flex flex-row">
+            <div className="sasa">
 
               <Doughnut
                 data={pie3dataset}
@@ -1437,7 +1407,8 @@ console.log(anotherarr3)
               </div>
             </div>
           </div>
-          <div className="h-25 mt-3 mb-5">
+          
+          <div className="donut h-25 mt-3 mb-5">
             <h4 className="text-center text-info">Transaction Summary</h4>
 
             <Doughnut
@@ -1447,7 +1418,7 @@ console.log(anotherarr3)
               options={pieoptions}
             />
           </div>
-          <div className="h-25 mt-3">
+          <div className="donut h-25 mt-3">
             <h5 className="text-center text-info">
               Transactions done without Fuliza vs Fuliza Transactions
             </h5>
