@@ -19,14 +19,14 @@ const Howto = () => {
     <div>
 
       <div className="d-flex flex-column align-items-center">
-        <div className="banner bg-success d-flex  w-100 p-5 mb-4">
+        <div className="banner bg-info bg-gradient bg-opacity-50 d-flex  w-100 p-5 mb-4">
         <button className="btn btn-submit btn-sm btn-bg btn-outline-warning">
         <Link class='nav-link' to='/'>
 
         ⏪ Back to Home
 </Link>
         </button>
-        <h3 className="text-center flex-grow-1 me-5">How to use Mpesa Insights🚀</h3>
+        <h3 className="text-center flex-grow-1 me-5">How to use Finalyze🚀</h3>
         </div>
         <div class="howcard card mb-5 border border-success border-opacity-25 rounded bg-dark">
           <div class="row g-0">
@@ -56,7 +56,7 @@ const Howto = () => {
                 <div class="card-body">
                   <h5 class="card-title text-success">Uploading a Statement</h5>
                   <ul className="ms-5 m-5">
-                    <li>Open the MPESA Insights app.</li>
+                    <li>Open the Finalyze app.</li>
                     <li>Click on the "Choose File" button and select your MPESA statement in PDF format.</li>
                     <li>Click on the "Upload" button to upload your statement.</li>
                     <li>Wait for the app to process your statement. You should see a message indicating that the app is uploading your file.</li>
@@ -110,7 +110,7 @@ const Howto = () => {
         </div>
       </div>
       <div>
-        <h3 className="bg-success text-center p-4">How to Interpret the Charts</h3>
+        <h3 className="bg-info bg-gradient bg-opacity-50 text-center p-4">How to Interpret the Charts</h3>
         <div class="row row-cols-1 row-cols-md-3 g-5 w-100 ms-3 mt-3 mb-2">
           <div class="col">
             <div class="card h-100 bg-dark">

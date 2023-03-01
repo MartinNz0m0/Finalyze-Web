@@ -81,24 +81,31 @@ const Statement = (props) => {
     let detsarr = [];
     let amount = [];
     let total = [];
-    const transtype = piedata.map((o, i) => {
-      detsarr.push(o["TRANSACTION TYPE"]);
-      var paidin = o["PAID IN"].replace(/,/g, "").replace(/-/g, "");
-      var paidout = o["PAID OUT"].replace(/,/g, "").replace(/-/g, "");
-
-      if (o["PAID IN"] === "0.00") {
-        amount.push(parseInt(paidout));
-      } else if (o["PAID OUT"] === "0.00") {
-        amount.push(parseInt(paidin));
-      } else if (o["PAID OUT"] === "0.00" && o["PAID IN"] === "0.00") {
-        amount.push(0);
-      } else if (o["TRANSACTION TYPE"] === "TOTAL:") {
-        total.push(parseInt(paidin), parseInt(paidout));
+    try {
+      
+      const transtype = piedata.map((o, i) => {
+        detsarr.push(o["TRANSACTION TYPE"]);
+        var paidin = o["PAID IN"].replace(/,/g, "").replace(/-/g, "");
+        var paidout = o["PAID OUT"].replace(/,/g, "").replace(/-/g, "");
+  
+        if (o["PAID IN"] === "0.00") {
+          amount.push(parseInt(paidout));
+        } else if (o["PAID OUT"] === "0.00") {
+          amount.push(parseInt(paidin));
+        } else if (o["PAID OUT"] === "0.00" && o["PAID IN"] === "0.00") {
+          amount.push(0);
+        } else if (o["TRANSACTION TYPE"] === "TOTAL:") {
+          total.push(parseInt(paidin), parseInt(paidout));
+        }
+      });
+      setTotal(total);
+      setPiechartamnt(amount);
+      setPiechartdets(detsarr);
+    } catch (error) {
+      if (error) {
+        alert('Something went wrong😢, please refresh the page and try again')
       }
-    });
-    setTotal(total);
-    setPiechartamnt(amount);
-    setPiechartdets(detsarr);
+    }
   }, [piedata]);
 
   useEffect(() => {
@@ -1174,7 +1181,6 @@ const Statement = (props) => {
   };
 
   const options = {
-    responsive: true,
     barThickness: 20,
     barPercentage: 0.8,
     categoryPercentage: 0.8,

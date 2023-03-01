@@ -18,6 +18,7 @@ const Upload = () => {
   const [filetype, Setfiletype] = useState(false);
   const [datapros, Setdatapros] = useState(false);
   const [privacy, Setprivacy] = useState(true);
+  const [showhelp, setshowhelp] = useState(false)
 
   const onChange = (e) => {
     if (e.target.files[0]) {
@@ -135,21 +136,68 @@ const Upload = () => {
     Setprivacy(true)
   }
 
-  setTimeout(() => {
+  const helppop = (e) => {
+     const btn = document.querySelector('.mybtn')
+    const sumbua = document.querySelector('.sumbua')
+    if(e.target !== sumbua && e.target !==btn) {
+      console.log(e.target)
+      setshowhelp(false)
+    }
+  }
+  React.useEffect(()=>{
+
+    // const btn = document.querySelector('.mybtn')
+    // const clos = document.querySelector('.clos')
+    // btn.addEventListener('click', ()=>{
+    //   console.log('first')
+    //   setshowhelp(true)
+
+    // })
+    // if (showhelp) {
+
+    //   clos.addEventListener('click', ()=>{
+    //     setshowhelp(false)
+    //   })
+    //   window.addEventListener('click', ()=>{
+    //     setshowhelp(false)
+    //   })
+    // }
+  }, [])
+  window.addEventListener('click', helppop)
+
+setTimeout(() => {
     if (filetype) {
       document.querySelector(".woi").style.pointerEvents = "none";
     }
+    // const kibo = document.querySelector('.kibonyi')
+    // const tooltp = document.querySelector('.tooltip')
     // } else if (!filetype) {
     //   document.querySelector('.woi').style.pointerEvents = 'auto'
     // }
-  }, 1000);
+    // const btn = document.querySelector('.mybtn')
+    // const clos = document.querySelector('.clos')
+    // btn.addEventListener('click', ()=>{
+    //   console.log('first')
+    //   setshowhelp(true)
+
+    // })
+    // if (showhelp) {
+
+    //   // clos.addEventListener('click', ()=>{
+    //   //   setshowhelp(false)
+    //   // })
+    //   window.addEventListener('click', ()=>{
+    //     setshowhelp(false)
+    //   })
+    // }
+  }, 500);
 
   return (
     <div>
       {datanotloaded && (
         <div className="d-flex flex-column h-100 align-items-center">
-          <h1 className="text-center bg-success bg-opacity-75 p-5 w-100">
-            Welcome To MPESA Insights🚀
+          <h1 className="text-center bg-info bg-gradient bg-opacity-50 p-5 w-100">
+            Welcome To Finalyze🚀
           </h1>
           <h3 className="mt-5 text-center">
             Parse Your MPESA Statement and View Some Charts
@@ -197,7 +245,7 @@ const Upload = () => {
               </div>
             )}
             <div class="row g-3 align-items-center mb-5 mt-2 ">
-              <div class="col-auto">
+              <div class="w-100 d-flex align-items-center form-floating mb-3">
                 <input
                   type="text"
                   id="floatingInput"
@@ -205,8 +253,23 @@ const Upload = () => {
                   value={pdfpwd}
                   onChange={(e) => SetPdfpwd(e.target.value)}
                   aria-describedby="passwordHelpInline"
-                  placeholder="Code sent to your phone"
                 />
+                <label for="floatingInput">PDF code</label>
+                <button className="ms-3 mybtn btn btn-submit btn-sm btn-outline-dark" type="submit" onClick={()=>setshowhelp(true)}>❔</button>
+  {
+    showhelp&&
+
+
+                  <div className="sumbua position-absolute p-3 ms-5 text-center border border-info rounded border-opacity-25"> 
+                  <button className="clos position-absolute h-25 top-0 end-0 fs-4 btn btn-sm" onClick={()=>setshowhelp(false)}>&times;</button>
+                  <p className="">
+                    Upon the statement request, 'SAFARICOM' sent you a text message. The message has the code for your pdf statement. Input The code sent to your phone by 'SAFARICOM'
+
+                  </p>
+                  </div>
+  }
+         
+            
               </div>
             </div>
             <button
@@ -279,7 +342,7 @@ const Upload = () => {
       {dataloaded && (
 
         <div>
-         
+
           <Statement data={data} pdata={pdata} refresh={handleRefresh} />
         </div>
       )}

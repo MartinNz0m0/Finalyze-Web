@@ -4,7 +4,7 @@ const AboutView = () => {
   return (
     <div>
       <div className="text-center">
-        <h3 className="ttl text-center bg-success bg-opacity-75 p-5 w-100">
+        <h3 className="ttl text-center bg-info bg-gradient bg-opacity-50 p-5 w-100">
           Data Management in M-Pesa Insights🚀
         </h3>
         <h5 className="text-center p-4">
