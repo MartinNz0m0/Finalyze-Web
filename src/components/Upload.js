@@ -50,13 +50,7 @@ const Upload = () => {
         body: formData,
       })
         .then((response) => response.json())
-        // if (response.status === 400) {
-
-        //   Setfiletype(true)
-        // } else {
-        //   Setfiletype(false)
-        //   // Setupload(true)
-        // })
+     
         .then((result) => {
           var res = JSON.parse(result);
           setTimeout(() => {
@@ -144,52 +138,14 @@ const Upload = () => {
       setshowhelp(false)
     }
   }
-  React.useEffect(()=>{
 
-    // const btn = document.querySelector('.mybtn')
-    // const clos = document.querySelector('.clos')
-    // btn.addEventListener('click', ()=>{
-    //   console.log('first')
-    //   setshowhelp(true)
-
-    // })
-    // if (showhelp) {
-
-    //   clos.addEventListener('click', ()=>{
-    //     setshowhelp(false)
-    //   })
-    //   window.addEventListener('click', ()=>{
-    //     setshowhelp(false)
-    //   })
-    // }
-  }, [])
   window.addEventListener('click', helppop)
 
 setTimeout(() => {
     if (filetype) {
       document.querySelector(".woi").style.pointerEvents = "none";
     }
-    // const kibo = document.querySelector('.kibonyi')
-    // const tooltp = document.querySelector('.tooltip')
-    // } else if (!filetype) {
-    //   document.querySelector('.woi').style.pointerEvents = 'auto'
-    // }
-    // const btn = document.querySelector('.mybtn')
-    // const clos = document.querySelector('.clos')
-    // btn.addEventListener('click', ()=>{
-    //   console.log('first')
-    //   setshowhelp(true)
-
-    // })
-    // if (showhelp) {
-
-    //   // clos.addEventListener('click', ()=>{
-    //   //   setshowhelp(false)
-    //   // })
-    //   window.addEventListener('click', ()=>{
-    //     setshowhelp(false)
-    //   })
-    // }
+  
   }, 500);
 
   return (
