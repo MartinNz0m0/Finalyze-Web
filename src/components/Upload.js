@@ -45,7 +45,7 @@ const Upload = () => {
 
       formData.append("file", uploadfile);
 
-      fetch("http://192.168.3.79:8000/api", {
+      fetch("http://csv.finalyze.app:8000/api", {
         method: "POST",
         body: formData,
       })
@@ -76,7 +76,7 @@ const Upload = () => {
   };
 
   const btnClick = () => {
-    fetch("http://192.168.3.79:8000/data", {
+    fetch("http://csv.finalyze.app:8000/data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ const Upload = () => {
     Setprivacy(false);
     axios
       .post(
-        "http://192.168.3.79:8000/csv",
+        "http://csv.finalyze.app:8000/csv",
         { fileselected, filepath, pdfpwd },
         {
           headers: {

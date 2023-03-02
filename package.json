@@ -1,5 +1,6 @@
 {
-  "name": "react-201",
+  "name": "finalyze",
+  "hompage": "http://finalyze.app/",
   "version": "0.1.0",
   "proxy": "http://localhost:8000",
   "private": true,
