@@ -20,7 +20,7 @@ const Howto = () => {
 
       <div className="d-flex flex-column align-items-center">
         <div className="banner bg-info bg-gradient bg-opacity-50 d-flex  w-100 p-5 mb-4">
-        <button className="btn btn-submit btn-sm btn-bg btn-outline-warning">
+        <button className="btn btn-submit btn-sm bg-success text-light">
         <Link class='nav-link' to='/'>
 
         ⏪ Back to Home

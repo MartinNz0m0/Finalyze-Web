@@ -133,6 +133,9 @@ body {
   width: 100%;
   font-size: 1rem;
 }
+.privacy {
+  margin-left: 10rem;
+}
 
 @media (max-width: 600px) {
 
@@ -278,5 +281,9 @@ body {
    transform: translate(-100%, 40%);   color: rgb(190, 185, 185);
     font-size: 0.8rem;
 
+  }
+  .privacy {
+    width: 100%!important;
+    margin-left: 1rem;
   }
 }

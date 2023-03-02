@@ -1,5 +1,5 @@
 import NavBar from "./components/NavBar";
-import Home from "./components/Home";
+import Hero from "./components/Hero";
 import Upload from "./components/Upload";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router";
@@ -44,6 +44,7 @@ function App() {
   return (
     <div className="App">
       {/* <NavBar searchText={searchText} setSearchText={setSearchText}/> */}
+      <Hero/>
       <Switch> 
         <Route path="/" exact>
           <Upload />

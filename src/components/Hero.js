@@ -1,7 +1,7 @@
 const Hero = ({ text }) => {
     return (
-        <header className="bg-dark text-white p-5">
-            <h1>{text}</h1>
+        <header className="bg-warning text-secondary text-center">
+            <>❗This app is still in beta testing❗</>
         </header>
     )
 }

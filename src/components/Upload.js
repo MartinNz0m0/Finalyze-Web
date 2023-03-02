@@ -196,21 +196,20 @@ setTimeout(() => {
     <div>
       {datanotloaded && (
         <div className="d-flex flex-column h-100 align-items-center">
-          <h1 className="text-center bg-info bg-gradient bg-opacity-50 p-5 w-100">
+          <div className="text-center bg-info bg-gradient bg-opacity-50 p-4 w-100">
+            <h2>
             Welcome To Finalyze🚀
-          </h1>
+            </h2>
+            <p>
+              Financial Analysis To Track Your Spending
+            </p>
+          </div>
           <h3 className="mt-5 text-center">
             Parse Your MPESA Statement and View Some Charts
           </h3>
           <h5 className="mt-5 text-center">
             Upload your PDF Statement and enter your code below👇🏾
           </h5>
-          {/* Upload
-      <input type="file" name="file" onChange={onChange} />
-      <button type="submit" className="btn btn-submit btn-lg" onClick={onClick}>
-        {" "}
-        Upload
-      </button> */}
           <div className="w-50 d-flex flex-column align-items-center">
             <div class="fujo input-group bg-dark mb-5 mt-5">
               <input
