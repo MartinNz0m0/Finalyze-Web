@@ -45,7 +45,7 @@ const Upload = () => {
 
       formData.append("file", uploadfile);
 
-      fetch("http://csv.finalyze.app:8000/api", {
+      fetch("http://localhost:8000/api", {
         method: "POST",
         body: formData,
       })
@@ -70,7 +70,7 @@ const Upload = () => {
   };
 
   const btnClick = () => {
-    fetch("http://csv.finalyze.app:8000/data", {
+    fetch("http://localhost:8000/data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const Upload = () => {
     Setprivacy(false);
     axios
       .post(
-        "http://csv.finalyze.app:8000/csv",
+        "http://localhost:8000/csv",
         { fileselected, filepath, pdfpwd },
         {
           headers: {
@@ -134,7 +134,6 @@ const Upload = () => {
      const btn = document.querySelector('.mybtn')
     const sumbua = document.querySelector('.sumbua')
     if(e.target !== sumbua && e.target !==btn) {
-      console.log(e.target)
       setshowhelp(false)
     }
   }
