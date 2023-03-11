@@ -45,7 +45,7 @@ const Upload = () => {
 
       formData.append("file", uploadfile);
 
-      fetch("http://localhost:8000/api", {
+      fetch("http://167.71.188.250/api", {
         method: "POST",
         body: formData,
       })
@@ -70,7 +70,7 @@ const Upload = () => {
   };
 
   const btnClick = () => {
-    fetch("http://localhost:8000/data", {
+    fetch("http://167.71.188.250/data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const Upload = () => {
     Setprivacy(false);
     axios
       .post(
-        "http://localhost:8000/csv",
+        "http://167.71.188.250/csv",
         { fileselected, filepath, pdfpwd },
         {
           headers: {
