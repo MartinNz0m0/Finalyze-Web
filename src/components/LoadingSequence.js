@@ -19,7 +19,7 @@ const  LoadingSequence = () => {
   }, []);
   
   return (
-    <div className='d-flex flex-row'>
+    <div className='d-flex flex-row text-center'>
       <h5 className='text-info m-1'>{loadingText}</h5>
       <div className="spinner-grow spinner-grow-sm text-info m-1 mt-2" role="status">
         <span className="visually-hidden">Loading...</span>

@@ -301,12 +301,12 @@ setTimeout(() => {
       )}
       {loadingstate && (
         <div className="d-flex flex-row position-absolute top-50 start-50 translate-middle">
+        <h4 className="m-1 text-info">Starting Chart Engine...</h4>
 
-        <div class="spinner-grow text-info m-1" role="status">
+        <div class="spinner-grow spinner-grow-sm text-info m-1" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
       
-        <h4 className="m-1 text-info">Starting Chart Engine...</h4>
      </div>
       )}
       {dataloaded && (
