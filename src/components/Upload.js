@@ -1,5 +1,6 @@
 import React, { useState, createContext } from "react";
 import Statement from "./Statement";
+import LoadingSequence from "./LoadingSequence";
 import axios from "axios";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -19,6 +20,8 @@ const Upload = () => {
   const [datapros, Setdatapros] = useState(false);
   const [privacy, Setprivacy] = useState(true);
   const [showhelp, setshowhelp] = useState(false)
+  const [loadingstate, setloadingstate] = useState(false)
+
 
   const onChange = (e) => {
     if (e.target.files[0]) {
@@ -70,6 +73,8 @@ const Upload = () => {
   };
 
   const btnClick = () => {
+    Setdatanotloaded(false);
+    setloadingstate(true)
     fetch("https://backend.finalyze.app/data", {
       method: "POST",
       headers: {
@@ -82,8 +87,8 @@ const Upload = () => {
         console.log(result[0]);
         Setdata(result[1]);
         Setpdata(result[0]);
+        setloadingstate(false)
         Setdataloaded(true);
-        Setdatanotloaded(false);
       });
   };
   const csvClick = () => {
@@ -251,7 +256,7 @@ setTimeout(() => {
             )}
             {datapros && (
               <div className="mti">
-                <h4 className="text-info text-center mt-3 mb-3">
+                {/* <h4 className="text-info text-center mt-3 mb-3">
                   Processing your data...
                 </h4>
                 <div class="progress">
@@ -264,7 +269,8 @@ setTimeout(() => {
                     aria-valuemax="100"
                     style={{ width: 400 }}
                   ></div>
-                </div>
+                </div> */}
+                <LoadingSequence/>
               </div>
             )}
             <div className="kiti">
@@ -293,10 +299,19 @@ setTimeout(() => {
           </div>
         </div>
       )}
+      {loadingstate && (
+        <div className="d-flex flex-row position-absolute top-50 start-50 translate-middle">
+
+        <div class="spinner-grow text-info m-1" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      
+        <h4 className="m-1 text-info">Starting Chart Engine...</h4>
+     </div>
+      )}
       {dataloaded && (
 
         <div>
-
           <Statement data={data} pdata={pdata} refresh={handleRefresh} />
         </div>
       )}
