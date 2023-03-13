@@ -75,10 +75,10 @@ const Upload = () => {
           }, 500);
         })
         .catch((err) => {
-          alert(err);
+          console.log(err);
         });
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
 
@@ -132,7 +132,7 @@ const Upload = () => {
         }
       })
       .catch((err) => {
-        alert(err);
+        console.log(err);
       });
   };
 
