@@ -136,6 +136,9 @@ body {
 .privacy {
   margin-left: 10rem;
 }
+.prog {
+  width: 17rem;
+}
 
 @media (max-width: 600px) {
 
@@ -171,6 +174,10 @@ body {
 
   .nkt {
     order: 2;
+  }
+
+  .prog {
+    width: 15rem;
   }
 
   .mawe {
@@ -226,6 +233,10 @@ body {
 
   .mti {
     width: 17rem;
+    font-size: 0.7rem;
+  }
+  .mtii {
+    font-size: 1rem;
   }
 
   .inn {
@@ -243,6 +254,9 @@ body {
 
   .ttl {
     font-size: 1.2rem;
+  }
+  .load {
+    font-size: 1rem;
   }
 
   .howcard {

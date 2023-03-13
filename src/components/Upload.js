@@ -3,6 +3,7 @@ import Statement from "./Statement";
 import LoadingSequence from "./LoadingSequence";
 import axios from "axios";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import ProgressBar from "./ProgressBar";
 
 const Upload = () => {
   const [uploadfile, SetUploadfile] = useState(null);
@@ -21,6 +22,9 @@ const Upload = () => {
   const [privacy, Setprivacy] = useState(true);
   const [showhelp, setshowhelp] = useState(false)
   const [loadingstate, setloadingstate] = useState(false)
+  const [progress, setProgress] = useState(0);
+  const [Color, setColor] = useState("progress-bar bg-info bg-opacity-75");
+  const [uploadingpdf, setuploadingpdf] = useState(false)
 
 
   const onChange = (e) => {
@@ -33,8 +37,8 @@ const Upload = () => {
     Setdataloaded(false);
     Setupload(false);
     Setcsvcon(false);
+    setProgress(0)
     if (e.target.files[0].type !== "application/pdf") {
-      console.log(e.target.files[0].type);
       Setfiletype(true);
     } else {
       Setfiletype(false);
@@ -42,7 +46,10 @@ const Upload = () => {
   };
 
   const onClick = () => {
-    document.querySelector(".ingine").innerHTML = "Uploading your File...";
+    const interval = setInterval(() => {
+      setProgress(prevProgress => prevProgress + 20);
+    }, 500);
+    setuploadingpdf(true)
     try {
       const formData = new FormData();
 
@@ -53,7 +60,7 @@ const Upload = () => {
         body: formData,
       })
         .then((response) => response.json())
-     
+
         .then((result) => {
           var res = JSON.parse(result);
           setTimeout(() => {
@@ -62,13 +69,16 @@ const Upload = () => {
             var btn = document.querySelector(".inn");
             btn.style.pointerEvents = "auto";
             document.querySelector(".ingine").innerHTML = "";
-          }, 2000);
+            clearInterval(interval)
+            setProgress(300)
+            setColor("progress-bar bg-success bg-opacity-75")
+          }, 500);
         })
         .catch((err) => {
-          console.log(err);
+          alert(err);
         });
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -84,7 +94,6 @@ const Upload = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result[0]);
         Setdata(result[1]);
         Setpdata(result[0]);
         setloadingstate(false)
@@ -94,6 +103,7 @@ const Upload = () => {
   const csvClick = () => {
     Setdatapros(true);
     Setupload(false);
+    setuploadingpdf(false)
     Setpwdtrue(false);
     Setprivacy(false);
     axios
@@ -115,14 +125,14 @@ const Upload = () => {
         var trures = response.data;
         var f = JSON.parse(trures);
         if (f.s === "Success") {
-          console.log("conversion successful");
+          console.log("successful");
           Setcsvcon(true);
           Setpwdtrue(false);
           Setdatapros(false);
         }
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -136,20 +146,20 @@ const Upload = () => {
   }
 
   const helppop = (e) => {
-     const btn = document.querySelector('.mybtn')
+    const btn = document.querySelector('.mybtn')
     const sumbua = document.querySelector('.sumbua')
-    if(e.target !== sumbua && e.target !==btn) {
+    if (e.target !== sumbua && e.target !== btn) {
       setshowhelp(false)
     }
   }
 
   window.addEventListener('click', helppop)
 
-setTimeout(() => {
+  setTimeout(() => {
     if (filetype) {
       document.querySelector(".woi").style.pointerEvents = "none";
     }
-  
+
   }, 500);
 
   return (
@@ -158,7 +168,7 @@ setTimeout(() => {
         <div className="d-flex flex-column h-100 align-items-center">
           <div className="text-center bg-info bg-gradient bg-opacity-50 p-4 w-100">
             <h2>
-            Welcome To Finalyze🚀
+              Welcome To Finalyze🚀
             </h2>
             <p>
               Financial Analysis To Track Your Spending
@@ -170,7 +180,7 @@ setTimeout(() => {
           <h5 className="mt-5 text-center">
             Upload your PDF Statement and enter your code below👇🏾
           </h5>
-          <div className="w-50 d-flex flex-column align-items-center">
+          <div className="w-50 d-flex flex-column justify-content-center align-items-center">
             <div class="fujo input-group bg-dark mb-5 mt-5">
               <input
                 type="file"
@@ -190,12 +200,21 @@ setTimeout(() => {
                 Upload
               </button>
             </div>
+            {uploadingpdf &&
+              <div className="prog">
+                <ProgressBar percent={progress} color={Color} />
+              </div>
+            }
             <p className="ingine"></p>
             {upload && (
-              <h4 className="text-success text-center">
-                Upload completed successfully <br />
-                Enter Your code below👇🏾 and start data processing🏃
-              </h4>
+              <div className="d-flex flex-column">
+                <h6 className="text-info text-opacity-50 text-center mb-3">
+                  Upload completed successfully
+                </h6>
+                <h6 className="text-info text-opacity-50 text-center">
+                  Enter Your code below👇🏾 and start data processing🏃
+                </h6>
+              </div>
             )}
 
             {filetype && (
@@ -214,21 +233,21 @@ setTimeout(() => {
                   aria-describedby="passwordHelpInline"
                 />
                 <label for="floatingInput">PDF code</label>
-                <button className="ms-3 mybtn btn btn-submit btn-sm btn-outline-dark" type="submit" onClick={()=>setshowhelp(true)}>❔</button>
-  {
-    showhelp&&
+                <button className="ms-3 mybtn btn btn-submit btn-sm btn-outline-dark" type="submit" onClick={() => setshowhelp(true)}>❔</button>
+                {
+                  showhelp &&
 
 
-                  <div className="sumbua position-absolute p-3 ms-5 text-center border border-info rounded border-opacity-25"> 
-                  <button className="clos position-absolute h-25 top-0 end-0 fs-4 btn btn-sm" onClick={()=>setshowhelp(false)}>&times;</button>
-                  <p className="">
-                    Upon the statement request, 'SAFARICOM' sent you a text message. The message has the code for your pdf statement. Input The code sent to your phone by 'SAFARICOM'
+                  <div className="sumbua position-absolute p-3 ms-5 text-center border border-info rounded border-opacity-25">
+                    <button className="clos position-absolute h-25 top-0 end-0 fs-4 btn btn-sm" onClick={() => setshowhelp(false)}>&times;</button>
+                    <p className="">
+                      Upon the statement request, 'SAFARICOM' sent you a text message. The message has the code for your pdf statement. Input The code sent to your phone by 'SAFARICOM'
 
-                  </p>
+                    </p>
                   </div>
-  }
-         
-            
+                }
+
+
               </div>
             </div>
             <button
@@ -255,22 +274,8 @@ setTimeout(() => {
               </div>
             )}
             {datapros && (
-              <div className="mti">
-                {/* <h4 className="text-info text-center mt-3 mb-3">
-                  Processing your data...
-                </h4>
-                <div class="progress">
-                  <div
-                    class="progress-bar progress-bar-striped progress-bar-animated bg-success"
-                    role="progressbar"
-                    aria-label="Animated striped example"
-                    aria-valuenow="75"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    style={{ width: 400 }}
-                  ></div>
-                </div> */}
-                <LoadingSequence/>
+              <div className="mti d-flex justify-content-center">
+                <LoadingSequence />
               </div>
             )}
             <div className="kiti">
@@ -301,13 +306,13 @@ setTimeout(() => {
       )}
       {loadingstate && (
         <div className="d-flex flex-row position-absolute top-50 start-50 translate-middle">
-        <h4 className="m-1 text-info">Starting Chart Engine...</h4>
+          <h4 className="load m-1 text-info">Starting Chart Engine...</h4>
 
-        <div class="spinner-grow spinner-grow-sm text-info m-1" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-      
-     </div>
+          <div class="spinner-grow spinner-grow-sm text-info m-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+
+        </div>
       )}
       {dataloaded && (
 

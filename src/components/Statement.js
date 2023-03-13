@@ -48,6 +48,8 @@ const Statement = (props) => {
   const [screenWidth, setScreenWidth] = useState(false);
   const [airtimebought, SetAirtimebought] = useState(0);
   const [onemonth, setonemonth] = useState(true);
+  const [loadstate, setloadstate] = useState(true);
+  const [loaddone, setloaddone] = useState(false);
 
 
   useEffect(() => {
@@ -82,12 +84,12 @@ const Statement = (props) => {
     let amount = [];
     let total = [];
     try {
-      
+
       const transtype = piedata.map((o, i) => {
         detsarr.push(o["TRANSACTION TYPE"]);
         var paidin = o["PAID IN"].replace(/,/g, "").replace(/-/g, "");
         var paidout = o["PAID OUT"].replace(/,/g, "").replace(/-/g, "");
-  
+
         if (o["PAID IN"] === "0.00") {
           amount.push(parseInt(paidout));
         } else if (o["PAID OUT"] === "0.00") {
@@ -104,6 +106,7 @@ const Statement = (props) => {
     } catch (error) {
       if (error) {
         alert('Something went wrong😢, please refresh the page and try again')
+        window.location.reload()
       }
     }
   }, [piedata]);
@@ -168,234 +171,236 @@ const Statement = (props) => {
     });
     // set states for top ten transcation details and amount
 
-  // find total spent on fuliza and trancation costs, fuliza cost and wtihdrawal charges
-  let fulizaarr = [];
-  let trancarr = [];
-  let fulizacost = [];
-  let fulizatrans = [];
-  let wcost = [];
-  let pbchargearr = [];
-  let tillchargearr = [];
-  let airtimeCost = [];
-  let totalbal = 0;
-  let rej = 0;
-  let avgbal = [];
-  let months = [];
-  let twoyears = [];
-  let year = [];
-  let avgmonthbal = [];
-  let avgful = [];
-  let avgmonthbal2 = [];
-  let avgful2 = [];
-  let totaltrans = 0;
-  let totalfultrans = 0;
-  const month = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ];
-  let date = [];
-  let brknstatement = [];
-  const monthsName = [];
-  const monthsName2 = [];
+    // find total spent on fuliza and trancation costs, fuliza cost and wtihdrawal charges
+    let fulizaarr = [];
+    let trancarr = [];
+    let fulizacost = [];
+    let fulizatrans = [];
+    let wcost = [];
+    let pbchargearr = [];
+    let tillchargearr = [];
+    let airtimeCost = [];
+    let totalbal = 0;
+    let rej = 0;
+    let avgbal = [];
+    let months = [];
+    let twoyears = [];
+    let year = [];
+    let avgmonthbal = [];
+    let avgful = [];
+    let avgmonthbal2 = [];
+    let avgful2 = [];
+    let totaltrans = 0;
+    let totalfultrans = 0;
+    const month = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC",
+    ];
+    let date = [];
+    let brknstatement = [];
+    const monthsName = [];
+    const monthsName2 = [];
 
-  // for other below
+    // for other below
 
-  let sndmoneydets = [];
-  let arr4 = [];
-  let phonenum = [];
-  let pbillnamearr = []; // for till
-  let pbamnt = []; // for till
-  let paybillnam = [];
-  let paidinnam = [];
-  let paidinamnt = [];
-  let thisdamnthing = [];
-  let ac = [];
-  let ac2 = [];
-  let onearr = [];
-  let twoarr = [];
-  let threearr = [];
-  const forbiz = []
+    let sndmoneydets = [];
+    let arr4 = [];
+    let phonenum = [];
+    let pbillnamearr = []; // for till
+    let pbamnt = []; // for till
+    let paybillnam = [];
+    let paidinnam = [];
+    let paidinamnt = [];
+    let thisdamnthing = [];
+    let ac = [];
+    let ac2 = [];
+    let onearr = [];
+    let twoarr = [];
+    let threearr = [];
+    const forbiz = []
 
-  let anotherarr = [];
-  let anotherarr2 = [];
-  let anotherarr3 = [];
+    let anotherarr = [];
+    let anotherarr2 = [];
+    let anotherarr3 = [];
 
 
-  const fuliza = sttdata.map((o, i) => {
-    if (o.Details === "OverDraft of Credit Party") {
-      totalfultrans++;
-      var trueval = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
-      if (trueval === "" || trueval === "Paid In") {
-        trueval = 0;
+    const fuliza = sttdata.map((o, i) => {
+      if (o.Details === "OverDraft of Credit Party") {
+        totalfultrans++;
+        var trueval = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
+        if (trueval === "" || trueval === "Paid In") {
+          trueval = 0;
+        }
+        fulizaarr.push(parseInt(trueval));
       }
-      fulizaarr.push(parseInt(trueval));
-    }
-    if (o.Details === "Customer Transfer of Funds\rCharge") {
-      var trueva2 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-      if (trueva2 === "" || trueva2 === "Withdrawn") {
-        trueva2 = 0;
+      if (o.Details === "Customer Transfer of Funds\rCharge") {
+        var trueva2 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+        if (trueva2 === "" || trueva2 === "Withdrawn") {
+          trueva2 = 0;
+        }
+        trancarr.push(parseInt(trueva2));
       }
-      trancarr.push(parseInt(trueva2));
-    }
-    if (o.Details === "OD Loan Repayment to 232323 -\rM-PESA Overdraw") {
-      var trueva3 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-      if (trueva3 === "" || trueva3 === "Withdrawn") {
-        trueva3 = 0;
+      if (o.Details === "OD Loan Repayment to 232323 -\rM-PESA Overdraw") {
+        var trueva3 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+        if (trueva3 === "" || trueva3 === "Withdrawn") {
+          trueva3 = 0;
+        }
+        fulizacost.push(parseInt(trueva3));
       }
-      fulizacost.push(parseInt(trueva3));
-    }
-    if (o.Details === "Withdrawal Charge") {
-      var trueva4 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-      if (trueva4 === "" || trueva4 === "Withdrawn") {
-        trueva4 = 0;
+      if (o.Details === "Withdrawal Charge") {
+        var trueva4 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+        if (trueva4 === "" || trueva4 === "Withdrawn") {
+          trueva4 = 0;
+        }
+        wcost.push(parseInt(trueva4));
       }
-      wcost.push(parseInt(trueva4));
-    }
-    if (o.Details === "Pay Bill Charge") {
-      var trueva5 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-      if (trueva5 === "" || trueva5 === "Withdrawn") {
-        trueva5 = 0;
+      if (o.Details === "Pay Bill Charge") {
+        var trueva5 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+        if (trueva5 === "" || trueva5 === "Withdrawn") {
+          trueva5 = 0;
+        }
+        pbchargearr.push(parseInt(trueva5));
       }
-      pbchargearr.push(parseInt(trueva5));
-    }
-    if (o.Details === "Pay Merchant Charge") {
-      var trueva6 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-      if (trueva6 === "" || trueva6 === "Withdrawn") {
-        trueva6 = 0;
+      if (o.Details === "Pay Merchant Charge") {
+        var trueva6 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+        if (trueva6 === "" || trueva6 === "Withdrawn") {
+          trueva6 = 0;
+        }
+        tillchargearr.push(parseInt(trueva6));
       }
-      tillchargearr.push(parseInt(trueva6));
-    }
-    if (o.Details === "Airtime Purchase") {
-      var trueva7 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-      if (trueva7 === "" || trueva6 === "Withdrawn") {
-        trueva7 = 0;
+      if (o.Details === "Airtime Purchase") {
+        var trueva7 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+        if (trueva7 === "" || trueva6 === "Withdrawn") {
+          trueva7 = 0;
+        }
+        airtimeCost.push(parseInt(trueva7));
       }
-      airtimeCost.push(parseInt(trueva7));
-    }
-    if (o.Balance === "Balance") {
-      rej++;
-    } else {
-      let bal = o.Balance.replace(/,/g, "");
-      totalbal = totalbal + parseInt(bal);
-    }
-    if (o.Details.startsWith('Business')) {
-      paidinnam.push(o)
-    }
+      if (o.Balance === "Balance") {
+        rej++;
+      } else {
+        let bal = o.Balance.replace(/,/g, "");
+        totalbal = totalbal + parseInt(bal);
+      }
+      if (o.Details.startsWith('Business')) {
+        paidinnam.push(o)
+      }
 
-    if (
-      o.Details.includes("Merchant Payment to") ||
-      o.Details.includes("Customer Transfer to") ||
-      o.Details.includes("Pay Bill Online to") ||
-      o.Details.includes("Pay Bill to")
-    ) {
-      totaltrans++;
-    }
+      if (
+        o.Details.includes("Merchant Payment to") ||
+        o.Details.includes("Customer Transfer to") ||
+        o.Details.includes("Pay Bill Online to") ||
+        o.Details.includes("Pay Bill to")
+      ) {
+        totaltrans++;
+      }
 
-    let f = o["Completion Time"].split("-");
-    if (f[0] !== "Completion Time") {
-      if (!months.includes(f[1])) {
-        if (f[1]) {
-          months.push(f[1]);
+      let f = o["Completion Time"].split("-");
+      if (f[0] !== "Completion Time") {
+        if (!months.includes(f[1])) {
+          if (f[1]) {
+            months.push(f[1]);
+          }
+        }
+        if (!year.includes(f[0])) {
+          year.push(f[0]);
+        }
+        // check total number of months by checking first index in sttdata and minus from last index
+        //  const count = months.filter(x => x === f[1]).length;
+        //  if (count < 2) {
+
+        //     months.push(f[1])
+        //  }
+        // if (months.includes(f[1]) && year.includes(f[0])) {
+        //   console.log('somthing')
+        // }
+      }
+      var q = o["Completion Time"];
+      if (i === 0) {
+        if (q !== "Completion Time") {
+          date.push(new Date(q));
         }
       }
-      if (!year.includes(f[0])) {
-        year.push(f[0]);
-      }
-      // check total number of months by checking first index in sttdata and minus from last index
-      //  const count = months.filter(x => x === f[1]).length;
-      //  if (count < 2) {
+      if (i === sttdata.length - 1) {
+        setloadstate(false)
+        setloaddone(true)
+        let divide = sttdata.length - rej;
+        var final = totalbal / divide;
+        avgbal.push(parseInt(final));
+        if (q !== "Completion Time") {
+          date.push(new Date(q));
+        }
+        const diffTime = Math.abs(date[1] - date[0]);
+        const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
+        if (diffMonths < 1) {
+          date[2] = '<1'
+          setonemonth(false)
 
-      //     months.push(f[1])
-      //  }
-      // if (months.includes(f[1]) && year.includes(f[0])) {
-      //   console.log('somthing')
-      // }
-    }
-    var q = o["Completion Time"];
-    if (i === 0) {
-      if (q !== "Completion Time") {
-        date.push(new Date(q));
-      }
-    }
-    if (i === sttdata.length - 1) {
-      let divide = sttdata.length - rej;
-      var final = totalbal / divide;
-      avgbal.push(parseInt(final));
-      if (q !== "Completion Time") {
-        date.push(new Date(q));
-      }
-      const diffTime = Math.abs(date[1] - date[0]);
-      const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
-     if (diffMonths < 1) {
-      date[2] = '<1'
-      setonemonth(false)
+        } else if (diffMonths <= 2) {
+          setonemonth(false)
+        }
+        else {
+          date[2] = diffMonths;
+        }
 
-     } else if (diffMonths<=2) {
-      setonemonth(false)
-     }
-     else {
-       date[2] = diffMonths;
-     }
-     
-      if (diffMonths >= 22 && diffMonths < 25) {
-        // set state true when this is true
-        settwoyearline(true);
-        let miaka = diffTime / 2;
-        date.push(miaka);
-        // itakuwa the same ukichukua months za two years, max 12 for arr
-        months.map((o, n) => {
-          if (n !== 0) {
-            twoyears.push(o);
-          }
-          if (n === months.length - 1) {
-            twoyears[11] = "0" + (parseInt(o) - 1);
-          }
-        });
-      }
-      if (diffMonths < 22 && diffMonths > 12) {
-        // two year statement is not 24 months, data shown is for the past year
-        // set state true for this case
-        brknstatement.push(Math.abs(date[1]) - 31557600000);
-        setbrokenstt(true);
-      }
-      // trying the for paidin biz here
+        if (diffMonths >= 22 && diffMonths < 25) {
+          // set state true when this is true
+          settwoyearline(true);
+          let miaka = diffTime / 2;
+          date.push(miaka);
+          // itakuwa the same ukichukua months za two years, max 12 for arr
+          months.map((o, n) => {
+            if (n !== 0) {
+              twoyears.push(o);
+            }
+            if (n === months.length - 1) {
+              twoyears[11] = "0" + (parseInt(o) - 1);
+            }
+          });
+        }
+        if (diffMonths < 22 && diffMonths > 12) {
+          // two year statement is not 24 months, data shown is for the past year
+          // set state true for this case
+          brknstatement.push(Math.abs(date[1]) - 31557600000);
+          setbrokenstt(true);
+        }
+        // trying the for paidin biz here
 
-      for (const o of paidinnam) {
-        if (o.Details.startsWith("Business")) {
-          let getnam = o.Details.replace(/\r/g, " ")
-            .split(" ")
-            .slice(5)
-            .slice(0, 2)
-            .join(" ");
+        for (const o of paidinnam) {
+          if (o.Details.startsWith("Business")) {
+            let getnam = o.Details.replace(/\r/g, " ")
+              .split(" ")
+              .slice(5)
+              .slice(0, 2)
+              .join(" ");
             let pbillnam = getnam.toUpperCase();
             // if (!paidinnam.includes(pbillnam)) {
             //   paidinnam.push(pbillnam);
             // }
             var truev = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
-          if (truev === "" || truev === "Paid In") {
-            truev = 0;
+            if (truev === "" || truev === "Paid In") {
+              truev = 0;
+            }
+            let existing = forbiz.find((a) => a.name === pbillnam);
+            if (existing) {
+              existing.amount += parseInt(truev);
+            } else {
+              forbiz.push({ name: pbillnam, amount: parseInt(truev) });
+            }
           }
-          let existing = forbiz.find((a) => a.name === pbillnam);
-          if (existing) {
-            existing.amount += parseInt(truev);
-          } else {
-            forbiz.push({ name: pbillnam, amount: parseInt(truev) });
-          }
-        } 
+        }
+        threearr.push(forbiz)
       }
-      threearr.push(forbiz)
-    }
-  });
+    });
 
     // get similar transcations
     const gettranc = sttdata.reduce((a, o) => {
@@ -595,7 +600,6 @@ const Statement = (props) => {
         anotherarr2.push(o);
       }
     });
-
     // checker for business paid in
     var forbizpaid = threearr.filter((e) => e.length);
     var finalres3 = forbizpaid.flat(1);
@@ -699,7 +703,7 @@ const Statement = (props) => {
       setPbamnt(sortamnt);
     }
 
-  
+
     const sum = fulizaarr.reduce((total, value) => total + value, 0);
     const fulizacostsum = fulizacost.reduce((total, value) => total + value, 0);
     const trans = trancarr.reduce((total, value) => total + value, 0);
@@ -749,13 +753,11 @@ const Statement = (props) => {
                   }
                 }
               }
-              if (Math.abs(date[0] - finaldate) > date[3]) 
-              {
+              if (Math.abs(date[0] - finaldate) > date[3]) {
                 if (t === datesplit[1]) {
                   let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
                   ar2.push(parseInt(bal));
                   nump++;
-                  console.log(a)
                   if (a.Details === "OverDraft of Credit Party") {
                     var trueva4 = a["Paid In"]
                       .replace(/,/g, "")
@@ -764,7 +766,6 @@ const Statement = (props) => {
                       trueva4 = 0;
                     }
                     fularr2.push(parseInt(trueva4));
-                    console.log(fularr2)
                   }
                 }
               }
@@ -803,7 +804,6 @@ const Statement = (props) => {
           let num = 0;
           const quik = sttdata.map((a, b) => {
             let f = a["Completion Time"];
-            console.log(a)
             if (f !== "Completion Time") {
               let finaldate = new Date(f);
               let datesplit = a["Completion Time"].split("-");
@@ -837,7 +837,7 @@ const Statement = (props) => {
             }
           });
         });
-      } else{
+      } else {
         let monthsfinal = months.reverse();
         let func = monthsfinal.map((s, l) => {
           let ar = [];
@@ -1033,7 +1033,7 @@ const Statement = (props) => {
           "rgb(227, 119, 194)",
           "rgb(244, 208, 63)",
           "rgb(210, 82, 127)"
-          
+
         ],
         pointBackgroundColor: "aqua",
         borderWidth: 1,
@@ -1052,7 +1052,7 @@ const Statement = (props) => {
           "rgb(227, 119, 194)",
           "rgb(244, 208, 63)",
           "rgb(210, 82, 127)"
-          
+
         ],
       },
     ],
@@ -1066,7 +1066,7 @@ const Statement = (props) => {
     datasets: [
       {
         data: bizpaidinnam.map((o) => o.amount),
-        backgroundColor: [ 
+        backgroundColor: [
           "rgb(38, 194, 128)",
           "rgb(236, 113, 149)",
           "rgb(252, 166, 2)",
@@ -1081,11 +1081,11 @@ const Statement = (props) => {
           "rgb(227, 119, 194)",
           "rgb(244, 208, 63)",
           "rgb(210, 82, 127)"
-          
+
         ],
         pointBackgroundColor: "aqua",
         borderWidth: 1,
-        borderColor: [ 
+        borderColor: [
           "rgb(38, 194, 128)",
           "rgb(236, 113, 149)",
           "rgb(252, 166, 2)",
@@ -1100,7 +1100,7 @@ const Statement = (props) => {
           "rgb(227, 119, 194)",
           "rgb(244, 208, 63)",
           "rgb(210, 82, 127)"
-          
+
         ],
       },
     ],
@@ -1239,217 +1239,229 @@ const Statement = (props) => {
 
   return (
     <div className="simu">
-      <div className="row g-0 justify-content-around mt-2">
-        <div className="alaa d-flex flex-row-reverse bg-info bg-opacity-50 p-4 justify-content-center">
-          <button
-            type="button"
-            className="btn btn-warning me-0"
-            onClick={rtnclick}
-          >
-            Try With Another PDF
-            {/* <Link to='/Upload'></Link> */}
-          </button>
-          <h3 className="text-center w-75 ms-5 ">
-            Statement Period: {miakambili[0]} months
-          </h3>
-        </div>
+      {loadstate &&
+        <div className="d-flex flex-row position-absolute top-50 start-50 translate-middle">
+          <h4 className="load m-1 text-info">Adding data to charts...</h4>
 
-        <div className="nkt col-12 col-sm-8 col-md-8 p-5">
-          <div className="mawe">
-            <div className="wolan mb-4">
-              <h4 className="text-center text-info">
-                Who Have You Sent Money to?
-              </h4>
-              <Bar data={dataset} width={100} height={50} options={options} />
-            </div>
-            <div className="wolan mb-4">
-              <h4 className="text-center text-info">
-                Which Till Number Have you paid the most?
-              </h4>
-
-              <Bar
-                data={dataset2}
-                width={100}
-                height={50}
-                options={bar2options}
-              />
-            </div>
-            <div className="wolani mb-5">
-              <h4 className="text-center text-info">
-                Which Pay Bill Number Have you paid the most?
-              </h4>
-
-              <Bar
-                data={dataset3}
-                width={100}
-                height={50}
-                options={bar3options}
-              />
-            </div>
-              <h4 className="text-center text-info">Who has sent you money</h4>
-            <div className="sasa">
-
-              <Doughnut
-                data={pie3dataset}
-                options={pie3options}
-                width={100}
-                height={50}
-              />
-              <Doughnut
-                data={pie4dataset}
-                width={100}
-                height={50}
-                options={pie3options}
-              />
-            </div>
+          <div class="spinner-grow spinner-grow-sm text-info m-1" role="status">
+            <span class="visually-hidden">Loading...</span>
           </div>
-  {onemonth &&   <div className="manze mt-4">
-            <h4 className="text-center text-info">Balance Outlook</h4>
-            {brokenstt && (
-              <h6 className="text-center">
-                Your statement is less than 24 months, last 12 months are
-                considered for the chart below
-              </h6>
-            )}
-            {twoyearline && (
-              <h6 className="text-center">
-                Looks like you have uploaded a two year statement, the graphs
-                will compare balance outlook for the two years
-              </h6>
-            )}
-            <h6 className="text-center text-warning mt-3">
-              {monthnam[0]} {miakambili[3]} - {monthnam[monthnam.length - 1]}{" "}
-              {miakambili[2]}
-            </h6>
-            <Line
-              data={linedata}
-              width={100}
-              height={50}
-              options={lineoptions}
-            />
-            {twoyearline && (
-              <>
-                <h6 className="text-center text-warning mt-3">
-                  {monthnam2[0]} {miakambili[2]} -{" "}
-                  {monthnam2[monthnam2.length - 1]} {miakambili[1]}
-                </h6>
-                <Line
-                  data={linedata2}
+
+        </div>
+      }
+      {loaddone &&
+        <div className="row g-0 justify-content-around mt-2">
+          <div className="alaa d-flex flex-row-reverse bg-info bg-opacity-50 p-4 justify-content-center">
+            <button
+              type="button"
+              className="btn btn-warning me-0"
+              onClick={rtnclick}
+            >
+              Try With Another PDF
+              {/* <Link to='/Upload'></Link> */}
+            </button>
+            <h3 className="text-center w-75 ms-5 ">
+              Statement Period: {miakambili[0]} months
+            </h3>
+          </div>
+
+          <div className="nkt col-12 col-sm-8 col-md-8 p-5">
+            <div className="mawe">
+              <div className="wolan mb-4">
+                <h4 className="text-center text-info">
+                  Who Have You Sent Money to?
+                </h4>
+                <Bar data={dataset} width={100} height={50} options={options} />
+              </div>
+              <div className="wolan mb-4">
+                <h4 className="text-center text-info">
+                  Which Till Number Have you paid the most?
+                </h4>
+
+                <Bar
+                  data={dataset2}
                   width={100}
                   height={50}
-                  options={lineoptions}
+                  options={bar2options}
                 />
-              </>
-            )}
-          </div>}
+              </div>
+              <div className="wolani mb-5">
+                <h4 className="text-center text-info">
+                  Which Pay Bill Number Have you paid the most?
+                </h4>
+
+                <Bar
+                  data={dataset3}
+                  width={100}
+                  height={50}
+                  options={bar3options}
+                />
+              </div>
+              <h4 className="text-center text-info">Who has sent you money</h4>
+              <div className="sasa">
+
+                <Doughnut
+                  data={pie3dataset}
+                  options={pie3options}
+                  width={100}
+                  height={50}
+                />
+                <Doughnut
+                  data={pie4dataset}
+                  width={100}
+                  height={50}
+                  options={pie3options}
+                />
+              </div>
+            </div>
+            {onemonth && <div className="manze mt-4">
+              <h4 className="text-center text-info">Balance Outlook</h4>
+              {brokenstt && (
+                <h6 className="text-center">
+                  Your statement is less than 24 months, last 12 months are
+                  considered for the chart below
+                </h6>
+              )}
+              {twoyearline && (
+                <h6 className="text-center">
+                  Looks like you have uploaded a two year statement, the graphs
+                  will compare balance outlook for the two years
+                </h6>
+              )}
+              <h6 className="text-center text-warning mt-3">
+                {monthnam[0]} {miakambili[3]} - {monthnam[monthnam.length - 1]}{" "}
+                {miakambili[2]}
+              </h6>
+              <Line
+                data={linedata}
+                width={100}
+                height={50}
+                options={lineoptions}
+              />
+              {twoyearline && (
+                <>
+                  <h6 className="text-center text-warning mt-3">
+                    {monthnam2[0]} {miakambili[2]} -{" "}
+                    {monthnam2[monthnam2.length - 1]} {miakambili[1]}
+                  </h6>
+                  <Line
+                    data={linedata2}
+                    width={100}
+                    height={50}
+                    options={lineoptions}
+                  />
+                </>
+              )}
+            </div>}
+          </div>
+
+          <div className="mavitu container col-5 col-md-4">
+            <h4 className="text-center text-info mt-3">Insights</h4>
+
+            <div className="row d-flex flex-wrap justify-content-evenly">
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Total Paid In</h5>
+                  <p className="card-text">KES: {formatter.format(total[0])}</p>
+                </div>
+              </div>
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Total Paid Out</h5>
+                  <p className="card-text">KES: {formatter.format(total[1])}</p>
+                </div>
+              </div>
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Total Fuliza Taken</h5>
+                  <p className="card-text">
+                    KES: {formatter.format(tranccostAmount[0])}
+                  </p>
+                </div>
+              </div>
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Fuliza Charges</h5>
+                  <p className="card-text">
+                    KES: {formatter.format(tranccostAmount[1])}
+                  </p>
+                </div>
+              </div>
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Send Money Costs</h5>
+                  <p className="card-text">
+                    KES: {formatter.format(tranccostAmount[2])}
+                  </p>
+                </div>
+              </div>
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Withdrawal Charges</h5>
+                  <p className="card-text">
+                    KES: {formatter.format(tranccostAmount[3])}
+                  </p>
+                </div>
+              </div>
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Paybill Charges</h5>
+                  <p className="card-text">
+                    KES: {formatter.format(lpcharges[0])}
+                  </p>
+                </div>
+              </div>
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Till Charges</h5>
+                  <p className="card-text">
+                    KES: {formatter.format(lpcharges[1])}
+                  </p>
+                </div>
+              </div>
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Airtime Bought</h5>
+                  <p className="card-text">
+                    KES: {formatter.format(airtimebought)}
+                  </p>
+                </div>
+              </div>
+              <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
+                <div className="card-body">
+                  <h5 className="card-title">Avg. Balance</h5>
+                  <p className="card-text">
+                    KES: {formatter.format(lpcharges[2])}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="donut h-25 mt-3 mb-5">
+              <h4 className="text-center text-info">Transaction Summary</h4>
+
+              <Doughnut
+                data={piedataset}
+                width={100}
+                height={50}
+                options={pieoptions}
+              />
+            </div>
+            <div className="donut h-25 mt-3">
+              <h5 className="text-center text-info">
+                Transactions done without Fuliza vs Fuliza Transactions
+              </h5>
+
+              <Doughnut
+                data={pie2dataset}
+                width={100}
+                height={50}
+                options={pie2options}
+              />
+            </div>
+          </div>
         </div>
-
-        <div className="mavitu container col-5 col-md-4">
-          <h4 className="text-center text-info mt-3">Insights</h4>
-
-          <div className="row d-flex flex-wrap justify-content-evenly">
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Total Paid In</h5>
-                <p className="card-text">KES: {formatter.format(total[0])}</p>
-              </div>
-            </div>
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Total Paid Out</h5>
-                <p className="card-text">KES: {formatter.format(total[1])}</p>
-              </div>
-            </div>
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Total Fuliza Taken</h5>
-                <p className="card-text">
-                  KES: {formatter.format(tranccostAmount[0])}
-                </p>
-              </div>
-            </div>
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Fuliza Charges</h5>
-                <p className="card-text">
-                  KES: {formatter.format(tranccostAmount[1])}
-                </p>
-              </div>
-            </div>
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Send Money Costs</h5>
-                <p className="card-text">
-                  KES: {formatter.format(tranccostAmount[2])}
-                </p>
-              </div>
-            </div>
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Withdrawal Charges</h5>
-                <p className="card-text">
-                  KES: {formatter.format(tranccostAmount[3])}
-                </p>
-              </div>
-            </div>
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Paybill Charges</h5>
-                <p className="card-text">
-                  KES: {formatter.format(lpcharges[0])}
-                </p>
-              </div>
-            </div>
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Till Charges</h5>
-                <p className="card-text">
-                  KES: {formatter.format(lpcharges[1])}
-                </p>
-              </div>
-            </div>
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Airtime Bought</h5>
-                <p className="card-text">
-                  KES: {formatter.format(airtimebought)}
-                </p>
-              </div>
-            </div>
-            <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
-              <div className="card-body">
-                <h5 className="card-title">Avg. Balance</h5>
-                <p className="card-text">
-                  KES: {formatter.format(lpcharges[2])}
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="donut h-25 mt-3 mb-5">
-            <h4 className="text-center text-info">Transaction Summary</h4>
-
-            <Doughnut
-              data={piedataset}
-              width={100}
-              height={50}
-              options={pieoptions}
-            />
-          </div>
-          <div className="donut h-25 mt-3">
-            <h5 className="text-center text-info">
-              Transactions done without Fuliza vs Fuliza Transactions
-            </h5>
-
-            <Doughnut
-              data={pie2dataset}
-              width={100}
-              height={50}
-              options={pie2options}
-            />
-          </div>
-        </div>
-      </div>
+      }
     </div>
   );
 };
