@@ -1271,13 +1271,22 @@ const Statement = (props) => {
                 <h4 className="text-center text-info">
                   Who Have You Sent Money to?
                 </h4>
+                {screenWidth &&
+                <div>
+              <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
+                </div>
+                }
                 <Bar data={dataset} width={100} height={50} options={options} />
               </div>
               <div className="wolan mb-4">
                 <h4 className="text-center text-info">
                   Which Till Number Have you paid the most?
                 </h4>
-
+                {screenWidth &&
+                <div>
+              <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
+                </div>
+                }
                 <Bar
                   data={dataset2}
                   width={100}
@@ -1289,7 +1298,11 @@ const Statement = (props) => {
                 <h4 className="text-center text-info">
                   Which Pay Bill Number Have you paid the most?
                 </h4>
-
+                {screenWidth &&
+                <div>
+              <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
+                </div>
+                }
                 <Bar
                   data={dataset3}
                   width={100}
