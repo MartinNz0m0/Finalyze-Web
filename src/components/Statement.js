@@ -3,10 +3,7 @@ import * as d3 from "d3";
 import tstatement from "./tstatement.csv";
 import { Bar, Pie, Doughnut, Line } from "react-chartjs-2";
 import { defaults } from "chart.js";
-import { Chart as ChartJS } from "chart.js/auto";
 import { Link, useLocation } from "react-router-dom";
-import Upload from "./Upload";
-
 
 // formater from stackoverflow
 const formatter = new Intl.NumberFormat("en-US", {
