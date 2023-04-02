@@ -12,6 +12,11 @@
 /build
 build.zip
 
+#components
+UserDashboard.js
+Login.js
+Register.js
+
 # misc
 .DS_Store
 .env.local

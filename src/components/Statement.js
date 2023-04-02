@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import * as d3 from "d3";
 import tstatement from "./tstatement.csv";
 import { Bar, Pie, Doughnut, Line } from "react-chartjs-2";
-import { defaults } from "chart.js";
+import { UserContext } from "./UserContext";
 import { Link, useLocation } from "react-router-dom";
+import Chart from 'chart.js/auto';
+// import { CategoryScale, Chart, ArcElement, LinearScale, BarElement, defaults, Interaction } from "chart.js";
+
+// Chart.register(CategoryScale);
+// Chart.register(ArcElement)
+// Chart.register(LinearScale)
+// // Chart.register(Interaction)
+// Chart.register(BarElement)
 
 // formater from stackoverflow
 const formatter = new Intl.NumberFormat("en-US", {
@@ -47,11 +55,13 @@ const Statement = (props) => {
   const [onemonth, setonemonth] = useState(true);
   const [loadstate, setloadstate] = useState(true);
   const [loaddone, setloaddone] = useState(false);
+  const { user, setUser } = useContext(UserContext)
 
 
   useEffect(() => {
     setSttdata(props.data);
     setPiedata(props.pdata);
+    console.log(props.data)
     // csv cleanup remove first 9 rows
     // d3.text(tstatement).then(function (data) {
     //   data = d3.csvParse(data.split("\n").slice(9).join("\n"));
@@ -72,7 +82,7 @@ const Statement = (props) => {
   React.useEffect(() => {
     if (window.innerWidth < 760) {
       setScreenWidth(true);
-      defaults.font.size = 8;
+      // defaults.font.size = 8; // remember to add this
     }
   }, []);
   useEffect(() => {
@@ -102,6 +112,7 @@ const Statement = (props) => {
       setPiechartdets(detsarr);
     } catch (error) {
       if (error) {
+        console.log(error)
         alert('Something went wrong😢, please refresh the page and try again')
         window.location.reload()
       }
@@ -1248,7 +1259,23 @@ const Statement = (props) => {
       }
       {loaddone &&
         <div className="row g-0 justify-content-around mt-2">
+          {user ? 
           <div className="alaa d-flex flex-row-reverse bg-info bg-opacity-50 p-4 justify-content-center">
+          <button
+            type="button"
+            className="btn btn-warning me-0"
+            onClick={rtnclick}
+          >
+            Back to dashboard
+            {/* <Link to='/Upload'></Link> */}
+          </button>
+          <h3 className="text-center w-75 ms-5 ">
+            Statement Period: {miakambili[0]} months
+          </h3>
+        </div>
+
+        :
+<div className="alaa d-flex flex-row-reverse bg-info bg-opacity-50 p-4 justify-content-center">
             <button
               type="button"
               className="btn btn-warning me-0"
@@ -1262,6 +1289,8 @@ const Statement = (props) => {
             </h3>
           </div>
 
+        }
+
           <div className="nkt col-12 col-sm-8 col-md-8 p-5">
             <div className="mawe">
               <div className="wolan mb-4">
@@ -1269,9 +1298,9 @@ const Statement = (props) => {
                   Who Have You Sent Money to?
                 </h4>
                 {screenWidth &&
-                <div>
-              <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
-                </div>
+                  <div>
+                    <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
+                  </div>
                 }
                 <Bar data={dataset} width={100} height={50} options={options} />
               </div>
@@ -1280,9 +1309,9 @@ const Statement = (props) => {
                   Which Till Number Have you paid the most?
                 </h4>
                 {screenWidth &&
-                <div>
-              <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
-                </div>
+                  <div>
+                    <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
+                  </div>
                 }
                 <Bar
                   data={dataset2}
@@ -1296,9 +1325,9 @@ const Statement = (props) => {
                   Which Pay Bill Number Have you paid the most?
                 </h4>
                 {screenWidth &&
-                <div>
-              <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
-                </div>
+                  <div>
+                    <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
+                  </div>
                 }
                 <Bar
                   data={dataset3}

@@ -8,15 +8,24 @@ import AboutView from "./components/AboutView";
 import Statement from "./components/Statement";
 import './App.css';
 import Howto from "./components/Howto";
+import Login from "./components/Login";
+import { useContext, useState } from "react";
+import { createContext } from "react";
+import { UserContext } from "./components/UserContext";
+import Register from "./components/Register";
+import UserDashboard from "./components/UserDashboard";
+
 
 
 function App() {
 
+  const [user, setUser] = useState(null)
 
   return (
     <div className="App">
       {/* <NavBar searchText={searchText} setSearchText={setSearchText}/> */}
       <Hero/>
+       <UserContext.Provider value={{ user, setUser}}>
       <Switch> 
         <Route path="/" exact>
           <Upload />
@@ -29,9 +38,13 @@ function App() {
        */}
         <Route path='/howto' component={Howto}/> 
         <Route path='/Statement' component={Statement} />
-        {/* <Route path='/Upload' component={Upload} /> */}
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
+        <Route path='/dashboard' component={UserDashboard} />
+
         <Route path='*' component={notFound}></Route>
       </Switch>
+        </UserContext.Provider>
     </div>
   );
 }

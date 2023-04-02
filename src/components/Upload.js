@@ -1,9 +1,11 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 import Statement from "./Statement";
 import LoadingSequence from "./LoadingSequence";
 import axios from "axios";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import ProgressBar from "./ProgressBar";
+import { UserContext } from "./UserContext";
+
 
 const Upload = () => {
   const [uploadfile, SetUploadfile] = useState(null);
@@ -25,7 +27,8 @@ const Upload = () => {
   const [progress, setProgress] = useState(0);
   const [Color, setColor] = useState("progress-bar bg-info bg-opacity-75");
   const [uploadingpdf, setuploadingpdf] = useState(false)
-
+  const { user, setUser } = useContext(UserContext)
+  const [pdfsave, setpdfsave] = useState(false);
 
   const onChange = (e) => {
     if (e.target.files[0]) {
@@ -55,7 +58,7 @@ const Upload = () => {
 
       formData.append("file", uploadfile);
 
-      fetch("https://backend.finalyze.app/api", {
+      fetch("http://localhost:8000/api", {
         method: "POST",
         body: formData,
       })
@@ -85,12 +88,12 @@ const Upload = () => {
   const btnClick = () => {
     Setdatanotloaded(false);
     setloadingstate(true)
-    fetch("https://backend.finalyze.app/data", {
+    fetch("http://localhost:8000/data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fileselected, filepath }),
+      body: JSON.stringify({ fileselected, filepath, user, pdfsave }),
     })
       .then((response) => response.json())
       .then((result) => {
@@ -108,8 +111,8 @@ const Upload = () => {
     Setprivacy(false);
     axios
       .post(
-        "https://backend.finalyze.app/csv",
-        { fileselected, filepath, pdfpwd },
+        "http://localhost:8000/csv",
+        { fileselected, filepath, pdfpwd, user },
         {
           headers: {
             "Content-Type": "application/json",
@@ -143,6 +146,17 @@ const Upload = () => {
     document.getElementsByClassName('.pdfpass').value = ""
     SetPdfpwd("")
     Setprivacy(true)
+  }
+  const handleCheckboxChange = (e) => {
+    // Do something when the checkbox value changes
+    console.log(e.target.checked);
+    // set pdf dave to true
+    if (e.target.checked) {
+      setpdfsave(true)
+    }
+    else if (!e.target.checked) {
+      setpdfsave(false)
+    }
   }
 
   const helppop = (e) => {
@@ -250,6 +264,20 @@ const Upload = () => {
 
               </div>
             </div>
+
+            {user &&
+              <div className="mb-3 text-center">
+                <p>Your are logged in</p>
+                <div class="form-check">
+  <input class="form-check-input bg-secondary btn-outline-secondary" type="checkbox" value="" id="flexCheckDefault" onChange={handleCheckboxChange}/>
+  <label class="form-check-label" for="flexCheckDefault">
+    Check this box if you want to save this statement
+  </label>
+</div>
+
+              </div>
+            }
+
             <button
               type="submit"
               className="inn btn btn-submit btn-bg btn-outline-warning mb-4 mt-2 "
@@ -320,6 +348,7 @@ const Upload = () => {
           <Statement data={data} pdata={pdata} refresh={handleRefresh} />
         </div>
       )}
+
     </div>
   );
 };
