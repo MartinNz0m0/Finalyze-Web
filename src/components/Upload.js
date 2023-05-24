@@ -6,7 +6,6 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import ProgressBar from "./ProgressBar";
 import { UserContext } from "./UserContext";
 
-
 const Upload = () => {
   const [uploadfile, SetUploadfile] = useState(null);
   const [fileselected, SetFileselected] = useState();
@@ -22,12 +21,12 @@ const Upload = () => {
   const [filetype, Setfiletype] = useState(false);
   const [datapros, Setdatapros] = useState(false);
   const [privacy, Setprivacy] = useState(true);
-  const [showhelp, setshowhelp] = useState(false)
-  const [loadingstate, setloadingstate] = useState(false)
+  const [showhelp, setshowhelp] = useState(false);
+  const [loadingstate, setloadingstate] = useState(false);
   const [progress, setProgress] = useState(0);
   const [Color, setColor] = useState("progress-bar bg-info bg-opacity-75");
-  const [uploadingpdf, setuploadingpdf] = useState(false)
-  const { user, setUser } = useContext(UserContext)
+  const [uploadingpdf, setuploadingpdf] = useState(false);
+  const { user, setUser } = useContext(UserContext);
   const [pdfsave, setpdfsave] = useState(false);
 
   const onChange = (e) => {
@@ -40,7 +39,7 @@ const Upload = () => {
     Setdataloaded(false);
     Setupload(false);
     Setcsvcon(false);
-    setProgress(0)
+    setProgress(0);
     if (e.target.files[0].type !== "application/pdf") {
       Setfiletype(true);
     } else {
@@ -50,9 +49,9 @@ const Upload = () => {
 
   const onClick = () => {
     const interval = setInterval(() => {
-      setProgress(prevProgress => prevProgress + 20);
+      setProgress((prevProgress) => prevProgress + 20);
     }, 500);
-    setuploadingpdf(true)
+    setuploadingpdf(true);
     try {
       const formData = new FormData();
 
@@ -72,9 +71,9 @@ const Upload = () => {
             var btn = document.querySelector(".inn");
             btn.style.pointerEvents = "auto";
             document.querySelector(".ingine").innerHTML = "";
-            clearInterval(interval)
-            setProgress(300)
-            setColor("progress-bar bg-success bg-opacity-75")
+            clearInterval(interval);
+            setProgress(300);
+            setColor("progress-bar bg-success bg-opacity-75");
           }, 500);
         })
         .catch((err) => {
@@ -87,7 +86,7 @@ const Upload = () => {
 
   const btnClick = () => {
     Setdatanotloaded(false);
-    setloadingstate(true)
+    setloadingstate(true);
     fetch("http://localhost:8000/data", {
       method: "POST",
       headers: {
@@ -99,14 +98,14 @@ const Upload = () => {
       .then((result) => {
         Setdata(result[1]);
         Setpdata(result[0]);
-        setloadingstate(false)
+        setloadingstate(false);
         Setdataloaded(true);
       });
   };
   const csvClick = () => {
     Setdatapros(true);
     Setupload(false);
-    setuploadingpdf(false)
+    setuploadingpdf(false);
     Setpwdtrue(false);
     Setprivacy(false);
     axios
@@ -140,40 +139,43 @@ const Upload = () => {
   };
 
   const handleRefresh = () => {
-    Setdataloaded(false)
-    Setdatanotloaded(true)
-    Setcsvcon(false)
-    document.getElementsByClassName('.pdfpass').value = ""
-    SetPdfpwd("")
-    Setprivacy(true)
-  }
+    Setdataloaded(false);
+    Setdatanotloaded(true);
+    Setcsvcon(false);
+    document.getElementsByClassName(".pdfpass").value = "";
+    SetPdfpwd("");
+    Setprivacy(true);
+  };
   const handleCheckboxChange = (e) => {
     // Do something when the checkbox value changes
     console.log(e.target.checked);
+    if (user === 'demo') {
+      alert('You are not allowed to save the pdf in demo mode, your file will be deleted after viewing charts')
+      return
+    }
     // set pdf dave to true
     if (e.target.checked) {
-      setpdfsave(true)
+      setpdfsave(true);
+    } else if (!e.target.checked) {
+      setpdfsave(false);
     }
-    else if (!e.target.checked) {
-      setpdfsave(false)
-    }
-  }
+  };
 
   const helppop = (e) => {
-    const btn = document.querySelector('.mybtn')
-    const sumbua = document.querySelector('.sumbua')
+    const btn = document.querySelector(".mybtn");
+    const sumbua = document.querySelector(".sumbua");
     if (e.target !== sumbua && e.target !== btn) {
-      setshowhelp(false)
+      setshowhelp(false);
     }
-  }
+  };
 
-  window.addEventListener('click', helppop)
+  window.addEventListener("click", helppop);
+  console.log(user);
 
   setTimeout(() => {
     if (filetype) {
       document.querySelector(".woi").style.pointerEvents = "none";
     }
-
   }, 500);
 
   return (
@@ -181,12 +183,25 @@ const Upload = () => {
       {datanotloaded && (
         <div className="d-flex flex-column h-100 align-items-center">
           <div className="text-center bg-info bg-gradient bg-opacity-50 p-4 w-100">
-            <h2>
-              Welcome To Finalyze🚀
-            </h2>
-            <p>
-              Financial Analysis To Track Your Spending
-            </p>
+            <h2>Welcome To Finalyze🚀</h2>
+            <p>Financial Analysis To Track Your Spending</p>
+            {user ? (
+              <div>
+                <button className="position-absolute end-0 top-0 mt-5 me-5 btn btn-warning bg-opacity-50">
+                  <Link to="/dashboard" className="nav-link">
+                    Back to Dashboard
+                  </Link>
+                </button>
+              </div>
+            ) : (
+              <div>
+                <button className="position-absolute end-0 top-0 mt-5 me-5 btn btn-warning bg-opacity-50">
+                  <Link to="/login" className="nav-link">
+                    Login
+                  </Link>
+                </button>
+              </div>
+            )}
           </div>
           <h3 className="mt-5 text-center">
             Parse Your MPESA Statement and View Some Charts
@@ -214,11 +229,11 @@ const Upload = () => {
                 Upload
               </button>
             </div>
-            {uploadingpdf &&
+            {uploadingpdf && (
               <div className="prog">
                 <ProgressBar percent={progress} color={Color} />
               </div>
-            }
+            )}
             <p className="ingine"></p>
             {upload && (
               <div className="d-flex flex-column">
@@ -247,36 +262,50 @@ const Upload = () => {
                   aria-describedby="passwordHelpInline"
                 />
                 <label for="floatingInput">PDF code</label>
-                <button className="ms-3 mybtn btn btn-submit btn-sm btn-outline-dark" type="submit" onClick={() => setshowhelp(true)}>❔</button>
-                {
-                  showhelp &&
-
-
+                <button
+                  className="ms-3 mybtn btn btn-submit btn-sm btn-outline-dark"
+                  type="submit"
+                  onClick={() => setshowhelp(true)}
+                >
+                  ❔
+                </button>
+                {showhelp && (
                   <div className="sumbua position-absolute p-3 ms-5 text-center border border-info rounded border-opacity-25">
-                    <button className="clos position-absolute h-25 top-0 end-0 fs-4 btn btn-sm" onClick={() => setshowhelp(false)}>&times;</button>
+                    <button
+                      className="clos position-absolute h-25 top-0 end-0 fs-4 btn btn-sm"
+                      onClick={() => setshowhelp(false)}
+                    >
+                      &times;
+                    </button>
                     <p className="">
-                      Upon the statement request, 'SAFARICOM' sent you a text message. The message has the code for your pdf statement. Input The code sent to your phone by 'SAFARICOM'
-
+                      Upon the statement request, 'SAFARICOM' sent you a text
+                      message. The message has the code for your pdf statement.
+                      Input The code sent to your phone by 'SAFARICOM'
                     </p>
                   </div>
-                }
-
-
+                )}
               </div>
             </div>
 
-            {user &&
-              <div className="mb-3 text-center">
-                <p>Your are logged in</p>
-                <div class="form-check">
-  <input class="form-check-input bg-secondary btn-outline-secondary" type="checkbox" value="" id="flexCheckDefault" onChange={handleCheckboxChange}/>
-  <label class="form-check-label" for="flexCheckDefault">
-    Check this box if you want to save this statement
-  </label>
-</div>
-
+            {user && (
+              <div>
+                <div className="mb-3 text-center">
+                  <p>You are logged in</p>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input bg-secondary btn-outline-secondary"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckDefault"
+                      onChange={handleCheckboxChange}
+                    />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Check this box if you want to save this statement
+                    </label>
+                  </div>
+                </div>
               </div>
-            }
+            )}
 
             <button
               type="submit"
@@ -294,8 +323,7 @@ const Upload = () => {
                   </Link>
                 </button>
                 <button className="btn btn-submit btn-bg btn-outline-info m-3">
-                  <Link class='nav-link' to='/howto'>
-
+                  <Link class="nav-link" to="/howto">
                     How to use the app
                   </Link>
                 </button>
@@ -339,16 +367,13 @@ const Upload = () => {
           <div class="spinner-grow spinner-grow-sm text-info m-1" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
-
         </div>
       )}
       {dataloaded && (
-
         <div>
           <Statement data={data} pdata={pdata} refresh={handleRefresh} />
         </div>
       )}
-
     </div>
   );
 };

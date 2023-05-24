@@ -29,4 +29,29 @@ const  LoadingSequence = () => {
   );
 }
 
+// loading sequence for user dashboard
+const DashboardLoadingSequence = () => {
+  const [loadingText, setLoadingText] = useState("Your data is coming in hot! Let's do this!");
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => setLoadingText('Data fetched, like a boss😎.'), 800);
+
+    
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, []);
+
+  return (
+    <div className='d-flex flex-row text-center'>
+      <h5 className='mtii text-info m-1'>{loadingText}</h5>
+      <div className="mtii spinner-grow spinner-grow-sm text-info m-1 mt-2" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  );
+}
+
+
 export default LoadingSequence;
+export { DashboardLoadingSequence };

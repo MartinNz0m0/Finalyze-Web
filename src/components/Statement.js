@@ -3,8 +3,9 @@ import * as d3 from "d3";
 import tstatement from "./tstatement.csv";
 import { Bar, Pie, Doughnut, Line } from "react-chartjs-2";
 import { UserContext } from "./UserContext";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import Chart from 'chart.js/auto';
+import { FailedataloadAlert } from "./Alerts";
 // import { CategoryScale, Chart, ArcElement, LinearScale, BarElement, defaults, Interaction } from "chart.js";
 
 // Chart.register(CategoryScale);
@@ -21,11 +22,14 @@ const formatter = new Intl.NumberFormat("en-US", {
 
 
 const Statement = (props) => {
+  const history = useHistory();
   const rtnclick = () => {
-    props.refresh()
+    
+      props.refresh();
   };
   const [sttdata, setSttdata] = useState([]);
   const [piedata, setPiedata] = useState([]);
+  const [getdatafailed, setGetdatafailed] = useState(false);
   const [getdetsarr, setGetdetsarr] = useState([]);
   const [amountarr, setAmountarr] = useState([]);
   const [biggestReceivers, setBiggestReceivers] = useState([]);
@@ -61,7 +65,6 @@ const Statement = (props) => {
   useEffect(() => {
     setSttdata(props.data);
     setPiedata(props.pdata);
-    console.log(props.data)
     // csv cleanup remove first 9 rows
     // d3.text(tstatement).then(function (data) {
     //   data = d3.csvParse(data.split("\n").slice(9).join("\n"));
@@ -92,15 +95,16 @@ const Statement = (props) => {
     let total = [];
     try {
 
-      const transtype = piedata.map((o, i) => {
+      piedata.map((o, i) => {
         detsarr.push(o["TRANSACTION TYPE"]);
         var paidin = o["PAID IN"].replace(/,/g, "").replace(/-/g, "");
         var paidout = o["PAID OUT"].replace(/,/g, "").replace(/-/g, "");
 
-        if (o["PAID IN"] === "0.00") {
+        if (o["PAID IN"] == "0.00") {
           amount.push(parseInt(paidout));
         } else if (o["PAID OUT"] === "0.00") {
           amount.push(parseInt(paidin));
+          console.log(amount);
         } else if (o["PAID OUT"] === "0.00" && o["PAID IN"] === "0.00") {
           amount.push(0);
         } else if (o["TRANSACTION TYPE"] === "TOTAL:") {
@@ -110,785 +114,790 @@ const Statement = (props) => {
       setTotal(total);
       setPiechartamnt(amount);
       setPiechartdets(detsarr);
-    } catch (error) {
-      if (error) {
-        console.log(error)
-        alert('Something went wrong😢, please refresh the page and try again')
+    } catch (error) { 
+        rtnclick()
+        alert("Something went wrong on our end. Please try again.")
         window.location.reload()
-      }
+ 
     }
   }, [piedata]);
 
   useEffect(() => {
-    // max value
-    var maxwithdraw = Math.max.apply(
-      Math,
-      sttdata.map(function (o) {
+  try {
+      // max value
+      var maxwithdraw = Math.max.apply(
+        Math,
+        sttdata.map(function (o) {
+          var trueval = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+          if (trueval === "" || trueval === "Withdrawn") {
+            trueval = 0;
+          }
+          return Math.abs(parseInt(trueval));
+        })
+      );
+      var maxwithdrawobj = sttdata.find(function (o) {
         var trueval = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-        if (trueval === "" || trueval === "Withdrawn") {
-          trueval = 0;
-        }
-        return Math.abs(parseInt(trueval));
-      })
-    );
-    var maxwithdrawobj = sttdata.find(function (o) {
-      var trueval = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-      return Math.abs(parseInt(trueval)) === maxwithdraw;
-    });
-
-    //max 10 values
-
-    let getmaxarr = [];
-    const getmax = sttdata.map((obj, i) => {
-      var trueval = obj.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-      if (trueval === "" || trueval === "Withdrawn") {
-        trueval = 0;
-      }
-      var arrnum = Math.abs(parseInt(trueval));
-      getmaxarr.push(arrnum);
-    });
-    var newarr = getmaxarr
-      .sort(function (a, b) {
-        return a - b;
-      })
-      .slice(-10);
-    // max 10 values find objects
-    let maxtenarr = [];
-    const maxten = newarr.map((obj, i) => {
-      var check = sttdata.filter(function (o) {
-        var trueval = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-        if (trueval === "" || trueval === "Withdrawn") {
-          trueval = 0;
-        }
-        return obj === Math.abs(parseInt(trueval));
+        return Math.abs(parseInt(trueval)) === maxwithdraw;
       });
-      maxtenarr.push(check);
-    });
-    const flatennedarr = maxtenarr.flat(1);
-
-    // Get Transaction details in array
-    let arr1 = [];
-    let arr2 = [];
-    const getDetails = flatennedarr.map((obj, i) => {
-      arr1.push(obj.Details);
-      var trueval = obj.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-      if (trueval === "" || trueval === "Withdrawn") {
-        trueval = 0;
-      }
-      arr2.push(trueval);
-    });
-    // set states for top ten transcation details and amount
-
-    // find total spent on fuliza and trancation costs, fuliza cost and wtihdrawal charges
-    let fulizaarr = [];
-    let trancarr = [];
-    let fulizacost = [];
-    let fulizatrans = [];
-    let wcost = [];
-    let pbchargearr = [];
-    let tillchargearr = [];
-    let airtimeCost = [];
-    let totalbal = 0;
-    let rej = 0;
-    let avgbal = [];
-    let months = [];
-    let twoyears = [];
-    let year = [];
-    let avgmonthbal = [];
-    let avgful = [];
-    let avgmonthbal2 = [];
-    let avgful2 = [];
-    let totaltrans = 0;
-    let totalfultrans = 0;
-    const month = [
-      "JAN",
-      "FEB",
-      "MAR",
-      "APR",
-      "MAY",
-      "JUN",
-      "JUL",
-      "AUG",
-      "SEP",
-      "OCT",
-      "NOV",
-      "DEC",
-    ];
-    let date = [];
-    let brknstatement = [];
-    const monthsName = [];
-    const monthsName2 = [];
-
-    // for other below
-
-    let sndmoneydets = [];
-    let arr4 = [];
-    let phonenum = [];
-    let pbillnamearr = []; // for till
-    let pbamnt = []; // for till
-    let paybillnam = [];
-    let paidinnam = [];
-    let paidinamnt = [];
-    let thisdamnthing = [];
-    let ac = [];
-    let ac2 = [];
-    let onearr = [];
-    let twoarr = [];
-    let threearr = [];
-    const forbiz = []
-
-    let anotherarr = [];
-    let anotherarr2 = [];
-    let anotherarr3 = [];
-
-
-    const fuliza = sttdata.map((o, i) => {
-      if (o.Details === "OverDraft of Credit Party") {
-        totalfultrans++;
-        var trueval = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
-        if (trueval === "" || trueval === "Paid In") {
-          trueval = 0;
-        }
-        fulizaarr.push(parseInt(trueval));
-      }
-      if (o.Details === "Customer Transfer of Funds\rCharge") {
-        var trueva2 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-        if (trueva2 === "" || trueva2 === "Withdrawn") {
-          trueva2 = 0;
-        }
-        trancarr.push(parseInt(trueva2));
-      }
-      if (o.Details === "OD Loan Repayment to 232323 -\rM-PESA Overdraw") {
-        var trueva3 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-        if (trueva3 === "" || trueva3 === "Withdrawn") {
-          trueva3 = 0;
-        }
-        fulizacost.push(parseInt(trueva3));
-      }
-      if (o.Details === "Withdrawal Charge") {
-        var trueva4 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-        if (trueva4 === "" || trueva4 === "Withdrawn") {
-          trueva4 = 0;
-        }
-        wcost.push(parseInt(trueva4));
-      }
-      if (o.Details === "Pay Bill Charge") {
-        var trueva5 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-        if (trueva5 === "" || trueva5 === "Withdrawn") {
-          trueva5 = 0;
-        }
-        pbchargearr.push(parseInt(trueva5));
-      }
-      if (o.Details === "Pay Merchant Charge") {
-        var trueva6 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-        if (trueva6 === "" || trueva6 === "Withdrawn") {
-          trueva6 = 0;
-        }
-        tillchargearr.push(parseInt(trueva6));
-      }
-      if (o.Details === "Airtime Purchase") {
-        var trueva7 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-        if (trueva7 === "" || trueva6 === "Withdrawn") {
-          trueva7 = 0;
-        }
-        airtimeCost.push(parseInt(trueva7));
-      }
-      if (o.Balance === "Balance") {
-        rej++;
-      } else {
-        let bal = o.Balance.replace(/,/g, "");
-        totalbal = totalbal + parseInt(bal);
-      }
-      if (o.Details.startsWith('Business')) {
-        paidinnam.push(o)
-      }
-
-      if (
-        o.Details.includes("Merchant Payment to") ||
-        o.Details.includes("Customer Transfer to") ||
-        o.Details.includes("Pay Bill Online to") ||
-        o.Details.includes("Pay Bill to")
-      ) {
-        totaltrans++;
-      }
-
-      let f = o["Completion Time"].split("-");
-      if (f[0] !== "Completion Time") {
-        if (!months.includes(f[1])) {
-          if (f[1]) {
-            months.push(f[1]);
-          }
-        }
-        if (!year.includes(f[0])) {
-          year.push(f[0]);
-        }
-        // check total number of months by checking first index in sttdata and minus from last index
-        //  const count = months.filter(x => x === f[1]).length;
-        //  if (count < 2) {
-
-        //     months.push(f[1])
-        //  }
-        // if (months.includes(f[1]) && year.includes(f[0])) {
-        //   console.log('somthing')
-        // }
-      }
-      var q = o["Completion Time"];
-      if (i === 0) {
-        if (q !== "Completion Time") {
-          date.push(new Date(q));
-        }
-      }
-      if (i === sttdata.length - 1) {
-        setloadstate(false)
-        setloaddone(true)
-        let divide = sttdata.length - rej;
-        var final = totalbal / divide;
-        avgbal.push(parseInt(final));
-        if (q !== "Completion Time") {
-          date.push(new Date(q));
-        }
-        const diffTime = Math.abs(date[1] - date[0]);
-        const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
-        if (diffMonths < 1) {
-          date[2] = '<1'
-          setonemonth(false)
-
-        } else if (diffMonths <= 2) {
-          setonemonth(false)
-        }
-        else {
-          date[2] = diffMonths;
-        }
-
-        if (diffMonths >= 22 && diffMonths < 25) {
-          // set state true when this is true
-          settwoyearline(true);
-          let miaka = diffTime / 2;
-          date.push(miaka);
-          // itakuwa the same ukichukua months za two years, max 12 for arr
-          months.map((o, n) => {
-            if (n !== 0) {
-              twoyears.push(o);
-            }
-            if (n === months.length - 1) {
-              twoyears[11] = "0" + (parseInt(o) - 1);
-            }
-          });
-        }
-        if (diffMonths < 22 && diffMonths > 12) {
-          // two year statement is not 24 months, data shown is for the past year
-          // set state true for this case
-          brknstatement.push(Math.abs(date[1]) - 31557600000);
-          setbrokenstt(true);
-        }
-        // trying the for paidin biz here
-
-        for (const o of paidinnam) {
-          if (o.Details.startsWith("Business")) {
-            let getnam = o.Details.replace(/\r/g, " ")
-              .split(" ")
-              .slice(5)
-              .slice(0, 2)
-              .join(" ");
-            let pbillnam = getnam.toUpperCase();
-            // if (!paidinnam.includes(pbillnam)) {
-            //   paidinnam.push(pbillnam);
-            // }
-            var truev = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
-            if (truev === "" || truev === "Paid In") {
-              truev = 0;
-            }
-            let existing = forbiz.find((a) => a.name === pbillnam);
-            if (existing) {
-              existing.amount += parseInt(truev);
-            } else {
-              forbiz.push({ name: pbillnam, amount: parseInt(truev) });
-            }
-          }
-        }
-        threearr.push(forbiz)
-      }
-    });
-
-    // get similar transcations
-    const gettranc = sttdata.reduce((a, o) => {
-      const key = o.Details.replace(/\r/g, " ");
-      if (!a[key]) {
-        a[key] = [];
-      }
-      a[key].push(o);
-      return a;
-    }, {});
-
-    // sort the arrays by length and get biggest 20
-    const sortedArrays = Object.values(gettranc).sort(
-      (a, b) => b.length - a.length
-    );
-
-    const largestTwentyArrays = sortedArrays.slice(0, 100); // change this to get more arrays
-
-    // set if conditions for the different arrays
-
-    // take arrays add all the withdrawn sums push into array then push array of details to new array
-
-
-    const withdrawsums = largestTwentyArrays.map((obj, i) => {
-      let arr5 = [];
-      let paybillsum = [];
-      let filteredObj = obj.filter(
-        (o) =>
-          o.Details.startsWith("Customer Transfer") ||
-          o.Details.startsWith("Customer Transfer Fuliza")
-      );
-      let h = filteredObj.length;
-      // for pa
-      let tillfiltered = obj.filter(
-        (o) =>
-          o.Details.startsWith("Merchant Payment") ||
-          o.Details.startsWith("Merchant Payment Fuliza")
-      );
-      let j = tillfiltered.length;
-
-      let forpbill = obj.filter((o) => o.Details.startsWith("Pay Bill"));
-      let n = forpbill.length;
-
-      // paid in shit
-
-      let paidarr = obj.filter(
-        (o) =>
-          o.Details.startsWith("Funds received") ||
-          o.Details.startsWith("Business") ||
-          o.Details.includes('Business Payment from')
-      );
-      let p = paidarr.length;
-      paidinnam.push(paidarr)
-      let twonums = false; // to check if the numbers appears twice, dont add the second to the array
-
-      const filteredArray = filteredObj.filter(
-        (o) => !o.Details.includes("Customer Transfer of Funds\rCharge")
-      );
-      const result = filteredArray.reduce((acc, obj) => {
-        ac.push(acc);
-        let lastTwoWords = obj.Details.replace(/\r/g, " ")
-          .split(" ")
-          .slice(-2)
-          .join(" ");
-        let chknum = obj.Details.replace(/\r/g, " ")
-          .split(" ")
-          .slice(-3, -2)
-          .join(" ");
-        var truenam = lastTwoWords.toUpperCase();
-        let trueval = obj.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+  
+      //max 10 values
+  
+      let getmaxarr = [];
+      const getmax = sttdata.map((obj, i) => {
+        var trueval = obj.Withdrawn.replace(/,/g, "").replace(/-/g, "");
         if (trueval === "" || trueval === "Withdrawn") {
           trueval = 0;
         }
-        let existing = acc.find((a) => a.name === truenam);
-        if (existing) {
-          existing.amount += parseInt(trueval);
+        var arrnum = Math.abs(parseInt(trueval));
+        getmaxarr.push(arrnum);
+      });
+      var newarr = getmaxarr
+        .sort(function (a, b) {
+          return a - b;
+        })
+        .slice(-10);
+      // max 10 values find objects
+      let maxtenarr = [];
+      const maxten = newarr.map((obj, i) => {
+        var check = sttdata.filter(function (o) {
+          var trueval = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+          if (trueval === "" || trueval === "Withdrawn") {
+            trueval = 0;
+          }
+          return obj === Math.abs(parseInt(trueval));
+        });
+        maxtenarr.push(check);
+      });
+      const flatennedarr = maxtenarr.flat(1);
+  
+      // Get Transaction details in array
+      let arr1 = [];
+      let arr2 = [];
+      const getDetails = flatennedarr.map((obj, i) => {
+        arr1.push(obj.Details);
+        var trueval = obj.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+        if (trueval === "" || trueval === "Withdrawn") {
+          trueval = 0;
+        }
+        arr2.push(trueval);
+      });
+      // set states for top ten transcation details and amount
+  
+      // find total spent on fuliza and trancation costs, fuliza cost and wtihdrawal charges
+      let fulizaarr = [];
+      let trancarr = [];
+      let fulizacost = [];
+      let fulizatrans = [];
+      let wcost = [];
+      let pbchargearr = [];
+      let tillchargearr = [];
+      let airtimeCost = [];
+      let totalbal = 0;
+      let rej = 0;
+      let avgbal = [];
+      let months = [];
+      let twoyears = [];
+      let year = [];
+      let avgmonthbal = [];
+      let avgful = [];
+      let avgmonthbal2 = [];
+      let avgful2 = [];
+      let totaltrans = 0;
+      let totalfultrans = 0;
+      const month = [
+        "JAN",
+        "FEB",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUN",
+        "JUL",
+        "AUG",
+        "SEP",
+        "OCT",
+        "NOV",
+        "DEC",
+      ];
+      let date = [];
+      let brknstatement = [];
+      const monthsName = [];
+      const monthsName2 = [];
+  
+      // for other below
+  
+      let sndmoneydets = [];
+      let arr4 = [];
+      let phonenum = [];
+      let pbillnamearr = []; // for till
+      let pbamnt = []; // for till
+      let paybillnam = [];
+      let paidinnam = [];
+      let paidinamnt = [];
+      let thisdamnthing = [];
+      let ac = [];
+      let ac2 = [];
+      let onearr = [];
+      let twoarr = [];
+      let threearr = [];
+      const forbiz = []
+  
+      let anotherarr = [];
+      let anotherarr2 = [];
+      let anotherarr3 = [];
+  
+  
+      const fuliza = sttdata.map((o, i) => {
+        if (o.Details === "OverDraft of Credit Party") {
+          totalfultrans++;
+          var trueval = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
+          if (trueval === "" || trueval === "Paid In") {
+            trueval = 0;
+          }
+          fulizaarr.push(parseInt(trueval));
+        }
+        if (o.Details === "Customer Transfer of Funds\rCharge") {
+          var trueva2 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+          if (trueva2 === "" || trueva2 === "Withdrawn") {
+            trueva2 = 0;
+          }
+          trancarr.push(parseInt(trueva2));
+        }
+        if (o.Details === "OD Loan Repayment to 232323 -\rM-PESA Overdraw") {
+          var trueva3 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+          if (trueva3 === "" || trueva3 === "Withdrawn") {
+            trueva3 = 0;
+          }
+          fulizacost.push(parseInt(trueva3));
+        }
+        if (o.Details === "Withdrawal Charge") {
+          var trueva4 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+          if (trueva4 === "" || trueva4 === "Withdrawn") {
+            trueva4 = 0;
+          }
+          wcost.push(parseInt(trueva4));
+        }
+        if (o.Details === "Pay Bill Charge") {
+          var trueva5 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+          if (trueva5 === "" || trueva5 === "Withdrawn") {
+            trueva5 = 0;
+          }
+          pbchargearr.push(parseInt(trueva5));
+        }
+        if (o.Details === "Pay Merchant Charge") {
+          var trueva6 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+          if (trueva6 === "" || trueva6 === "Withdrawn") {
+            trueva6 = 0;
+          }
+          tillchargearr.push(parseInt(trueva6));
+        }
+        if (o.Details === "Airtime Purchase") {
+          var trueva7 = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+          if (trueva7 === "" || trueva6 === "Withdrawn") {
+            trueva7 = 0;
+          }
+          airtimeCost.push(parseInt(trueva7));
+        }
+        if (o.Balance === "Balance") {
+          rej++;
         } else {
-          acc.push({ name: truenam, amount: parseInt(trueval) });
+          let bal = o.Balance.replace(/,/g, "");
+          totalbal = totalbal + parseInt(bal);
         }
-        return acc;
-      }, []);
-
-      onearr.push(result);
-
-      // arr4.push(arr5.reduce((a, o) => a + o, 0));
-
-      // get the data for till receivers
-
-      let sum = 0;
-      tillfiltered.forEach((o, i) => {
-        let getnam = o.Details.replace(/\r/g, " ")
-          .split(" ")
-          .slice(5)
-          .join(" ");
-        let pbillnam = getnam.toUpperCase();
-        if (!pbillnamearr.includes(pbillnam)) {
-          pbillnamearr.push(pbillnam);
+        if (o.Details.startsWith('Business')) {
+          paidinnam.push(o)
         }
-        var trueval = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
-        if (trueval === "" || trueval === "Withdrawn") {
-          trueval = 0;
+  
+        if (
+          o.Details.includes("Merchant Payment to") ||
+          o.Details.includes("Customer Transfer to") ||
+          o.Details.includes("Pay Bill Online to") ||
+          o.Details.includes("Pay Bill to")
+        ) {
+          totaltrans++;
         }
-        sum = sum + parseInt(trueval);
-        if (i === j - 1) {
-          pbamnt.push(sum);
+  
+        let f = o["Completion Time"].split("-");
+        if (f[0] !== "Completion Time") {
+          if (!months.includes(f[1])) {
+            if (f[1]) {
+              months.push(f[1]);
+            }
+          }
+          if (!year.includes(f[0])) {
+            year.push(f[0]);
+          }
+          // check total number of months by checking first index in sttdata and minus from last index
+          //  const count = months.filter(x => x === f[1]).length;
+          //  if (count < 2) {
+  
+          //     months.push(f[1])
+          //  }
+          // if (months.includes(f[1]) && year.includes(f[0])) {
+          //   console.log('somthing')
+          // }
+        }
+        var q = o["Completion Time"];
+        if (i === 0) {
+          if (q !== "Completion Time") {
+            date.push(new Date(q));
+          }
+        }
+        if (i === sttdata.length - 1) {
+          setloadstate(false)
+          setloaddone(true)
+          let divide = sttdata.length - rej;
+          var final = totalbal / divide;
+          avgbal.push(parseInt(final));
+          if (q !== "Completion Time") {
+            date.push(new Date(q));
+          }
+          const diffTime = Math.abs(date[1] - date[0]);
+          const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
+          if (diffMonths < 1) {
+            date[2] = '<1'
+            setonemonth(false)
+  
+          } else if (diffMonths <= 2) {
+            setonemonth(false)
+          }
+          else {
+            date[2] = diffMonths;
+          }
+  
+          if (diffMonths >= 22 && diffMonths < 25) {
+            // set state true when this is true
+            settwoyearline(true);
+            let miaka = diffTime / 2;
+            date.push(miaka);
+            // itakuwa the same ukichukua months za two years, max 12 for arr
+            months.map((o, n) => {
+              if (n !== 0) {
+                twoyears.push(o);
+              }
+              if (n === months.length - 1) {
+                twoyears[11] = "0" + (parseInt(o) - 1);
+              }
+            });
+          }
+          if (diffMonths < 22 && diffMonths > 12) {
+            // two year statement is not 24 months, data shown is for the past year
+            // set state true for this case
+            brknstatement.push(Math.abs(date[1]) - 31557600000);
+            setbrokenstt(true);
+          }
+          // trying the for paidin biz here
+  
+          for (const o of paidinnam) {
+            if (o.Details.startsWith("Business")) {
+              let getnam = o.Details.replace(/\r/g, " ")
+                .split(" ")
+                .slice(5)
+                .slice(0, 2)
+                .join(" ");
+              let pbillnam = getnam.toUpperCase();
+              // if (!paidinnam.includes(pbillnam)) {
+              //   paidinnam.push(pbillnam);
+              // }
+              var truev = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
+              if (truev === "" || truev === "Paid In") {
+                truev = 0;
+              }
+              let existing = forbiz.find((a) => a.name === pbillnam);
+              if (existing) {
+                existing.amount += parseInt(truev);
+              } else {
+                forbiz.push({ name: pbillnam, amount: parseInt(truev) });
+              }
+            }
+          }
+          threearr.push(forbiz)
         }
       });
-
-      // get the paybill payment data
-
-      forpbill.forEach((o, i) => {
-        if (!o.Details.includes("Pay Bill Charge")) {
+  
+      // get similar transcations
+      const gettranc = sttdata.reduce((a, o) => {
+        const key = o.Details.replace(/\r/g, " ");
+        if (!a[key]) {
+          a[key] = [];
+        }
+        a[key].push(o);
+        return a;
+      }, {});
+  
+      // sort the arrays by length and get biggest 20
+      const sortedArrays = Object.values(gettranc).sort(
+        (a, b) => b.length - a.length
+      );
+  
+      const largestTwentyArrays = sortedArrays.slice(0, 100); // change this to get more arrays
+  
+      // set if conditions for the different arrays
+  
+      // take arrays add all the withdrawn sums push into array then push array of details to new array
+  
+  
+      const withdrawsums = largestTwentyArrays.map((obj, i) => {
+        let arr5 = [];
+        let paybillsum = [];
+        let filteredObj = obj.filter(
+          (o) =>
+            o.Details.startsWith("Customer Transfer") ||
+            o.Details.startsWith("Customer Transfer Fuliza")
+        );
+        let h = filteredObj.length;
+        // for pa
+        let tillfiltered = obj.filter(
+          (o) =>
+            o.Details.startsWith("Merchant Payment") ||
+            o.Details.startsWith("Merchant Payment Fuliza")
+        );
+        let j = tillfiltered.length;
+  
+        let forpbill = obj.filter((o) => o.Details.startsWith("Pay Bill"));
+        let n = forpbill.length;
+  
+        // paid in shit
+  
+        let paidarr = obj.filter(
+          (o) =>
+            o.Details.startsWith("Funds received") ||
+            o.Details.startsWith("Business") ||
+            o.Details.includes('Business Payment from')
+        );
+        let p = paidarr.length;
+        paidinnam.push(paidarr)
+        let twonums = false; // to check if the numbers appears twice, dont add the second to the array
+  
+        const filteredArray = filteredObj.filter(
+          (o) => !o.Details.includes("Customer Transfer of Funds\rCharge")
+        );
+        const result = filteredArray.reduce((acc, obj) => {
+          ac.push(acc);
+          let lastTwoWords = obj.Details.replace(/\r/g, " ")
+            .split(" ")
+            .slice(-2)
+            .join(" ");
+          let chknum = obj.Details.replace(/\r/g, " ")
+            .split(" ")
+            .slice(-3, -2)
+            .join(" ");
+          var truenam = lastTwoWords.toUpperCase();
+          let trueval = obj.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+          if (trueval === "" || trueval === "Withdrawn") {
+            trueval = 0;
+          }
+          let existing = acc.find((a) => a.name === truenam);
+          if (existing) {
+            existing.amount += parseInt(trueval);
+          } else {
+            acc.push({ name: truenam, amount: parseInt(trueval) });
+          }
+          return acc;
+        }, []);
+  
+        onearr.push(result);
+  
+        // arr4.push(arr5.reduce((a, o) => a + o, 0));
+  
+        // get the data for till receivers
+  
+        let sum = 0;
+        tillfiltered.forEach((o, i) => {
           let getnam = o.Details.replace(/\r/g, " ")
-            .replace(/-/g, "")
-            .replace(/'Online'/g, "")
             .split(" ")
             .slice(5)
             .join(" ");
-          let chknum = o.Details.replace(/\r/g, " ")
-            .split(" ")
-            .slice(-3, -2)
-            .join(" "); // check phone number diff
-          // can add condtiion to check if it is paybill online
-          let nameofpb = getnam.toUpperCase();
-          if (!paybillnam.includes(nameofpb)) {
-            paybillnam.push(nameofpb);
+          let pbillnam = getnam.toUpperCase();
+          if (!pbillnamearr.includes(pbillnam)) {
+            pbillnamearr.push(pbillnam);
           }
           var trueval = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
           if (trueval === "" || trueval === "Withdrawn") {
             trueval = 0;
           }
-          paybillsum.push(parseInt(trueval));
-          if (i === n - 1) {
-            let sth = paybillsum.reduce((acc, val) => acc + val, 0);
-            thisdamnthing.push(sth);
+          sum = sum + parseInt(trueval);
+          if (i === j - 1) {
+            pbamnt.push(sum);
+          }
+        });
+  
+        // get the paybill payment data
+  
+        forpbill.forEach((o, i) => {
+          if (!o.Details.includes("Pay Bill Charge")) {
+            let getnam = o.Details.replace(/\r/g, " ")
+              .replace(/-/g, "")
+              .replace(/'Online'/g, "")
+              .split(" ")
+              .slice(5)
+              .join(" ");
+            let chknum = o.Details.replace(/\r/g, " ")
+              .split(" ")
+              .slice(-3, -2)
+              .join(" "); // check phone number diff
+            // can add condtiion to check if it is paybill online
+            let nameofpb = getnam.toUpperCase();
+            if (!paybillnam.includes(nameofpb)) {
+              paybillnam.push(nameofpb);
+            }
+            var trueval = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
+            if (trueval === "" || trueval === "Withdrawn") {
+              trueval = 0;
+            }
+            paybillsum.push(parseInt(trueval));
+            if (i === n - 1) {
+              let sth = paybillsum.reduce((acc, val) => acc + val, 0);
+              thisdamnthing.push(sth);
+            }
+          }
+        });
+  
+        const forpaid = [];
+        for (const o of paidarr) {
+          if (o.Details.includes("Funds received")) {
+            let lastTwoWords = o.Details.replace(/\r/g, " ")
+              .split(" ")
+              .slice(-2)
+              .join(" ");
+            let thisnam = lastTwoWords.toUpperCase();
+            let trueval = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
+            if (trueval === "" || trueval === "Paid In") {
+              trueval = 0;
+            }
+            let existing = forpaid.find((a) => a.name === thisnam);
+  
+            if (existing) {
+              existing.amount += parseInt(trueval);
+            } else {
+              forpaid.push({ name: thisnam, amount: parseInt(trueval) });
+            }
           }
         }
+  
+        twoarr.push(forpaid);
+  
+  
       });
-
-      const forpaid = [];
-      for (const o of paidarr) {
-        if (o.Details.includes("Funds received")) {
-          let lastTwoWords = o.Details.replace(/\r/g, " ")
-            .split(" ")
-            .slice(-2)
-            .join(" ");
-          let thisnam = lastTwoWords.toUpperCase();
-          let trueval = o["Paid In"].replace(/,/g, "").replace(/-/g, "");
-          if (trueval === "" || trueval === "Paid In") {
-            trueval = 0;
-          }
-          let existing = forpaid.find((a) => a.name === thisnam);
-
-          if (existing) {
-            existing.amount += parseInt(trueval);
-          } else {
-            forpaid.push({ name: thisnam, amount: parseInt(trueval) });
-          }
+  
+      // this shit isn't working - its working now mf
+  
+      var resul = onearr.filter((e) => e.length);
+      var finalres = resul.flat(1);
+  
+      finalres.map((o, i) => {
+        let exist = anotherarr.find((b) => {
+          return b.name === o.name;
+        });
+        if (exist) {
+          exist.amount += o.amount;
+          anotherarr.splice(i, 4);
+        } else {
+          anotherarr.push(o);
         }
-      }
-
-      twoarr.push(forpaid);
-
-
-    });
-
-    // this shit isn't working - its working now mf
-
-    var resul = onearr.filter((e) => e.length);
-    var finalres = resul.flat(1);
-
-    finalres.map((o, i) => {
-      let exist = anotherarr.find((b) => {
-        return b.name === o.name;
       });
-      if (exist) {
-        exist.amount += o.amount;
-        anotherarr.splice(i, 4);
-      } else {
-        anotherarr.push(o);
-      }
-    });
-
-    // double number checker for paid in
-
-    var yetanother = twoarr.filter((e) => e.length);
-    var finalres2 = yetanother.flat(1);
-
-    finalres2.map((o, i) => {
-      let exist = anotherarr2.find((b) => {
-        return b.name === o.name;
+  
+      // double number checker for paid in
+  
+      var yetanother = twoarr.filter((e) => e.length);
+      var finalres2 = yetanother.flat(1);
+  
+      finalres2.map((o, i) => {
+        let exist = anotherarr2.find((b) => {
+          return b.name === o.name;
+        });
+        if (exist) {
+          exist.amount += o.amount;
+          anotherarr2.splice(i, 4);
+        } else {
+          anotherarr2.push(o);
+        }
       });
-      if (exist) {
-        exist.amount += o.amount;
-        anotherarr2.splice(i, 4);
-      } else {
-        anotherarr2.push(o);
-      }
-    });
-    // checker for business paid in
-    var forbizpaid = threearr.filter((e) => e.length);
-    var finalres3 = forbizpaid.flat(1);
-
-    finalres3.map((o, i) => {
-      let exist = anotherarr3.find((b) => {
-        return b.name === o.name;
+      // checker for business paid in
+      var forbizpaid = threearr.filter((e) => e.length);
+      var finalres3 = forbizpaid.flat(1);
+  
+      finalres3.map((o, i) => {
+        let exist = anotherarr3.find((b) => {
+          return b.name === o.name;
+        });
+        if (exist) {
+          exist.amount += o.amount;
+          anotherarr3.splice(i, 4);
+        } else {
+          anotherarr3.push(o);
+        }
       });
-      if (exist) {
-        exist.amount += o.amount;
-        anotherarr3.splice(i, 4);
+      setpaidinname(anotherarr2);
+      setbizpaidinnam(anotherarr3);
+      // set bar graph data for send money and sort array
+  
+      const setarr = sndmoneydets.map((o, i) => {
+        return {
+          label: o,
+          data: arr4[i] || 0,
+        };
+      });
+  
+      const sortedarr = anotherarr.sort(function (a, b) {
+        return b.amount > a.amount;
+      });
+  
+      let sendmoneyarr = [];
+      let sendmoneyamnt = [];
+  
+      sortedarr.forEach(function (o) {
+        sendmoneyarr.push(o.name);
+        sendmoneyamnt.push(o.amount);
+      });
+  
+      if (screenWidth) {
+        setGetdetsarr(sendmoneyarr.slice(0, 10));
+        setAmountarr(sendmoneyamnt.slice(0, 10));
       } else {
-        anotherarr3.push(o);
+        setGetdetsarr(sendmoneyarr);
+        setAmountarr(sendmoneyamnt);
       }
-    });
-    setpaidinname(anotherarr2);
-    setbizpaidinnam(anotherarr3);
-    // set bar graph data for send money and sort array
-
-    const setarr = sndmoneydets.map((o, i) => {
-      return {
-        label: o,
-        data: arr4[i] || 0,
-      };
-    });
-
-    const sortedarr = anotherarr.sort(function (a, b) {
-      return b.amount > a.amount;
-    });
-
-    let sendmoneyarr = [];
-    let sendmoneyamnt = [];
-
-    sortedarr.forEach(function (o) {
-      sendmoneyarr.push(o.name);
-      sendmoneyamnt.push(o.amount);
-    });
-
-    if (screenWidth) {
-      setGetdetsarr(sendmoneyarr.slice(0, 10));
-      setAmountarr(sendmoneyamnt.slice(0, 10));
-    } else {
-      setGetdetsarr(sendmoneyarr);
-      setAmountarr(sendmoneyamnt);
-    }
-
-    // sort bar graph for till and set array
-
-    const narr = pbillnamearr.map((o, i) => {
-      return {
-        label: o,
-        data: pbamnt[i] || 0,
-      };
-    });
-
-    const sarr = narr.sort(function (a, b) {
-      return b.data > a.data;
-    });
-
-    let sortpbilllname = [];
-    let sortpbillamnt = [];
-
-    sarr.forEach(function (o) {
-      sortpbilllname.push(o.label);
-      sortpbillamnt.push(o.data);
-    });
-
-    if (screenWidth) {
-      setBiggestReceivers(sortpbillamnt.slice(0, 10));
-      setBiggestReceiversdets(sortpbilllname.slice(0, 10));
-    } else {
-      setBiggestReceivers(sortpbillamnt);
-      setBiggestReceiversdets(sortpbilllname);
-    }
-
-    // sort bar graph for paybill and set array
-
-    const anarr = paybillnam.map((o, i) => {
-      return {
-        label: o,
-        data: thisdamnthing[i] || 0,
-      };
-    });
-
-    const yarr = anarr.sort(function (a, b) {
-      return b.data > a.data;
-    });
-
-    let sortlist = [];
-    let sortamnt = [];
-
-    yarr.forEach(function (o) {
-      sortlist.push(o.label);
-      sortamnt.push(o.data);
-    });
-    if (screenWidth) {
-      setPblist(sortlist.slice(0, 10));
-      setPbamnt(sortamnt.slice(0, 10));
-    } else {
-      setPblist(sortlist);
-      setPbamnt(sortamnt);
-    }
-
-
-    const sum = fulizaarr.reduce((total, value) => total + value, 0);
-    const fulizacostsum = fulizacost.reduce((total, value) => total + value, 0);
-    const trans = trancarr.reduce((total, value) => total + value, 0);
-    const wcharges = wcost.reduce((total, value) => total + value, 0);
-    const pcharge = pbchargearr.reduce((total, value) => total + value, 0);
-    const tcharge = tillchargearr.reduce((total, value) => total + value, 0);
-    const airtime = airtimeCost.reduce((total, value) => total + value, 0);
-    var diff = fulizacostsum - sum;
-    fulizatrans.push(sum, Math.abs(diff), trans, wcharges);
-
-    setLpcharges([pcharge, tcharge, avgbal[0]]);
-
-    SetAirtimebought(airtime);
-
-    setTranccostAmount(fulizatrans);
-
-    if (months.length !== 0) {
-      if (twoyears.length !== 0) {
-        var twoyearfinal = twoyears.reverse();
-        let ingine = twoyearfinal.map((t, y) => {
-          let ar = [];
-          let fularr = [];
-          let num = 0;
-          let ar2 = [];
-          let fularr2 = [];
-          let nump = 0;
-          const quik = sttdata.map((a, b) => {
-            let f = a["Completion Time"];
-            if (f !== "Completion Time") {
-              let finaldate = new Date(f);
-              let datesplit = a["Completion Time"].split("-");
-
-              if (Math.abs(date[0] - finaldate) < date[3]) {
-                if (t === datesplit[1]) {
-                  let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
-
-                  ar.push(parseInt(bal));
-                  num++;
-                  if (a.Details === "OverDraft of Credit Party") {
-                    var trueva3 = a["Paid In"]
-                      .replace(/,/g, "")
-                      .replace(/-/g, "");
-                    if (trueva3 === "" || trueva3 === "Paid In") {
-                      trueva3 = 0;
+  
+      // sort bar graph for till and set array
+  
+      const narr = pbillnamearr.map((o, i) => {
+        return {
+          label: o,
+          data: pbamnt[i] || 0,
+        };
+      });
+  
+      const sarr = narr.sort(function (a, b) {
+        return b.data > a.data;
+      });
+  
+      let sortpbilllname = [];
+      let sortpbillamnt = [];
+  
+      sarr.forEach(function (o) {
+        sortpbilllname.push(o.label);
+        sortpbillamnt.push(o.data);
+      });
+  
+      if (screenWidth) {
+        setBiggestReceivers(sortpbillamnt.slice(0, 10));
+        setBiggestReceiversdets(sortpbilllname.slice(0, 10));
+      } else {
+        setBiggestReceivers(sortpbillamnt);
+        setBiggestReceiversdets(sortpbilllname);
+      }
+  
+      // sort bar graph for paybill and set array
+  
+      const anarr = paybillnam.map((o, i) => {
+        return {
+          label: o,
+          data: thisdamnthing[i] || 0,
+        };
+      });
+  
+      const yarr = anarr.sort(function (a, b) {
+        return b.data > a.data;
+      });
+  
+      let sortlist = [];
+      let sortamnt = [];
+  
+      yarr.forEach(function (o) {
+        sortlist.push(o.label);
+        sortamnt.push(o.data);
+      });
+      if (screenWidth) {
+        setPblist(sortlist.slice(0, 10));
+        setPbamnt(sortamnt.slice(0, 10));
+      } else {
+        setPblist(sortlist);
+        setPbamnt(sortamnt);
+      }
+  
+  
+      const sum = fulizaarr.reduce((total, value) => total + value, 0);
+      const fulizacostsum = fulizacost.reduce((total, value) => total + value, 0);
+      const trans = trancarr.reduce((total, value) => total + value, 0);
+      const wcharges = wcost.reduce((total, value) => total + value, 0);
+      const pcharge = pbchargearr.reduce((total, value) => total + value, 0);
+      const tcharge = tillchargearr.reduce((total, value) => total + value, 0);
+      const airtime = airtimeCost.reduce((total, value) => total + value, 0);
+      var diff = fulizacostsum - sum;
+      fulizatrans.push(sum, Math.abs(diff), trans, wcharges);
+  
+      setLpcharges([pcharge, tcharge, avgbal[0]]);
+  
+      SetAirtimebought(airtime);
+  
+      setTranccostAmount(fulizatrans);
+  
+      if (months.length !== 0) {
+        if (twoyears.length !== 0) {
+          var twoyearfinal = twoyears.reverse();
+          let ingine = twoyearfinal.map((t, y) => {
+            let ar = [];
+            let fularr = [];
+            let num = 0;
+            let ar2 = [];
+            let fularr2 = [];
+            let nump = 0;
+            const quik = sttdata.map((a, b) => {
+              let f = a["Completion Time"];
+              if (f !== "Completion Time") {
+                let finaldate = new Date(f);
+                let datesplit = a["Completion Time"].split("-");
+  
+                if (Math.abs(date[0] - finaldate) < date[3]) {
+                  if (t === datesplit[1]) {
+                    let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
+  
+                    ar.push(parseInt(bal));
+                    num++;
+                    if (a.Details === "OverDraft of Credit Party") {
+                      var trueva3 = a["Paid In"]
+                        .replace(/,/g, "")
+                        .replace(/-/g, "");
+                      if (trueva3 === "" || trueva3 === "Paid In") {
+                        trueva3 = 0;
+                      }
+                      fularr.push(parseInt(trueva3));
                     }
-                    fularr.push(parseInt(trueva3));
+                  }
+                }
+                if (Math.abs(date[0] - finaldate) > date[3]) {
+                  if (t === datesplit[1]) {
+                    let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
+                    ar2.push(parseInt(bal));
+                    nump++;
+                    if (a.Details === "OverDraft of Credit Party") {
+                      var trueva4 = a["Paid In"]
+                        .replace(/,/g, "")
+                        .replace(/-/g, "");
+                      if (trueva4 === "" || trueva4 === "Paid In") {
+                        trueva4 = 0;
+                      }
+                      fularr2.push(parseInt(trueva4));
+                    }
                   }
                 }
               }
-              if (Math.abs(date[0] - finaldate) > date[3]) {
-                if (t === datesplit[1]) {
-                  let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
-                  ar2.push(parseInt(bal));
-                  nump++;
-                  if (a.Details === "OverDraft of Credit Party") {
-                    var trueva4 = a["Paid In"]
-                      .replace(/,/g, "")
-                      .replace(/-/g, "");
-                    if (trueva4 === "" || trueva4 === "Paid In") {
-                      trueva4 = 0;
-                    }
-                    fularr2.push(parseInt(trueva4));
-                  }
-                }
-              }
-            }
-            // date[0].setMonth(date[0].getMonth() - 12)
-          });
-          const msum = ar.reduce((total, value) => total + value, 0);
-          const fsum = fularr.reduce((total, value) => total + value, 0);
-          avgful.push(fsum);
-          let finale = msum / num;
-          avgmonthbal.push(parseInt(finale));
-          month.map((d, y) => {
-            if (parseInt(t) === y + 1) {
-              monthsName.push(d);
-            }
-          });
-
-          if (ar2.length !== 0) {
-            const msum2 = ar2.reduce((total, value) => total + value, 0);
-            const fsum2 = fularr2.reduce((total, value) => total + value, 0);
-            avgful2.push(fsum2);
-            let finale = msum2 / nump;
-            avgmonthbal2.push(parseInt(finale));
+              // date[0].setMonth(date[0].getMonth() - 12)
+            });
+            const msum = ar.reduce((total, value) => total + value, 0);
+            const fsum = fularr.reduce((total, value) => total + value, 0);
+            avgful.push(fsum);
+            let finale = msum / num;
+            avgmonthbal.push(parseInt(finale));
             month.map((d, y) => {
               if (parseInt(t) === y + 1) {
-                monthsName2.push(d);
+                monthsName.push(d);
               }
             });
-          }
-        });
-      } else if (brknstatement.length !== 0) {
-        let monthsfinal = months.reverse();
-        let func = monthsfinal.map((s, l) => {
-          let ar = [];
-          let fularr = [];
-          let num = 0;
-          const quik = sttdata.map((a, b) => {
-            let f = a["Completion Time"];
-            if (f !== "Completion Time") {
-              let finaldate = new Date(f);
-              let datesplit = a["Completion Time"].split("-");
-              if (finaldate >= brknstatement[0]) {
-                if (s === datesplit[1]) {
-                  let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
-                  ar.push(parseInt(bal));
-                  num++;
-                  if (a.Details === "OverDraft of Credit Party") {
-                    var trueva3 = a["Paid In"]
-                      .replace(/,/g, "")
-                      .replace(/-/g, "");
-                    if (trueva3 === "" || trueva3 === "Paid In") {
-                      trueva3 = 0;
+  
+            if (ar2.length !== 0) {
+              const msum2 = ar2.reduce((total, value) => total + value, 0);
+              const fsum2 = fularr2.reduce((total, value) => total + value, 0);
+              avgful2.push(fsum2);
+              let finale = msum2 / nump;
+              avgmonthbal2.push(parseInt(finale));
+              month.map((d, y) => {
+                if (parseInt(t) === y + 1) {
+                  monthsName2.push(d);
+                }
+              });
+            }
+          });
+        } else if (brknstatement.length !== 0) {
+          let monthsfinal = months.reverse();
+          let func = monthsfinal.map((s, l) => {
+            let ar = [];
+            let fularr = [];
+            let num = 0;
+            const quik = sttdata.map((a, b) => {
+              let f = a["Completion Time"];
+              if (f !== "Completion Time") {
+                let finaldate = new Date(f);
+                let datesplit = a["Completion Time"].split("-");
+                if (finaldate >= brknstatement[0]) {
+                  if (s === datesplit[1]) {
+                    let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
+                    ar.push(parseInt(bal));
+                    num++;
+                    if (a.Details === "OverDraft of Credit Party") {
+                      var trueva3 = a["Paid In"]
+                        .replace(/,/g, "")
+                        .replace(/-/g, "");
+                      if (trueva3 === "" || trueva3 === "Paid In") {
+                        trueva3 = 0;
+                      }
+                      fularr.push(parseInt(trueva3));
                     }
-                    fularr.push(parseInt(trueva3));
                   }
                 }
               }
-            }
-          });
-
-          const msum = ar.reduce((total, value) => total + value, 0);
-          const fsum = fularr.reduce((total, value) => total + value, 0);
-          avgful.push(fsum);
-          let finale = msum / num;
-          avgmonthbal.push(parseInt(finale));
-          month.map((t, y) => {
-            if (parseInt(s) === y + 1) {
-              monthsName.push(t);
-            }
-          });
-        });
-      } else {
-        let monthsfinal = months.reverse();
-        let func = monthsfinal.map((s, l) => {
-          let ar = [];
-          let fularr = [];
-          let num = 0;
-          const quik = sttdata.map((a, b) => {
-            let f = a["Completion Time"].split("-");
-
-            if (s === f[1]) {
-              let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
-              ar.push(parseInt(bal));
-              num++;
-              if (a.Details === "OverDraft of Credit Party") {
-                var trueva3 = a["Paid In"].replace(/,/g, "").replace(/-/g, "");
-                if (trueva3 === "" || trueva3 === "Paid In") {
-                  trueva3 = 0;
-                }
-                fularr.push(parseInt(trueva3));
+            });
+  
+            const msum = ar.reduce((total, value) => total + value, 0);
+            const fsum = fularr.reduce((total, value) => total + value, 0);
+            avgful.push(fsum);
+            let finale = msum / num;
+            avgmonthbal.push(parseInt(finale));
+            month.map((t, y) => {
+              if (parseInt(s) === y + 1) {
+                monthsName.push(t);
               }
-            }
+            });
           });
-          const msum = ar.reduce((total, value) => total + value, 0);
-          const fsum = fularr.reduce((total, value) => total + value, 0);
-          avgful.push(fsum);
-          let finale = msum / num;
-          avgmonthbal.push(parseInt(finale));
-
-          month.map((t, y) => {
-            if (parseInt(s) === y + 1) {
-              monthsName.push(t);
-            }
+        } else {
+          let monthsfinal = months.reverse();
+          let func = monthsfinal.map((s, l) => {
+            let ar = [];
+            let fularr = [];
+            let num = 0;
+            const quik = sttdata.map((a, b) => {
+              let f = a["Completion Time"].split("-");
+  
+              if (s === f[1]) {
+                let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
+                ar.push(parseInt(bal));
+                num++;
+                if (a.Details === "OverDraft of Credit Party") {
+                  var trueva3 = a["Paid In"].replace(/,/g, "").replace(/-/g, "");
+                  if (trueva3 === "" || trueva3 === "Paid In") {
+                    trueva3 = 0;
+                  }
+                  fularr.push(parseInt(trueva3));
+                }
+              }
+            });
+            const msum = ar.reduce((total, value) => total + value, 0);
+            const fsum = fularr.reduce((total, value) => total + value, 0);
+            avgful.push(fsum);
+            let finale = msum / num;
+            avgmonthbal.push(parseInt(finale));
+  
+            month.map((t, y) => {
+              if (parseInt(s) === y + 1) {
+                monthsName.push(t);
+              }
+            });
           });
-        });
+        }
       }
-    }
-    settseries(avgmonthbal);
-    setavgfuliza(avgful);
-    settseries2(avgmonthbal2);
-    setavgfuliza2(avgful2);
-    setmonthnam(monthsName);
-    setmonthnam2(monthsName2);
-    setfulizaperc([totaltrans, totalfultrans]);
-    setmiakambili([date[2], year[0], year[1], year[2]]);
+      settseries(avgmonthbal);
+      setavgfuliza(avgful);
+      settseries2(avgmonthbal2);
+      setavgfuliza2(avgful2);
+      setmonthnam(monthsName);
+      setmonthnam2(monthsName2);
+      setfulizaperc([totaltrans, totalfultrans]);
+      setmiakambili([date[2], year[0], year[1], year[2]]);
+    
+  } catch (error) {
+    console.log(error);
+    rtnclick()
+  }
   }, [sttdata]);
 
   // bar chart 1
@@ -1247,6 +1256,12 @@ const Statement = (props) => {
 
   return (
     <div className="simu">
+      {
+        getdatafailed &&
+        <div className="d-flex flex-row position-absolute top-50 start-50 translate-middle">
+          <FailedataloadAlert />
+        </div>
+      }
       {loadstate &&
         <div className="d-flex flex-row position-absolute top-50 start-50 translate-middle">
           <h4 className="load m-1 text-info">Adding data to charts...</h4>
@@ -1401,19 +1416,19 @@ const Statement = (props) => {
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Total Paid In</h5>
-                  <p className="card-text">KES: {formatter.format(total[0])}</p>
+                  <p className="card-text-st">KES: {formatter.format(total[0])}</p>
                 </div>
               </div>
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Total Paid Out</h5>
-                  <p className="card-text">KES: {formatter.format(total[1])}</p>
+                  <p className="card-text-st">KES: {formatter.format(total[1])}</p>
                 </div>
               </div>
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Total Fuliza Taken</h5>
-                  <p className="card-text">
+                  <p className="card-text-st">
                     KES: {formatter.format(tranccostAmount[0])}
                   </p>
                 </div>
@@ -1421,7 +1436,7 @@ const Statement = (props) => {
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Fuliza Charges</h5>
-                  <p className="card-text">
+                  <p className="card-text-st">
                     KES: {formatter.format(tranccostAmount[1])}
                   </p>
                 </div>
@@ -1429,7 +1444,7 @@ const Statement = (props) => {
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Send Money Costs</h5>
-                  <p className="card-text">
+                  <p className="card-text-st">
                     KES: {formatter.format(tranccostAmount[2])}
                   </p>
                 </div>
@@ -1437,7 +1452,7 @@ const Statement = (props) => {
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Withdrawal Charges</h5>
-                  <p className="card-text">
+                  <p className="card-text-st">
                     KES: {formatter.format(tranccostAmount[3])}
                   </p>
                 </div>
@@ -1445,7 +1460,7 @@ const Statement = (props) => {
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Paybill Charges</h5>
-                  <p className="card-text">
+                  <p className="card-text-st">
                     KES: {formatter.format(lpcharges[0])}
                   </p>
                 </div>
@@ -1453,7 +1468,7 @@ const Statement = (props) => {
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Till Charges</h5>
-                  <p className="card-text">
+                  <p className="card-text-st">
                     KES: {formatter.format(lpcharges[1])}
                   </p>
                 </div>
@@ -1461,7 +1476,7 @@ const Statement = (props) => {
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Airtime Bought</h5>
-                  <p className="card-text">
+                  <p className="card-text-st">
                     KES: {formatter.format(airtimebought)}
                   </p>
                 </div>
@@ -1469,7 +1484,7 @@ const Statement = (props) => {
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
                 <div className="card-body">
                   <h5 className="card-title">Avg. Balance</h5>
-                  <p className="card-text">
+                  <p className="card-text-st">
                     KES: {formatter.format(lpcharges[2])}
                   </p>
                 </div>

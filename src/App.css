@@ -1,6 +1,20 @@
 body {
   background: rgb(14, 13, 13) !important;
   color: white;
+  min-height: 100vh;
+  position: relative;
+}
+
+.body-content {
+  padding-bottom: 5rem;
+  height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2rem; 
 }
 
 .kitu {
@@ -19,14 +33,27 @@ body {
   top: 12rem;
 }
 
+.home-img {
+  opacity: 0.5;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(255, 255, 255, 0.815);
+  opacity: 1; /* Firefox */
+}
+
 .name {
   font-size: 5rem;
-  color: rgba(172, 38, 38, 0.603);
+  color: rgb(0, 81, 134);
 }
 
 .salut {
   font-size: 4rem;
   color: rgb(28, 231, 129);
+}
+
+.sidebar {
+  width: 20rem;
 }
 
 .kadi {
@@ -47,11 +74,11 @@ body {
 /* .card {
     width: 25%;
 } */
-.card:hover {
+/* .card:hover {
   transform: scale(1.05);
   transition: all 0.3s ease-in-out;
   box-shadow: 0 0.5rem 1rem rgba(47, 236, 179, 0.329) !important;
-}
+} */
 
 .shadow {
   box-shadow: 0 0.5rem 1rem rgba(47, 236, 179, 0.329) !important;
@@ -100,7 +127,7 @@ body {
   font-size: 1.4rem;
 }
 
-.card-text {
+.card-text-st {
   text-align: center;
   font-size: 1.5rem;
   color: rgb(28, 231, 129);
@@ -139,7 +166,9 @@ body {
 .prog {
   width: 17rem;
 }
-
+.item-selector {
+  width: 3.5rem;
+}
 @media (max-width: 600px) {
 
   .card-text {

@@ -13,9 +13,7 @@
 build.zip
 
 #components
-UserDashboard.js
-Login.js
-Register.js
+appwithnoname.code-workspace
 
 # misc
 .DS_Store
