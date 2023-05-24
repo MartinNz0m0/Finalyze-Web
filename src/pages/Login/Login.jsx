@@ -1,64 +1,59 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import UserDashboard from '../Dashboard/UserDashboard';
 import { useEffect } from 'react';
 import './Login.scss'
 import { UserContext } from '../../components/UserContext';
+import LoginSuccessAlert, { FailedLoginAlert } from "./../../components/Alerts";
 
 function Login() {
+  const history = useHistory();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [text, setText] = useState('');
     const [jibu, setjibu] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+  const [failedlogin, setfailedlogin] = useState(false);
     const { user, setUser } = useContext(UserContext)
 
-    const handleLogin = () => {
-
-        axios
-            .post(
-                "http://localhost:8000/login",
-                { username, password },
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            )
-            .then((response) => {
-                console.log(response.data)
-                if (response.data) {
-                    setText('Login Successful')
-                    setLoggedIn(true)
-                    setUser(response.data.username)
-                    localStorage.setItem('jwt', response.data.token);
-                    console.log(user)
-                }
-            })
-
-
-        // const hashedPassword = sha256(password)
-        // make api call to verify username and hashedPassword
-        // if successful, set loggedIn to true
-
-
-    }
-    useEffect(() => {
-        if (loggedIn) {
-            const jwt = localStorage.getItem('jwt');
-            axios.post("http://localhost:8000/dash", { user }, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${jwt}`
-                },
-            })
-                .then((response) => {
-                    setjibu(response.data)
-                })
+  const handleLogin = () => {
+    setfailedlogin(false);
+    axios
+      .post(
+        "http://localhost:8000/login",
+        { username, password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-
-    }, [loggedIn])
+      )
+      .then((response) => {
+        if (
+          response.status === 400 ||
+          response.status === 401 ||
+          response.status === 404
+        ) {
+          setText("Invalid Credentials");
+          setfailedlogin(true);
+        } else if (response.data) {
+          setText("Login Successful");
+          setLoggedIn(true);
+          localStorage.setItem("jwt", response.data.token);
+          setUser(response.data.username.name);
+          setTimeout(() => {
+            history.push("/dashboard");
+          }, 1500);
+        } else {
+          setText("Login Failed");
+          setfailedlogin(true);
+        }
+      })
+      .catch((error) => {
+        setfailedlogin(true)
+      });
+  };
 
 
 
@@ -66,13 +61,18 @@ function Login() {
         <>
             {
                 loggedIn ?
-                    <>
-                        <UserDashboard jibu={jibu} />
-
-                    </>
+                    <div className="position-absolute top-50 translate-middle start-50 w-25">
+          <LoginSuccessAlert />
+        </div>
+      
                     :
                     <>
                         <div className='Login'>
+{failedlogin ? (
+            <div className="">
+              <FailedLoginAlert show={failedlogin}/>
+            </div>
+          ) : null}
                             <div className="container">
                                 <h1>Login</h1>
                                 <form>

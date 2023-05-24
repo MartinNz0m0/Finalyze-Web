@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import * as d3 from "d3";
-import tstatement from "./tstatement.csv";
 import { Bar, Pie, Doughnut, Line } from "react-chartjs-2";
 import { UserContext } from "./UserContext";
 import { Link, useLocation, useHistory } from "react-router-dom";

@@ -23,12 +23,12 @@ const Upload = () => {
   const [filetype, Setfiletype] = useState(false);
   const [datapros, Setdatapros] = useState(false);
   const [privacy, Setprivacy] = useState(true);
-  const [showhelp, setshowhelp] = useState(false)
-  const [loadingstate, setloadingstate] = useState(false)
+  const [showhelp, setshowhelp] = useState(false);
+  const [loadingstate, setloadingstate] = useState(false);
   const [progress, setProgress] = useState(0);
   const [Color, setColor] = useState("progress-bar bg-info bg-opacity-75");
-  const [uploadingpdf, setuploadingpdf] = useState(false)
-  const { user, setUser } = useContext(UserContext)
+  const [uploadingpdf, setuploadingpdf] = useState(false);
+  const { user, setUser } = useContext(UserContext);
   const [pdfsave, setpdfsave] = useState(false);
 
   const onChange = (e) => {
@@ -41,7 +41,7 @@ const Upload = () => {
     Setdataloaded(false);
     Setupload(false);
     Setcsvcon(false);
-    setProgress(0)
+    setProgress(0);
     if (e.target.files[0].type !== "application/pdf") {
       Setfiletype(true);
     } else {
@@ -53,7 +53,7 @@ const Upload = () => {
     const interval = setInterval(() => {
       setProgress(prevProgress => prevProgress + 20);
     }, 500);
-    setuploadingpdf(true)
+    setuploadingpdf(true);
     try {
       const formData = new FormData();
 
@@ -151,6 +151,10 @@ const Upload = () => {
   const handleCheckboxChange = (e) => {
     // Do something when the checkbox value changes
     console.log(e.target.checked);
+    if (user === 'demo') {
+      alert('You are not allowed to save the pdf in demo mode, your file will be deleted after viewing charts')
+      return
+    }
     // set pdf dave to true
     if (e.target.checked) {
       setpdfsave(true)
@@ -188,6 +192,23 @@ const Upload = () => {
             <p>
               Financial Analysis To Track Your Spending
             </p>
+{user ? (
+              <div>
+                <button className="position-absolute end-0 top-0 mt-5 me-5 btn btn-warning bg-opacity-50">
+                  <Link to="/dashboard" className="nav-link">
+                    Back to Dashboard
+                  </Link>
+                </button>
+              </div>
+            ) : (
+              <div>
+                <button className="position-absolute end-0 top-0 mt-5 me-5 btn btn-warning bg-opacity-50">
+                  <Link to="/login" className="nav-link">
+                    Login
+                  </Link>
+                </button>
+              </div>
+            )}
           </div>
           <div className="upload-body">
             <h3>
@@ -268,18 +289,26 @@ const Upload = () => {
               </div>
             </div>
 
-            {user &&
-              <div className="mb-3 text-center">
-                <p>Your are logged in</p>
-                <div class="form-check">
-                  <input class="form-check-input bg-secondary btn-outline-secondary" type="checkbox" value="" id="flexCheckDefault" onChange={handleCheckboxChange} />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Check this box if you want to save this statement
-                  </label>
+            {user && (
+              <div>
+                <div className="mb-3 text-center">
+                  <p>You are logged in</p>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input bg-secondary btn-outline-secondary"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckDefault"
+                      onChange={handleCheckboxChange}
+                    />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Check this box if you want to save this statement
+                    </label>
+                  </div>
                 </div>
 
               </div>
-            }
+            )}
 
             <button
               type="submit"
