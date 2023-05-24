@@ -1,0 +1,98 @@
+.Upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    height: 100vh;
+
+    .header {
+        text-align: center;
+        padding: 2rem;
+        background-color: #267B8C;
+        width: 100%;
+    }
+
+    .upload-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0.5rem;
+        margin-top: 2rem;
+        width: 60%;
+
+        .upload-button {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            border: 1px solid #848484f1;
+            border-radius: 7px;
+
+            input {
+                border: none;
+                flex: 1;
+                background-color: #ffffff10;
+            }
+
+            button {
+                border: none;
+                border-radius: 0px 5px 5px 0px;
+                cursor: pointer;
+            }
+
+        }
+
+        .prog {
+            width: 50%;
+            margin-top: 2rem;
+        }
+        
+        .row {
+
+            input {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #ffffff10;
+            }
+
+            label {
+                margin: 0rem 0.5rem;
+            }
+
+            .sumbua {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                height: 12rem;
+                width: 22rem;
+                margin-top: 3rem;
+
+                button {
+                    background-color: transparent;
+                    border: none;
+                    text-align: right;
+                    background-color: #fff;
+                    width: fit-content;
+                    position: absolute;
+                    left: 88%;
+                    border-radius: 50%;
+                    padding: 0.3rem 0.7rem;
+                    background-color: #ffffff10;
+                    color: #fff;
+
+                    &:hover {
+                        background-color: #fff;
+                        color: #000;
+                        cursor: pointer;
+                    }
+                }
+
+                p {
+                    margin-top: 2.5rem;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

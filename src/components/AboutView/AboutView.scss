@@ -1,0 +1,18 @@
+.About-view {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    width: 100%;
+
+    .ttl {
+        font-size: 1.8rem;
+        background-color: #267B8C;
+        padding: 4rem;
+        text-align: center;
+    }
+
+    .privacy {
+        padding: 2rem;
+        margin: 2rem 4rem;
+    }
+}

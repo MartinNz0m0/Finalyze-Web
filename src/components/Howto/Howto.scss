@@ -1,0 +1,133 @@
+.Howto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #000;
+
+    .top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 4rem;
+        background-color: #000;
+
+        .banner {
+            margin-bottom: 4rem;
+            font-size: 1.8rem;
+            background-color: #267B8C;
+            padding: 2rem;
+            text-align: center;
+            width: 100%;
+            display: flex;
+        }
+
+        .howcard {
+            border: 0.5px solid #5d5d5d5d;
+            border-radius: 5px;
+            margin: 1rem 0rem;
+            width: 58rem;
+
+            &:hover {
+                box-shadow: 1px 1px 5px 1px #00ff005e;
+                border: 1px solid #00ff005e;
+                cursor: pointer;
+                transform: scale(101%);
+            }
+
+            .howcard-body {
+                display: flex;
+                align-items: center;
+                padding: 1rem 0.5rem;
+
+                h5 {
+                    text-align: left;
+                    margin-left: 4rem;
+                    margin-top: 1rem;
+                    margin-bottom: -1rem;
+                }
+
+                .left {
+                    flex: 2;
+                }
+
+                .right {
+                    flex: 1;
+                    padding-right: 0.5rem;
+                }
+            }
+        }
+    }
+
+    .bottom {
+        background-color: #000;
+
+        h3 {
+            background-color: #267B8C;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .charts-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 4rem 0rem;
+
+            .chart {
+                width: 40%;
+                height: 42rem;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(101%);
+                    box-shadow: 1px 1px 5px 1px #00ff005e;
+                    border: 1px solid #00ff005e;
+                    border-radius: 5px;
+                }
+
+                .cards {
+                    background-color: #00000017;
+                    height: 100%;
+                    border: 0.5px solid #5d5d5d5d;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+
+
+                    img {
+                        height: 30rem;
+                        width: 95%;
+                        object-fit: contain;
+                        border-bottom: 1px solid #5d5d5d5d;
+                    }
+
+                    .card-body {
+                        padding: 0.5rem 2rem;
+                        font-size: 0.8rem;
+                        margin-top: 0.5rem;
+                        width: 100%;
+
+                        h5 {
+                            text-align: left;
+                            margin-bottom: 0.5rem;
+                            border-bottom: 1px solid #5d5d5d5d;
+                            width: fit-content;
+                            padding-bottom: 0.5rem;
+                        }
+
+                        p {
+                            text-align: left;
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
