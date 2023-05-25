@@ -1,0 +1,28 @@
+
+
+
+@media (max-width: 600px) {
+    .top-nav button {
+            position: relative;
+            width: 7rem;
+            height: 3rem;
+            font-size: 0.8rem;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .table-content {
+        width: 95% !important;
+    }
+
+    .pie-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

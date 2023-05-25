@@ -6,7 +6,7 @@ import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import { Doughnut } from "react-chartjs-2";
 import { HashLoader } from "react-spinners";
-import { set } from "lodash";
+import './css/Budget.css'
 
 const BudgetBuilder = () => {
   const history = useHistory();
@@ -175,7 +175,11 @@ const BudgetBuilder = () => {
                     onChange={(e) => handleInputChange(i, e.target.value)}
                     isValid={validatedinputs[i]}
                     isInvalid={!validatedinputs[i]}
-                    value={inputs[i] || ""}/>
+                    value={inputs[i] || ""}
+                    className='bg-secondary bg-opacity-50 border-dark text-light'
+
+                    />
+                    
                   <Form.Control.Feedback type="invalid">
                     Not a number
                   </Form.Control.Feedback>
@@ -296,7 +300,7 @@ const BudgetBuilder = () => {
         loadstate ? (
         <>
         
-      <div className="p-4 bg-dark position-relative">
+      <div className="p-4 bg-dark position-relative top-nav">
         <h1>BudgetBuilder</h1>
         <Button
           onClick={() => history.push("./dashboard")}
@@ -311,9 +315,9 @@ const BudgetBuilder = () => {
         you build your category model first.
       </h5>
 
-      <div className="d-flex mx-3">
-        <div className="w-75">
-          <Table striped bordered hover variant="dark">
+      <div className="d-flex mx-3 content">
+        <div className="w-75 table-content">
+          <Table striped bordered hover variant="dark" responsive="md">
             <thead>
               <tr>
                 <th>#</th>
@@ -332,7 +336,7 @@ const BudgetBuilder = () => {
             </h5>
           )}
         </div>
-        <div className="flex-grow-1">
+        <div className="flex-grow-1 pie-content">
           <h6 className="p-3 m-2 text-center bg-dark">
             Total Budget: KES{" "}
             {categories.reduce((acc, cat) => {

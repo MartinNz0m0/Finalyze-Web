@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../../components/UserContext";
 import axios from "axios";
@@ -20,6 +20,7 @@ import './../../components/css/Dashboard.css'
 
 const UserDashboard = ({ jibu }) => {
   const history = useHistory();
+  const popRef = useRef(null);
   const { user, setUser } = useContext(UserContext);
   const [sndata, setSndata] = useState([]);
   const [showdata, setshowdata] = useState(false);
@@ -486,9 +487,10 @@ const UserDashboard = ({ jibu }) => {
         <Modal
           show={showuploadmodal}
           onHide={closeuploadmodal}
-          contentClassName="bg-dark "
+          contentClassName="bg-dark"
+          fullscreen="md-down"
         >
-          <Modal.Header closeButton>
+          <Modal.Header closeButton closeVariant="white">
             <Modal.Title>Upload Statement</Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -772,9 +774,9 @@ const UserDashboard = ({ jibu }) => {
     );
   };
 
-  const showsidebarhandler = () => {
+  const showsidebarhandler = (e) => {
+    console.log(e.target)
     if (showsidebar) {
-      setshowsidebar(false);
       if (mobilemode) {
         document.getElementsByClassName("dash-content")[0].style.transform = "translateX(0rem)"
         document.getElementsByClassName("sidebar")[0].style.left = "-15rem";
@@ -782,17 +784,64 @@ const UserDashboard = ({ jibu }) => {
       else {
         document.getElementsByClassName("sidebar")[0].style.left = "-20rem";
       }
+      let closer = document.querySelector(".bi-x")
+      if (closer) {
+        document.querySelector(".bi-x").className = "bi bi-list"
+      } 
+      setshowsidebar(false);
       return;
     }
     setshowsidebar(true);
     document.getElementsByClassName("sidebar")[0].style.left = "0px";
     if (mobilemode) {
     document.getElementsByClassName("dash-content")[0].style.transform = "translateX(15rem)"
-    } 
+    }
+    let closer = document.querySelector(".bi-list")
+    if (closer) {
+      document.querySelector(".bi-list").className = "bi bi-x" 
+    }
   };
 
+  // click outside of sidebar to close it
+
+  // window.onclick = (event) => {
+  //   const sidebar = document.getElementsByClassName("sidebar")[0];
+  //   const menusel = document.getElementsByClassName("bi-list")[0]
+  //   console.log(event.target)
+  //   if (event.target != sidebar && event.target != menusel && event.target.type != 'button') {
+  //     setshowsidebar(false);
+  //     if (mobilemode) {
+  //       document.getElementsByClassName("dash-content")[0].style.transform = "translateX(0rem)"
+  //       document.getElementsByClassName("sidebar")[0].style.left = "-15rem";
+  //     }
+  //     else {
+  //       document.getElementsByClassName("sidebar")[0].style.left = "-20rem";
+  //     }
+  //   }
+  // }
+// trying to close the sidebar when clicking outside of it
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (popRef.current && !popRef.current.contains(event.target)) {
+  //       setshowsidebar(false);
+  //     if (mobilemode) {
+  //       document.getElementsByClassName("dash-content")[0].style.transform = "translateX(0rem)"
+  //       document.getElementsByClassName("sidebar")[0].style.left = "-15rem";
+  //     }
+  //     else {
+  //       document.getElementsByClassName("sidebar")[0].style.left = "-20rem";
+  //     }
+  //     }
+  //   };
+  //   document.addEventListener('click', handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener('click', handleClickOutside);
+  //   };
+  // }, [popRef]);
+
+
   return (
-    <div className="">
+    <div className="" ref={popRef}>
       {showdata ? (
         <Statement data={sndata[1]} pdata={sndata[0]} refresh={handleRefresh} />
       ) : (

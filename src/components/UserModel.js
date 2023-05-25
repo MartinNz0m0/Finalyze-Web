@@ -110,7 +110,9 @@ const UserModel = () => {
   
       <tr>
           <td>{i+1}</td>
-          <td> <InputGroup details={item} key={key} /></td>
+          <td> <p key={key}>{item}</p></td>
+          {/* <td> <InputGroup details={item} key={key} /></td> */}
+
           <td> 
             <Form onSubmit={(e) => handlesubmit(e, i)} id='form'>
         <Form.Group as={Row} className="mb-3" controlId={`category-${key}`}>

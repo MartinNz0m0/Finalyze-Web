@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { DeleteSuccessAlert, FormSubmitSuccessAlert } from "./Alerts";
 import { HashLoader } from "react-spinners";
+import './css/Managecat.css'
 
 
 const Managecat = () => {
@@ -255,7 +256,7 @@ const Managecat = () => {
           <div>
     
           
-          <div className="p-4 bg-dark">
+          <div className="p-4 bg-dark manage-nav">
             <h1>Manage Categories</h1>
     
             <Button
@@ -267,7 +268,7 @@ const Managecat = () => {
             </Button>
           </div>
           <div className="position-relative m-4">
-            <Table striped bordered hover variant="dark">
+            <Table striped bordered hover variant="dark" responsive="md">
               <thead>
                 <tr>
                   <th>Details</th>

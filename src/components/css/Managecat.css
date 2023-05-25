@@ -1,0 +1,21 @@
+
+
+@media (max-width: 600px) {
+    .manage-nav {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 2rem;
+        align-items: center;
+    }
+    
+    .manage-nav h1 {
+        font-size: 1.5rem;
+    }
+
+    .manage-nav button {
+        position: relative;
+        width: 5rem;
+        height: 3rem;
+        font-size: 0.8rem;
+    }
+}
