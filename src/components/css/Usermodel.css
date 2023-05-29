@@ -22,6 +22,12 @@
         left: 0;
         margin: auto;    
     }
+
+    .top-text P {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
 }
 
 @media (max-width: 600px) {
@@ -63,9 +69,14 @@
         margin-top: 1.5rem !important;
     }
 
-    
+    .top-text p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     .top-text select {
         height: 25% !important;
+        margin: 0;
     }
 }

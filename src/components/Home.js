@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import IMG from "../images/homeimg.png";
 import { useHistory } from "react-router-dom";
 import { Card, Container, Nav, Navbar } from "react-bootstrap";
 import sttimg from "../images/statementssupport.png";
 import report from "../images/reports.png";
+import './css/Home.css'
 
 const Home = () => {
   const history = useHistory();
+  const [mobilemode, setmobilemode] = useState(false);
+  React.useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setmobilemode(true);
+    } else {
+      setmobilemode(false);
+    }
+  }, []);
   return (
     <div>
       <div className="bg-dark p-1 d-flex flex-row align-items-center">
@@ -23,12 +32,12 @@ const Home = () => {
           </Container>
         </Navbar>
       </div>
-      <div className="bg-info bg-opacity-25 d-flex justify-content-between align-items-center">
+      <div className="bg-info bg-opacity-25 d-flex justify-content-between align-items-center home-banner">
         <img
           className="home-img"
           src={IMG}
           alt="home"
-          style={{ width: 450, height: 450 }}
+          style={mobilemode ? { width: 200, height: 200 }: { width: 450, height: 450 }}
         />
         <div className="position-absolute start-50 translate-middle-y ">
           <h1 className="fw-bold">Finalyze</h1>
@@ -37,7 +46,7 @@ const Home = () => {
           </h4>
         </div>
       </div>
-      <div className="bg-secondary bg-opacity-50 d-flex justify-content-center pb-5 pt-5">
+      <div className="bg-secondary bg-opacity-50 d-flex justify-content-center pb-5 pt-5 card-cont">
         <Card className="bg-dark text-light m-4 text-center w-25 p-2">
           <Card.Body>
             <i
@@ -83,7 +92,7 @@ const Home = () => {
       </div>
       <div className="bg-secondary bg-opacity-50 pt-5">
         <div>
-        <div className="d-flex justify-content-between align-items-center p-3">
+          <div className="d-flex justify-content-between align-items-center p-3 body-card-2">
             <div className="w-100 mx-5">
               <img src={report} />
             </div>
@@ -104,7 +113,7 @@ const Home = () => {
               </Card>
             </div>
           </div>
-          <div className="d-flex justify-content-between align-items-center p-3">
+          <div className="d-flex justify-content-between align-items-center p-3 body-card">
             <div className="w-100 mx-5">
               <Card className="bg-secondary text-light text-center">
                 <Card.Body>
@@ -123,10 +132,9 @@ const Home = () => {
               </Card>
             </div>
             <div className="w-100 mx-5">
-              <img src={sttimg} width="600" height="500" />
+              <img src={sttimg} width={mobilemode ? 380 : 600} height={mobilemode ? 400 : 500} />
             </div>
           </div>
-          
         </div>
       </div>
     </div>

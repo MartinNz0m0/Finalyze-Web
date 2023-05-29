@@ -188,15 +188,13 @@ const UserModel = () => {
         <p>
         Seeing too much nonsense?
         You are seeing transcations that appeared at least
-        </p>
-        <Form.Select className='item-selector bg-dark border-success text-light mx-1' size="sm" onChange={handleitemchange}>
+        <Form.Select className='item-selector bg-dark border-success text-light frequency' size="sm" onChange={handleitemchange}>
           <option value="3">3</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="4">4</option>
           <option value="5">5</option>
-        </Form.Select>
-        <p>
+        </Form.Select> 
         times in each statement. Increase the number to see less.
         </p>
         

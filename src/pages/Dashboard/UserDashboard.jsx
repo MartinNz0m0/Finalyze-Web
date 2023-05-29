@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../../components/UserContext";
 import axios from "axios";
-import Statement from '../../components/Statement';
+import Statement from "../../components/Statement";
 import SearchPage from "./../../components/SearchPage";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -16,7 +16,7 @@ import { Bar, Line } from "react-chartjs-2";
 import { Col, Container, Row } from "react-bootstrap";
 import { AppTitle } from "./../../components/Hero";
 import HashLoader from "react-spinners/HashLoader";
-import './../../components/css/Dashboard.css'
+import "./../../components/css/Dashboard.css";
 
 const UserDashboard = ({ jibu }) => {
   const history = useHistory();
@@ -30,7 +30,7 @@ const UserDashboard = ({ jibu }) => {
   const [quickanalresults, setquickanalresults] = useState({});
   const [showquickanal, setshowquickanal] = useState(false);
   const [stttype, setstttype] = useState("mpesa");
-
+  const [showSideNavigation, setShowSideNavigation] = useState(false);
   const [title, settitle] = useState("");
   const [cardData, setCardData] = useState([
     {
@@ -59,6 +59,7 @@ const UserDashboard = ({ jibu }) => {
   const [showdelmodal, setshowdelmodal] = useState(false);
   const [delid, setdelid] = useState(0);
   const [budgetlist, setbudgetlist] = useState([]);
+  const [dashdata, setdashdata] = useState([]);
   const [graphmode, setgraphmode] = useState(false);
   const [graphdata, setgraphdata] = useState([]);
   const [linedata, setlinedata] = useState([]);
@@ -71,6 +72,27 @@ const UserDashboard = ({ jibu }) => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       // user has token, make api call
+      axios
+        .post(
+          "http://localhost:8001/dashdata",
+          {},
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${jwt}`,
+            },
+          }
+        )
+        .then((response) => {
+          if (response.status == 401) {
+            history.push("/login");
+          } else if (response.status == 200) {
+            setdashdata(response.data);
+          } else {
+            alert("something went wrong");
+          }
+        });
+
       axios
         .post(
           "http://localhost:8000/dash",
@@ -86,12 +108,13 @@ const UserDashboard = ({ jibu }) => {
           if (response.status == 401) {
             history.push("/login");
           } else if (response.status == 200) {
-          setCardData(response.data);
-          }
-          else {
-            alert('something went wrong')
+            setCardData(response.data);
+          } else {
+            alert("something went wrong");
           }
         });
+
+      // other dash data
 
       // get latest statement data
       axios
@@ -106,13 +129,17 @@ const UserDashboard = ({ jibu }) => {
           }
         )
         .then((response) => {
-          if (response.data == 'nothing happened') {
+          if (response.data == "nothing happened") {
             setloadstate(true);
             return;
           }
           setgraphdata(response.data[0]);
           setlinedata(response.data[1]);
-          setloadstate(true);
+          dashdata.length > 0
+            ? setloadstate(true)
+            : setTimeout(() => {
+                setloadstate(true);
+              }, 1000);
         });
     } else {
       // user has no token, redirect to login
@@ -220,45 +247,45 @@ const UserDashboard = ({ jibu }) => {
           </Modal.Header>
           <Modal.Body>
             {/* Check if object is null */}
-            {
-                keys.length === 0 ? (
-                    <p className="text-warning text-center">No data to display, visit the category model to add some categories first</p>
-                ) : (
-                    <>
-                    
-            {graphmode ? (
-              <div className="h-100">
-                <Bar
-                  data={bardatasaet}
-                  options={baroptions}
-                  width={100}
-                  height={100}
-                ></Bar>
-              </div>
+            {keys.length === 0 ? (
+              <p className="text-warning text-center">
+                No data to display, visit the category model to add some
+                categories first
+              </p>
             ) : (
-              <Table striped bordered hover variant="dark">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Category Name</th>
-                    <th>Amount</th>
-                    <th>Budget Amount</th>
-                  </tr>
-                </thead>
-                <tbody>{body}</tbody>
-              </Table>
+              <>
+                {graphmode ? (
+                  <div className="h-100">
+                    <Bar
+                      data={bardatasaet}
+                      options={baroptions}
+                      width={100}
+                      height={100}
+                    ></Bar>
+                  </div>
+                ) : (
+                  <Table striped bordered hover variant="dark">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Category Name</th>
+                        <th>Amount</th>
+                        <th>Budget Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>{body}</tbody>
+                  </Table>
+                )}
+                <Button
+                  onClick={() =>
+                    graphmode ? setgraphmode(false) : setgraphmode(true)
+                  }
+                  variant="info"
+                >
+                  {graphmode ? "Table mode" : "Graph mode"}
+                </Button>
+              </>
             )}
-            <Button
-              onClick={() =>
-                graphmode ? setgraphmode(false) : setgraphmode(true)
-              }
-              variant="info"
-            >
-              {graphmode ? "Table mode" : "Graph mode"}
-            </Button>
-                    </>
-                )
-            }
           </Modal.Body>
         </Modal>
       </>
@@ -317,12 +344,12 @@ const UserDashboard = ({ jibu }) => {
         };
         return (
           <div className="">
-              <Bar
+            <Bar
               data={bardata}
               options={baroptions}
               width={100}
               height={mobilemode ? 100 : 50}
-            ></Bar>         
+            ></Bar>
           </div>
         );
       } else {
@@ -377,7 +404,7 @@ const UserDashboard = ({ jibu }) => {
           title: {
             display: true,
             fontSize: 50,
-            text: "Account Activity"
+            text: "Account Activity",
           },
         },
       };
@@ -389,7 +416,6 @@ const UserDashboard = ({ jibu }) => {
             width={100}
             height={mobilemode ? 100 : 50}
           />
-          
         </div>
       );
     }
@@ -504,12 +530,16 @@ const UserDashboard = ({ jibu }) => {
                   >
                     <Alert.Heading>Computer says no</Alert.Heading>
                     <p>
-                      That won't work, only PDF files are allowed. You can dismiss me and try again
+                      That won't work, only PDF files are allowed. You can
+                      dismiss me and try again
                     </p>
                   </Alert>
                 )}
                 <Form.Group controlId="formFileSm" className="mb-3" bg="dark">
-                  <Form.Label style={{textTransform: "uppercase"}} className="p-3 rounded bg-secondary bg-opacity-50 m-3 text-warning fs-5 text-opactiy-50">
+                  <Form.Label
+                    style={{ textTransform: "uppercase" }}
+                    className="p-3 rounded bg-secondary bg-opacity-50 m-3 text-warning fs-5 text-opactiy-50"
+                  >
                     Upload your {currentupload} bank statement
                   </Form.Label>
                   <Form.Control
@@ -524,7 +554,7 @@ const UserDashboard = ({ jibu }) => {
                   {uploadedfile ? (
                     <>
                       <p className="text-info">
-                      File name: {uploadedfile.name} <br />
+                        File name: {uploadedfile.name} <br />
                         Click below to upload the file
                       </p>
                     </>
@@ -561,7 +591,10 @@ const UserDashboard = ({ jibu }) => {
                     >
                       <Card.Body>
                         <Card.Title>MPESA Statement</Card.Title>
-                        <i class="bi bi-phone-vibrate" style={{fontSize: '5.5rem'}}></i>
+                        <i
+                          class="bi bi-phone-vibrate"
+                          style={{ fontSize: "5.5rem" }}
+                        ></i>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -578,7 +611,10 @@ const UserDashboard = ({ jibu }) => {
                     >
                       <Card.Body>
                         <Card.Title>COOP Bank Statement</Card.Title>
-                        <i class="bi bi-bank" style={{fontSize: '5.5rem'}}></i>
+                        <i
+                          class="bi bi-bank"
+                          style={{ fontSize: "5.5rem" }}
+                        ></i>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -597,7 +633,10 @@ const UserDashboard = ({ jibu }) => {
                     >
                       <Card.Body>
                         <Card.Title>Equity Bank Statement</Card.Title>
-                        <i class="bi bi-bank" style={{fontSize: '5.5rem'}}></i>
+                        <i
+                          class="bi bi-bank"
+                          style={{ fontSize: "5.5rem" }}
+                        ></i>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -632,11 +671,11 @@ const UserDashboard = ({ jibu }) => {
           setshowdata(true);
           sndata.push(response.data[0], response.data[1]);
         } else {
-          alert('No data found')
+          alert("No data found");
         }
       })
-      .catch(error => console.log(error));
-  }
+      .catch((error) => console.log(error));
+  };
 
   const handleRefresh = () => {
     setshowdata(false);
@@ -714,12 +753,12 @@ const UserDashboard = ({ jibu }) => {
       )
       .then((response) => {
         if (response.status === 200) {
-            setquickanalresults(response.data[0]);
-            settitle(response.data[1]);
-            setbudgetlist(response.data[2]);
-            setshowquickanal(true);
-            handleShow();
-            setloadstate(true);
+          setquickanalresults(response.data[0]);
+          settitle(response.data[1]);
+          setbudgetlist(response.data[2]);
+          setshowquickanal(true);
+          handleShow();
+          setloadstate(true);
         } else {
           alert("Error");
         }
@@ -775,30 +814,31 @@ const UserDashboard = ({ jibu }) => {
   };
 
   const showsidebarhandler = (e) => {
-    console.log(e.target)
+    console.log(e.target);
     if (showsidebar) {
       if (mobilemode) {
-        document.getElementsByClassName("dash-content")[0].style.transform = "translateX(0rem)"
+        document.getElementsByClassName("dash-content")[0].style.transform =
+          "translateX(0rem)";
         document.getElementsByClassName("sidebar")[0].style.left = "-15rem";
-      }
-      else {
+      } else {
         document.getElementsByClassName("sidebar")[0].style.left = "-20rem";
       }
-      let closer = document.querySelector(".bi-x")
+      let closer = document.querySelector(".bi-x");
       if (closer) {
-        document.querySelector(".bi-x").className = "bi bi-list"
-      } 
+        document.querySelector(".bi-x").className = "bi bi-list";
+      }
       setshowsidebar(false);
       return;
     }
     setshowsidebar(true);
     document.getElementsByClassName("sidebar")[0].style.left = "0px";
     if (mobilemode) {
-    document.getElementsByClassName("dash-content")[0].style.transform = "translateX(15rem)"
+      document.getElementsByClassName("dash-content")[0].style.transform =
+        "translateX(15rem)";
     }
-    let closer = document.querySelector(".bi-list")
+    let closer = document.querySelector(".bi-list");
     if (closer) {
-      document.querySelector(".bi-list").className = "bi bi-x" 
+      document.querySelector(".bi-list").className = "bi bi-x";
     }
   };
 
@@ -819,7 +859,7 @@ const UserDashboard = ({ jibu }) => {
   //     }
   //   }
   // }
-// trying to close the sidebar when clicking outside of it
+  // trying to close the sidebar when clicking outside of it
   // useEffect(() => {
   //   const handleClickOutside = (event) => {
   //     if (popRef.current && !popRef.current.contains(event.target)) {
@@ -839,35 +879,36 @@ const UserDashboard = ({ jibu }) => {
   //   };
   // }, [popRef]);
 
-
   return (
     <div className="" ref={popRef}>
       {showdata ? (
         <Statement data={sndata[1]} pdata={sndata[0]} refresh={handleRefresh} />
       ) : (
         <div className="text-center">
-          <div className="d-flex flex-row align-items-center p-2 bg-dark top-nav">
-            <div className="d-flex flex-row-reverse">
-           <AppTitle/>
-             <div className="menu-sel mt-3" onClick={showsidebarhandler}>
-              <i class="bi bi-list"></i>
-            </div>
+          <div className="d-flex flex-row align-items-center bg-dark top-nav">
+            <div className="d-flex flex-row site-header">
+              <div
+                className="menu-sel mt-3"
+                // onClick={() => setShowSideNavigation(true)}
+              >
+                <i class="bi bi-list" onClick={() => setShowSideNavigation(true)}></i>
+              </div>
+              <div className="app-ttl">
+                <AppTitle />
+              </div>
             </div>
             <div className="home-search">
-            <form
-              class="d-flex text-center mb-1"
-              role="search"
-            >
-              <input
-                class="text-light form-control bg-secondary bg-opacity-50 border-dark"
-                type="search"
-                placeholder="Search for a transaction"
-                aria-label="Search"
-                value={searchText}
-                onChange={updateSearch}
-              />
-            </form>
-              </div>
+              <form class="d-flex text-center mb-1" role="search">
+                <input
+                  class="text-light form-control bg-secondary bg-opacity-50 border-dark"
+                  type="search"
+                  placeholder="Search for a transaction"
+                  aria-label="Search"
+                  value={searchText}
+                  onChange={updateSearch}
+                />
+              </form>
+            </div>
             {showresults && (
               <div className="d-flex flex-row position-absolute top-25 start-50  m-3 source-sel">
                 <p>Statement Source:</p>
@@ -881,72 +922,129 @@ const UserDashboard = ({ jibu }) => {
                 </Form.Select>
               </div>
             )}
-            
           </div>
-          <div className="">
-            <div className="d-flex flex-column p-3 bg-dark sidebar position-absolute">
-              <Button
-                className="w-100 my-2 text-light"
-                onClick={getdetails}
-                variant="secondary"
-              >
-                Category Model
-              </Button>
-              <Button
-                className="w-100 my-2 text-light"
-                onClick={() => history.push("/managecat")}
-                variant="secondary"
-              >
-                Category Manager
-              </Button>
-              <Button
-                className="w-100 my-2 text-light"
-                onClick={() => history.push("/budgetbuild")}
-                variant="secondary"
-              >
-                Budget Builder
-              </Button>
-              <Button
-                className="w-100 my-2 text-light"
-                variant="secondary"
-                onClick={() => setshowuploadmodal(true)}
-              >
-                Upload a Statement
-              </Button>
-              <Button
-              className="text-center btn-sm w-50 my-2 mx-5 bottom-0 position-absolute"
-              onClick={() => {
-                localStorage.removeItem("jwt");
-                setUser(null);
-                history.push("/");
-              }}
-              variant="outline-warning"
-            >
-              Logout
-            </Button>
-            </div>
+          <div className="body-container">
+            {showSideNavigation ? (
+              <div className="sidebar-container">
+                <div className="bg-dark sidebar">
+                  <div className="top">
+                    <div
+                      className="menu-sel mt-3"
+                      onClick={() => setShowSideNavigation(false)}
+                    >
+                      <i class="bi bi-x"></i>
+                    </div>
+                    <Button
+                      className="w-100 my-2 text-light"
+                      onClick={getdetails}
+                      variant="secondary"
+                    >
+                      Category Model
+                    </Button>
+                    <Button
+                      className="w-100 my-2 text-light"
+                      onClick={() => history.push("/managecat")}
+                      variant="secondary"
+                    >
+                      Category Manager
+                    </Button>
+                    <Button
+                      className="w-100 my-2 text-light"
+                      onClick={() => history.push("/budgetbuild")}
+                      variant="secondary"
+                    >
+                      Budget Builder
+                    </Button>
+                    <Button
+                      className="w-100 my-2 text-light"
+                      variant="secondary"
+                      onClick={() => setshowuploadmodal(true)}
+                    >
+                      Upload a Statement
+                    </Button>
+                  </div>
+                  <div className="bottom">
+                    <Button
+                      className="text-center btn-sm w-50"
+                      onClick={() => {
+                        localStorage.removeItem("jwt");
+                        setUser(null);
+                        history.push("/");
+                      }}
+                      variant="outline-warning"
+                    >
+                      Logout
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ) : null}
             <div className="d-flex flex-fill w-100 dash-content">
               {showresults ? (
                 <div className="w-100 flex-fill search-page">
-                <SearchPage searchText={searchText} stttype={stttype} />
+                  <SearchPage searchText={searchText} stttype={stttype} />
                 </div>
               ) : (
                 <div className="flex-fill">
                   {loadstate ? (
                     <div>
-                      <div className="w-25 m-3 stt-up">
-                        <Card bg="dark" className="mt-5">
-                          <Card.Body>
-                            Statements Uploaded:
-                            <strong>{" " + cardData.length}</strong>
-                          </Card.Body>
-                        </Card>
+                      <div className="d-flex flex-wrap justify-content-around">
+                        <div className="m-3 stt-up">
+                          <Card bg="dark" className="mt-2">
+                            <Card.Body>
+                              Statements Uploaded:
+                              <strong className="text-info">
+                                {" " + cardData.length}
+                              </strong>
+                            </Card.Body>
+                          </Card>
+                        </div>
+                        <div className="m-3 stt-up">
+                          <Card bg="dark" className="mt-2">
+                            <Card.Body>
+                              Categories added:
+                              <strong className="text-info">
+                                {" " + dashdata[0]}
+                              </strong>
+                            </Card.Body>
+                          </Card>
+                        </div>
+                        <div className="m-3 stt-up">
+                          <Card bg="dark" className="mt-2">
+                            <Card.Body>
+                              Total Budget:
+                              <strong className="text-info">
+                                {" " + dashdata[1]}
+                              </strong>
+                            </Card.Body>
+                          </Card>
+                        </div>
+                        <div className="m-3 stt-up">
+                          <Card bg="dark" className="mt-2">
+                            <Card.Body>
+                              Overspend Index:
+                              {dashdata[2] < 25 ? (
+                                <strong className="text-success">
+                                  {" " + dashdata[2] + "%"}
+                                </strong>
+                              ) : dashdata[2] < 75 ? (
+                                <strong className="text-warning">
+                                  {" " + dashdata[2] + "%"}
+                                </strong>
+                              ) : (
+                                <strong className="text-danger">
+                                  {" " + dashdata[2] + "%"}
+                                </strong>
+                              )}
+                            </Card.Body>
+                          </Card>
+                        </div>
                       </div>
                       <h5 className="p-3 bg-dark m-3 text-info">
-                          Last Month at a glance
-                          <br />
-                          {graphdata ? graphdata[1] : "No data"}
-                        </h5>
+                        Last Month at a glance
+                        <br />
+                        {graphdata ? graphdata[1] : "No data"}
+                      </h5>
                       <div className="d-flex justify-content-evenly align-items-center dash-graphs">
                         <div className="text-info w-100">
                           <Lateststatement data={graphdata} />
@@ -957,7 +1055,7 @@ const UserDashboard = ({ jibu }) => {
                       </div>
                       <h5 className="p-3 bg-dark m-3 text-info">
                         Statements Uploaded
-                        </h5>
+                      </h5>
                       <div className="row mx-4">
                         {cardData.map((card, i) => (
                           <div className="col-md-4 mt-3" key={i}>
@@ -981,7 +1079,7 @@ const UserDashboard = ({ jibu }) => {
                                   {card.pdf_name.split("_")[1]}
                                 </h5>
                                 {/* <h6 className="card-subtitle mb-2 text-muted">{card.statement}</h6> */}
-                                <p className="card-text d-flex flex-row justify-content-center">
+                                <p className="card-text text-success d-flex flex-row justify-content-center">
                                   Date:{" "}
                                   {card.statement_type == "coop" ? (
                                     <p className="mx-2"> {card.date}</p>
@@ -989,7 +1087,7 @@ const UserDashboard = ({ jibu }) => {
                                     <p className="mx-2"> {card.date}</p>
                                   )}
                                 </p>
-                                <p className="card-text">
+                                <p className="card-text text-success">
                                   Statement type:{" "}
                                   {card.statement_type.toUpperCase()}
                                 </p>
@@ -997,7 +1095,7 @@ const UserDashboard = ({ jibu }) => {
                                   {card.statement_type == "mpesa" ? (
                                     <>
                                       <button
-                                        className="btn btn-primary"
+                                        className="btn btn-outline-info"
                                         onClick={handleApiCall}
                                         value={i}
                                         key={i}
@@ -1005,7 +1103,7 @@ const UserDashboard = ({ jibu }) => {
                                         View Charts
                                       </button>
                                       <button
-                                        className="btn btn-primary mx-3"
+                                        className="btn btn-outline-info mx-3"
                                         onClick={quickanalysis}
                                         value={i}
                                         key={i}
@@ -1015,7 +1113,7 @@ const UserDashboard = ({ jibu }) => {
                                     </>
                                   ) : (
                                     <button
-                                      className="btn btn-primary mx-3"
+                                      className="btn btn-outline-info mx-3"
                                       onClick={quickanalysis}
                                       value={i}
                                       key={i}
@@ -1032,7 +1130,7 @@ const UserDashboard = ({ jibu }) => {
                       {showquickanal && (
                         <Analysismodal title={title} data={quickanalresults} />
                       )}
-    
+
                       {showuploadmodal && (
                         <Uploadmodal
                           show={showuploadmodal}
@@ -1042,7 +1140,7 @@ const UserDashboard = ({ jibu }) => {
                     </div>
                   ) : (
                     <div className="d-flex justify-content-center align-items-center my-5">
-                     <HashLoader color="#008897" size={100}/>
+                      <HashLoader color="#008897" size={100} />
                     </div>
                   )}
                 </div>

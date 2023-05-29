@@ -66,7 +66,7 @@ const Managecat = () => {
     }
     else if (readonly === false && !parseInt(newbudget)) {
       alert("You clicked the edit budget button, please enter a valid number for budget");
-    }
+    } 
     else {
     const jwt = localStorage.getItem("jwt");
     const det = categories[currindex][2];
@@ -161,13 +161,14 @@ const Managecat = () => {
                 type="text"
                 placeholder="Category"
                 onChange={handleeditchange}
+                className="bg-secondary bg-opacity-50 border-dark text-light"
               />
               <h3 className="text-info my-3">Budget Set</h3>
               <div className="d-flex flex-row-reverse">
 
               <Button size='sm' variant="secondary mx-2" className="rounded" onClick={()=>{setReadonly(false) 
                 ref.current.focus()}}>Edit</Button>
-              <Form.Control onChange={(e)=>setNewbudget(e.target.value)} ref={ref} type="text" placeholder={"Current Budget: KES " + categories[currindex][6]} readOnly={readonly} />
+              <Form.Control onChange={(e)=>setNewbudget(e.target.value)} ref={ref} type="text" placeholder={"Current Budget: KES " + categories[currindex][6]} readOnly={readonly} className="bg-secondary bg-opacity-50 border-dark text-light" />
               </div>
               <Button onClick={submitnewcat} className="my-2">
                 Done

@@ -1,0 +1,39 @@
+
+
+@media (max-width: 600px) {
+    .home-banner {
+        height: 30rem;
+    }
+    .home-banner img {
+        transform: translateY(-50%);
+    }
+
+    .card-cont {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0%;
+    }
+    .card-cont .card {
+        width: 90% !important;
+    }
+
+    .body-card {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .body-card-2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body-card-2 div img {
+        width: 24rem;
+        height: 15rem;
+        margin-bottom: 2rem;
+        margin-right: 1rem;
+    }
+
+    .body-card div img {
+        margin-bottom: 2rem;
+    }
+}

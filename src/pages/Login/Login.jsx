@@ -1,21 +1,21 @@
-import React, { useContext, useState } from 'react';
-import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
-import UserDashboard from '../Dashboard/UserDashboard';
-import { useEffect } from 'react';
-import './Login.scss'
-import { UserContext } from '../../components/UserContext';
+import React, { useContext, useState } from "react";
+import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
+import UserDashboard from "../Dashboard/UserDashboard";
+import { useEffect } from "react";
+import "./Login.scss";
+import { UserContext } from "../../components/UserContext";
 import LoginSuccessAlert, { FailedLoginAlert } from "./../../components/Alerts";
 
 function Login() {
   const history = useHistory();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [text, setText] = useState('');
-    const [jibu, setjibu] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [text, setText] = useState("");
+  const [jibu, setjibu] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
   const [failedlogin, setfailedlogin] = useState(false);
-    const { user, setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
 
   const handleLogin = () => {
     setfailedlogin(false);
@@ -52,47 +52,61 @@ function Login() {
       })
       .catch((error) => {
         setfailedlogin(true)
+        setTimeout(() => {
+          setfailedlogin(false);
+        }, 3000)
       });
   };
 
-
-
-    return (
-        <>
-            {
-                loggedIn ?
-                    <div className="position-absolute top-50 translate-middle start-50 w-25">
+  return (
+    <>
+      {loggedIn ? (
+        <div className="position-absolute top-50 translate-middle start-50 w-25">
           <LoginSuccessAlert />
         </div>
-      
-                    :
-                    <>
-                        <div className='Login'>
-{failedlogin ? (
-            <div className="">
-              <FailedLoginAlert show={failedlogin}/>
+      ) : (
+        <>
+          <div className="Login">
+            {failedlogin ? (
+              <div className="error-alert">
+                <div className="fail-error">
+                  <h4>You shall not pass!</h4>
+                  <p>
+                    Your login attempt was unsuccessful. Let's try that again
+                  </p>
+                </div>
+              </div>
+            ) : null}
+            <div className="container">
+              <h1>Login</h1>
+              <form>
+                <label className="m-3">
+                  Username:
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </label>
+                <label className="m-3">
+                  Password:
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </label>
+                <button type="button" onClick={handleLogin}>
+                  Login
+                </button>
+              </form>
             </div>
-          ) : null}
-                            <div className="container">
-                                <h1>Login</h1>
-                                <form>
-                                    <label className='m-3'>
-                                        Username:
-                                        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                                    </label>
-                                    <label className='m-3'>
-                                        Password:
-                                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                                    </label>
-                                    <button type="button" onClick={handleLogin}>Login</button>
-                                </form>
-                            </div>
-                            <h5>{text}</h5>
-                        </div >
-                    </>
-            }
+            <h5>{text}</h5>
+          </div>
         </>
-    );
+      )}
+    </>
+  );
 }
 
 export default Login;
