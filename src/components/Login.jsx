@@ -19,7 +19,7 @@ function Login() {
     setfailedlogin(false);
     axios
       .post(
-        "http://localhost:8000/login",
+        "https://backend.finalyze.app/login",
         { username, password },
         {
           headers: {

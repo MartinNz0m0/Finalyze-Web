@@ -34,7 +34,7 @@ const SearchPage = ({ searchText, stttype }) => {
     if (jwt) {
       axios
         .post(
-          "http://localhost:8001/search",
+          "https://backend.finalyze.app/py/search",
           { query, stttype },
           {
             headers: {

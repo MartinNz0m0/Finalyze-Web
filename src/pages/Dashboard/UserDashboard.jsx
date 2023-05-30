@@ -74,7 +74,7 @@ const UserDashboard = ({ jibu }) => {
       // user has token, make api call
       axios
         .post(
-          "http://localhost:8001/dashdata",
+          "https://backend.finalyze.app/py/dashdata",
           {},
           {
             headers: {
@@ -95,7 +95,7 @@ const UserDashboard = ({ jibu }) => {
 
       axios
         .post(
-          "http://localhost:8000/dash",
+          "https://backend.finalyze.app/dash",
           {},
           {
             headers: {
@@ -119,7 +119,7 @@ const UserDashboard = ({ jibu }) => {
       // get latest statement data
       axios
         .post(
-          "http://localhost:8001/lateststatement",
+          "https://backend.finalyze.app/py/lateststatement",
           {},
           {
             headers: {
@@ -130,6 +130,7 @@ const UserDashboard = ({ jibu }) => {
         )
         .then((response) => {
           if (response.data == "nothing happened") {
+            alert('nothing happened')
             setloadstate(true);
             return;
           }
@@ -139,7 +140,7 @@ const UserDashboard = ({ jibu }) => {
             ? setloadstate(true)
             : setTimeout(() => {
                 setloadstate(true);
-              }, 1000);
+              }, 2000);
         });
     } else {
       // user has no token, redirect to login
@@ -153,7 +154,7 @@ const UserDashboard = ({ jibu }) => {
         // user has token, make api call
         axios
           .post(
-            "http://localhost:8000/verify",
+            "https://backend.finalyze.app/verify",
             {},
             {
               headers: {
@@ -229,7 +230,7 @@ const UserDashboard = ({ jibu }) => {
       barThickness: 20,
       barPercentage: 0.8,
       categoryPercentage: 0.8,
-      maintainAspectRatio: true,
+      maintainAspectRatio: mobilemode ? false : true,
       plugins: {
         title: {
           display: true,
@@ -259,8 +260,8 @@ const UserDashboard = ({ jibu }) => {
                     <Bar
                       data={bardatasaet}
                       options={baroptions}
-                      width={100}
-                      height={100}
+                      width={mobilemode ? 450 : 100}
+                      height={mobilemode ? 450 : 100}
                     ></Bar>
                   </div>
                 ) : (
@@ -330,7 +331,7 @@ const UserDashboard = ({ jibu }) => {
           barThickness: mobilemode ? 20 : 40,
           barPercentage: 0.8,
           categoryPercentage: 0.8,
-          maintainAspectRatio: true,
+          maintainAspectRatio: mobilemode ? false : true,
           plugins: {
             title: {
               display: true,
@@ -347,8 +348,8 @@ const UserDashboard = ({ jibu }) => {
             <Bar
               data={bardata}
               options={baroptions}
-              width={100}
-              height={mobilemode ? 100 : 50}
+              width={mobilemode ? 450 : 100}
+              height={mobilemode ? 500 : 50}
             ></Bar>
           </div>
         );
@@ -388,7 +389,7 @@ const UserDashboard = ({ jibu }) => {
         ],
       };
       const lineoptions = {
-        maintainAspectRatio: true,
+        maintainAspectRatio: mobilemode ? false : true,
         scales: {
           y: {
             beginAtZero: true,
@@ -413,8 +414,8 @@ const UserDashboard = ({ jibu }) => {
           <Line
             data={linedataset}
             options={lineoptions}
-            width={100}
-            height={mobilemode ? 100 : 50}
+            width={mobilemode ? 450 : 100}
+            height={mobilemode ? 500 : 50}
           />
         </div>
       );
@@ -429,7 +430,7 @@ const UserDashboard = ({ jibu }) => {
       const formData = new FormData();
       formData.append("file", uploadedfile);
       axios
-        .post("http://localhost:8000/uploadcoop", formData, {
+        .post("https://backend.finalyze.app/uploadcoop", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${jwt}`,
@@ -460,7 +461,7 @@ const UserDashboard = ({ jibu }) => {
       const formData = new FormData();
       formData.append("file", uploadedfile);
       axios
-        .post("http://localhost:8000/uploadequity", formData, {
+        .post("https://backend.finalyze.app/uploadequity", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${jwt}`,
@@ -657,7 +658,7 @@ const UserDashboard = ({ jibu }) => {
     // setshowdata(true)
     axios
       .post(
-        "http://localhost:8000/retrieve",
+        "https://backend.finalyze.app/retrieve",
         { pdf_name },
         {
           headers: {
@@ -698,7 +699,7 @@ const UserDashboard = ({ jibu }) => {
     const jwt = localStorage.getItem("jwt");
     axios
       .post(
-        "http://localhost:8000/delete",
+        "https://backend.finalyze.app/delete",
         { pdf_name },
         {
           headers: {
@@ -742,7 +743,7 @@ const UserDashboard = ({ jibu }) => {
     const jwt = localStorage.getItem("jwt");
     axios
       .post(
-        "http://localhost:8001/getcat",
+        "https://backend.finalyze.app/py/getcat",
         { pdf_name, statement_type },
         {
           headers: {

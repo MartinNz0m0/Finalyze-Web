@@ -73,7 +73,7 @@ const UserDashboard = ({ jibu }) => {
       // user has token, make api call
       axios
         .post(
-          "http://localhost:8000/dash",
+          "https://backend.finalyze.app/dash",
           {},
           {
             headers: {
@@ -96,7 +96,7 @@ const UserDashboard = ({ jibu }) => {
       // get latest statement data
       axios
         .post(
-          "http://localhost:8001/lateststatement",
+          "https://backend.finalyze.app/py/lateststatement",
           {},
           {
             headers: {
@@ -126,7 +126,7 @@ const UserDashboard = ({ jibu }) => {
         // user has token, make api call
         axios
           .post(
-            "http://localhost:8000/verify",
+            "https://backend.finalyze.app/verify",
             {},
             {
               headers: {
@@ -403,7 +403,7 @@ const UserDashboard = ({ jibu }) => {
       const formData = new FormData();
       formData.append("file", uploadedfile);
       axios
-        .post("http://localhost:8000/uploadcoop", formData, {
+        .post("https://backend.finalyze.app/uploadcoop", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${jwt}`,
@@ -434,7 +434,7 @@ const UserDashboard = ({ jibu }) => {
       const formData = new FormData();
       formData.append("file", uploadedfile);
       axios
-        .post("http://localhost:8000/uploadequity", formData, {
+        .post("https://backend.finalyze.app/uploadequity", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${jwt}`,
@@ -617,7 +617,7 @@ const UserDashboard = ({ jibu }) => {
     // setshowdata(true)
     axios
       .post(
-        "http://localhost:8000/retrieve",
+        "https://backend.finalyze.app/retrieve",
         { pdf_name },
         {
           headers: {
@@ -658,7 +658,7 @@ const UserDashboard = ({ jibu }) => {
     const jwt = localStorage.getItem("jwt");
     axios
       .post(
-        "http://localhost:8000/delete",
+        "https://backend.finalyze.app/delete",
         { pdf_name },
         {
           headers: {
@@ -702,7 +702,7 @@ const UserDashboard = ({ jibu }) => {
     const jwt = localStorage.getItem("jwt");
     axios
       .post(
-        "http://localhost:8001/getcat",
+        "https://backend.finalyze.app/py/getcat",
         { pdf_name, statement_type },
         {
           headers: {

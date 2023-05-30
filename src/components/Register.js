@@ -33,7 +33,7 @@ const Register = () => {
     try {
           axios
                 .post(
-                    "http://localhost:8000/register",
+                    "https://backend.finalyze.app/register",
                     { masterPassword, username, password },
                     {
                         headers: {

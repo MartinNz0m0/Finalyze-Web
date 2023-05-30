@@ -26,7 +26,7 @@ const BudgetBuilder = () => {
     if (jwt) {
       axios
         .post(
-          "http://localhost:8001/getallcats",
+          "https://backend.finalyze.app/py/getallcats",
           { removeduplicates },
           {
             headers: {
@@ -100,7 +100,7 @@ const BudgetBuilder = () => {
       if (jwt) {
         axios
           .post(
-            "http://localhost:8001/addbudget",
+            "https://backend.finalyze.app/py/addbudget",
             { budget, cat, sttype, priority },
             {
               headers: {
@@ -124,7 +124,7 @@ const BudgetBuilder = () => {
       if (jwt) {
         axios
           .post(
-            "http://localhost:8001/addbudget",
+            "https://backend.finalyze.app/py/addbudget",
             { budget, cat, sttype, priority },
             {
               headers: {

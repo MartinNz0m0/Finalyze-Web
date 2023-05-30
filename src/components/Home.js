@@ -23,7 +23,7 @@ const Home = () => {
           <Container>
             <Navbar.Brand href="/">Finalyze</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="#Demo">Demo</Nav.Link>
+              <Nav.Link onClick={() => history.push("/demo")}>Demo</Nav.Link>
               <Nav.Link onClick={() => history.push("/upload")}>
                 Upload
               </Nav.Link>

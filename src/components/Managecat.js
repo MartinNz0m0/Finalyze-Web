@@ -34,7 +34,7 @@ const Managecat = () => {
     if (jwt) {
       axios
         .post(
-          "http://localhost:8001/getallcats",
+          "https://backend.finalyze.app/py/getallcats",
           {removeduplicates},
           {
             headers: {
@@ -74,7 +74,7 @@ const Managecat = () => {
     if (jwt) {
       axios
         .post(
-          "http://localhost:8001/editcat",
+          "https://backend.finalyze.app/py/editcat",
           { newcat, det, sttype, newbudget },
           {
             headers: {
@@ -114,7 +114,7 @@ const Managecat = () => {
     if (jwt) {
       axios
         .post(
-          "http://localhost:8001/deletecat",
+          "https://backend.finalyze.app/py/deletecat",
           { det, sttype },
           {
             headers: {

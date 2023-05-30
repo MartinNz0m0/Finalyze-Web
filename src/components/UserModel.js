@@ -24,7 +24,7 @@ const UserModel = () => {
   const [loadstate, setLoadstate] = useState(false);
 
   useEffect(() => {
-    axios.post('http://localhost:8001/usermodel', {itemnumber, stttype}, {
+    axios.post('https://backend.finalyze.app/py/usermodel', {itemnumber, stttype}, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem('jwt')}`
@@ -64,7 +64,7 @@ const UserModel = () => {
     setformsuccessalert(false)
     console.log(inputs[i], details[i], e.currentTarget)
     const det = details[i]
-    axios.post('http://localhost:8001/usersubmit', { userinput: inputs[key], det, stttype }, {
+    axios.post('https://backend.finalyze.app/py/usersubmit', { userinput: inputs[key], det, stttype }, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem('jwt')}`

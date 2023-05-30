@@ -57,7 +57,7 @@ const Upload = () => {
 
       formData.append("file", uploadfile);
 
-      fetch("http://localhost:8000/api", {
+      fetch("https://backend.finalyze.app/api", {
         method: "POST",
         body: formData,
       })
@@ -87,7 +87,7 @@ const Upload = () => {
   const btnClick = () => {
     Setdatanotloaded(false);
     setloadingstate(true);
-    fetch("http://localhost:8000/data", {
+    fetch("https://backend.finalyze.app/data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -110,7 +110,7 @@ const Upload = () => {
     Setprivacy(false);
     axios
       .post(
-        "http://localhost:8000/csv",
+        "https://backend.finalyze.app/csv",
         { fileselected, filepath, pdfpwd, user },
         {
           headers: {

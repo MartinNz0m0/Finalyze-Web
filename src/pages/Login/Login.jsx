@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import UserDashboard from "../Dashboard/UserDashboard";
-import { useEffect } from "react";
+import Alert from "react-bootstrap/Alert";
 import "./Login.scss";
 import { UserContext } from "../../components/UserContext";
-import LoginSuccessAlert, { FailedLoginAlert } from "./../../components/Alerts";
+import LoginSuccessAlert from "./../../components/Alerts";
 
 function Login() {
   const history = useHistory();
@@ -16,12 +15,13 @@ function Login() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [failedlogin, setfailedlogin] = useState(false);
   const { user, setUser } = useContext(UserContext);
+  const demomode = window.location.pathname === "/demo"
 
   const handleLogin = () => {
     setfailedlogin(false);
     axios
       .post(
-        "http://localhost:8000/login",
+        "https://backend.finalyze.app/login",
         { username, password },
         {
           headers: {
@@ -61,7 +61,7 @@ function Login() {
   return (
     <>
       {loggedIn ? (
-        <div className="position-absolute top-50 translate-middle start-50 w-25">
+        <div className="position-absolute top-50 translate-middle start-50 w-25 success-al">
           <LoginSuccessAlert />
         </div>
       ) : (
@@ -77,6 +77,15 @@ function Login() {
                 </div>
               </div>
             ) : null}
+            {
+              demomode && 
+              <div className="demo-alert">
+                <Alert show variant="dark" className="bg-opacity-25">
+          <Alert.Heading className="text-center">Finalyze Demo Mode</Alert.Heading>
+          <p>To proceed, use 'demo' as username and password</p>
+        </Alert>
+              </div>
+            }
             <div className="container">
               <h1>Login</h1>
               <form>

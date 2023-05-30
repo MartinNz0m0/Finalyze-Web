@@ -53,6 +53,7 @@ function App() {
         <Route path='/howto' component={Howto}/> 
         <Route path='/Statement' component={Statement} />
         <Route path='/login' component={Login} />
+        <Route path='/demo' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/dashboard' component={UserDashboard} />
         <Route path='/search' component={SearchPage} />
