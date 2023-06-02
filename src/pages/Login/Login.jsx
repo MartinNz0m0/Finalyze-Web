@@ -82,7 +82,7 @@ function Login() {
               <div className="demo-alert">
                 <Alert show variant="dark" className="bg-opacity-25">
           <Alert.Heading className="text-center">Finalyze Demo Mode</Alert.Heading>
-          <p>To proceed, use 'demo' as username and password</p>
+          <p>To proceed, use 'demo' as the username and 'demo.finalyze' as the password</p>
         </Alert>
               </div>
             }

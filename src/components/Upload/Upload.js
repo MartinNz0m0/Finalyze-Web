@@ -127,6 +127,7 @@ const Upload = () => {
           Setdatapros(false);
         }
         var trures = response.data;
+        console.log(trures)
         var f = JSON.parse(trures);
         if (f.s === "Success") {
           console.log("successful");

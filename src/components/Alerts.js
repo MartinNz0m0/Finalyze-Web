@@ -107,9 +107,21 @@ const DeleteSuccessAlert = () => {
   );
 };
 
+const NoStatementAlert = () => {
+  return (
+    <div>
+      <Alert show variant="secondary" className="w-25 bg-opacity-25">
+        <Alert.Heading>No Statements Found</Alert.Heading>
+        <p>You can upload a statement in the menu section. Try it out with last month's statement to get started</p>
+      </Alert>
+    </div>
+  );
+};
+
 
 export default LoginSuccessAlert;
 export { FailedLoginAlert };
 export { FailedataloadAlert };
 export { FormSubmitSuccessAlert };
 export { DeleteSuccessAlert };
+export {NoStatementAlert}

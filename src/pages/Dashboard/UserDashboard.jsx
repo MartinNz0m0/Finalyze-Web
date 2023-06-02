@@ -17,6 +17,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { AppTitle } from "./../../components/Hero";
 import HashLoader from "react-spinners/HashLoader";
 import "./../../components/css/Dashboard.css";
+import { NoStatementAlert } from "../../components/Alerts";
 
 const UserDashboard = ({ jibu }) => {
   const history = useHistory();
@@ -66,33 +67,13 @@ const UserDashboard = ({ jibu }) => {
   const [disabledbutton, setdisabledbutton] = useState(true);
   const [mobilemode, setmobilemode] = useState(false);
   const [showsidebar, setshowsidebar] = useState(false);
+  const [showdash, setshowdash] = useState(false);
 
   useEffect(() => {
     //make api call to get data
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       // user has token, make api call
-      axios
-        .post(
-          "https://backend.finalyze.app/py/dashdata",
-          {},
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${jwt}`,
-            },
-          }
-        )
-        .then((response) => {
-          if (response.status == 401) {
-            history.push("/login");
-          } else if (response.status == 200) {
-            setdashdata(response.data);
-          } else {
-            alert("something went wrong");
-          }
-        });
-
       axios
         .post(
           "https://backend.finalyze.app/dash",
@@ -114,7 +95,29 @@ const UserDashboard = ({ jibu }) => {
           }
         });
 
-      // other dash data
+      axios
+        .post(
+          "https://backend.finalyze.app/py/dashdata",
+          {},
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${jwt}`,
+            },
+          }
+        )
+        .then((response) => {
+          if (response.status == 401) {
+            history.push("/login");
+          } else if (response.status == 200) {
+            setdashdata(response.data);
+            setTimeout(() => {
+              setloadstate(true);
+            }, 1000);
+          } else {
+            alert("something went wrong");
+          }
+        });
 
       // get latest statement data
       axios
@@ -130,17 +133,12 @@ const UserDashboard = ({ jibu }) => {
         )
         .then((response) => {
           if (response.data == "nothing happened") {
-            alert('nothing happened')
+            alert("nothing happened");
             setloadstate(true);
             return;
           }
           setgraphdata(response.data[0]);
           setlinedata(response.data[1]);
-          dashdata.length > 0
-            ? setloadstate(true)
-            : setTimeout(() => {
-                setloadstate(true);
-              }, 2000);
         });
     } else {
       // user has no token, redirect to login
@@ -179,6 +177,7 @@ const UserDashboard = ({ jibu }) => {
         history.push("/login");
       }
     }
+   
   }, [updatedata]);
 
   React.useEffect(() => {
@@ -192,7 +191,6 @@ const UserDashboard = ({ jibu }) => {
 
   const Analysismodal = (props) => {
     const keys = Object.keys(props.data);
-    console.log(props.data, keys);
     const body = keys.map((key, index) => {
       return (
         <tr>
@@ -293,7 +291,7 @@ const UserDashboard = ({ jibu }) => {
     );
   };
   const Lateststatement = ({ data }) => {
-    if (data == "no statement") {
+    if (data == "n") {
       return (
         <div className="text-center">
           <h4 className="text-danger">Last month's statement not found</h4>
@@ -328,7 +326,7 @@ const UserDashboard = ({ jibu }) => {
         };
 
         const baroptions = {
-          barThickness: mobilemode ? 20 : 40,
+          barThickness: mobilemode ? 15 : 40,
           barPercentage: 0.8,
           categoryPercentage: 0.8,
           maintainAspectRatio: mobilemode ? false : true,
@@ -364,7 +362,13 @@ const UserDashboard = ({ jibu }) => {
   };
 
   const Linechart = ({ data }) => {
-    if (data) {
+    if (data === "o") {
+      return (
+        <div className="h-100">
+          <h3 className="text-center">No data to display</h3>
+        </div>
+      );
+    } else {
       const linedataset = {
         labels: data.map((item) => item["date"]),
         datasets: [
@@ -442,7 +446,6 @@ const UserDashboard = ({ jibu }) => {
             // alert for server error
             alert("Server error");
           } else if (response.status === 200) {
-            console.log(response.data);
             // alert for successful upload
             alert("File uploaded successfully");
             closeuploadmodal();
@@ -473,7 +476,6 @@ const UserDashboard = ({ jibu }) => {
             // alert for server error
             alert("Server error");
           } else if (response.status === 200) {
-            console.log(response.data);
             // alert for successful upload
             alert("File uploaded successfully");
             closeuploadmodal();
@@ -654,7 +656,6 @@ const UserDashboard = ({ jibu }) => {
     let k = e.target.value;
     let pdf_name = cardData[k].pdf_name;
     const jwt = localStorage.getItem("jwt");
-    console.log(k, cardData[k]);
     // setshowdata(true)
     axios
       .post(
@@ -739,7 +740,6 @@ const UserDashboard = ({ jibu }) => {
     let k = e.target.value;
     let pdf_name = cardData[k].pdf_name;
     let statement_type = cardData[k].statement_type;
-    console.log(pdf_name, statement_type);
     const jwt = localStorage.getItem("jwt");
     axios
       .post(
@@ -815,7 +815,6 @@ const UserDashboard = ({ jibu }) => {
   };
 
   const showsidebarhandler = (e) => {
-    console.log(e.target);
     if (showsidebar) {
       if (mobilemode) {
         document.getElementsByClassName("dash-content")[0].style.transform =
@@ -892,7 +891,10 @@ const UserDashboard = ({ jibu }) => {
                 className="menu-sel mt-3"
                 // onClick={() => setShowSideNavigation(true)}
               >
-                <i class="bi bi-list" onClick={() => setShowSideNavigation(true)}></i>
+                <i
+                  class="bi bi-list"
+                  onClick={() => setShowSideNavigation(true)}
+                ></i>
               </div>
               <div className="app-ttl">
                 <AppTitle />
@@ -1004,9 +1006,13 @@ const UserDashboard = ({ jibu }) => {
                           <Card bg="dark" className="mt-2">
                             <Card.Body>
                               Categories added:
-                              <strong className="text-info">
-                                {" " + dashdata[0]}
-                              </strong>
+                              {dashdata ? (
+                                <strong className="text-info">
+                                  {" " + dashdata[0]}
+                                </strong>
+                              ) : (
+                                <strong className="text-info">{" " + 0}</strong>
+                              )}
                             </Card.Body>
                           </Card>
                         </div>
@@ -1014,9 +1020,13 @@ const UserDashboard = ({ jibu }) => {
                           <Card bg="dark" className="mt-2">
                             <Card.Body>
                               Total Budget:
-                              <strong className="text-info">
-                                {" " + dashdata[1]}
-                              </strong>
+                              {dashdata ? (
+                                <strong className="text-info">
+                                  {" " + dashdata[1]}
+                                </strong>
+                              ) : (
+                                <strong className="text-info">{" " + 0}</strong>
+                              )}
                             </Card.Body>
                           </Card>
                         </div>
@@ -1024,18 +1034,24 @@ const UserDashboard = ({ jibu }) => {
                           <Card bg="dark" className="mt-2">
                             <Card.Body>
                               Overspend Index:
-                              {dashdata[2] < 25 ? (
-                                <strong className="text-success">
-                                  {" " + dashdata[2] + "%"}
-                                </strong>
-                              ) : dashdata[2] < 75 ? (
-                                <strong className="text-warning">
-                                  {" " + dashdata[2] + "%"}
-                                </strong>
+                              {dashdata ? (
+                                <>
+                                  {dashdata[2] < 25 ? (
+                                    <strong className="text-success">
+                                      {" " + dashdata[2] + "%"}
+                                    </strong>
+                                  ) : dashdata[2] < 75 ? (
+                                    <strong className="text-warning">
+                                      {" " + dashdata[2] + "%"}
+                                    </strong>
+                                  ) : (
+                                    <strong className="text-danger">
+                                      {" " + dashdata[2] + "%"}
+                                    </strong>
+                                  )}
+                                </>
                               ) : (
-                                <strong className="text-danger">
-                                  {" " + dashdata[2] + "%"}
-                                </strong>
+                                <strong className="text-info">{" " + 0}</strong>
                               )}
                             </Card.Body>
                           </Card>
@@ -1048,16 +1064,30 @@ const UserDashboard = ({ jibu }) => {
                       </h5>
                       <div className="d-flex justify-content-evenly align-items-center dash-graphs">
                         <div className="text-info w-100">
-                          <Lateststatement data={graphdata} />
+                          {graphdata ? (
+                            <Lateststatement data={graphdata} />
+                          ) : (
+                            "No data"
+                          )}
                         </div>
                         <div className="w-100">
-                          <Linechart data={linedata} />
+                          {linedata ? <Linechart data={linedata} /> : "No data"}
                         </div>
                       </div>
                       <h5 className="p-3 bg-dark m-3 text-info">
                         Statements Uploaded
                       </h5>
                       <div className="row mx-4">
+                        {cardData.length == 0 && (
+                          <div className="text-info text-opacity-75">
+                            <h3>No Statements Found</h3>
+                            <h5>
+                              You can upload a statement in the menu section.
+                              Try it out with last month's statement to get
+                              started
+                            </h5>
+                          </div>
+                        )}
                         {cardData.map((card, i) => (
                           <div className="col-md-4 mt-3" key={i}>
                             <div className="card bg-dark text-white">
