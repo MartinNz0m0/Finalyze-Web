@@ -3,6 +3,8 @@ body {
   color: white;
   min-height: 100vh;
   position: relative;
+  font-family: monospace;
+  font-size: 0.8rem;
 }
 
 .body-content {

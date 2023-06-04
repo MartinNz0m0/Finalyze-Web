@@ -6,6 +6,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import ProgressBar from "../../components/ProgressBar";
 import { UserContext } from "../UserContext";
 import './Upload.scss'
+import Navbar from "../Navbar/Navbar";
 
 
 const Upload = () => {
@@ -185,6 +186,7 @@ const Upload = () => {
     <div>
       {datanotloaded && (
         <div className="Upload">
+          <Navbar />
           <div className="header">
             <h2>
               Welcome To Finalyze🚀
@@ -192,23 +194,6 @@ const Upload = () => {
             <p>
               Financial Analysis To Track Your Spending
             </p>
-{user ? (
-              <div>
-                <button className="position-absolute end-0 top-0 mt-5 me-5 btn btn-warning bg-opacity-50">
-                  <Link to="/dashboard" className="nav-link">
-                    Back to Dashboard
-                  </Link>
-                </button>
-              </div>
-            ) : (
-              <div>
-                <button className="position-absolute end-0 top-0 mt-5 me-5 btn btn-warning bg-opacity-50">
-                  <Link to="/login" className="nav-link">
-                    Login
-                  </Link>
-                </button>
-              </div>
-            )}
           </div>
           <div className="upload-body">
             <h3>
@@ -217,8 +202,6 @@ const Upload = () => {
             <h5>
               Upload your PDF Statement and enter your code below👇🏾
             </h5>
-          </div>
-          <div className="upload-body">
             <div class="upload-button">
               <input
                 type="file"
@@ -260,7 +243,7 @@ const Upload = () => {
                 🚫Wrong filetype. Ensure you upload a PDF file🚫
               </div>
             )}
-            <div class="row g-3 align-items-center mb-5 mt-2 ">
+            <div class="row g-3 align-items-center">
               <div class="w-100 d-flex align-items-center form-floating mb-3">
                 <input
                   type="text"
@@ -292,7 +275,7 @@ const Upload = () => {
             {user && (
               <div>
                 <div className="mb-3 text-center">
-                  <p>You are logged in</p>
+                  {user ? <p>You are logged in</p> : null}
                   <div class="form-check">
                     <input
                       class="form-check-input bg-secondary btn-outline-secondary"
@@ -310,27 +293,25 @@ const Upload = () => {
               </div>
             )}
 
-            <button
-              type="submit"
-              className="inn btn btn-submit btn-bg btn-outline-warning mb-4 mt-2 "
-              onClick={csvClick}
-              style={{ pointerEvents: "none" }}
-            >
-              Start Data Processing💨
-            </button>
+            <div className="processing">
+              <button
+                type="submit"
+                className="inn btn btn-submit btn-bg btn-outline-warning mb-4 mt-2 "
+                onClick={csvClick}
+                style={{ pointerEvents: "none" }}
+              >
+                Start Data Processing💨
+              </button>
+            </div>
             {privacy && (
-              <div className="kuja d-flex flex-row justify-content-evenly mt-3">
-                <button className="btn btn-submit btn-bg btn-outline-info m-3">
-                  <Link to="/privacy" class="nav-link">
-                    Privacy Concerns?
-                  </Link>
-                </button>
-                <button className="btn btn-submit btn-bg btn-outline-info m-3">
-                  <Link class='nav-link' to='/howto'>
+              <div className="kuja">
+                <Link to="/privacy" class="nav-link">
+                  Privacy Concerns?
+                </Link>
+                <Link class='nav-link' to='/howto'>
 
-                    How to use the app
-                  </Link>
-                </button>
+                  How to use the app
+                </Link>
               </div>
             )}
             {datapros && (

@@ -57,7 +57,7 @@
                 width: 100%;
     
                 input {
-                    padding: 0.5rem;
+                    padding: 0.5rem 1rem;
                     outline: none;
                     width: 100%;
                     border: none;
@@ -65,6 +65,7 @@
                     flex: 1;
                     color: #000;
                     border-radius: 5px;
+                    font-family: monospace;
                 }
             }
 
@@ -120,6 +121,7 @@
             h1 {
                 color: #fff;
                 text-align: center;
+                font-size: 2rem;
             }
     
             form {
@@ -142,7 +144,7 @@
                         background-color: #fff;
                         flex: 1;
                         color: #000;
-                        border-radius: 5px;
+                        border-radius: 0px;
                     }
                 }
     

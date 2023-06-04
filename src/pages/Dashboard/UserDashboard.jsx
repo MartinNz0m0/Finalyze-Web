@@ -115,7 +115,6 @@ const UserDashboard = ({ jibu }) => {
         });
 
       // other dash data
-
       // get latest statement data
       axios
         .post(

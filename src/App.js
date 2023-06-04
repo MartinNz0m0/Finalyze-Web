@@ -21,7 +21,7 @@ import UserModel from "./components/UserModel";
 import jwt_decode from 'jwt-decode';
 import Managecat from "./components/Managecat";
 import BudgetBuilder from "./components/BudgetBuilder";
-import Home from "./components/Home";
+import Home from "./pages/Home/Home";
 
 
 
