@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
-import Statement from "../../components/Statement";
+import Statement from "../Statement/Statement";
 import LoadingSequence from "../../components/LoadingSequence";
 import axios from "axios";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -7,6 +7,7 @@ import ProgressBar from "../../components/ProgressBar";
 import { UserContext } from "../UserContext";
 import './Upload.scss'
 import Navbar from "../Navbar/Navbar";
+import { MdCheck, MdClose } from "react-icons/md";
 
 
 const Upload = () => {
@@ -128,6 +129,7 @@ const Upload = () => {
           Setdatapros(false);
         }
         var trures = response.data;
+        console.log(trures)
         var f = JSON.parse(trures);
         if (f.s === "Success") {
           console.log("successful");
@@ -205,14 +207,14 @@ const Upload = () => {
             <div class="upload-button">
               <input
                 type="file"
-                class="form-control text-light border-secondary"
+                class="form-control text-light"
                 id="inputGroupFile04"
                 aria-describedby="inputGroupFileAddon04"
                 aria-label="Upload"
                 onChange={onChange}
               />
               <button
-                class="woi btn btn-outline-secondary bg-success text-light"
+                class="woi btn bg-success text-light"
                 type="button"
                 id="inputGroupFileAddon04"
                 onClick={onClick}
@@ -228,19 +230,19 @@ const Upload = () => {
             }
             <p className="ingine"></p>
             {upload && (
-              <div className="d-flex flex-column">
-                <h6 className="text-info text-opacity-50 text-center mb-3">
-                  Upload completed successfully
+              <div className="success">
+                <h6 id="top">
+                  Upload completed successfully! <MdCheck id="check" />
                 </h6>
-                <h6 className="text-info text-opacity-50 text-center">
-                  Enter Your code below👇🏾 and start data processing🏃
+                <h6>
+                  Enter Your code below 👇🏾 and start data processing 🏃
                 </h6>
               </div>
             )}
 
             {filetype && (
               <div className="text-danger">
-                🚫Wrong filetype. Ensure you upload a PDF file🚫
+                🚫 Wrong filetype. Ensure you upload a PDF file 🚫
               </div>
             )}
             <div class="row g-3 align-items-center">
@@ -260,15 +262,13 @@ const Upload = () => {
                   showhelp &&
 
 
-                  <div className="sumbua position-absolute p-3 ms-5 text-center border border-info rounded border-opacity-25">
-                    <button className="close" onClick={() => setshowhelp(false)}>&times;</button>
+                  <div className="sumbua">
+                    <button className="close" onClick={() => setshowhelp(false)}><MdClose /></button>
                     <p className="">
                       Upon the statement request, 'SAFARICOM' sent you a text message. The message has the code for your pdf statement. Input The code sent to your phone by 'SAFARICOM'
                     </p>
                   </div>
                 }
-
-
               </div>
             </div>
 

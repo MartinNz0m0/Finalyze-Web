@@ -32,7 +32,7 @@ const AppTitle = () => {
   return (
     <div className="d-flex flex-row mx-4 align-items-center app-title" onClick={()=>history.push('/')}>
     <div className="d-flex flex-column">
-      <h1 style={{ margin: 0,  marginRight: 5 }} className="text-info">Finalyze</h1>
+      <h1 style={{ margin: 0 }} className="text-info">Finalyze</h1>
             <p style={{ margin: 0, fontSize: "1.0rem"}}>To the moon🚀</p>
     </div>
         <div className="d-flex justify-content-start">

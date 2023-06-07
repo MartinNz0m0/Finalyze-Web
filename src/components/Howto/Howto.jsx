@@ -13,27 +13,23 @@ import uploading from '../../images/uploading.png'
 import viewchart from '../../images/viewchart.png'
 import { Link } from "react-router-dom";
 import './Howto.scss'
+import Navbar from "../Navbar/Navbar";
 
 
 const Howto = () => {
   return (
     <div className="Howto">
       <div className="top">
+        <Navbar/>
         <div className="banner">
-          <button className="btn btn-submit btn-sm bg-success text-light">
-            <Link class='nav-link' to='/'>
-
-              ⏪ Back to Home
-            </Link>
-          </button>
-          <h3 className="text-center flex-grow-1 me-5">How to use Finalyze🚀</h3>
+          <h2>How to use Finalyze🚀</h2>
         </div>
         <div class="howcard">
           <div class="howcard-body">
             <div class="left">
               <div class="card-body">
-                <h5 class="card-title text-success">Requesting an M-PESA Statement</h5>
-                <ul className="ms-5 m-5">
+                <h5>Requesting an M-PESA Statement</h5>
+                <ul >
                   <li>Dial *334# on your Safaricom line.</li>
                   <li>Select "My M-PESA Account" from the menu options and press "Reply" or "Send."</li>
                   <li>Select "M-PESA Statement" from the next menu options and press "Reply" or "Send."</li>
@@ -45,7 +41,7 @@ const Howto = () => {
               </div>
             </div>
             <div class="right">
-              <img src={home} class="img-fluid " alt="..." />
+              <img src={home}  alt="..." />
             </div>
           </div>
         </div>
@@ -54,8 +50,8 @@ const Howto = () => {
             <div class="howcard-body">
               <div class="left">
                 <div class="card-body">
-                  <h5 class="card-title text-success">Uploading a Statement</h5>
-                  <ul className="ms-5 m-5">
+                  <h5>Uploading a Statement</h5>
+                  <ul >
                     <li>Open the Finalyze app.</li>
                     <li>Click on the "Choose File" button and select your MPESA statement in PDF format.</li>
                     <li>Click on the "Upload" button to upload your statement.</li>
@@ -64,7 +60,7 @@ const Howto = () => {
                 </div>
               </div>
               <div class="right">
-                <img src={uploading} class="img-fluid " alt="..." />
+                <img src={uploading}  alt="..." />
               </div>
             </div>
           </div>
@@ -72,8 +68,8 @@ const Howto = () => {
             <div class="howcard-body">
               <div class="left">
                 <div class="card-body">
-                  <h5 class="card-title text-success">Start Data Processing</h5>
-                  <ul className="ms-5 m-5">
+                  <h5>Start Data Processing</h5>
+                  <ul >
                     <li>Enter the password for your statement in the "Code sent to your phone" input field.</li>
                     <li>Click on the "Start Data Processing" button to start the conversion process.</li>
                     <li>Wait for the app to convert your statement to CSV format.</li>
@@ -82,7 +78,7 @@ const Howto = () => {
                 </div>
               </div>
               <div class="right">
-                <img src={processing} class="img-fluid " alt="..." />
+                <img src={processing}  alt="..." />
               </div>
             </div>
           </div>
@@ -90,8 +86,8 @@ const Howto = () => {
             <div class="howcard-body">
               <div class="left">
                 <div class="card-body">
-                  <h5 class="card-title text-success">Viewing Charts</h5>
-                  <ul className="ms-5 m-5">
+                  <h5>Viewing Charts</h5>
+                  <ul >
                     <li>Click on the "SHOW ME THE MONEY💸" button to view the charts generated from your MPESA statement.</li>
                     <li>Wait for the app to process your statement and generate the charts.</li>
                     <li>Once the charts have been generated, you should see them displayed on the page.</li>
@@ -99,7 +95,7 @@ const Howto = () => {
                 </div>
               </div>
               <div class="right">
-                <img src={viewchart} class="img-fluid " alt="..." />
+                <img src={viewchart}  alt="..." />
               </div>
             </div>
           </div>
@@ -110,7 +106,7 @@ const Howto = () => {
         <div class="charts-body">
           <div class="chart">
             <div class="cards">
-              <img src={insights} class="img-fluid " alt="..." />
+              <img src={insights}  alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Insights (Cards)</h5>
                 <p class="card-text">The Insights section consists of four cards that provide a summary of your financial activity over the statement period.</p>
@@ -119,7 +115,7 @@ const Howto = () => {
           </div>
           <div class="chart">
             <div class="cards">
-              <img src={sent} class="img-fluid " alt="..." />
+              <img src={sent}  alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Who Have You Sent Money to? (Bar chart)</h5>
                 <p class="card-text">This bar chart shows the people that you have sent money to.</p>
@@ -128,7 +124,7 @@ const Howto = () => {
           </div>
           <div class="chart">
             <div class="cards">
-              <img src={till} class="img-fluid " alt="..." />
+              <img src={till}  alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Which Till Number Have you paid the most? (Bar chart)</h5>
                 <p class="card-text">This bar chart shows the Till numbers that you have paid the most.</p>
@@ -137,7 +133,7 @@ const Howto = () => {
           </div>
           <div class="chart">
             <div class="cards">
-              <img src={pbill} class="img-fluid " alt="..." />
+              <img src={pbill}  alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Which Pay Bill Number Have you paid the most? (Bar chart)</h5>
                 <p class="card-text">This bar chart shows the Pay Bill numbers that you have paid the most.</p>
@@ -146,7 +142,7 @@ const Howto = () => {
           </div>
           <div class="chart">
             <div class="cards">
-              <img src={paidin} class="img-fluid " alt="..." />
+              <img src={paidin}  alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Who has sent you money (Doughnut charts)</h5>
                 <p class="card-text">The two doughnut charts show the people or accounts that have sent you money. The first doughnut chart shows the top senders (people) while the second chart shows the business payment senders (Bank transfers to mpesa etc..)</p>
@@ -155,7 +151,7 @@ const Howto = () => {
           </div>
           <div class="chart">
             <div class="cards">
-              <img src={line} class="img-fluid " alt="..." />
+              <img src={line}  alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Balance Outlook (Line chart)</h5>
                 <p class="card-text">This line chart shows the balance outlook of your account over time. If the statement period is less than 24 months, the last 12 months are considered for the chart. If you have uploaded a two-year statement, the graphs will compare the balance outlook for the two years.</p>
@@ -164,7 +160,7 @@ const Howto = () => {
           </div>
           <div class="chart">
             <div class="cards">
-              <img src={summary} class="img-fluid " alt="..." />
+              <img src={summary}  alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Transaction Summary (Doughnut chart)</h5>
                 <p class="card-text">This doughnut chart summarizes the types of transactions in your account.</p>
@@ -173,7 +169,7 @@ const Howto = () => {
           </div>
           <div class="chart">
             <div class="cards">
-              <img src={fuliza} class="img-fluid " alt="..." />
+              <img src={fuliza}  alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Transactions done without Fuliza vs Fuliza Transactions (Doughnut chart)</h5>
                 <p class="card-text">This doughnut chart shows the breakdown of your transactions into those done without using Fuliza and those done using Fuliza.</p>

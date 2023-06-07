@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import IMG from "../../images/homeimg.png";
 import { useHistory } from "react-router-dom";
-import sttimg from "../../images/statementssupport.png";
+import sttimg from "../../images/statements.png";
 import report from '../../images/reports.png'
 import './Home.scss'
 import { NavLink } from "react-router-dom";
@@ -22,7 +22,7 @@ const Home = () => {
   }, []);
   return (
     <div className="Home">
-      <Navbar/>
+      <Navbar />
       {/* <Navbar bg="dark" variant="dark" fixed="top">
         <Container>
           <Navbar.Brand href="/">Finalyze</Navbar.Brand>
@@ -85,37 +85,35 @@ const Home = () => {
         </div>
       </div>
       <div className="overview">
-        <div>
-          <div className="reports">
-            <div className="report-image">
-              <img src={report} />
-            </div>
-            <div className="report-card">
-              <h4>Comprehensive Reports</h4>
-              <p>
-                "Unlock Insights and Take Control with our Monthly Spending
-                Reports. Track your expenses on a monthly basis with
-                detailed reports categorizing your spending. Gain valuable
-                insights, identify trends, and make informed decisions to
-                achieve your financial goals.
-              </p>
-            </div>
+        <div className="reports">
+          <div className="report-image">
+            <img src={report} />
           </div>
-          <div className="statements">
-            <div className="statement-card">
-              <h4>Statement Support</h4>
-              <p>
-                Effortlessly Manage Your Financial Statements with our App!
-                Keep track of your M-Pesa, Cooperative Bank, and Equity Bank
-                statements hassle-free. Gain valuable insights into your
-                financial activities and stay organized in one convenient
-                location. Exciting news! We're actively working on expanding
-                our bank support to offer you even more options soon.
-              </p>
-            </div>
-            <div className="statement-image">
-              <img src={sttimg} width={mobilemode ? 380 : 600} height={mobilemode ? 400 : 500} />
-            </div>
+          <div className="report-card">
+            <h4>Comprehensive Reports</h4>
+            <p>
+              Unlock Insights and Take Control with our Monthly Spending
+              Reports. Track your expenses on a monthly basis with
+              detailed reports categorizing your spending. Gain valuable
+              insights, identify trends, and make informed decisions to
+              achieve your financial goals.
+            </p>
+          </div>
+        </div>
+        <div className="statements">
+          <div className="statement-card">
+            <h4>Statement Support</h4>
+            <p>
+              Effortlessly Manage Your Financial Statements with our App!
+              Keep track of your M-Pesa, Cooperative Bank, and Equity Bank
+              statements hassle-free. Gain valuable insights into your
+              financial activities and stay organized in one convenient
+              location. Exciting news! We're actively working on expanding
+              our bank support to offer you even more options soon.
+            </p>
+          </div>
+          <div className="statement-image">
+            <img src={sttimg} width={mobilemode ? 380 : 600} height={mobilemode ? 400 : 500} />
           </div>
         </div>
       </div>

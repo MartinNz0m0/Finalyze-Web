@@ -5,6 +5,8 @@ import Alert from "react-bootstrap/Alert";
 import "./Login.scss";
 import { UserContext } from "../../components/UserContext";
 import LoginSuccessAlert from "./../../components/Alerts";
+import Logo from '../../images/logo.png'
+import Loginfinalyze from '../../images/login-finalyze.png'
 
 function Login() {
   const history = useHistory();
@@ -82,12 +84,16 @@ function Login() {
               <div className="demo-alert">
                 <Alert show variant="dark" className="bg-opacity-25">
           <Alert.Heading className="text-center">Finalyze Demo Mode</Alert.Heading>
-          <p>To proceed, use 'demo' as username and password</p>
+          <p>To proceed, use 'demo' as the username and 'demo.finalyze' as the password</p>
         </Alert>
               </div>
             }
+            <div className="login-intro">
+                <h1>Welcome Back to</h1>
+                <img src={Loginfinalyze} alt="" />
+            </div>
             <div className="container">
-              <h1>Login</h1>
+              <h4>Login to your Account</h4>
               <form>
                 <label className="m-3">
                   Username:
@@ -113,6 +119,11 @@ function Login() {
               </form>
             </div>
             <h5>{text}</h5>
+
+          {/* <div className="logo">
+              <img src={Logo} alt="" />
+              <h1>Finalyze 🚀</h1>
+          </div> */}
           </div>
         </>
       )}

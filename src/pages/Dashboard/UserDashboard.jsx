@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../../components/UserContext";
 import axios from "axios";
-import Statement from "../../components/Statement";
+import Statement from "../../components/Statement/Statement";
 import SearchPage from "./../../components/SearchPage";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -16,7 +16,18 @@ import { Bar, Line } from "react-chartjs-2";
 import { Col, Container, Row } from "react-bootstrap";
 import { AppTitle } from "./../../components/Hero";
 import HashLoader from "react-spinners/HashLoader";
-import "./../../components/css/Dashboard.css";
+import "./Dashboard.scss";
+import { NoStatementAlert } from "../../components/Alerts";
+import Navbar from "../../components/Navbar/Navbar";
+import { MdArrowDownward, MdArrowUpward, MdBuild, MdCategory, MdClose, MdDashboard, MdDelete, MdInfo, MdLogout, MdMoney, MdOutlineReorder, MdSettingsCell, MdUpload } from "react-icons/md";
+import Logo from '../../images/logo.png'
+import Loginfinalyze from '../../images/login-finalyze.png'
+import { NavLink } from "react-router-dom";
+import { ImFolderUpload } from 'react-icons/im'
+import { GiPayMoney, GiTakeMyMoney } from "react-icons/gi";
+import { TbAlertTriangleFilled } from 'react-icons/tb'
+import { RiListSettingsLine } from 'react-icons/ri'
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const UserDashboard = ({ jibu }) => {
   const history = useHistory();
@@ -66,33 +77,13 @@ const UserDashboard = ({ jibu }) => {
   const [disabledbutton, setdisabledbutton] = useState(true);
   const [mobilemode, setmobilemode] = useState(false);
   const [showsidebar, setshowsidebar] = useState(false);
+  const [showdash, setshowdash] = useState(false);
 
   useEffect(() => {
     //make api call to get data
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       // user has token, make api call
-      axios
-        .post(
-          "https://backend.finalyze.app/py/dashdata",
-          {},
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${jwt}`,
-            },
-          }
-        )
-        .then((response) => {
-          if (response.status == 401) {
-            history.push("/login");
-          } else if (response.status == 200) {
-            setdashdata(response.data);
-          } else {
-            alert("something went wrong");
-          }
-        });
-
       axios
         .post(
           "https://backend.finalyze.app/dash",
@@ -114,7 +105,32 @@ const UserDashboard = ({ jibu }) => {
           }
         });
 
+      axios
+        .post(
+          "https://backend.finalyze.app/py/dashdata",
+          {},
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${jwt}`,
+            },
+          }
+        )
+        .then((response) => {
+          if (response.status == 401) {
+            history.push("/login");
+          } else if (response.status == 200) {
+            setdashdata(response.data);
+            setTimeout(() => {
+              setloadstate(true);
+            }, 1000);
+          } else {
+            alert("something went wrong");
+          }
+        });
+
       // other dash data
+
       // get latest statement data
       axios
         .post(
@@ -129,17 +145,12 @@ const UserDashboard = ({ jibu }) => {
         )
         .then((response) => {
           if (response.data == "nothing happened") {
-            alert('nothing happened')
+            alert("nothing happened");
             setloadstate(true);
             return;
           }
           setgraphdata(response.data[0]);
           setlinedata(response.data[1]);
-          dashdata.length > 0
-            ? setloadstate(true)
-            : setTimeout(() => {
-                setloadstate(true);
-              }, 2000);
         });
     } else {
       // user has no token, redirect to login
@@ -178,6 +189,7 @@ const UserDashboard = ({ jibu }) => {
         history.push("/login");
       }
     }
+
   }, [updatedata]);
 
   React.useEffect(() => {
@@ -191,7 +203,6 @@ const UserDashboard = ({ jibu }) => {
 
   const Analysismodal = (props) => {
     const keys = Object.keys(props.data);
-    console.log(props.data, keys);
     const body = keys.map((key, index) => {
       return (
         <tr>
@@ -292,7 +303,7 @@ const UserDashboard = ({ jibu }) => {
     );
   };
   const Lateststatement = ({ data }) => {
-    if (data == "no statement") {
+    if (data == "n") {
       return (
         <div className="text-center">
           <h4 className="text-danger">Last month's statement not found</h4>
@@ -327,7 +338,7 @@ const UserDashboard = ({ jibu }) => {
         };
 
         const baroptions = {
-          barThickness: mobilemode ? 20 : 40,
+          barThickness: mobilemode ? 15 : 30,
           barPercentage: 0.8,
           categoryPercentage: 0.8,
           maintainAspectRatio: mobilemode ? false : true,
@@ -363,7 +374,13 @@ const UserDashboard = ({ jibu }) => {
   };
 
   const Linechart = ({ data }) => {
-    if (data) {
+    if (data === "o") {
+      return (
+        <div className="h-100">
+          <h3 className="text-center">No data to display</h3>
+        </div>
+      );
+    } else {
       const linedataset = {
         labels: data.map((item) => item["date"]),
         datasets: [
@@ -421,239 +438,236 @@ const UserDashboard = ({ jibu }) => {
     }
   };
 
-  const handlecoopupload = () => {
-    // make api call to upload coop bank statement
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      // user has token, make api call
-      const formData = new FormData();
-      formData.append("file", uploadedfile);
-      axios
-        .post("https://backend.finalyze.app/uploadcoop", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${jwt}`,
-          },
-        })
-        .then((response) => {
-          if (response.status === 500) {
-            console.log("server error");
-            // alert for server error
-            alert("Server error");
-          } else if (response.status === 200) {
-            console.log(response.data);
-            // alert for successful upload
-            alert("File uploaded successfully");
-            closeuploadmodal();
-            setuploadedfile(null);
-            updatedata ? setupdatedata(false) : setupdatedata(true);
-          }
-        });
-    }
-  };
+  // const handlecoopupload = () => {
+  //   // make api call to upload coop bank statement
+  //   const jwt = localStorage.getItem("jwt");
+  //   if (jwt) {
+  //     // user has token, make api call
+  //     const formData = new FormData();
+  //     formData.append("file", uploadedfile);
+  //     axios
+  //       .post("https://backend.finalyze.app/uploadcoop", formData, {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //           Authorization: `Bearer ${jwt}`,
+  //         },
+  //       })
+  //       .then((response) => {
+  //         if (response.status === 500) {
+  //           console.log("server error");
+  //           // alert for server error
+  //           alert("Server error");
+  //         } else if (response.status === 200) {
+  //           // alert for successful upload
+  //           alert("File uploaded successfully");
+  //           closeuploadmodal();
+  //           setuploadedfile(null);
+  //           updatedata ? setupdatedata(false) : setupdatedata(true);
+  //         }
+  //       });
+  //   }
+  // };
 
-  const handleequityupload = () => {
-    // make api call to upload equity bank statement
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      // user has token, make api call
-      const formData = new FormData();
-      formData.append("file", uploadedfile);
-      axios
-        .post("https://backend.finalyze.app/uploadequity", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${jwt}`,
-          },
-        })
-        .then((response) => {
-          if (response.status === 500) {
-            console.log("server error");
-            // alert for server error
-            alert("Server error");
-          } else if (response.status === 200) {
-            console.log(response.data);
-            // alert for successful upload
-            alert("File uploaded successfully");
-            closeuploadmodal();
-            setuploadedfile(null);
-            updatedata ? setupdatedata(false) : setupdatedata(true);
-          }
-        });
-    }
-  };
+  // const handleequityupload = () => {
+  //   // make api call to upload equity bank statement
+  //   const jwt = localStorage.getItem("jwt");
+  //   if (jwt) {
+  //     // user has token, make api call
+  //     const formData = new FormData();
+  //     formData.append("file", uploadedfile);
+  //     axios
+  //       .post("https://backend.finalyze.app/uploadequity", formData, {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //           Authorization: `Bearer ${jwt}`,
+  //         },
+  //       })
+  //       .then((response) => {
+  //         if (response.status === 500) {
+  //           console.log("server error");
+  //           // alert for server error
+  //           alert("Server error");
+  //         } else if (response.status === 200) {
+  //           // alert for successful upload
+  //           alert("File uploaded successfully");
+  //           closeuploadmodal();
+  //           setuploadedfile(null);
+  //           updatedata ? setupdatedata(false) : setupdatedata(true);
+  //         }
+  //       });
+  //   }
+  // };
 
-  const coopfilechange = (e) => {
-    setdisabledbutton(false);
-    // get file from input
-    const file = e.target.files[0];
-    // check file type
-    if (file.size > 10000000) {
-      alert("File size too large only files less than 10MB allowed");
-      setdisabledbutton(true);
-      return;
-    }
-    if (file.type !== "application/pdf") {
-      setshowalert(true);
-      setdisabledbutton(true);
-      return;
-    }
-    if (user === "demo") {
-      alert("This feature is disabled in demo mode");
-      setdisabledbutton(true);
-      return;
-    }
+  // const coopfilechange = (e) => {
+  //   setdisabledbutton(false);
+  //   // get file from input
+  //   const file = e.target.files[0];
+  //   // check file type
+  //   if (file.size > 10000000) {
+  //     alert("File size too large only files less than 10MB allowed");
+  //     setdisabledbutton(true);
+  //     return;
+  //   }
+  //   if (file.type !== "application/pdf") {
+  //     setshowalert(true);
+  //     setdisabledbutton(true);
+  //     return;
+  //   }
+  //   if (user === "demo") {
+  //     alert("This feature is disabled in demo mode");
+  //     setdisabledbutton(true);
+  //     return;
+  //   }
 
-    setuploadedfile(file);
-  };
-  // modal for choosing a statement to upload
-  const Uploadmodal = () => {
-    return (
-      <>
-        <Modal
-          show={showuploadmodal}
-          onHide={closeuploadmodal}
-          contentClassName="bg-dark"
-          fullscreen="md-down"
-        >
-          <Modal.Header closeButton closeVariant="white">
-            <Modal.Title>Upload Statement</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {coopbankupload ? (
-              <div className="d-flex flex-column align-items-center">
-                {showalert && (
-                  <Alert
-                    variant="danger"
-                    onClose={() => setshowalert(false)}
-                    dismissible
-                  >
-                    <Alert.Heading>Computer says no</Alert.Heading>
-                    <p>
-                      That won't work, only PDF files are allowed. You can
-                      dismiss me and try again
-                    </p>
-                  </Alert>
-                )}
-                <Form.Group controlId="formFileSm" className="mb-3" bg="dark">
-                  <Form.Label
-                    style={{ textTransform: "uppercase" }}
-                    className="p-3 rounded bg-secondary bg-opacity-50 m-3 text-warning fs-5 text-opactiy-50"
-                  >
-                    Upload your {currentupload} bank statement
-                  </Form.Label>
-                  <Form.Control
-                    type="file"
-                    size="sm"
-                    className="bg-secondary text-light border border-secondary"
-                    onChange={coopfilechange}
-                  />
-                </Form.Group>
-                <div className="text-center">
-                  {" "}
-                  {uploadedfile ? (
-                    <>
-                      <p className="text-info">
-                        File name: {uploadedfile.name} <br />
-                        Click below to upload the file
-                      </p>
-                    </>
-                  ) : (
-                    <p className="">Waiting for upload...</p>
-                  )}
-                </div>
+  //   setuploadedfile(file);
+  // };
+  // // modal for choosing a statement to upload
+  // const Uploadmodal = () => {
+  //   return (
+  //     <>
+  //       <Modal
+  //         show={showuploadmodal}
+  //         onHide={closeuploadmodal}
+  //         contentClassName="bg-dark"
+  //         fullscreen="md-down"
+  //       >
+  //         <Modal.Header closeButton closeVariant="white">
+  //           <Modal.Title>Upload Statement</Modal.Title>
+  //         </Modal.Header>
+  //         <Modal.Body>
+  //           {coopbankupload ? (
+  //             <div className="d-flex flex-column align-items-center">
+  //               {showalert && (
+  //                 <Alert
+  //                   variant="danger"
+  //                   onClose={() => setshowalert(false)}
+  //                   dismissible
+  //                 >
+  //                   <Alert.Heading>Computer says no</Alert.Heading>
+  //                   <p>
+  //                     That won't work, only PDF files are allowed. You can
+  //                     dismiss me and try again
+  //                   </p>
+  //                 </Alert>
+  //               )}
+  //               <Form.Group controlId="formFileSm" className="mb-3" bg="dark">
+  //                 <Form.Label
+  //                   style={{ textTransform: "uppercase" }}
+  //                   className="p-3 rounded bg-secondary bg-opacity-50 m-3 text-warning fs-5 text-opactiy-50"
+  //                 >
+  //                   Upload your {currentupload} bank statement
+  //                 </Form.Label>
+  //                 <Form.Control
+  //                   type="file"
+  //                   size="sm"
+  //                   className="bg-secondary text-light border border-secondary"
+  //                   onChange={coopfilechange}
+  //                 />
+  //               </Form.Group>
+  //               <div className="text-center">
+  //                 {" "}
+  //                 {uploadedfile ? (
+  //                   <>
+  //                     <p className="text-info">
+  //                       File name: {uploadedfile.name} <br />
+  //                       Click below to upload the file
+  //                     </p>
+  //                   </>
+  //                 ) : (
+  //                   <p className="">Waiting for upload...</p>
+  //                 )}
+  //               </div>
 
-                <Button
-                  disabled={disabledbutton}
-                  variant="outline-success"
-                  className="text-center w-25"
-                  onClick={() => {
-                    if (currentupload === "coop") {
-                      handlecoopupload();
-                    } else if (currentupload === "equity") {
-                      handleequityupload();
-                    }
-                  }}
-                >
-                  Upload File
-                </Button>
-              </div>
-            ) : (
-              <Container>
-                <Row className="">
-                  <Col>
-                    <Card
-                      bg="secondary"
-                      border="dark"
-                      className="m-3 text-center"
-                      style={{ width: "11rem" }}
-                      onClick={() => history.push("/upload")}
-                    >
-                      <Card.Body>
-                        <Card.Title>MPESA Statement</Card.Title>
-                        <i
-                          class="bi bi-phone-vibrate"
-                          style={{ fontSize: "5.5rem" }}
-                        ></i>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col>
-                    <Card
-                      bg="secondary"
-                      border="dark"
-                      className="m-3 text-center"
-                      style={{ width: "11rem" }}
-                      onClick={() => {
-                        setcoopbankupload(true);
-                        setcurrentupload("coop");
-                      }}
-                    >
-                      <Card.Body>
-                        <Card.Title>COOP Bank Statement</Card.Title>
-                        <i
-                          class="bi bi-bank"
-                          style={{ fontSize: "5.5rem" }}
-                        ></i>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <Card
-                      bg="secondary"
-                      border="dark"
-                      className="m-3 text-center"
-                      style={{ width: "11rem" }}
-                      onClick={() => {
-                        setcoopbankupload(true);
-                        setcurrentupload("equity");
-                      }}
-                    >
-                      <Card.Body>
-                        <Card.Title>Equity Bank Statement</Card.Title>
-                        <i
-                          class="bi bi-bank"
-                          style={{ fontSize: "5.5rem" }}
-                        ></i>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
-              </Container>
-            )}
-          </Modal.Body>
-        </Modal>
-      </>
-    );
-  };
+  //               <Button
+  //                 disabled={disabledbutton}
+  //                 variant="outline-success"
+  //                 className="text-center w-25"
+  //                 onClick={() => {
+  //                   if (currentupload === "coop") {
+  //                     handlecoopupload();
+  //                   } else if (currentupload === "equity") {
+  //                     handleequityupload();
+  //                   }
+  //                 }}
+  //               >
+  //                 Upload File
+  //               </Button>
+  //             </div>
+  //           ) : (
+  //             <Container>
+  //               <Row className="">
+  //                 <Col>
+  //                   <Card
+  //                     bg="secondary"
+  //                     border="dark"
+  //                     className="m-3 text-center"
+  //                     style={{ width: "11rem" }}
+  //                     onClick={() => history.push("/upload")}
+  //                   >
+  //                     <Card.Body>
+  //                       <Card.Title>MPESA Statement</Card.Title>
+  //                       <i
+  //                         class="bi bi-phone-vibrate"
+  //                         style={{ fontSize: "5.5rem" }}
+  //                       ></i>
+  //                     </Card.Body>
+  //                   </Card>
+  //                 </Col>
+  //                 <Col>
+  //                   <Card
+  //                     bg="secondary"
+  //                     border="dark"
+  //                     className="m-3 text-center"
+  //                     style={{ width: "11rem" }}
+  //                     onClick={() => {
+  //                       setcoopbankupload(true);
+  //                       setcurrentupload("coop");
+  //                     }}
+  //                   >
+  //                     <Card.Body>
+  //                       <Card.Title>COOP Bank Statement</Card.Title>
+  //                       <i
+  //                         class="bi bi-bank"
+  //                         style={{ fontSize: "5.5rem" }}
+  //                       ></i>
+  //                     </Card.Body>
+  //                   </Card>
+  //                 </Col>
+  //               </Row>
+  //               <Row>
+  //                 <Col>
+  //                   <Card
+  //                     bg="secondary"
+  //                     border="dark"
+  //                     className="m-3 text-center"
+  //                     style={{ width: "11rem" }}
+  //                     onClick={() => {
+  //                       setcoopbankupload(true);
+  //                       setcurrentupload("equity");
+  //                     }}
+  //                   >
+  //                     <Card.Body>
+  //                       <Card.Title>Equity Bank Statement</Card.Title>
+  //                       <i
+  //                         class="bi bi-bank"
+  //                         style={{ fontSize: "5.5rem" }}
+  //                       ></i>
+  //                     </Card.Body>
+  //                   </Card>
+  //                 </Col>
+  //               </Row>
+  //             </Container>
+  //           )}
+  //         </Modal.Body>
+  //       </Modal>
+  //     </>
+  //   );
+  // };
 
   const handleApiCall = (e) => {
     let k = e.target.value;
     let pdf_name = cardData[k].pdf_name;
     const jwt = localStorage.getItem("jwt");
-    console.log(k, cardData[k]);
     // setshowdata(true)
     axios
       .post(
@@ -728,9 +742,9 @@ const UserDashboard = ({ jibu }) => {
     setdelid(eventKey);
   };
 
-  const getdetails = () => {
-    history.push("/usermodel");
-  };
+  // const getdetails = () => {
+  //   history.push("/usermodel");
+  // };
 
   const quickanalysis = (e) => {
     setloadstate(false);
@@ -738,7 +752,6 @@ const UserDashboard = ({ jibu }) => {
     let k = e.target.value;
     let pdf_name = cardData[k].pdf_name;
     let statement_type = cardData[k].statement_type;
-    console.log(pdf_name, statement_type);
     const jwt = localStorage.getItem("jwt");
     axios
       .post(
@@ -814,7 +827,6 @@ const UserDashboard = ({ jibu }) => {
   };
 
   const showsidebarhandler = (e) => {
-    console.log(e.target);
     if (showsidebar) {
       if (mobilemode) {
         document.getElementsByClassName("dash-content")[0].style.transform =
@@ -884,112 +896,146 @@ const UserDashboard = ({ jibu }) => {
       {showdata ? (
         <Statement data={sndata[1]} pdata={sndata[0]} refresh={handleRefresh} />
       ) : (
-        <div className="text-center">
-          <div className="d-flex flex-row align-items-center bg-dark top-nav">
-            <div className="d-flex flex-row site-header">
-              <div
-                className="menu-sel mt-3"
-                // onClick={() => setShowSideNavigation(true)}
-              >
-                <i class="bi bi-list" onClick={() => setShowSideNavigation(true)}></i>
+        <div className="dashboard">
+          <div className="top-nav">
+            <div className="site-header">
+              <div className="reorder-button">
+                <MdOutlineReorder id="reorder" onClick={() => setShowSideNavigation(true)} />
               </div>
-              <div className="app-ttl">
-                <AppTitle />
+              <div className="app-title">
+                <h1><NavLink to='/'><img src={Logo} alt="" /> Finalyze</NavLink></h1>
               </div>
             </div>
-            <div className="home-search">
-              <form class="d-flex text-center mb-1" role="search">
-                <input
-                  class="text-light form-control bg-secondary bg-opacity-50 border-dark"
-                  type="search"
-                  placeholder="Search for a transaction"
-                  aria-label="Search"
-                  value={searchText}
-                  onChange={updateSearch}
-                />
-              </form>
-            </div>
-            {showresults && (
-              <div className="d-flex flex-row position-absolute top-25 start-50  m-3 source-sel">
-                <p>Statement Source:</p>
-                <Form.Select
-                  className="item-selector  bg-dark border border-info text-light m-2 w-auto translate-middle-y"
-                  onChange={handlesttchange}
-                >
-                  <option value="1">M-pesa</option>
-                  <option value="2">Cooperative</option>
-                  <option value="3">Equity</option>
-                </Form.Select>
-              </div>
-            )}
+            <div className="search-actions">
+              {showresults && (
+                <div className="source-sel">
+                  <p>Statement Source:</p>
+                  <select
+                    className="type"
+                    onChange={handlesttchange}
+                  >
+                    <option value="1">M-pesa</option>
+                    <option value="2">Cooperative</option>
+                    <option value="3">Equity</option>
+                  </select>
+                </div>
+              )}
+              <div className="home-search">
+                <form role="search">
+                  <input
+                    class=""
+                    type="search"
+                    style={!showresults ? { width: '200%'} : null}
+                    placeholder="Search for a transaction"
+                    aria-label="Search"
+                    value={searchText}
+                    onChange={updateSearch}
+                  />
+                </form>
+              </div></div>
           </div>
           <div className="body-container">
             {showSideNavigation ? (
-              <div className="sidebar-container">
-                <div className="bg-dark sidebar">
-                  <div className="top">
-                    <div
-                      className="menu-sel mt-3"
-                      onClick={() => setShowSideNavigation(false)}
-                    >
-                      <i class="bi bi-x"></i>
-                    </div>
-                    <Button
-                      className="w-100 my-2 text-light"
-                      onClick={getdetails}
-                      variant="secondary"
-                    >
-                      Category Model
-                    </Button>
-                    <Button
-                      className="w-100 my-2 text-light"
-                      onClick={() => history.push("/managecat")}
-                      variant="secondary"
-                    >
-                      Category Manager
-                    </Button>
-                    <Button
-                      className="w-100 my-2 text-light"
-                      onClick={() => history.push("/budgetbuild")}
-                      variant="secondary"
-                    >
-                      Budget Builder
-                    </Button>
-                    <Button
-                      className="w-100 my-2 text-light"
-                      variant="secondary"
-                      onClick={() => setshowuploadmodal(true)}
-                    >
-                      Upload a Statement
-                    </Button>
-                  </div>
-                  <div className="bottom">
-                    <Button
-                      className="text-center btn-sm w-50"
-                      onClick={() => {
-                        localStorage.removeItem("jwt");
-                        setUser(null);
-                        history.push("/");
-                      }}
-                      variant="outline-warning"
-                    >
-                      Logout
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              <Sidebar onClose={() => setShowSideNavigation(false)} />
             ) : null}
-            <div className="d-flex flex-fill w-100 dash-content">
+            <div className="dash-content">
               {showresults ? (
                 <div className="w-100 flex-fill search-page">
                   <SearchPage searchText={searchText} stttype={stttype} />
                 </div>
               ) : (
-                <div className="flex-fill">
+                <div className="dashboard-body">
                   {loadstate ? (
-                    <div>
-                      <div className="d-flex flex-wrap justify-content-around">
-                        <div className="m-3 stt-up">
+                    <div className="body-component">
+                      <div className="stats-strip">
+                        <div className="stats-card">
+                          <div className="heading">
+                            Statements Uploaded <ImFolderUpload id="card-icons" />
+                          </div>
+                          <div className="value">
+                            <div className="value-item">
+                              {" " + cardData.length}
+                            </div>
+                            <div className="indicator">
+                              <MdArrowUpward id="up" />
+                              <MdArrowDownward id="down" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="stats-card">
+                          <div className="heading">
+                            Categories Added <MdCategory id="card-icons" />
+                          </div>
+                          <div className="value">
+                            <div className="value-item">
+                              {dashdata ? (
+                                <p>
+                                  {" " + dashdata[0]}
+                                </p>
+                              ) : (
+                                <p>{" " + 0}</p>
+                              )}
+                            </div>
+                            <div className="indicator">
+                              <MdArrowUpward id="up" />
+                              <MdArrowDownward id="down" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="stats-card">
+                          <div className="heading">
+                            Total Budget <GiTakeMyMoney id="card-icons" />
+                          </div>
+                          <div className="value">
+                            <div className="value-item">
+                              {dashdata ? (
+                                <p>
+                                  {" " + dashdata[1]}
+                                </p>
+                              ) : (
+                                <p>{" " + 0}</p>
+                              )}
+                            </div>
+                            <div className="indicator">
+                              <MdArrowUpward id="up" />
+                              <MdArrowDownward id="down" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="stats-card">
+                          <div className="heading">
+                            Overspend Index <GiPayMoney id="card-icons" />
+                          </div>
+                          <div className="value">
+                            <div className="value-item">
+                              {dashdata ? (
+                                <>
+                                  {dashdata[2] < 25 ? (
+                                    <p className="text-success">
+                                      {" " + dashdata[2] + "%"}
+                                    </p>
+                                  ) : dashdata[2] < 75 ? (
+                                    <p className="text-warning">
+                                      {" " + dashdata[2] + "%"}
+                                    </p>
+                                  ) : (
+                                    <p className="text-danger">
+                                      {" " + dashdata[2] + "%"}
+                                    </p>
+                                  )}
+                                </>
+                              ) : (
+                                <p className="text-info">{" " + 0}</p>
+                              )}
+                            </div>
+                            <div className="indicator">
+                              <MdArrowUpward id="up" />
+                              <MdArrowDownward id="down" />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* <div className="m-3 stt-up">
                           <Card bg="dark" className="mt-2">
                             <Card.Body>
                               Statements Uploaded:
@@ -1003,9 +1049,13 @@ const UserDashboard = ({ jibu }) => {
                           <Card bg="dark" className="mt-2">
                             <Card.Body>
                               Categories added:
-                              <strong className="text-info">
-                                {" " + dashdata[0]}
-                              </strong>
+                              {dashdata ? (
+                                <strong className="text-info">
+                                  {" " + dashdata[0]}
+                                </strong>
+                              ) : (
+                                <strong className="text-info">{" " + 0}</strong>
+                              )}
                             </Card.Body>
                           </Card>
                         </div>
@@ -1013,9 +1063,13 @@ const UserDashboard = ({ jibu }) => {
                           <Card bg="dark" className="mt-2">
                             <Card.Body>
                               Total Budget:
-                              <strong className="text-info">
-                                {" " + dashdata[1]}
-                              </strong>
+                              {dashdata ? (
+                                <strong className="text-info">
+                                  {" " + dashdata[1]}
+                                </strong>
+                              ) : (
+                                <strong className="text-info">{" " + 0}</strong>
+                              )}
                             </Card.Body>
                           </Card>
                         </div>
@@ -1023,40 +1077,166 @@ const UserDashboard = ({ jibu }) => {
                           <Card bg="dark" className="mt-2">
                             <Card.Body>
                               Overspend Index:
-                              {dashdata[2] < 25 ? (
-                                <strong className="text-success">
-                                  {" " + dashdata[2] + "%"}
-                                </strong>
-                              ) : dashdata[2] < 75 ? (
-                                <strong className="text-warning">
-                                  {" " + dashdata[2] + "%"}
-                                </strong>
+                              {dashdata ? (
+                                <>
+                                  {dashdata[2] < 25 ? (
+                                    <strong className="text-success">
+                                      {" " + dashdata[2] + "%"}
+                                    </strong>
+                                  ) : dashdata[2] < 75 ? (
+                                    <strong className="text-warning">
+                                      {" " + dashdata[2] + "%"}
+                                    </strong>
+                                  ) : (
+                                    <strong className="text-danger">
+                                      {" " + dashdata[2] + "%"}
+                                    </strong>
+                                  )}
+                                </>
                               ) : (
-                                <strong className="text-danger">
-                                  {" " + dashdata[2] + "%"}
-                                </strong>
+                                <strong className="text-info">{" " + 0}</strong>
                               )}
                             </Card.Body>
                           </Card>
+                        </div> */}
+                      </div>
+                      <div className="last-month">
+                        <h1>Last Month at a Glance:</h1>
+                        <div className="last-month-body">
+                          <div className="left">
+                            <div className="graph-last">
+                              {graphdata ? (
+                                <Lateststatement data={graphdata} />
+                              ) : (
+                                "No data"
+                              )}
+                            </div>
+                          </div>
+                          <div className="right">
+                            <div className="w-100">
+                              {linedata ? <Linechart data={linedata} /> : "No data"}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <h5 className="p-3 bg-dark m-3 text-info">
+
+                      {/* <h5 className="p-3 bg-dark m-3 text-info">
                         Last Month at a glance
                         <br />
                         {graphdata ? graphdata[1] : "No data"}
                       </h5>
                       <div className="d-flex justify-content-evenly align-items-center dash-graphs">
                         <div className="text-info w-100">
-                          <Lateststatement data={graphdata} />
+                          {graphdata ? (
+                            <Lateststatement data={graphdata} />
+                          ) : (
+                            "No data"
+                          )}
                         </div>
                         <div className="w-100">
-                          <Linechart data={linedata} />
+                          {linedata ? <Linechart data={linedata} /> : "No data"}
+                        </div>
+                      </div> */}
+
+                      <div className="uploaded-statements">
+                        <h1>Statements Uploaded</h1>
+                        <div className="upload-body">
+                          {cardData.length == 0 && (
+                            <div className="text-info">
+                              <h3>No Statements Found  <TbAlertTriangleFilled id="warn" /></h3>
+                              <h5>
+                                You can upload a statement in the menu section.
+                                Try it out with last month's statement to get
+                                started
+                              </h5>
+                            </div>
+                          )}
+                          {cardData.map((card, i) => (
+                            <div className="" key={i}>
+                              <div className="statement-card">
+                                <DropdownButton
+                                  onSelect={handledelete1}
+                                  id={`dropdown-button-${i}`}
+                                  title=""
+                                  className="delete-btn"
+                                  variant="secondary"
+                                  menuVariant="dark"
+                                  size="sm"
+                                >
+                                  <Dropdown.Item eventKey={i} value={i} className="item">
+                                    Delete <MdDelete />
+                                  </Dropdown.Item>
+                                </DropdownButton>
+                                <div className="card-body">
+                                  <h5 className="card-title">
+                                    {card.pdf_name.split("_")[0]}{" "}
+                                    {card.pdf_name.split("_")[1]}
+                                  </h5>
+                                  {/* <h6 className="card-subtitle mb-2 text-muted">{card.statement}</h6> */}
+                                  <p className="card-text text-success d-flex flex-row justify-content-center">
+                                    <span>Date:</span>{" "}
+                                    {card.statement_type == "coop" ? (
+                                      <p className="mx-2"> {card.date}</p>
+                                    ) : (
+                                      <p className="mx-2"> {card.date}</p>
+                                    )}
+                                  </p>
+                                  <p className="card-text text-success">
+                                    <span>Statement type:</span>{" "}
+                                    {card.statement_type.toUpperCase()}
+                                  </p>
+                                  <div className="actions">
+                                    {card.statement_type == "mpesa" ? (
+                                      <>
+                                        <button
+                                          className="view-charts"
+                                          onClick={handleApiCall}
+                                          value={i}
+                                          key={i}
+                                        >
+                                          View Charts
+                                        </button>
+                                        <button
+                                          className="quick-analysis"
+                                          onClick={quickanalysis}
+                                          value={i}
+                                          key={i}
+                                        >
+                                          Quick Analysis
+                                        </button>
+                                      </>
+                                    ) : (
+                                      <button
+                                        className="btn btn-outline-info mx-3"
+                                        onClick={quickanalysis}
+                                        value={i}
+                                        key={i}
+                                      >
+                                        Quick Analysis
+                                      </button>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
                         </div>
                       </div>
+                      {/* <>
                       <h5 className="p-3 bg-dark m-3 text-info">
                         Statements Uploaded
                       </h5>
                       <div className="row mx-4">
+                        {cardData.length == 0 && (
+                          <div className="text-info text-opacity-75">
+                            <h3>No Statements Found</h3>
+                            <h5>
+                              You can upload a statement in the menu section.
+                              Try it out with last month's statement to get
+                              started
+                            </h5>
+                          </div>
+                        )}
                         {cardData.map((card, i) => (
                           <div className="col-md-4 mt-3" key={i}>
                             <div className="card bg-dark text-white">
@@ -1078,7 +1258,7 @@ const UserDashboard = ({ jibu }) => {
                                   {card.pdf_name.split("_")[0]}{" "}
                                   {card.pdf_name.split("_")[1]}
                                 </h5>
-                                {/* <h6 className="card-subtitle mb-2 text-muted">{card.statement}</h6> */}
+                                
                                 <p className="card-text text-success d-flex flex-row justify-content-center">
                                   Date:{" "}
                                   {card.statement_type == "coop" ? (
@@ -1127,16 +1307,17 @@ const UserDashboard = ({ jibu }) => {
                           </div>
                         ))}
                       </div>
+                      </> */}
                       {showquickanal && (
                         <Analysismodal title={title} data={quickanalresults} />
                       )}
 
-                      {showuploadmodal && (
+                      {/* {showuploadmodal && (
                         <Uploadmodal
                           show={showuploadmodal}
                           onHide={() => setshowuploadmodal(false)}
                         />
-                      )}
+                      )} */}
                     </div>
                   ) : (
                     <div className="d-flex justify-content-center align-items-center my-5">

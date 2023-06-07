@@ -2,7 +2,7 @@ import Upload from "./components/Upload/Upload";
 import Hero, { Footer } from "./components/Hero";
 import { Route } from "react-router-dom";
 import notFound from "./components/notFound";
-import Statement from "./components/Statement";
+import Statement from "./components/Statement/Statement";
 import './App.css';
 import { Switch } from "react-router-dom";
 import UserDashboard from "./pages/Dashboard/UserDashboard";
@@ -17,11 +17,11 @@ import { UserContext } from "./components/UserContext";
 // import Register from "./components/Register";
 // import UserDashboard from "./components/UserDashboard";
 import SearchPage from "./components/SearchPage";
-import UserModel from "./components/UserModel";
 import jwt_decode from 'jwt-decode';
-import Managecat from "./components/Managecat";
-import BudgetBuilder from "./components/BudgetBuilder";
 import Home from "./pages/Home/Home";
+import Usermodel from "./pages/Usermodel/Usermodel";
+import Managecat from "./pages/Managecat/Managecat";
+import BudgetBuilder from "./pages/BudgetBuilder/BudgetBuilder";
 
 
 
@@ -57,7 +57,7 @@ function App() {
         <Route path='/register' component={Register} />
         <Route path='/dashboard' component={UserDashboard} />
         <Route path='/search' component={SearchPage} />
-        <Route path='/usermodel' component={UserModel} />
+        <Route path='/usermodel' component={Usermodel} />
         <Route path='/managecat' component={Managecat} />
         <Route path='/budgetbuild' component={BudgetBuilder} />
         </div>

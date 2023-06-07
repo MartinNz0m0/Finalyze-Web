@@ -2,7 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #21252967;
+    background-color: #000;
+    height: auto;
+    margin-bottom: -3rem;
 
     .header {
         text-align: center;
@@ -13,25 +15,25 @@
         p {
             font-size: 0.9rem;
         }
-
     }
 
     .upload-body {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 1rem 2rem;
         gap: 1rem;
-        padding: 1rem 0.5rem;
-        margin-top: 2rem;
-        width: 60%;
-        height: auto;
 
         h3 {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            color: #2bb1cf;
+            text-align: center;
+            margin-top: 1rem;
         }
 
         h5 {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            text-align: center;
         }
 
         .upload-button {
@@ -39,55 +41,73 @@
             align-items: center;
             width: 100%;
             border: 1px solid #848484f1;
-            border-radius: 7px;
+            border-radius: 10px;
 
             input {
+                flex: 3;
                 border: none;
-                flex: 1;
-                background-color: #ffffff10;
+                background-color: #101010;
+                font-size: 1rem;
+                padding: 0.5rem;
+                margin: 0;
             }
 
             button {
+                flex: 1;
                 border: none;
-                border-radius: 0px 5px 5px 0px;
-                cursor: pointer;
+                border-radius: 0px 7px 7px 0px;
+                font-size: 1rem;
+                padding: 0.5rem;
             }
-
         }
 
         .prog {
-            width: 50%;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
 
-        .kuja {
+        .success {
+            background-color: #00800027;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
+            color: #008000;
+            border-radius: 5px;
 
-            a {
-                border: 2px solid #2bb1cf;
+            #top {
+                background-color: #008000;
+                color: #fff;
                 padding: 0.5rem 1rem;
-                border-radius: 10px;
+                border-radius: 5px 5px 0px 0px;
 
-                &:hover {
-                    background-color: #2bb1cf;
-                    color: #fff;
+                #check {
+                    background-color: #fff;
+                    padding: 0.1rem;
+                    font-size: 1rem;
+                    color: #008000;
+                    border-radius: 50%;
                 }
+            }
+
+            h6 {
+                width: 100%;
+                padding: 0.5rem 1rem;
+                text-align: center;
+                font-size: 0.9rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
         }
 
-        .processing {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
+        .text-danger {
+            background-color: #ff000020;
+            padding: 0.5rem;
+            border-radius: 5px;
         }
 
         .row {
-
+       	    position: relative; 
+       	    
             input {
                 display: flex;
                 align-items: center;
@@ -98,38 +118,215 @@
             label {
                 margin: 0rem 0.5rem;
             }
-
+            
             .sumbua {
+            	position: absolute;
+            	background-color: #101010;
+            	top: 110%;
+            	left: 50%;
+            	transform: translate(-50%);
+            	height: 8rem;
+            	padding: 0.5rem 1rem 1rem 1rem;
+            	border-radius: 5px;
+            	
+            	.close {
+            	      background-color: #fff;
+            	      border-radius: 50%;
+            	      position: absolute;
+            	      top: 5%;
+            	      right: 5%;
+            	      padding: 0.1rem 0.3rem;
+            	      font-size: 0.9rem;
+            	}
+            	
+            	p {
+		   margin-top: 2rem;
+		}
+            }
+           
+        }
+        
+        .processing {
+            	
+            	button {
+           	   display: flex;
+           	   align-items: center;
+           	   justify-content: space-between;
+           	   border: none;
+           	   border: 1px solid yellow;
+           	   background-color: transparent;
+           	   color: yellow;
+           	   text-align: center;
+           	   padding: 0.5rem 2rem;
+           	   border-radius: 5px;
+           	   font-size: 1rem;
+           	   cursor: pointer;           	 
+            	}
+         }
+         
+         .kuja {
+         	display: flex;
+         	align-items: center;
+         	justify-content: center;
+         	gap: 1rem;
+         	width: 100%;
+         	
+         	a {
+         		border: 1px solid #2bb1cf;
+         		padding: 0.5rem 1rem;
+         		border-radius: 5px;
+         		font-size: 0.9rem;
+         	}
+         }         
+        
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    .Upload {
+
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background-color: #267B8C;
+            width: 100%;
+
+            p {
+                font-size: 0.9rem;
+            }
+
+        }
+
+        .upload-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0.5rem;
+            margin-top: 2rem;
+            width: 60%;
+            height: auto;
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            h5 {
+                font-size: 0.9rem;
+                margin-bottom: 3rem;
+            }
+
+            .upload-button {
                 display: flex;
-                flex-direction: column;
-                position: relative;
-                height: 12rem;
-                width: 22rem;
-                margin-top: 3rem;
+                align-items: center;
+                width: 100%;
+                border: 1px solid #848484f1;
+                border-radius: 7px;
 
-                button {
-                    background-color: transparent;
+                input {
                     border: none;
-                    text-align: right;
-                    background-color: #fff;
-                    width: fit-content;
-                    position: absolute;
-                    left: 88%;
-                    border-radius: 50%;
-                    padding: 0.3rem 0.7rem;
+                    flex: 8;
                     background-color: #ffffff10;
-                    color: #fff;
-
-                    &:hover {
-                        background-color: #fff;
-                        color: #000;
-                        cursor: pointer;
-                    }
+                    font-size: 1rem;
+                    margin: 0;
                 }
 
-                p {
-                    margin-top: 2.5rem;
-                    text-align: left;
+                button {
+                    flex: 1;
+                    border: none;
+                    border-radius: 0px 5px 5px 0px;
+                    cursor: pointer;
+                }
+
+            }
+
+            .prog {
+                width: 50%;
+                margin-top: 2rem;
+            }
+
+            .kuja {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                width: 100%;
+
+                a {
+                    border: 2px solid #2bb1cf;
+                    padding: 0.5rem 1rem;
+                    border-radius: 10px;
+
+                    &:hover {
+                        background-color: #2bb1cf;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .processing {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .row {
+                position: relative;
+
+                input {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #ffffff10;
+                }
+
+                label {
+                    margin: 0rem 0.5rem;
+                }
+
+                .sumbua {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    width: 22rem;
+                    margin-top: 3rem;
+                    background-color: #ffffff46;
+                    padding: 1rem;
+                    font-size: 0.7rem;
+                    left: 100%;
+                    top: -150%;
+                    border-radius: 10px;
+
+                    p {
+                        margin: 0;
+                    }
+
+                    button {
+                        background-color: transparent;
+                        border: none;
+                        text-align: right;
+                        background-color: #fff;
+                        width: fit-content;
+                        position: absolute;
+                        left: 88%;
+                        border-radius: 50%;
+                        padding: 0.3rem 0.7rem;
+                        background-color: #ffffff10;
+                        color: #fff;
+
+                        &:hover {
+                            background-color: #fff;
+                            color: #000;
+                            cursor: pointer;
+                        }
+                    }
+
+                    p {
+                        margin-top: 2.5rem;
+                        text-align: left;
+                    }
                 }
             }
         }

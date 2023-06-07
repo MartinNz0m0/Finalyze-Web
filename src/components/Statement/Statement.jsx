@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Bar, Pie, Doughnut, Line } from "react-chartjs-2";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../UserContext";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import Chart from 'chart.js/auto';
-import { FailedataloadAlert } from "./Alerts";
+import { FailedataloadAlert } from "../Alerts";
+import Navbar from "../Navbar/Navbar";
+import './Statement.scss'
 // import { CategoryScale, Chart, ArcElement, LinearScale, BarElement, defaults, Interaction } from "chart.js";
 
 // Chart.register(CategoryScale);
@@ -22,8 +24,7 @@ const formatter = new Intl.NumberFormat("en-US", {
 const Statement = (props) => {
   const history = useHistory();
   const rtnclick = () => {
-    
-      props.refresh();
+    window.location.reload()
   };
   const [sttdata, setSttdata] = useState([]);
   const [piedata, setPiedata] = useState([]);
@@ -112,16 +113,16 @@ const Statement = (props) => {
       setTotal(total);
       setPiechartamnt(amount);
       setPiechartdets(detsarr);
-    } catch (error) { 
-        rtnclick()
-        alert("Something went wrong on our end. Please try again.")
-        window.location.reload()
- 
+    } catch (error) {
+      rtnclick()
+      alert("Something went wrong on our end. Please try again.")
+      window.location.reload()
+
     }
   }, [piedata]);
 
   useEffect(() => {
-  try {
+    try {
       // max value
       var maxwithdraw = Math.max.apply(
         Math,
@@ -137,9 +138,9 @@ const Statement = (props) => {
         var trueval = o.Withdrawn.replace(/,/g, "").replace(/-/g, "");
         return Math.abs(parseInt(trueval)) === maxwithdraw;
       });
-  
+
       //max 10 values
-  
+
       let getmaxarr = [];
       const getmax = sttdata.map((obj, i) => {
         var trueval = obj.Withdrawn.replace(/,/g, "").replace(/-/g, "");
@@ -167,7 +168,7 @@ const Statement = (props) => {
         maxtenarr.push(check);
       });
       const flatennedarr = maxtenarr.flat(1);
-  
+
       // Get Transaction details in array
       let arr1 = [];
       let arr2 = [];
@@ -180,7 +181,7 @@ const Statement = (props) => {
         arr2.push(trueval);
       });
       // set states for top ten transcation details and amount
-  
+
       // find total spent on fuliza and trancation costs, fuliza cost and wtihdrawal charges
       let fulizaarr = [];
       let trancarr = [];
@@ -220,9 +221,9 @@ const Statement = (props) => {
       let brknstatement = [];
       const monthsName = [];
       const monthsName2 = [];
-  
+
       // for other below
-  
+
       let sndmoneydets = [];
       let arr4 = [];
       let phonenum = [];
@@ -238,12 +239,12 @@ const Statement = (props) => {
       let twoarr = [];
       let threearr = [];
       const forbiz = []
-  
+
       let anotherarr = [];
       let anotherarr2 = [];
       let anotherarr3 = [];
-  
-  
+
+
       const fuliza = sttdata.map((o, i) => {
         if (o.Details === "OverDraft of Credit Party") {
           totalfultrans++;
@@ -304,7 +305,7 @@ const Statement = (props) => {
         if (o.Details.startsWith('Business')) {
           paidinnam.push(o)
         }
-  
+
         if (
           o.Details.includes("Merchant Payment to") ||
           o.Details.includes("Customer Transfer to") ||
@@ -313,7 +314,7 @@ const Statement = (props) => {
         ) {
           totaltrans++;
         }
-  
+
         let f = o["Completion Time"].split("-");
         if (f[0] !== "Completion Time") {
           if (!months.includes(f[1])) {
@@ -327,7 +328,7 @@ const Statement = (props) => {
           // check total number of months by checking first index in sttdata and minus from last index
           //  const count = months.filter(x => x === f[1]).length;
           //  if (count < 2) {
-  
+
           //     months.push(f[1])
           //  }
           // if (months.includes(f[1]) && year.includes(f[0])) {
@@ -354,14 +355,14 @@ const Statement = (props) => {
           if (diffMonths < 1) {
             date[2] = '<1'
             setonemonth(false)
-  
+
           } else if (diffMonths <= 2) {
             setonemonth(false)
           }
           else {
             date[2] = diffMonths;
           }
-  
+
           if (diffMonths >= 22 && diffMonths < 25) {
             // set state true when this is true
             settwoyearline(true);
@@ -384,7 +385,7 @@ const Statement = (props) => {
             setbrokenstt(true);
           }
           // trying the for paidin biz here
-  
+
           for (const o of paidinnam) {
             if (o.Details.startsWith("Business")) {
               let getnam = o.Details.replace(/\r/g, " ")
@@ -411,7 +412,7 @@ const Statement = (props) => {
           threearr.push(forbiz)
         }
       });
-  
+
       // get similar transcations
       const gettranc = sttdata.reduce((a, o) => {
         const key = o.Details.replace(/\r/g, " ");
@@ -421,19 +422,19 @@ const Statement = (props) => {
         a[key].push(o);
         return a;
       }, {});
-  
+
       // sort the arrays by length and get biggest 20
       const sortedArrays = Object.values(gettranc).sort(
         (a, b) => b.length - a.length
       );
-  
+
       const largestTwentyArrays = sortedArrays.slice(0, 100); // change this to get more arrays
-  
+
       // set if conditions for the different arrays
-  
+
       // take arrays add all the withdrawn sums push into array then push array of details to new array
-  
-  
+
+
       const withdrawsums = largestTwentyArrays.map((obj, i) => {
         let arr5 = [];
         let paybillsum = [];
@@ -450,12 +451,12 @@ const Statement = (props) => {
             o.Details.startsWith("Merchant Payment Fuliza")
         );
         let j = tillfiltered.length;
-  
+
         let forpbill = obj.filter((o) => o.Details.startsWith("Pay Bill"));
         let n = forpbill.length;
-  
+
         // paid in shit
-  
+
         let paidarr = obj.filter(
           (o) =>
             o.Details.startsWith("Funds received") ||
@@ -465,7 +466,7 @@ const Statement = (props) => {
         let p = paidarr.length;
         paidinnam.push(paidarr)
         let twonums = false; // to check if the numbers appears twice, dont add the second to the array
-  
+
         const filteredArray = filteredObj.filter(
           (o) => !o.Details.includes("Customer Transfer of Funds\rCharge")
         );
@@ -492,13 +493,13 @@ const Statement = (props) => {
           }
           return acc;
         }, []);
-  
+
         onearr.push(result);
-  
+
         // arr4.push(arr5.reduce((a, o) => a + o, 0));
-  
+
         // get the data for till receivers
-  
+
         let sum = 0;
         tillfiltered.forEach((o, i) => {
           let getnam = o.Details.replace(/\r/g, " ")
@@ -518,9 +519,9 @@ const Statement = (props) => {
             pbamnt.push(sum);
           }
         });
-  
+
         // get the paybill payment data
-  
+
         forpbill.forEach((o, i) => {
           if (!o.Details.includes("Pay Bill Charge")) {
             let getnam = o.Details.replace(/\r/g, " ")
@@ -549,7 +550,7 @@ const Statement = (props) => {
             }
           }
         });
-  
+
         const forpaid = [];
         for (const o of paidarr) {
           if (o.Details.includes("Funds received")) {
@@ -563,7 +564,7 @@ const Statement = (props) => {
               trueval = 0;
             }
             let existing = forpaid.find((a) => a.name === thisnam);
-  
+
             if (existing) {
               existing.amount += parseInt(trueval);
             } else {
@@ -571,17 +572,17 @@ const Statement = (props) => {
             }
           }
         }
-  
+
         twoarr.push(forpaid);
-  
-  
+
+
       });
-  
+
       // this shit isn't working - its working now mf
-  
+
       var resul = onearr.filter((e) => e.length);
       var finalres = resul.flat(1);
-  
+
       finalres.map((o, i) => {
         let exist = anotherarr.find((b) => {
           return b.name === o.name;
@@ -593,12 +594,12 @@ const Statement = (props) => {
           anotherarr.push(o);
         }
       });
-  
+
       // double number checker for paid in
-  
+
       var yetanother = twoarr.filter((e) => e.length);
       var finalres2 = yetanother.flat(1);
-  
+
       finalres2.map((o, i) => {
         let exist = anotherarr2.find((b) => {
           return b.name === o.name;
@@ -613,7 +614,7 @@ const Statement = (props) => {
       // checker for business paid in
       var forbizpaid = threearr.filter((e) => e.length);
       var finalres3 = forbizpaid.flat(1);
-  
+
       finalres3.map((o, i) => {
         let exist = anotherarr3.find((b) => {
           return b.name === o.name;
@@ -628,26 +629,26 @@ const Statement = (props) => {
       setpaidinname(anotherarr2);
       setbizpaidinnam(anotherarr3);
       // set bar graph data for send money and sort array
-  
+
       const setarr = sndmoneydets.map((o, i) => {
         return {
           label: o,
           data: arr4[i] || 0,
         };
       });
-  
+
       const sortedarr = anotherarr.sort(function (a, b) {
         return b.amount > a.amount;
       });
-  
+
       let sendmoneyarr = [];
       let sendmoneyamnt = [];
-  
+
       sortedarr.forEach(function (o) {
         sendmoneyarr.push(o.name);
         sendmoneyamnt.push(o.amount);
       });
-  
+
       if (screenWidth) {
         setGetdetsarr(sendmoneyarr.slice(0, 10));
         setAmountarr(sendmoneyamnt.slice(0, 10));
@@ -655,28 +656,28 @@ const Statement = (props) => {
         setGetdetsarr(sendmoneyarr);
         setAmountarr(sendmoneyamnt);
       }
-  
+
       // sort bar graph for till and set array
-  
+
       const narr = pbillnamearr.map((o, i) => {
         return {
           label: o,
           data: pbamnt[i] || 0,
         };
       });
-  
+
       const sarr = narr.sort(function (a, b) {
         return b.data > a.data;
       });
-  
+
       let sortpbilllname = [];
       let sortpbillamnt = [];
-  
+
       sarr.forEach(function (o) {
         sortpbilllname.push(o.label);
         sortpbillamnt.push(o.data);
       });
-  
+
       if (screenWidth) {
         setBiggestReceivers(sortpbillamnt.slice(0, 10));
         setBiggestReceiversdets(sortpbilllname.slice(0, 10));
@@ -684,23 +685,23 @@ const Statement = (props) => {
         setBiggestReceivers(sortpbillamnt);
         setBiggestReceiversdets(sortpbilllname);
       }
-  
+
       // sort bar graph for paybill and set array
-  
+
       const anarr = paybillnam.map((o, i) => {
         return {
           label: o,
           data: thisdamnthing[i] || 0,
         };
       });
-  
+
       const yarr = anarr.sort(function (a, b) {
         return b.data > a.data;
       });
-  
+
       let sortlist = [];
       let sortamnt = [];
-  
+
       yarr.forEach(function (o) {
         sortlist.push(o.label);
         sortamnt.push(o.data);
@@ -712,8 +713,8 @@ const Statement = (props) => {
         setPblist(sortlist);
         setPbamnt(sortamnt);
       }
-  
-  
+
+
       const sum = fulizaarr.reduce((total, value) => total + value, 0);
       const fulizacostsum = fulizacost.reduce((total, value) => total + value, 0);
       const trans = trancarr.reduce((total, value) => total + value, 0);
@@ -723,13 +724,13 @@ const Statement = (props) => {
       const airtime = airtimeCost.reduce((total, value) => total + value, 0);
       var diff = fulizacostsum - sum;
       fulizatrans.push(sum, Math.abs(diff), trans, wcharges);
-  
+
       setLpcharges([pcharge, tcharge, avgbal[0]]);
-  
+
       SetAirtimebought(airtime);
-  
+
       setTranccostAmount(fulizatrans);
-  
+
       if (months.length !== 0) {
         if (twoyears.length !== 0) {
           var twoyearfinal = twoyears.reverse();
@@ -745,11 +746,11 @@ const Statement = (props) => {
               if (f !== "Completion Time") {
                 let finaldate = new Date(f);
                 let datesplit = a["Completion Time"].split("-");
-  
+
                 if (Math.abs(date[0] - finaldate) < date[3]) {
                   if (t === datesplit[1]) {
                     let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
-  
+
                     ar.push(parseInt(bal));
                     num++;
                     if (a.Details === "OverDraft of Credit Party") {
@@ -792,7 +793,7 @@ const Statement = (props) => {
                 monthsName.push(d);
               }
             });
-  
+
             if (ar2.length !== 0) {
               const msum2 = ar2.reduce((total, value) => total + value, 0);
               const fsum2 = fularr2.reduce((total, value) => total + value, 0);
@@ -835,7 +836,7 @@ const Statement = (props) => {
                 }
               }
             });
-  
+
             const msum = ar.reduce((total, value) => total + value, 0);
             const fsum = fularr.reduce((total, value) => total + value, 0);
             avgful.push(fsum);
@@ -855,7 +856,7 @@ const Statement = (props) => {
             let num = 0;
             const quik = sttdata.map((a, b) => {
               let f = a["Completion Time"].split("-");
-  
+
               if (s === f[1]) {
                 let bal = a.Balance.replace(/,/g, "").replace(/-/g, "");
                 ar.push(parseInt(bal));
@@ -874,7 +875,7 @@ const Statement = (props) => {
             avgful.push(fsum);
             let finale = msum / num;
             avgmonthbal.push(parseInt(finale));
-  
+
             month.map((t, y) => {
               if (parseInt(s) === y + 1) {
                 monthsName.push(t);
@@ -891,11 +892,11 @@ const Statement = (props) => {
       setmonthnam2(monthsName2);
       setfulizaperc([totaltrans, totalfultrans]);
       setmiakambili([date[2], year[0], year[1], year[2]]);
-    
-  } catch (error) {
-    console.log(error);
-    rtnclick()
-  }
+
+    } catch (error) {
+      console.log(error);
+      rtnclick()
+    }
   }, [sttdata]);
 
   // bar chart 1
@@ -1271,40 +1272,266 @@ const Statement = (props) => {
         </div>
       }
       {loaddone &&
-        <div className="row g-0 justify-content-around mt-2">
-          {user ? 
-          <div className="alaa d-flex flex-row-reverse bg-info bg-opacity-50 p-4 justify-content-center">
-          <button
-            type="button"
-            className="btn btn-warning me-0"
-            onClick={rtnclick}
-          >
-            Back to dashboard
-            {/* <Link to='/Upload'></Link> */}
-          </button>
-          <h3 className="text-center w-75 ms-5 ">
-            Statement Period: {miakambili[0]} months
+        <div className="Statement">
+          <Navbar />
+          <h3>
+            Statement Period: <span>{miakambili[0]} months</span>
           </h3>
-        </div>
+          {/* {user ?
+            <div className="alaa d-flex flex-row-reverse bg-info bg-opacity-50 p-4 justify-content-center">
+              <button
+                type="button"
+                className="btn btn-warning me-0"
+                onClick={rtnclick}
+              >
+                Back to dashboard
+                <Link to='/Upload'></Link>
+              </button>
+              <h3 className="text-center w-75 ms-5 ">
+                Statement Period: {miakambili[0]} months
+              </h3>
+            </div>
 
-        :
-<div className="alaa d-flex flex-row-reverse bg-info bg-opacity-50 p-4 justify-content-center">
-            <button
-              type="button"
-              className="btn btn-warning me-0"
-              onClick={rtnclick}
-            >
-              Try With Another PDF
-              {/* <Link to='/Upload'></Link> */}
-            </button>
-            <h3 className="text-center w-75 ms-5 ">
-              Statement Period: {miakambili[0]} months
-            </h3>
+            :
+            <div className="alaa d-flex flex-row-reverse bg-info bg-opacity-50 p-4 justify-content-center">
+              <button
+                type="button"
+                className="btn btn-warning me-0"
+                onClick={rtnclick}
+              >
+                Try With Another PDF
+                <Link to='/Upload'></Link>
+              </button>
+              <h3 className="text-center w-75 ms-5 ">
+                Statement Period: {miakambili[0]} months
+              </h3>
+            </div>
+
+          } */}
+
+          <div className="top-section">
+            <div className="insights">
+              <h4>Insights</h4>
+
+              <div className="insights-holder">
+                <div className="insight-item">
+                  <h5 className="">Total Paid In</h5>
+                  <p className="">KES: <span>{formatter.format(total[0])}</span></p>
+                </div>
+                <div className="insight-item">
+                  <h5 className="">Total Paid Out</h5>
+                  <p className="">KES: <span>{formatter.format(total[1])}</span></p>
+                </div>
+                <div className="insight-item">
+                  <h5 className="">Total Fuliza Taken</h5>
+                  <p className="">
+                    KES: <span>{formatter.format(tranccostAmount[0])}</span>
+                  </p>
+                </div>
+                <div className="insight-item">
+                  <h5 className="">Fuliza Charges</h5>
+                  <p className="">
+                    KES: <span>{formatter.format(tranccostAmount[1])}</span>
+                  </p>
+                </div>
+                <div className="insight-item">
+                  <h5 className="">Send Money Costs</h5>
+                  <p className="">
+                    KES: <span>{formatter.format(tranccostAmount[2])}</span>
+                  </p>
+                </div>
+                <div className="insight-item">
+                  <h5 className="">Withdrawal Charges</h5>
+                  <p className="">
+                    KES: <span>{formatter.format(tranccostAmount[3])}</span>
+                  </p>
+                </div>
+                <div className="insight-item">
+                  <h5 className="">Paybill Charges</h5>
+                  <p className="">
+                    KES: <span>{formatter.format(lpcharges[0])}</span>
+                  </p>
+                </div>
+                <div className="insight-item">
+                  <h5 className="">Till Charges</h5>
+                  <p className="">
+                    KES: <span>{formatter.format(lpcharges[1])}</span>
+                  </p>
+                </div>
+                <div className="insight-item">
+                  <h5 className="">Airtime Bought</h5>
+                  <p className="">
+                    KES: <span>{formatter.format(airtimebought)}</span>
+                  </p>
+                </div>
+                <div className="insight-item">
+                  <h5 className="">Avg. Balance</h5>
+                  <p className="">
+                    KES: <span>{formatter.format(lpcharges[2])}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="outflow-graph">
+              <div className="donut">
+                <h4 className="text-center text-info">Transaction Summary</h4>
+
+                <Doughnut
+                  data={piedataset}
+                  width={100}
+                  height={100}
+                  options={pieoptions}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="mid-section-one">
+            <div className="balance-outlook">
+              {onemonth &&
+                <div className="outlook-container">
+                  <h4 className="">Balance Outlook</h4>
+                  {brokenstt && (
+                    <h6 className="">
+                      Your statement is less than 24 months, last 12 months are
+                      considered for the chart below
+                    </h6>
+                  )}
+                  {twoyearline && (
+                    <h6 className="">
+                      Looks like you have uploaded a two year statement, the graphs
+                      will compare balance outlook for the two years
+                    </h6>
+                  )}
+                  <h6 className="text-center text-warning mt-3">
+                    {monthnam[0]} {miakambili[3]} - {monthnam[monthnam.length - 1]}{" "}
+                    {miakambili[2]}
+                  </h6>
+                  <Line
+                    data={linedata}
+                    width={100}
+                    height={50}
+                    options={lineoptions}
+                  />
+                  {twoyearline && (
+                    <>
+                      <h6 className="text-center text-warning mt-3">
+                        {monthnam2[0]} {miakambili[2]} -{" "}
+                        {monthnam2[monthnam2.length - 1]} {miakambili[1]}
+                      </h6>
+                      <Line
+                        data={linedata2}
+                        width={100}
+                        height={50}
+                        options={lineoptions}
+                      />
+                    </>
+                  )}
+                </div>
+              }
+            </div>
+            <div className="without-fuliza">
+              <h5 className="">
+                Transactions done without Fuliza vs Fuliza Transactions
+              </h5>
+
+              <div className="fuliza-donut">
+                <Doughnut
+                  data={pie2dataset}
+                  width={100}
+                  height={50}
+                  options={pie2options}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="mid-section-two">
+            <div className="sent-section">
+              <h4>
+                Who Have You Sent Money to?
+              </h4>
+              <div className="sent-bar-graph">
+                {screenWidth &&
+                  <div>
+                    <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
+                  </div>
+                }
+                <Bar data={dataset} width={100} height={50} options={options} />
+              </div>
+            </div>
+          </div>
+          <div className="mid-section-three">
+            <div className="till-number">
+              <div className="till-section">
+                <h4>
+                  Which Till Number Have you paid the most?
+                </h4>
+                {screenWidth &&
+                  <div>
+                    <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
+                  </div>
+                }
+                <div className="till-bar">
+                  <Bar
+                    data={dataset2}
+                    width={10}
+                    height={50}
+                    options={bar2options}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="paybill-number">
+              <div className="paybill-section">
+                <h4>
+                  Which Pay Bill Number Have you paid the most?
+                </h4>
+                {screenWidth &&
+                  <div>
+                    <h6 className="text-warning text-center text-opacity-50">⚠This chart has more data on desktop⚠</h6>
+                  </div>
+                }
+                <div className="paybill-bar">
+                  <Bar
+                    data={dataset3}
+                    width={60}
+                    height={50}
+                    options={bar3options}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bottom-section">
+            <h4>Who has sent you money</h4>
+            <div className="transfer-donuts">
+
+              <div className="personal-accounts">
+                <h4>Mobile Transfer</h4>
+                <div className="personal-donut">
+                  <Doughnut
+                    data={pie3dataset}
+                    options={pie3options}
+                    width={100}
+                    height={50}
+                  />
+                </div>
+              </div>
+              <div className="bank-accounts">
+                <h4>Bank Transfer</h4>
+                <div className="bank-donut">
+                  <Doughnut
+                    data={pie4dataset}
+                    width={100}
+                    height={50}
+                    options={pie3options}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
-        }
-
-          <div className="nkt col-12 col-sm-8 col-md-8 p-5">
+          {/* <div className="nkt col-12 col-sm-8 col-md-8 p-5">
             <div className="mawe">
               <div className="wolan mb-4">
                 <h4 className="text-center text-info">
@@ -1405,10 +1632,10 @@ const Statement = (props) => {
                 </>
               )}
             </div>}
-          </div>
+          </div> */}
 
-          <div className="mavitu container col-5 col-md-4">
-            <h4 className="text-center text-info mt-3">Insights</h4>
+          {/* <div className="mavitu container col-5 col-md-4"> */}
+          {/* <h4 className="text-center text-info mt-3">Insights</h4>
 
             <div className="row d-flex flex-wrap justify-content-evenly">
               <div className="card text-white bg-dark mb-3 me-3 mt-3 p-1 col-5 rounded-pill">
@@ -1487,9 +1714,9 @@ const Statement = (props) => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="donut h-25 mt-3 mb-5">
+          {/* <div className="donut h-25 mt-3 mb-5">
               <h4 className="text-center text-info">Transaction Summary</h4>
 
               <Doughnut
@@ -1498,8 +1725,8 @@ const Statement = (props) => {
                 height={50}
                 options={pieoptions}
               />
-            </div>
-            <div className="donut h-25 mt-3">
+            </div> */}
+          {/* <div className="donut h-25 mt-3">
               <h5 className="text-center text-info">
                 Transactions done without Fuliza vs Fuliza Transactions
               </h5>
@@ -1510,9 +1737,9 @@ const Statement = (props) => {
                 height={50}
                 options={pie2options}
               />
-            </div>
-          </div>
+            </div> */}
         </div>
+        // </div>
       }
     </div>
   );
