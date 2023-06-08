@@ -7,6 +7,7 @@ import { UserContext } from "../../components/UserContext";
 import LoginSuccessAlert from "./../../components/Alerts";
 import Logo from '../../images/logo.png'
 import Loginfinalyze from '../../images/login-finalyze.png'
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 function Login() {
   const history = useHistory();
@@ -18,6 +19,7 @@ function Login() {
   const [failedlogin, setfailedlogin] = useState(false);
   const { user, setUser } = useContext(UserContext);
   const demomode = window.location.pathname === "/demo"
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
     setfailedlogin(false);
@@ -80,22 +82,25 @@ function Login() {
               </div>
             ) : null}
             {
-              demomode && 
+              demomode &&
               <div className="demo-alert">
-                <Alert show variant="dark" className="bg-opacity-25">
-          <Alert.Heading className="text-center">Finalyze Demo Mode</Alert.Heading>
-          <p>To proceed, use 'demo' as the username and 'demo.finalyze' as the password</p>
-        </Alert>
+                <h4>Finalyze Demo Mode</h4>
+                <p>To proceed, use <span>'demo'</span> as the username and <span>'demo.finalyze'</span> as the password</p>
               </div>
             }
-            <div className="login-intro">
-                <h1>Welcome Back to</h1>
-                <img src={Loginfinalyze} alt="" />
-            </div>
+            {
+              demomode ?
+                <></>
+                :
+                <div className="login-intro">
+                  <h1>Welcome Back to</h1>
+                  <img src={Loginfinalyze} alt="" />
+                </div>
+            }
             <div className="container">
               <h4>Login to your Account</h4>
               <form>
-                <label className="m-3">
+                <label>
                   Username:
                   <input
                     type="text"
@@ -104,14 +109,36 @@ function Login() {
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </label>
-                <label className="m-3">
+                <label id="password">
                   Password:
-                  <input
-                    type="password"
-                    placeholder="Enter your Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <span className="password-input">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="Enter your Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <div
+                      className="action-holder"
+                      style={showPassword ? { backgroundColor: "#267b8ca7", color: "#fff", transition: "0.5s ease-in-out" } : null}
+                    >
+                      {
+                        !showPassword ?
+                          <AiFillEye id="eye" onClick={() => setShowPassword(true)}>
+                            {showPassword && 'Hide Password'}
+                          </AiFillEye>
+                          :
+                          <>
+                            <AiFillEyeInvisible
+                              id="eye"
+                              onClick={() => setShowPassword(false)}
+                            >
+                              {!showPassword && 'Show Password'}
+                            </AiFillEyeInvisible>
+                          </>
+                      }
+                    </div>
+                  </span>
                 </label>
                 <button type="button" onClick={handleLogin}>
                   Login
@@ -120,7 +147,7 @@ function Login() {
             </div>
             <h5>{text}</h5>
 
-          {/* <div className="logo">
+            {/* <div className="logo">
               <img src={Logo} alt="" />
               <h1>Finalyze 🚀</h1>
           </div> */}

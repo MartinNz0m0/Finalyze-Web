@@ -3,8 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #000;
-    height: auto;
-    margin-bottom: -3rem;
+    height: 100vh;
 
     .header {
         text-align: center;
@@ -121,13 +120,14 @@
             
             .sumbua {
             	position: absolute;
-            	background-color: #101010;
+            	background-color: #101010e2;
             	top: 110%;
             	left: 50%;
             	transform: translate(-50%);
             	height: 8rem;
             	padding: 0.5rem 1rem 1rem 1rem;
             	border-radius: 5px;
+                width: 20rem;
             	
             	.close {
             	      background-color: #fff;
@@ -185,6 +185,8 @@
 
 @media only screen and (min-width: 768px) {
     .Upload {
+        height: 100%;
+        padding-bottom: 2rem;
 
         .header {
             text-align: center;
@@ -330,5 +332,11 @@
                 }
             }
         }
+    }
+}
+
+@media only screen and (min-width: 1480px) {
+    .Upload {
+        height: 100vh;
     }
 }

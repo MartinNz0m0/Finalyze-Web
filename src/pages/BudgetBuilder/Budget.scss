@@ -1,114 +1,183 @@
-    .top-nav button {
-        position: relative;
-        width: 7rem;
-        height: 3rem;
-        font-size: 0.8rem;
+.Budget {
+    height: 100%;
+    padding-bottom: 3rem;
+
+    .top-nav {
+        padding: 1rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-bottom: 1px solid #2bb1cf60;
+
+        .site-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+
+            .reorder-button {
+
+                #reorder {
+                    font-size: 1.5rem;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(103%);
+                    }
+                }
+            }
+
+            .app-title {
+                display: flex;
+                flex-direction: row-reverse;
+                gap: 1rem;
+                align-items: center;
+
+                h1 {
+                    flex: 4;
+                    color: #919191;
+                    font-size: 1rem;
+                    margin: 0;
+
+                    img {
+                        width: 3rem;
+                    }
+
+                    a {
+                        color: #203d5a;
+                        display: flex;
+                        align-items: center;
+                        font-weight: 700;
+                        text-decoration: none;
+                        gap: 0.5rem;
+
+                        &.active {
+                            color: #919191;
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    h5 {
+        font-size: 1.3em;
+        color: #2bb1cf;
     }
 
     .content {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         width: 100%;
-    }
 
-    .table-content {
-        width: 95% !important;
-    }
+        .table-content {
+            width: 90% !important;
+            margin: 1rem;
+        }
 
-    .pie-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    @media only screen and (min-width: 768px) {
-        .Budget {
-
-            .top-nav {
-                padding: 2rem;
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 1px solid #2bb1cf60;
-
-                .site-header {
-                    display: flex;
-                    align-items: center;
-                    gap: 2rem;
-
-                    .reorder-button {
-
-                        #reorder {
-                            font-size: 1.5rem;
-                            cursor: pointer;
-
-                            &:hover {
-                                transform: scale(103%);
-                            }
-                        }
-                    }
-
-                    .app-title {
-                        display: flex;
-                        flex-direction: row-reverse;
-                        gap: 2rem;
-                        align-items: center;
-
-                        h1 {
-                            flex: 4;
-                            color: #919191;
-                            font-size: 1rem;
-                            margin: 0;
-
-                            img {
-                                width: 3rem;
-                            }
-
-                            a {
-                                color: #203d5a;
-                                display: flex;
-                                align-items: center;
-                                font-weight: 700;
-                                text-decoration: none;
-                                gap: 0.5rem;
-
-                                &.active {
-                                    color: #919191;
-                                }
-                            }
-
-
-                        }
-                    }
-                }
-            }
-
-            .content {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                padding: 1rem;
-                gap: 1rem;
-
-                .table-content {
-                    flex: 3;
-
-                }
-
-                .pie-content {
-                    box-shadow: 1px 2px 6px 2px #000;
-                    width: 10%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding: 1rem 0rem 2rem 0rem;
-                    cursor: pointer;
-                }
-            }
-
-
+        .pie-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
     }
+
+}
+
+@media only screen and (min-width: 768px) {
+    .Budget {
+
+        .top-nav {
+            padding: 2rem;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #2bb1cf60;
+
+            .site-header {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+
+                .reorder-button {
+
+                    #reorder {
+                        font-size: 1.5rem;
+                        cursor: pointer;
+
+                        &:hover {
+                            transform: scale(103%);
+                        }
+                    }
+                }
+
+                .app-title {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    gap: 2rem;
+                    align-items: center;
+
+                    h1 {
+                        flex: 4;
+                        color: #919191;
+                        font-size: 1rem;
+                        margin: 0;
+
+                        img {
+                            width: 3rem;
+                        }
+
+                        a {
+                            color: #203d5a;
+                            display: flex;
+                            align-items: center;
+                            font-weight: 700;
+                            text-decoration: none;
+                            gap: 0.5rem;
+
+                            &.active {
+                                color: #919191;
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 1rem;
+            gap: 1rem;
+
+            .table-content {
+                flex: 3;
+
+            }
+
+            .pie-content {
+                box-shadow: 1px 2px 6px 2px #000;
+                width: 10%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 1rem 0rem 2rem 0rem;
+                cursor: pointer;
+            }
+        }
+
+
+    }
+}

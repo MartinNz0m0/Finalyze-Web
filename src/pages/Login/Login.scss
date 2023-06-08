@@ -28,12 +28,21 @@
 
 
     .demo-alert {
-        position: absolute;
-        top: 10%
+        background-color: #ffff0015;
+        color: #ffff00;
+        text-align: center;
+        margin: 2rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+
+        span {
+            color: #fff;
+        }
     }
 
     .login-intro {
         text-align: center;
+        width: 100%;
 
         h1 {
             font-size: 1rem;
@@ -49,7 +58,7 @@
         border-radius: 10px;
         position: relative;
 
-        h1 {
+        h4 {
             color: #fff;
             text-align: center;
         }
@@ -59,12 +68,13 @@
             flex-direction: column;
             padding: 1rem;
             align-items: center;
+            gap: 1.5rem;
 
             label {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-
+                gap: 0.5rem;
                 width: 100%;
 
                 input {
@@ -72,11 +82,43 @@
                     outline: none;
                     width: 100%;
                     border: none;
-                    background-color: #fff;
                     flex: 1;
                     color: #000;
                     border-radius: 5px;
-                    font-family: monospace;
+                    background-color: #fff;
+                    font-family: 'Raleway';
+                }
+
+                .password-input {
+                    display: flex;
+                    background-color: #fff;
+                    width: 100%;
+                    outline: none;
+                    width: 100%;
+                    border: none;
+                    color: #000;
+                    border-radius: 5px;
+                    font-family: 'Raleway';
+                    
+                    input {
+                        padding: 0.5rem 1rem;
+                        flex: 3;
+                        color: #000;
+                    }
+
+                    .action-holder {
+                        padding: 0.3rem 1rem;
+                        margin: 0.1rem;
+                        background-color: #267b8c;
+                        color: #fff;
+                        border-radius: 5px;
+
+                        #eye {
+                            padding: 0.1rem;
+                            font-size: 1.5rem;
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
 

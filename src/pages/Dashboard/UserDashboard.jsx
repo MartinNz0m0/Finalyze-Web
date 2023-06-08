@@ -925,7 +925,7 @@ const UserDashboard = ({ jibu }) => {
                   <input
                     class=""
                     type="search"
-                    style={!showresults ? { width: '200%'} : null}
+                    style={!showresults ? { width: '100%'} : null}
                     placeholder="Search for a transaction"
                     aria-label="Search"
                     value={searchText}
@@ -1113,7 +1113,7 @@ const UserDashboard = ({ jibu }) => {
                             </div>
                           </div>
                           <div className="right">
-                            <div className="w-100">
+                            <div className="w-70 line">
                               {linedata ? <Linechart data={linedata} /> : "No data"}
                             </div>
                           </div>

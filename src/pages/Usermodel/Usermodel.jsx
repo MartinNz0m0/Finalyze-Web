@@ -196,17 +196,17 @@ const UserModel = () => {
                 :
                 null
             }
-            <div className='text-center bg-dark bg-opacity-75 p-3 m-3 d-flex justify-content-start top-text'>
+            <div className='top-text'>
               <p>
                 Seeing too much nonsense?
                 You are seeing transcations that appeared at least
-                <Form.Select className='item-selector bg-dark border-success text-light frequency' size="sm" onChange={handleitemchange}>
+                <select onChange={handleitemchange}>
                   <option value="3">3</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
-                </Form.Select>
+                </select>
                 times in each statement. Increase the number to see less.
               </p>
 

@@ -3,6 +3,7 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
+    padding-bottom: 2rem;
 
     .ttl {
         font-size: 1.8rem;
@@ -33,6 +34,7 @@
             padding: 0.5rem 1rem;
             width: fit-content;
             border-radius: 5px;
+            margin-top: 1rem;
         }
     }
 }

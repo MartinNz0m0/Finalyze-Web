@@ -320,7 +320,7 @@ const BudgetBuilder = () => {
             {showSideNavigation ? (
               <Sidebar onClose={() => setShowSideNavigation(false)} />
             ) : null}
-            <h5 className="p-3 m-3 bg-dark text-center">
+            <h5 className="p-3 m-3 bg-dark text-left">
               Here you can build your budget based on your categories. We recommend
               you build your category model first.
             </h5>
@@ -347,7 +347,7 @@ const BudgetBuilder = () => {
                 )}
               </div>
               <div className="flex-grow-1 pie-content">
-                <h6 className="p-3 m-2 text-center bg-dark">
+                <h6 className="p-3 m-3 text-center bg-dark">
                   Total Budget: KES{" "}
                   {categories.reduce((acc, cat) => {
                     if (cat[6]) {

@@ -1,5 +1,336 @@
+.simu {
+    margin-bottom: 2rem;
+
+    .Statement {
+
+        h3 {
+            padding: 1rem;
+            background-color: #212529be;
+            border: 1px solid #2bb1cf2d;
+            text-align: center;
+            font-weight: 700;
+            margin: 0rem 1rem;
+            margin-top: 2rem;
+            margin-bottom: 3px;
+            color: #2bb1cf;
+
+            span {
+                color: #00ff00;
+            }
+        }
+
+        .top-section {
+            display: flex;
+            flex-direction: column;
+            margin: 0rem 1rem;
+            margin-bottom: 3px;
+            background-color: #212529be;
+            padding: 1rem;
+            align-items: flex-start;
+            border: 1px solid #2bb1cf2d;
+            gap: 3px;
+
+            .insights {
+                flex: 1;
+                height: 30rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                h4 {
+                    background-color: #212529be;
+                    width: 100%;
+                    padding: 0.5rem 1rem;
+                    margin: 0;
+                    margin-bottom: 3px;
+                    color: #2bb1cf;
+                    border: 1px solid #2bb1cf2d;
+                }
+
+                .insights-holder {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 3px;
+                    width: 100%;
+
+                    .insight-item {
+                        width: 49.5%;
+                        background-color: #212529be;
+                        padding: 0.5rem 1rem;
+                        border: 1px solid #2bb1cf2d;
+
+                        h5 {
+                            color: #2bb1cf;
+                            font-size: 0.95rem;
+                            border-bottom: 1px solid #2bb1cf2d;
+
+                        }
+
+                        p {
+                            span {
+                                color: #00ff00;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .outflow-graph {
+                height: 35rem;
+                padding: 0.5rem;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                border: 1px solid #2bb1cf2d;
+                width: 100%;
+
+                .donut {
+                    height: 90%;
+                    width: 100%;
+                }
+            }
+        }
+
+        .mid-section-one {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin: 0rem 1rem;
+            margin-bottom: 3px;
+
+            .balance-outlook {
+                height: 35rem;
+                border: 1px solid #2bb1cf2d;
+                padding: 1rem;
+                background-color: #212529be;
+                padding: 1rem;
+
+                h4 {
+                    color: #2bb1cf;
+                    text-align: center;
+                    margin-bottom: 1rem;
+                }
+
+                .outlook-container {
+                    max-height: 85%;
+                    width: 100%;
+                }
+            }
+
+            .without-fuliza {
+                background-color: #212529be;
+                height: 30rem;
+                border: 1px solid #2bb1cf2d;
+                padding: 0.5rem 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3px;
+
+                h5 {
+                    font-size: 0.9rem;
+                    border: 1px solid #2bb1cf2d;
+                    padding: 0.5rem 1rem;
+                    margin: 0;
+                    color: #2bb1cf;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .fuliza-donut {
+                    border: 1px solid #2bb1cf2d;
+                    padding: 0.5rem 1rem;
+                    height: 25rem;
+                    width: 100%;
+                }
+
+            }
+        }
+
+        .mid-section-two {
+            background-color: #212529be;
+            border: 1px solid #2bb1cf2d;
+            padding: 1rem;
+            margin: 0rem 1rem;
+            height: 35rem;
+            margin-bottom: 3px;
+
+            h4 {
+                color: #2bb1cf;
+                border: 1px solid #2bb1cf2d;
+                padding: 0.5rem 1rem;
+                margin: 0rem;
+                font-size: 1.2rem;
+                margin-bottom: 3px;
+            }
+
+            .sent-section {
+                height: 30rem;
+                border: 1px solid #2bb1cf2d;
+                padding: 0.5rem 1rem;
+
+
+                .sent-bar-graph {
+                    height: 70%;
+                    width: 100%;
+                }
+            }
+        }
+
+        .mid-section-three {
+            margin: 0rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            align-items: center;
+            margin-bottom: 3px;
+
+            .till-number {
+                height: 33rem;
+                background-color: #212529be;
+                border: 1px solid #2bb1cf2d;
+                padding: 1rem;
+                width: 100%;
+
+                .till-section {
+                    height: 85%;
+
+                    h4 {
+                        border: 1px solid #2bb1cf2d;
+                        padding: 0.5rem 1rem;
+                        color: #2bb1cf;
+                        font-size: 0.9rem;
+                        margin: 0;
+                        margin-bottom: 3px;
+                        width: 100%;
+                    }
+
+                    .till-bar {
+                        border: 1px solid #2bb1cf2d;
+                        padding: 0.5rem 1rem;
+                        width: 100%;
+                        height: 100%;
+                        font-size: 0.7rem;
+                    }
+                }
+            }
+
+            .paybill-number {
+                height: 33rem;
+                background-color: #212529be;
+                border: 1px solid #2bb1cf2d;
+                padding: 1rem;
+                width: 100%;
+
+                .paybill-section {
+                    height: 85%;
+
+                    h4 {
+                        border: 1px solid #2bb1cf2d;
+                        padding: 0.5rem 1rem;
+                        color: #2bb1cf;
+                        font-size: 0.9rem;
+                        margin: 0;
+                        margin-bottom: 3px;
+                        width: 100%;
+                    }
+
+                    .paybill-bar {
+                        border: 1px solid #2bb1cf2d;
+                        width: 100%;
+                        height: 100%;
+                        padding: 0rem 1rem;
+                        padding-left: 2rem;
+                    }
+                }
+            }
+        }
+
+        .bottom-section {
+            margin: 0rem 1rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            gap: 3px;
+            align-items: center;
+            background-color: #212529be;
+            border: 1px solid #2bb1cf2d;
+            padding-bottom: 2rem;
+
+            h4 {
+                border: 1px solid #2bb1cf2d;
+                padding: 0.5rem 1rem;
+                width: 100%;
+                color: #2bb1cf;
+                margin: 0;
+            }
+
+            .transfer-donuts {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+                align-items: center;
+                width: 100%;
+
+                .personal-accounts {
+                    border: 1px solid #2bb1cf2d;
+                    width: 100%;
+                    padding-bottom: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    height: 30rem;
+
+                    h4 {
+                        padding: 0.5rem 1rem;
+                        color: #2bb1cf;
+                        font-size: 0.9rem;
+                        border: none;
+                        width: 100%;
+                    }
+
+                    .personal-donut {
+                        height: 100%;
+                        width: 90%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+
+                .bank-accounts {
+                    border: 1px solid #2bb1cf2d;
+                    width: 100%;
+                    padding-bottom: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    height: 30rem;
+
+                    h4 {
+                        padding: 0.5rem 1rem;
+                        color: #2bb1cf;
+                        font-size: 0.9rem;
+                        border: none;
+                        width: 100%;
+                    }
+
+                    .bank-donut {
+                        height: 100%;
+                        width: 90%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media only screen and (min-width: 768px) {
     .simu {
+        margin-bottom: 2rem;
 
 
         .Statement {
@@ -22,11 +353,12 @@
 
             .top-section {
                 display: flex;
+                flex-direction: row;
                 margin: 0rem 2rem;
                 margin-bottom: 3px;
                 background-color: #212529be;
                 padding: 1rem;
-                align-items: center;
+                align-items: flex-start;
                 border: 1px solid #2bb1cf2d;
                 gap: 3px;
 
@@ -36,8 +368,6 @@
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    border: 1px solid #2bb1cf2d;
-                    padding: 3px;
 
                     h4 {
                         background-color: #212529be;
@@ -52,11 +382,12 @@
                     .insights-holder {
                         display: flex;
                         flex-wrap: wrap;
+                        justify-content: center;
                         gap: 3px;
                         width: 100%;
 
                         .insight-item {
-                            width: 49.55%;
+                            width: 49%;
                             background-color: #212529be;
                             padding: 0.5rem 1rem;
                             border: 1px solid #2bb1cf2d;
@@ -79,23 +410,24 @@
 
                 .outflow-graph {
                     flex: 2;
-                    height: 30rem;
-                    padding: 1rem 0rem;
+                    height: 35rem;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     border: 1px solid #2bb1cf2d;
 
                     .donut {
-                        height: 25rem;
-                        width: 45rem;
-                        margin-top: -2rem;
+                        height: 100%;
+                        width: 100%;
+                        padding: 2rem;
+
                     }
                 }
             }
 
             .mid-section-one {
                 display: flex;
+                flex-direction: row;
                 gap: 3px;
                 margin: 0rem 2rem;
                 margin-bottom: 3px;
@@ -106,15 +438,15 @@
                     border: 1px solid #2bb1cf2d;
                     padding: 1rem;
                     background-color: #212529be;
-                    padding: 0.5rem 1rem;
+                    padding: 1rem;
 
                     h4 {
                         color: #2bb1cf;
                     }
 
                     .outlook-container {
-                        max-height: 20rem;
-                        width: 50rem;
+                        height: 80%;
+                        width: 100%;
                     }
                 }
 
@@ -123,7 +455,7 @@
                     flex: 1;
                     height: 30rem;
                     border: 1px solid #2bb1cf2d;
-                    padding: 0.5rem 1rem;
+                    padding: 1rem;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -135,13 +467,13 @@
                         padding: 0.5rem 1rem;
                         margin: 0;
                         color: #2bb1cf;
+                        width: 100%;
                     }
 
                     .fuliza-donut {
                         border: 1px solid #2bb1cf2d;
-                        padding: 0.5rem 1rem;
-                        height: 25rem;
-                        width: 25rem;
+                        height: 90%;
+                        width: 100%;
                     }
 
                 }
@@ -155,20 +487,20 @@
                 height: 30rem;
                 margin-bottom: 3px;
 
-                .sent-section {
+                h4 {
+                    color: #2bb1cf;
+                    border: 1px solid #2bb1cf2d;
+                    padding: 0.5rem 1rem;
+                    margin: 0rem;
+                    margin-bottom: 3px;
+                }
 
-                    h4 {
-                        color: #2bb1cf;
-                        border: 1px solid #2bb1cf2d;
-                        padding: 0.5rem 1rem;
-                        margin: 0rem;
-                        margin-bottom: 3px;
-                    }
+                .sent-section {
+                    height: 90%;
 
                     .sent-bar-graph {
-                        height: 25rem;
+                        height: 90%;
                         width: 100%;
-                        border: 1px solid #2bb1cf2d;
                         padding: 0.5rem 1rem;
                     }
                 }
@@ -177,6 +509,7 @@
             .mid-section-three {
                 margin: 0rem 2rem;
                 display: flex;
+                flex-direction: row;
                 gap: 3px;
                 align-items: center;
                 margin-bottom: 3px;
@@ -185,27 +518,30 @@
                     flex: 1;
                     background-color: #212529be;
                     border: 1px solid #2bb1cf2d;
-                    padding: 0.5rem 2rem;
-                    padding-bottom: 2rem;
+                    padding: 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    height: 35rem;
+
+                    h4 {
+                        border: 1px solid #2bb1cf2d;
+                        padding: 0.5rem 1rem;
+                        color: #2bb1cf;
+                        font-size: 0.9rem;
+                        margin: 0;
+                        margin-bottom: 3px;
+                        width: 100%;
+                    }
 
                     .till-section {
-
-                        h4 {
-                            border: 1px solid #2bb1cf2d;
-                            padding: 0.5rem 1rem;
-                            color: #2bb1cf;
-                            font-size: 0.9rem;
-                            margin: 0;
-                            margin-bottom: 3px;
-                            width: 42rem;
-                        }
+                        height: 100%;
+                        font-size: 0.7rem;
+                        width: 100%;
 
                         .till-bar {
-                            border: 1px solid #2bb1cf2d;
-                            padding: 0.5rem 1rem;
-                            width: 42rem;
-                            height: 25rem;
-                            font-size: 0.7rem;
+                            width: 100%;
+                            height: 90%;
                         }
                     }
                 }
@@ -214,31 +550,30 @@
                     flex: 1;
                     background-color: #212529be;
                     border: 1px solid #2bb1cf2d;
-                    padding: 0.5rem 2rem;
-                    padding-bottom: 2rem;
+                    padding: 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    height: 35rem;
+
+                    h4 {
+                        border: 1px solid #2bb1cf2d;
+                        padding: 0.5rem 1rem;
+                        color: #2bb1cf;
+                        font-size: 0.9rem;
+                        margin: 0;
+                        margin-bottom: 3px;
+                        width: 100%;
+                    }
 
                     .paybill-section {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-
-                        h4 {
-                            border: 1px solid #2bb1cf2d;
-                            padding: 0.5rem 1rem;
-                            color: #2bb1cf;
-                            font-size: 0.9rem;
-                            margin: 0;
-                            margin-bottom: 3px;
-                            width: 30rem;
-                        }
+                        height: 100%;
+                        font-size: 0.7rem;
+                        width: 100%;
 
                         .paybill-bar {
-                            border: 1px solid #2bb1cf2d;
-                            width: 30rem;
-                            height: 25rem;
-                            padding: 0rem 1rem;
-                            padding-left: 2rem;
+                            width: 100%;
+                            height: 90%;
                         }
                     }
                 }
@@ -265,6 +600,7 @@
 
                 .transfer-donuts {
                     display: flex;
+                    flex-direction: row;
                     gap: 3px;
                     align-items: center;
                     width: 100%;

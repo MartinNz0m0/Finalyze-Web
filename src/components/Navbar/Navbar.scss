@@ -59,10 +59,9 @@
         }
 
         .drop-down {
-            background-color: #212529;
             position: absolute;
             width: 10rem;
-            top: 2rem;
+            top: 2.2rem;
             right: 0;
             display: flex;
             flex-direction: column;
@@ -75,10 +74,10 @@
 
                 a {
                     padding: 0.5rem 1rem;
-                    background-color: #2bb1cf31;
+                    background-color: #212529;
                     border: 1px solid #2bb1cf5a;
                     text-decoration: none;
-                    color: #fff;
+                    color: #2bb1cf;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
@@ -94,10 +93,10 @@
                 a,
                 button {
                     padding: 0.5rem 1rem;
-                    background-color: #2bb1cf31;
+                    background-color: #212529;
                     border: 1px solid #2bb1cf5a;
                     text-decoration: none;
-                    color: #fff;
+                    color: #2bb1cf;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;

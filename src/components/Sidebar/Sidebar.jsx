@@ -311,7 +311,6 @@ const Sidebar = ({ onClose }) => {
                 <div className="top">
                     <MdClose id='close' onClick={onClose} />
                     <div className="navigation">
-                        <img src={Loginfinalyze} alt="" />
                         <NavLink to='/dashboard'>Dashboard <MdDashboard /></NavLink>
                         <div className="divider"></div>
                         <h4>Utilities</h4>

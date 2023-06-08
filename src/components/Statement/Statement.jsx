@@ -9,7 +9,7 @@ import './Statement.scss'
 // import { CategoryScale, Chart, ArcElement, LinearScale, BarElement, defaults, Interaction } from "chart.js";
 
 // Chart.register(CategoryScale);
-// Chart.register(ArcElement)
+// Chart.register(ArcElement) 
 // Chart.register(LinearScale)
 // // Chart.register(Interaction)
 // Chart.register(BarElement)
@@ -1374,8 +1374,8 @@ const Statement = (props) => {
             </div>
 
             <div className="outflow-graph">
+              <h4 className="text-center text-info">Transaction Summary</h4>
               <div className="donut">
-                <h4 className="text-center text-info">Transaction Summary</h4>
 
                 <Doughnut
                   data={piedataset}
@@ -1446,10 +1446,10 @@ const Statement = (props) => {
             </div>
           </div>
           <div className="mid-section-two">
+            <h4>
+              Who Have You Sent Money to?
+            </h4>
             <div className="sent-section">
-              <h4>
-                Who Have You Sent Money to?
-              </h4>
               <div className="sent-bar-graph">
                 {screenWidth &&
                   <div>

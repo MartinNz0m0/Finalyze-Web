@@ -94,6 +94,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            justify-content: center;
             width: 100%;
             gap: 0.5rem;
 
@@ -118,7 +119,7 @@
             }
 
             .home-search {
-	        display: flex;
+                display: flex;
                 align-items: center;
                 justify-content: center;
 
@@ -221,20 +222,20 @@
 
                         .last-month-body {
                             display: flex;
-	                    flex-direction: column;
+                            flex-direction: column;
                             align-items: center;
                             width: 100%;
                             gap: 1rem;
 
                             .left {
-				width: 100%;
+                                width: 100%;
                                 border: 1px solid #2bb1cf2d;
                                 height: 35rem;
                                 padding: 0.5rem;
-                                
+
                                 .graph-last {
-			            height: 20rem;
-			            width: 20rem;
+                                    height: 20rem;
+                                    width: 20rem;
                                 }
                             }
 
@@ -302,11 +303,12 @@
                             }
 
                             .statement-card {
-                                background-color: #000;
+                                background-color: #2bb1cf13;
                                 width: 18rem;
                                 position: relative;
-                                box-shadow: 1px 2px 6px 2px #000;
+                                box-shadow: 1px 2px 6px 2px #2bb1cf13;
                                 border-radius: 5px;
+                                border: 1px solid #2bb1cf2d;
 
                                 &:hover {
                                     transform: scale(103%);
@@ -388,11 +390,11 @@
 
     .dashboard {
 
-
         .top-nav {
             padding: 2rem;
             width: 100%;
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #2bb1cf60;
@@ -476,39 +478,49 @@
                 }
             }
 
-            .source-sel {
+            .search-actions {
                 display: flex;
                 align-items: center;
-                gap: 1rem;
 
-                p {
-                    margin: 0;
-                }
+                .source-sel {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    flex: 1;
 
-                .type {
-                    padding: 0.5rem 1rem;
-                    border: none;
-                    border-radius: 5px;
-                    background-color: #474d53;
-                    color: #fff;
-                    width: 10rem;
-                    margin: 0;
-                }
-            }
+                    p {
+                        margin: 0;
+                        flex: 1;
+                    }
 
-            .home-search {
-
-                form {
-
-                    input {
-                        background-color: #474d53;
+                    select {
+                        padding: 0.5rem 1rem;
                         border: none;
-                        padding: 0.5rem;
                         border-radius: 5px;
-                        width: 15rem;
-                        font-family: monospace;
+                        background-color: #474d53;
                         color: #fff;
-                        text-align: center;
+                        flex: 1;
+                        margin: 0;
+                    }
+                }
+
+                .home-search {
+                    flex: 1;
+
+                    form {
+                        width: 20rem;
+                        padding: 0;
+
+                        input {
+                            background-color: #474d53;
+                            border: none;
+                            padding: 0.5rem;
+                            border-radius: 5px;
+                            width: 15rem;
+                            font-family: monospace;
+                            color: #fff;
+                            text-align: center;
+                        }
                     }
                 }
             }
@@ -595,6 +607,7 @@
 
                             .last-month-body {
                                 display: flex;
+                                flex-direction: row;
                                 align-items: center;
                                 width: 100%;
                                 gap: 1rem;
@@ -602,15 +615,27 @@
                                 .left {
                                     flex: 1;
                                     border: 1px solid #2bb1cf2d;
-                                    height: 20rem;
+                                    height: auto;
                                     padding: 1rem;
+
+                                    .graph-last {
+                                        width: 100%;
+                                        height: 100%;
+                                        margin-top: 2rem;
+                                    }
                                 }
 
                                 .right {
                                     flex: 1;
                                     border: 1px solid #2bb1cf2d;
-                                    height: 20rem;
+                                    height: auto;
                                     padding: 1rem;
+
+                                    .line {
+                                        width: 100%;
+                                        height: 100%;
+                                        margin-top: 2rem;
+                                    }
                                 }
                             }
                         }
@@ -669,11 +694,12 @@
                                 }
 
                                 .statement-card {
-                                    background-color: #000;
+                                    background-color: #2bb1cf13;
                                     width: 25rem;
                                     position: relative;
-                                    box-shadow: 1px 2px 6px 2px #000;
+                                    box-shadow: 1px 2px 6px 2px #2bb1cf13;
                                     border-radius: 5px;
+                                    border: 1px solid #2bb1cf2d;
 
                                     &:hover {
                                         transform: scale(103%);
@@ -755,5 +781,3 @@
 
     }
 }
-
-@media (max-width: 600px) {}
