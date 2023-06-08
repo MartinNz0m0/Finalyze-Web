@@ -16,6 +16,7 @@ const Navbar = (props) => {
     const rtnclick = () => {
         window.location.reload()
     };
+    
 
     return (
         <div className="Navbar">
