@@ -20,12 +20,14 @@ function Login() {
   const { user, setUser } = useContext(UserContext);
   const demomode = window.location.pathname === "/demo"
   const [showPassword, setShowPassword] = useState(false);
+  const backend = process.env.REACT_APP_BACKEND
 
   const handleLogin = () => {
     setfailedlogin(false);
+    console.log("backend", backend)
     axios
       .post(
-        "https://backend.finalyze.app/login",
+        `${backend}/login`,
         { username, password },
         {
           headers: {

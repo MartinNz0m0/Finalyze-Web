@@ -4,6 +4,7 @@ import './Register.scss'
 import { useHistory } from 'react-router-dom';
 
 const Register = () => {
+  const backend = process.env.REACT_APP_BACKEND;
   const [masterPassword, setMasterPassword] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -30,13 +31,14 @@ const Register = () => {
   };
 
   const handleSubmit = (event) => {
+
     event.preventDefault();
     if (password === passwordConfirmation) {
       // TODO: Handle form submission
       try {
         axios
           .post(
-            "https://backend.finalyze.app/register",
+            `${backend}/register`,
             { masterPassword, username, password },
             {
               headers: {

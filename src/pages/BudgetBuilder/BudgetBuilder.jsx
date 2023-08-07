@@ -14,6 +14,7 @@ import Logo from '../../images/logo.png';
 
 const BudgetBuilder = () => {
   const history = useHistory();
+  const backendPy = process.env.REACT_APP_BACKEND_PY;
   const [categories, setCategories] = useState([]);
   const [validated, setValidated] = useState(false);
   const [refresh, setRefresh] = useState(false);
@@ -32,7 +33,7 @@ const BudgetBuilder = () => {
     if (jwt) {
       axios
         .post(
-          "https://backend.finalyze.app/py/getallcats",
+          `${backendPy}/getallcats`,
           { removeduplicates },
           {
             headers: {
@@ -106,7 +107,7 @@ const BudgetBuilder = () => {
       if (jwt) {
         axios
           .post(
-            "https://backend.finalyze.app/py/addbudget",
+            `${backendPy}/addbudget`,
             { budget, cat, sttype, priority },
             {
               headers: {
@@ -131,7 +132,7 @@ const BudgetBuilder = () => {
       if (jwt) {
         axios
           .post(
-            "https://backend.finalyze.app/py/addbudget",
+            `${backendPy}/addbudget`,
             { budget, cat, sttype, priority },
             {
               headers: {

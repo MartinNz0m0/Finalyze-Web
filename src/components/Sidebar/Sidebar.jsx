@@ -23,6 +23,7 @@ import Equity from '../../images/equity-2.png'
 import Coop from '../../images/coop.png'
 
 const Sidebar = ({ onClose }) => {
+    const backend = process.env.REACT_APP_BACKEND;
     const history = useHistory();
     const { user, setUser } = useContext(UserContext);
     const [sndata, setSndata] = useState([]);
@@ -61,7 +62,7 @@ const Sidebar = ({ onClose }) => {
             const formData = new FormData();
             formData.append("file", uploadedfile);
             axios
-                .post("https://backend.finalyze.app/uploadcoop", formData, {
+                .post(`${backend}/uploadcoop`, formData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                         Authorization: `Bearer ${jwt}`,
@@ -91,7 +92,7 @@ const Sidebar = ({ onClose }) => {
             const formData = new FormData();
             formData.append("file", uploadedfile);
             axios
-                .post("https://backend.finalyze.app/uploadequity", formData, {
+                .post(`${backend}/uploadequity`, formData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                         Authorization: `Bearer ${jwt}`,

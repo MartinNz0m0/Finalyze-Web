@@ -18,6 +18,7 @@ import Logo from '../../images/logo.png'
 
 const UserModel = () => {
   const history = useHistory();
+  const backendPy = process.env.REACT_APP_BACKEND_PY
   const [details, setdetails] = useState([])
   const [userinput, setuserinput] = useState('')
   const [refresh, setrefresh] = useState(false)
@@ -29,7 +30,7 @@ const UserModel = () => {
   const [showSideNavigation, setShowSideNavigation] = useState(false);
 
   useEffect(() => {
-    axios.post('https://backend.finalyze.app/py/usermodel', { itemnumber, stttype }, {
+    axios.post(`${backendPy}/usermodel`, { itemnumber, stttype }, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem('jwt')}`
@@ -69,7 +70,7 @@ const UserModel = () => {
     setformsuccessalert(false)
     console.log(inputs[i], details[i], e.currentTarget)
     const det = details[i]
-    axios.post('https://backend.finalyze.app/py/usersubmit', { userinput: inputs[key], det, stttype }, {
+    axios.post(`${backendPy}/usersubmit`, { userinput: inputs[key], det, stttype }, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem('jwt')}`

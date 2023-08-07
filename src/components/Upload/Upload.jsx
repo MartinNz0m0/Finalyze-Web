@@ -11,6 +11,7 @@ import { MdCheck, MdClose } from "react-icons/md";
 
 
 const Upload = () => {
+  const backend = process.env.REACT_APP_BACKEND;
   const [uploadfile, SetUploadfile] = useState(null);
   const [fileselected, SetFileselected] = useState();
   const [pdfpwd, SetPdfpwd] = useState("");
@@ -61,7 +62,7 @@ const Upload = () => {
 
       formData.append("file", uploadfile);
 
-      fetch("https://backend.finalyze.app/api", {
+      fetch(`${backend}/api`, {
         method: "POST",
         body: formData,
       })
@@ -91,7 +92,7 @@ const Upload = () => {
   const btnClick = () => {
     Setdatanotloaded(false);
     setloadingstate(true)
-    fetch("https://backend.finalyze.app/data", {
+    fetch(`${backend}/data`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -114,7 +115,7 @@ const Upload = () => {
     Setprivacy(false);
     axios
       .post(
-        "https://backend.finalyze.app/csv",
+        `${backend}/csv`,
         { fileselected, filepath, pdfpwd, user },
         {
           headers: {

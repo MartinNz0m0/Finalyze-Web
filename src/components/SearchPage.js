@@ -18,7 +18,7 @@ const Result = (item) => {
 };
 
 const SearchPage = ({ searchText, stttype }) => {
-  console.log(stttype);
+  const backendPy = process.env.REACT_APP_BACKEND_PY;
   const title = `You are seaching for '${searchText}'`;
   const query = searchText;
   const [sttype, setSttype] = useState("mpesa");
@@ -34,7 +34,7 @@ const SearchPage = ({ searchText, stttype }) => {
     if (jwt) {
       axios
         .post(
-          "https://backend.finalyze.app/py/search",
+          `${backendPy}/search`,
           { query, stttype },
           {
             headers: {

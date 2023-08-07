@@ -30,6 +30,8 @@ import { RiListSettingsLine } from 'react-icons/ri'
 import Sidebar from "../../components/Sidebar/Sidebar";
 
 const UserDashboard = ({ jibu }) => {
+  const backend = process.env.REACT_APP_BACKEND;
+  const backendPy = process.env.REACT_APP_BACKEND_PY;
   const history = useHistory();
   const popRef = useRef(null);
   const { user, setUser } = useContext(UserContext);
@@ -86,7 +88,7 @@ const UserDashboard = ({ jibu }) => {
       // user has token, make api call
       axios
         .post(
-          "https://backend.finalyze.app/dash",
+          `${backend}/dash`,
           {},
           {
             headers: {
@@ -107,7 +109,7 @@ const UserDashboard = ({ jibu }) => {
 
       axios
         .post(
-          "https://backend.finalyze.app/py/dashdata",
+          `${backendPy}/dashdata`,
           {},
           {
             headers: {
@@ -134,7 +136,7 @@ const UserDashboard = ({ jibu }) => {
       // get latest statement data
       axios
         .post(
-          "https://backend.finalyze.app/py/lateststatement",
+          `${backendPy}/lateststatement`,
           {},
           {
             headers: {
@@ -144,13 +146,22 @@ const UserDashboard = ({ jibu }) => {
           }
         )
         .then((response) => {
-          if (response.data == "nothing happened") {
-            alert("nothing happened");
-            setloadstate(true);
-            return;
+          if (response.status == 401) {
+            history.push("/login");
           }
-          setgraphdata(response.data[0]);
-          setlinedata(response.data[1]);
+          else if (response.status == 503 || response.status == 500) {
+            alert("something went wrong, reloading page");
+            window.location.reload();
+          }
+           else if (response.data == "nothing happened") {
+              alert("nothing happened");
+              setloadstate(true);
+              return;
+            }
+           else {
+            setgraphdata(response.data[0]);
+            setlinedata(response.data[1]);
+          }
         });
     } else {
       // user has no token, redirect to login
@@ -164,7 +175,7 @@ const UserDashboard = ({ jibu }) => {
         // user has token, make api call
         axios
           .post(
-            "https://backend.finalyze.app/verify",
+            `${backend}/verify`,
             {},
             {
               headers: {
@@ -175,13 +186,13 @@ const UserDashboard = ({ jibu }) => {
           )
           .then((response) => {
             // response will be user data if token is valid
-
-            if (response.data) {
-              // token is valid
+            if (response.status == 401) {
+              history.push("/login");
+            } else if (response.status == 200) {
               setUser(response.data);
             } else {
-              // token is invalid
-              history.push("/login");
+              alert("something went wrong, reloading page");
+              window.location.reload();
             }
           });
       } else {
@@ -671,7 +682,7 @@ const UserDashboard = ({ jibu }) => {
     // setshowdata(true)
     axios
       .post(
-        "https://backend.finalyze.app/retrieve",
+        `${backend}/retrieve`,
         { pdf_name },
         {
           headers: {
@@ -712,7 +723,7 @@ const UserDashboard = ({ jibu }) => {
     const jwt = localStorage.getItem("jwt");
     axios
       .post(
-        "https://backend.finalyze.app/delete",
+        `${backend}/delete`,
         { pdf_name },
         {
           headers: {
@@ -755,7 +766,7 @@ const UserDashboard = ({ jibu }) => {
     const jwt = localStorage.getItem("jwt");
     axios
       .post(
-        "https://backend.finalyze.app/py/getcat",
+        `${backendPy}/getcat`,
         { pdf_name, statement_type },
         {
           headers: {
@@ -990,10 +1001,10 @@ const UserDashboard = ({ jibu }) => {
                             <div className="value-item">
                               {dashdata ? (
                                 <p>
-                                  {" " + dashdata[1]}
+                                 KES {" " + dashdata[1]}
                                 </p>
                               ) : (
-                                <p>{" " + 0}</p>
+                                <p>KES {" " + 0}</p>
                               )}
                             </div>
                             <div className="indicator">

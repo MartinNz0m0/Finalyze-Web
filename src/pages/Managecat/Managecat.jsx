@@ -18,6 +18,7 @@ const Managecat = () => {
   // useffect for getting all categories
   // usestate for storing all categories
   const history = useHistory();
+  const backendPy = process.env.REACT_APP_BACKEND_PY;
   const ref = useRef(null);
   const [categories, setCategories] = useState([]);
   const [show, setShow] = useState(false);
@@ -39,7 +40,7 @@ const Managecat = () => {
     if (jwt) {
       axios
         .post(
-          "https://backend.finalyze.app/py/getallcats",
+          `${backendPy}/getallcats`,
           { removeduplicates },
           {
             headers: {
@@ -79,7 +80,7 @@ const Managecat = () => {
       if (jwt) {
         axios
           .post(
-            "https://backend.finalyze.app/py/editcat",
+            `${backendPy}/editcat`,
             { newcat, det, sttype, newbudget },
             {
               headers: {
@@ -119,7 +120,7 @@ const Managecat = () => {
     if (jwt) {
       axios
         .post(
-          "https://backend.finalyze.app/py/deletecat",
+          `${backendPy}/deletecat`,
           { det, sttype },
           {
             headers: {

@@ -65,6 +65,7 @@ const UserDashboard = ({ jibu }) => {
   const [disabledbutton, setdisabledbutton] = useState(true);
   const [mobilemode, setmobilemode] = useState(false);
   const [showsidebar, setshowsidebar] = useState(false);
+  const backend = process.env.REACT_APP_BACKEND;
 
   useEffect(() => {
     //make api call to get data
@@ -73,7 +74,7 @@ const UserDashboard = ({ jibu }) => {
       // user has token, make api call
       axios
         .post(
-          "https://backend.finalyze.app/dash",
+          `${backend}/dash`,
           {},
           {
             headers: {
@@ -126,7 +127,7 @@ const UserDashboard = ({ jibu }) => {
         // user has token, make api call
         axios
           .post(
-            "https://backend.finalyze.app/verify",
+            `${backend}/verify`,
             {},
             {
               headers: {
@@ -434,7 +435,7 @@ const UserDashboard = ({ jibu }) => {
       const formData = new FormData();
       formData.append("file", uploadedfile);
       axios
-        .post("https://backend.finalyze.app/uploadequity", formData, {
+        .post(`${backend}/uploadequity`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${jwt}`,
@@ -658,7 +659,7 @@ const UserDashboard = ({ jibu }) => {
     const jwt = localStorage.getItem("jwt");
     axios
       .post(
-        "https://backend.finalyze.app/delete",
+        `${backend}/delete`,
         { pdf_name },
         {
           headers: {

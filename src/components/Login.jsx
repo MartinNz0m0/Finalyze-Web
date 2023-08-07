@@ -14,12 +14,14 @@ function Login() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [failedlogin, setfailedlogin] = useState(false);
   const { user, setUser } = useContext(UserContext);
+  const backend = process.env.BACKEND
 
   const handleLogin = () => {
     setfailedlogin(false);
+    console.log("backend", backend)
     axios
       .post(
-        "https://backend.finalyze.app/login",
+        `${backend}/login`,
         { username, password },
         {
           headers: {
